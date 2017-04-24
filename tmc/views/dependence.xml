@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- WINDOW ACTION -->
+    <record model="ir.actions.act_window" id="dependence_list_action">
+        <field name="name">Dependences</field>
+        <field name="res_model">tmc.dependence</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="limit">0</field>
+        <field name="context">
+            { 'search_default_filter_child_dependences': True, 'search_default_group_by_parent_id': True }
+        </field>
+    </record>
+
+    <!-- WINDOW ACTION -->
+    <record model="ir.actions.act_window" id="current_nomenclator_list_action">
+        <field name="name">Current Nomenclator</field>
+        <field name="res_model">tmc.dependence</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('in_actual_nomenclator', '=', True)]</field>
+        <field name="limit">0</field>
+        <field name="context">
+            { 'search_default_filter_child_dependences': True, 'search_default_group_by_parent_id': True }
+        </field>
+    </record>
+
+    <!-- TREE VIEW -->
+    <record id="view_tmc_dependence_tree" model="ir.ui.view">
+        <field name="name">tmc.dependence.tree</field>
+        <field name="model">tmc.dependence</field>
+        <field name="limit">20</field>
+        <field name="arch" type="xml">
+            <tree string="Dependence">
+                <field name="code" />
+                <field name="name" string="Dependence" />
+                <field name="abbreviation" />
+                <field name="institutional_classifier_ids" groups="tmc.group_manager" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_tmc_dependence_form" model="ir.ui.view">
+        <field name="name">tmc.dependence.form</field>
+        <field name="model">tmc.dependence</field>
+        <field name="arch" type="xml">
+            <form duplicate="0">
+                <sheet>
+                    <h2>
+                        <field name="display_name"
+                            attrs="{'invisible':[('name','=',False)]}"/>
+                    </h2>
+                    <group>
+                        <group>
+                            <field name="code" />
+                            <field name="name" class="oe_edit_only" />
+                            <field name="abbreviation" />
+                        </group>
+                        <group>
+                            <field name="parent_id" />
+                            <field name="shown_in_selection" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="document_types" string="Document Types">
+                            <field name="document_type_ids" />
+                        </page>
+                        <page string="Observations">
+                            <field name="observations" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- SEARCH VIEW -->
+    <record model="ir.ui.view" id="dependence_filter_view">
+        <field name="name">tmc.dependence.filter</field>
+        <field name="model">tmc.dependence</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="abbreviation" />
+                <field name="institutional_classifier_ids" />
+                <group string="Group By">
+                    <filter name="group_by_parent_id" string="Institutional Unit" context="{'group_by': 'parent_id'}" />
+                </group>
+                <!-- <filter string="Actual Period" name="filter_actual_period" domain="[('institutional_classifier_ids', 'ilike', (context_today().strftime('%%Y')))]"/> -->
+                <filter string="Actual Nomenclator" name="filter_actual_nomenclator" domain="[('in_actual_nomenclator', '=', True)]" />
+                <filter string="Dependences" name="filter_child_dependences" domain="[('parent_id', '!=', False), ('child_ids', '=', False)]" />
+            </search>
+        </field>
+    </record>
+
+</odoo>

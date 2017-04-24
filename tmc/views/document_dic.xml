@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- WINDOW ACTION -->
+    <act_window id="document_dic_list_action" name="Dictámenes" res_model="tmc.document" view_type="form" view_mode="tree,form" domain="[('document_type_id','=','Dictámen')]" />
+
+    <!-- TREE VIEW -->
+    <record id="view_document_dic_tree" model="ir.ui.view">
+        <field name="name">tmc.document_dic.tree</field>
+        <field name="model">tmc.document_dic</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="document_id" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_document_dic_form" model="ir.ui.view">
+        <field name="name">tmc.document_dic.form</field>
+        <field name="model">tmc.document_dic</field>
+        <field name="inherit_id" ref="tmc.view_document_form" />
+        <field name="priority">5</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="document_id" invisible="True" />
+            </xpath>
+            <!-- <button name="show_or_add_content" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </button> -->
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- WINDOW ACTION -->
+    <record model="ir.actions.act_window" id="institutional_classifier_list_action">
+        <field name="name">Nomenclators</field>
+        <field name="res_model">tmc.institutional_classifier</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- TREE VIEW -->
+    <record id="view_tmc_institutional_classifier_tree" model="ir.ui.view">
+        <field name="name">tmc.institutional_classifier.tree</field>
+        <field name="model">tmc.institutional_classifier</field>
+        <field name="limit">20</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="display_name" />
+                <field name="due_date" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_tmc_institutional_classifier_form" model="ir.ui.view">
+        <field name="name">tmc.institutional_classifier.form</field>
+        <field name="model">tmc.institutional_classifier</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h2>
+                        <field name="display_name"/>
+                    </h2>
+                    <group>
+                        <group>
+                            <field name="period" />
+                        </group>
+                        <group>
+                            <field name="due_date" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Dependences">
+                            <field name="dependence_ids" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- SEARCH VIEW -->
+    <record model="ir.ui.view" id="view_tmc_institutional_classifier_filter">
+        <field name="name">institutional_classifier.filter</field>
+        <field name="model">tmc.institutional_classifier</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="period" />
+            </search>
+        </field>
+    </record>
+
+</odoo>

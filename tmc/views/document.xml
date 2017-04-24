@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- WINDOW ACTION -->
+    <record model="ir.actions.act_window" id="document_list_action">
+        <field name="name">Documents</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- TREE VIEW -->
+    <record id="view_document_tree" model="ir.ui.view">
+        <field name="name">tmc.document.tree</field>
+        <field name="model">tmc.document</field>
+        <field name="priority">5</field>
+        <field name="arch" type="xml">
+            <tree string="Document" default_order="period desc, number desc, dependence_id, document_type_id" colors="red:color=='red';goldenrod:color=='yellow'">
+                <field name="name" />
+                <field name="date" />
+                <field name="reference" />
+                <field name="color" invisible="1" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- SIMPLE TREE VIEW -->
+    <record id="view_document_simple_tree" model="ir.ui.view">
+        <field name="name">tmc.document.simple.tree</field>
+        <field name="model">tmc.document</field>
+        <field name="arch" type="xml">
+            <tree string="Document" default_order="period desc, number desc, dependence_id, document_type_id">
+                <field name="name" string="Document" />
+                <field name="date" />
+                <field name="reference" string="Reference" />
+                <field name="secondary_purpose_ids" invisible="1" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_document_form" model="ir.ui.view">
+        <field name="name">tmc.document.form</field>
+        <field name="model">tmc.document</field>
+        <field name="priority">5</field>
+        <field name="arch" type="xml">
+            <form duplicate="0">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Document Name" />
+                        <h1>
+                            <field name="name"
+                                   string="Document Name"/>
+                        </h1>
+                    </div>
+                    <field name="create_date" invisible="True" />
+                    <field name="reference_document" invisible="True" />
+                    <div class="oe_right oe_button_box" name="buttons" groups="base.group_user" attrs="{'invisible':[('create_date','=', False)]}">
+                        <button class="oe_inline oe_stat_button" type="action" attrs="{'invisible':[('highlights_count','=', 0)]}" name="" icon="fa-star">
+                          <field string="Highlight(s)"
+                                 name="highlights_count"
+                                 widget="statinfo"/>
+                      </button>
+                        <!-- <button class="oe_inline oe_stat_button"
+                              type="object"
+                              string="Show Content"
+                              name="show_or_add_content"
+                              attrs="{'invisible':[('reference_document','=', 0)]}"
+                              context="{'default_document_id': active_id}"
+                              icon="fa-file-text"/>
+                      <button class="oe_inline oe_stat_button"
+                              type="object"
+                              string="Add Content"
+                              name="show_or_add_content"
+                              attrs="{'invisible':[('reference_document','!=', 0)]}"
+                              context="{'default_document_id': active_id}"
+                              icon="fa-file-text-o"/> -->
+                    </div>
+                    <h3>
+                        <field name="reference_copy" class="oe_read_only"/>
+                    </h3>
+                    <group>
+
+                        <group class="oe_edit_only">
+                            <field name="dependence_id" domain="[('shown_in_selection', '=', True)]" context="{'search_default_filter_actual_nomenclator': True}" default_focus="1" />
+                            <field name="document_type_id" attrs="{'invisible':[('dependence_id','=',False)]}" />
+                        </group>
+
+                        <group class="oe_edit_only">
+                            <field name="number" />
+                            <field name="period" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="date" />
+                        <field name="reference" class="oe_edit_only" placeholder="Reference..." />
+                    </group>
+
+
+                    <group>
+                        <field name="main_purpose_ids" widget="many2many_tags" options="{'no_create_edit': True}" />
+                        <field name="secondary_purpose_ids" attrs="{'invisible':[('main_purpose_ids','=',False)]}" widget="many2many_tags" options="{'no_create_edit': True}" />
+                    </group>
+
+                    <group>
+                        <notebook>
+                            <page string="Highlights">
+                                <field name="highlight_ids" />
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- SIMPLE FORM VIEW -->
+    <record id="view_simple_tmc_document_form" model="ir.ui.view">
+        <field name="name">tmc.document.form</field>
+        <field name="model">tmc.document</field>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+            <form duplicate="0">
+                <sheet>
+                    <h2>
+                        <field name="name"/>
+                    </h2>
+                    <group>
+                        <field name="date" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- SEARCH VIEW -->
+    <record model="ir.ui.view" id="document_search_view">
+        <field name="name">document.search</field>
+        <field name="model">tmc.document</field>
+        <field name="arch" type="xml">
+            <search string="Document">
+                <field name="document_type_id" string="document type" search_domain="['|', (
+                    'document_type_id', '=', self)]" />
+                <field name="number" string="Number" search_domain="['|', ('number', '=', self)]" />
+                <field name="period" string="Period" search_domain="['|', ('period', '=', self)]" />
+                <field name="dependence_id" string="Dependence" filter_domain="[('dependence_id', 'ilike', self)]" />
+                <field name="reference" string="Reference" filter_domain="[('reference', 'ilike', self)]" />
+                <field name="secondary_purpose_ids" string="Document Purpose" filter_domain="[('secondary_purpose_ids', 'ilike', self)]" />
+            </search>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- SEARCH VIEW -->
+    <record id="document_topic_search_view" model="ir.ui.view">
+        <field name="name">tmc.document_topic.search</field>
+        <field name="model">tmc.document_topic</field>
+        <field name="arch" type="xml">
+            <search string="Document">
+                <field name="name" search_domain="['|', ('name', '=', self)]" />
+                <field name="parent_id" search_domain="['|', ('parent_id', '=', self)]" />
+                <group expand="1">
+                    <filter name="group_by_parent_id" string="Main Purpose" context="{'group_by':'parent_id'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- FORMVIEW -->
+    <record id="view_document_topic_form" model="ir.ui.view">
+        <field name="name">tmc.document_topic.form</field>
+        <field name="model">tmc.document_topic</field>
+        <field name="arch" type="xml">
+            <form string="document_topic" version="7.0">
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="parent_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- TREEVIEW -->
+    <record id="document_topic_tree_view" model="ir.ui.view">
+        <field name="name">tmc.document_topic.tree</field>
+        <field name="model">tmc.document_topic</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="parent_id" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- WINDOW ACTION -->
+    <record id="document_topic_list_action" model="ir.actions.act_window">
+        <field name="name">Document Purposes</field>
+        <field name="res_model">tmc.document_topic</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="document_topic_tree_view" />
+        <field name="search_view_id" ref="document_topic_search_view" />
+        <field name="context">{'search_default_group_by_parent_id': True}</field>
+        <field name="domain">[('child_ids', '=', False)]</field>
+    </record>
+
+</odoo>

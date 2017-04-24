@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- WINDOW ACTION -->
+    <record model="ir.actions.act_window" id="document_type_list_action">
+        <field name="name">Document Types</field>
+        <field name="res_model">tmc.document_type</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <!-- TREE VIEW -->
+    <record id="view_tmc_document_type_tree" model="ir.ui.view">
+        <field name="name">tmc.document_type.tree</field>
+        <field name="model">tmc.document_type</field>
+        <field name="arch" type="xml">
+            <tree string="Document Type" edit="false" create="false">
+                <field name="name" string="Document Type" />
+                <field name="abbreviation" />
+            </tree>
+        </field>
+    </record>
+
+</odoo>
