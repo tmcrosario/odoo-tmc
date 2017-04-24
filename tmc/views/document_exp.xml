@@ -2,7 +2,13 @@
 <odoo>
 
     <!-- WINDOW ACTION -->
-    <act_window id="document_exp_list_action" name="Expedientes" res_model="tmc.document" view_type="form" view_mode="tree,form" domain="[('document_type_id','=','Expediente')]" />
+    <record model="ir.actions.act_window" id="document_exp_list_action">
+        <field name="name">Decretos</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('document_type_id','=','Expediente')]</field>
+    </record>
 
     <!-- TREE VIEW -->
     <record id="view_document_exp_tree" model="ir.ui.view">
