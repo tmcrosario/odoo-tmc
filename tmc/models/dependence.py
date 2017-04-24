@@ -50,8 +50,6 @@ class Dependence(models.Model):
         store=True
     )
 
-    observations = fields.Text()
-
     @api.one
     @api.depends('institutional_classifier_ids')
     def _get_in_actual_nomenclator(self):

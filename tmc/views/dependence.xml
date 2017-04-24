@@ -67,9 +67,6 @@
                         <page name="document_types" string="Document Types">
                             <field name="document_type_ids" />
                         </page>
-                        <page string="Observations">
-                            <field name="observations" />
-                        </page>
                     </notebook>
                 </sheet>
             </form>
