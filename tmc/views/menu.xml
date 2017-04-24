@@ -1,84 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-<data>
 
-<menuitem id="main_tmc_menu"
-    name="Tribunal de Cuentas"
-    sequence="100"
-    groups="tmc.group_manager,tmc.group_user"/>
+    <menuitem id="menu_main_tmc" name="Tribunal de Cuentas" sequence="5" groups="tmc.group_manager,tmc.group_user" />
 
-    <menuitem id="main_tmc_documents_menu"
-        name="Documents"
-        parent="main_tmc_menu"
-        sequence="5"/>
+    <menuitem id="menu_main_tmc_documents" name="Documents" parent="menu_main_tmc" sequence="5" />
 
-        <menuitem id="main_tmc_documents_document_list_menu"
-            name="All Documents"
-            parent="main_tmc_documents_menu"
-            sequence="5"
-            action="document_list_action"/>
+    <menuitem id="menu_main_tmc_documents_document_list" name="All Documents" parent="menu_main_tmc_documents" sequence="5" action="document_list_action" />
 
-    <menuitem id="main_tmc_institutional_classifier_menu"
-        name="Institutional Classifier"
-        parent="main_tmc_menu"
-        sequence="10"/>
+    <menuitem id="menu_main_tmc_documents_document_topics" name="Document Topics" parent="menu_main_tmc_documents" sequence="10" action="document_topic_list_action" />
 
-        <menuitem id="main_tmc_institutional_classifier_dependence_list_menu"
-            name="Dependences"
-            parent="main_tmc_institutional_classifier_menu"
-            sequence="5"
-            action="dependence_list_action"
-            groups="tmc.group_manager"/>
+    <menuitem id="menu_main_tmc_institutional_classifiers" name="Institutional Classifiers" parent="menu_main_tmc" sequence="10" />
 
-        <menuitem id="main_tmc_institutional_classifier_current_nomenclator_list_menu"
-            name="Current Nomenclator"
-            parent="main_tmc_institutional_classifier_menu"
-            sequence="10"
-            action="current_nomenclator_list_action"/>
+    <menuitem id="menu_main_tmc_institutional_classifiers_dependence_list" name="Dependences" parent="menu_main_tmc_institutional_classifiers" sequence="5" action="dependence_list_action" groups="tmc.group_manager" />
 
-        <menuitem id="main_tmc_institutional_classifier_nomenclator_list_menu"
-            name="Nomenclators"
-            parent="main_tmc_institutional_classifier_menu"
-            sequence="15"
-            action="institutional_classifier_list_action"/>
+    <menuitem id="menu_main_tmc_institutional_classifiers_current_nomenclator_list" name="Current Nomenclator" parent="menu_main_tmc_institutional_classifiers" sequence="10" action="current_nomenclator_list_action" />
 
-    <menuitem id="main_tmc_suppliers_menu"
-        name="Suppliers"
-        parent="main_tmc_menu"
-        sequence="15"/>
+    <menuitem id="menu_main_tmc_institutional_classifiers_nomenclator_list" name="Nomenclators" parent="menu_main_tmc_institutional_classifiers" sequence="15" action="institutional_classifier_list_action" />
 
-        <menuitem id="main_tmc_suppliers_suppliers_list_menu"
-            name="Suppliers List"
-            parent="main_tmc_suppliers_menu"
-            sequence="5"/>
+    <menuitem id="menu_tmc_config" name="Tribunal de Cuentas" parent="base.menu_administration" sequence="90" />
 
-    <menuitem id="main_tmc_configuration_menu"
-        name="Configuration"
-        parent="main_tmc_menu"
-        sequence="20"/>
+    <menuitem id="menu_tmc_document_types_config" name="Document Types" parent="tmc.menu_tmc_config" sequence="5" action="tmc.document_type_list_action" />
 
-        <menuitem id="main_tmc_documents_document_types_menu"
-            name="Document Types"
-            parent="main_tmc_configuration_menu"
-            sequence="5"
-            action="document_type_list_action"/>
+    <menuitem id="menu_tmc_highlight_level_config" name="Highlight Levels" parent="tmc.menu_tmc_config" sequence="10" action="tmc.highlight_level_list_action" />
 
-        <menuitem id="main_tmc_documents_document_topics_menu"
-            name="Document Purposes"
-            parent="main_tmc_configuration_menu"
-            sequence="10"
-            action="document_topic_list_action"/>
-
-    <menuitem id="main_tmc_highlight_menu"
-        name="Highlights"
-        parent="main_tmc_menu"
-        sequence="25"/>
-
-        <menuitem id="main_tmc_highlight_level_menu"
-            name="Highlight Levels"
-            parent="main_tmc_highlight_menu"
-            sequence="10"
-            action="highlight_level_list_action"/>
-
-</data>
 </odoo>
