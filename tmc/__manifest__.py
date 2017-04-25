@@ -24,7 +24,8 @@
         'views/document_leg.xml',
         'views/document_dec.xml',
         'views/document_dic.xml',
-        'views/menu.xml'
+        'views/menu.xml',
+        'data/institutional_classifier.xml'
     ],
     'demo': [],
     'installable': True,

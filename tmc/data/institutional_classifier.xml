@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <record id="tmc_institutional_classifier_01" model="tmc.institutional_classifier">
+            <field name="period" eval="int(2016)"/>
+            <field name="due_date"></field>
+        </record>
+
+        <record id="tmc_institutional_classifier_02" model="tmc.institutional_classifier">
+            <field name="period" eval="int(2016)"/>
+            <field name="due_date">2016-04-19</field>
+        </record>
+
+        <record id="tmc_institutional_classifier_03" model="tmc.institutional_classifier">
+            <field name="period" eval="int(2015)"/>
+            <field name="due_date">2015-12-31</field>
+        </record>
+
+        <record id="tmc_institutional_classifier_04" model="tmc.institutional_classifier">
+            <field name="period" eval="int(2015)"/>
+            <field name="due_date">2015-12-09</field>
+        </record>
+
+    </data>
+</openerp>
