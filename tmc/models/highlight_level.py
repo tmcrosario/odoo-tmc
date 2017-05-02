@@ -7,17 +7,12 @@ class Highlight_Level(models.Model):
 
     _name = 'tmc.highlight_level'
 
-    _colors_ = [
-        ('red', 'Red'),
-        ('yellow', 'Yellow'),
-    ]
-
     name = fields.Char(
         required=True
     )
 
-    color = fields.Selection(
-        selection=_colors_,
+    color = fields.Char(
+        string="Color",
         required=True
     )
 

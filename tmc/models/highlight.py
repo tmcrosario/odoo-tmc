@@ -22,7 +22,7 @@ class Highlight(models.Model):
         required=True
     )
 
-    color = fields.Selection(
+    color = fields.Char(
         related='highlight_level_id.color'
     )
 
