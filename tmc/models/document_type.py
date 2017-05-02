@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, _
+from odoo import _, fields, models
 
 
 class Document_Type(models.Model):
@@ -12,7 +12,7 @@ class Document_Type(models.Model):
     )
 
     abbreviation = fields.Char(
-        size=3,
+        size=4,
         required=True
     )
 
