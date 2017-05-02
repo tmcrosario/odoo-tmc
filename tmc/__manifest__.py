@@ -37,7 +37,8 @@
         'views/document_dec.xml',
         'views/document_dic.xml',
         'views/menu.xml',
-        'data/institutional_classifier.xml'
+        'data/institutional_classifier.xml',
+        'data/highlight_level.xml'
     ],
     'demo': [],
     'installable': True,
