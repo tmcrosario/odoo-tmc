@@ -36,13 +36,6 @@ class Institutional_Classifier(models.Model):
         if not self.due_date:
             self.display_name += ' (Actual)'
 
-    @api.constrains('period')
-    def _check_period(self):
-        period = str(self.period)
-        year = datetime.strptime(period, '%Y')
-        if year > datetime.today():
-            raise Warning(_('Invalid period'))
-
     @api.model
     def create(self, values):
         year = datetime.strptime(str(values['period']), '%Y')
