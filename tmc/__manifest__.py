@@ -38,6 +38,7 @@
         'views/document_dic.xml',
         'views/menu.xml',
         'data/institutional_classifier.xml',
+        'data/document_type.xml',
         'data/highlight_level.xml'
     ],
     'demo': [],
