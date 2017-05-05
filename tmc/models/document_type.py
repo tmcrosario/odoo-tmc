@@ -20,6 +20,10 @@ class Document_Type(models.Model):
         required=True
     )
 
+    junco_code = fields.Char(
+        size=4
+    )
+
     _sql_constraints = [
         ('name_unique',
          'UNIQUE(name)',

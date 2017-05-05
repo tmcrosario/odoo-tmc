@@ -6,6 +6,7 @@
         <field name="abbreviation">RES</field>
         <field name="name">Resolución</field>
         <field name="model">document_res</field>
+        <field name="junco_code">0002</field>
     </record>
 
     <record id="tmc_document_type_ext"
@@ -20,6 +21,7 @@
         <field name="abbreviation">DEC</field>
         <field name="name">Decreto</field>
         <field name="model">document_dec</field>
+        <field name="junco_code">0011</field>
     </record>
 
     <record id="tmc_document_type_exp"
@@ -27,6 +29,7 @@
         <field name="abbreviation">EXP</field>
         <field name="name">Expediente</field>
         <field name="model">document_exp</field>
+        <field name="junco_code">0020</field>
     </record>
 
     <record id="tmc_document_type_ord"
@@ -34,6 +37,7 @@
         <field name="abbreviation">ORD</field>
         <field name="name">Ordenanza</field>
         <field name="model">document_ord</field>
+        <field name="junco_code">0018</field>
     </record>
 
     <record id="tmc_document_type_ley"
@@ -41,6 +45,7 @@
         <field name="abbreviation">LEY</field>
         <field name="name">Ley</field>
         <field name="model">document_ley</field>
+        <field name="junco_code">0019</field>
     </record>
 
     <record id="tmc_document_type_jun"
@@ -48,6 +53,7 @@
         <field name="abbreviation">JUN</field>
         <field name="name">Informe de Junta de Compras</field>
         <field name="model">document_jun</field>
+        <field name="junco_code">0010</field>
     </record>
 
     <record id="tmc_document_type_dic"
@@ -55,6 +61,7 @@
         <field name="abbreviation">DIC</field>
         <field name="name">Dictámen</field>
         <field name="model">document_dic</field>
+        <field name="junco_code">0001</field>
     </record>
 
     <record id="tmc_document_type_leg"
@@ -62,6 +69,7 @@
         <field name="abbreviation">LEG</field>
         <field name="name">Legajo</field>
         <field name="model">document_leg</field>
+        <field name="junco_code">0005</field>
     </record>
 
     <record id="tmc_document_type_conv"
