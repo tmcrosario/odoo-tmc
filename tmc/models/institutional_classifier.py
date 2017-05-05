@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api, _
 from datetime import datetime
+
+from odoo import _, api, fields, models
 from odoo.exceptions import Warning
 
 
@@ -29,6 +30,8 @@ class Institutional_Classifier(models.Model):
         column1='institutional_classifier_id',
         column2='dependence_id'
     )
+
+    pdf = fields.Binary()
 
     @api.one
     def _get_display_name(self):
