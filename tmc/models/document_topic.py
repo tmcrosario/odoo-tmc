@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 
 class document_topic(models.Model):
@@ -33,6 +33,8 @@ class document_topic(models.Model):
         'parent_id',
         string='Childs'
     )
+
+    important = fields.Boolean()
 
     @api.one
     @api.depends('parent_id', 'parent_id.parent_id')
