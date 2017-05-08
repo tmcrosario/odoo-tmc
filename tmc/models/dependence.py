@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api, _
+from odoo import _, api, fields, models
 
 
 class Dependence(models.Model):
@@ -34,8 +34,9 @@ class Dependence(models.Model):
         string='Document Types'
     )
 
-    shown_in_selection = fields.Boolean(
-        string='Shown in Selection'
+    system_ids = fields.Many2many(
+        comodel_name='tmc.system',
+        string='Systems'
     )
 
     institutional_classifier_ids = fields.Many2many(
@@ -58,18 +59,6 @@ class Dependence(models.Model):
                 ('id', 'in', self.institutional_classifier_ids.mapped('id')),
                     ('due_date', '=', False)], limit=1):
                 self.in_actual_nomenclator = True
-
-    @api.constrains('shown_in_selection')
-    def _check_shown_in_selection(self):
-        if not self.abbreviation and self.shown_in_selection:
-            raise Warning(
-                _('You must set an abbreviation in order to use in system'))
-
-    @api.multi
-    @api.onchange('abbreviation')
-    def _onchange_abbreviation(self):
-        if not self.abbreviation:
-            self.shown_in_selection = False
 
     @api.model
     def name_search(self, name, args=None, operator='ilike', limit=100):

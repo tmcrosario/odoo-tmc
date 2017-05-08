@@ -39,6 +39,7 @@
         'views/menu.xml',
         'data/institutional_classifier.xml',
         'data/document_type.xml',
+        'data/system.xml',
         'data/highlight_level.xml'
     ],
     'demo': [],

@@ -17,7 +17,7 @@ class Document(models.Model):
     dependence_id = fields.Many2one(
         comodel_name='tmc.dependence',
         domain=[('document_type_ids', '!=', False),
-                ('shown_in_selection', '=', True)],
+                ('system_ids', 'ilike', u'TMC Base')],
         string='Dependence',
         required=True
     )
