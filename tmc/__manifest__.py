@@ -37,9 +37,10 @@
         'views/document_dec.xml',
         'views/document_dic.xml',
         'views/menu.xml',
+        'data/system.xml',
         'data/institutional_classifier.xml',
         'data/document_type.xml',
-        'data/system.xml',
+        'data/dependence.xml',
         'data/highlight_level.xml'
     ],
     'demo': [],
