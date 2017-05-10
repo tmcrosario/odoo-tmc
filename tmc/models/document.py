@@ -38,12 +38,12 @@ class Document(models.Model):
 
     date = fields.Date()
 
-    reference = fields.Char(
-        string="Reference"
+    document_object = fields.Char(
+        string="Object"
     )
 
-    reference_copy = fields.Char(
-        compute="_get_reference_copy"
+    document_object_copy = fields.Char(
+        compute="_get_document_object_copy"
     )
 
     main_purpose_ids = fields.Many2many(
@@ -189,9 +189,9 @@ class Document(models.Model):
         }
 
     @api.one
-    @api.depends('reference')
-    def _get_reference_copy(self):
-        self.reference_copy = self.reference
+    @api.depends('document_object')
+    def _get_document_object_copy(self):
+        self.document_object_copy = self.document_object
 
     @api.one
     @api.depends('reference_model')

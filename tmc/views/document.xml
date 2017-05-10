@@ -23,7 +23,7 @@
                   colors="red:color=='red';goldenrod:color=='yellow'">
                 <field name="name" />
                 <field name="date" />
-                <field name="reference" />
+                <field name="document_object" />
                 <field name="color"
                        invisible="1" />
             </tree>
@@ -41,8 +41,7 @@
                   default_order="period desc, number desc, dependence_id, document_type_id">
                 <field name="name" />
                 <field name="date" />
-                <field name="reference" />
-                <field name="secondary_purpose_ids"
+                <field name="document_object" />
                        invisible="1" />
             </tree>
         </field>
@@ -99,7 +98,7 @@
                               icon="fa-file-text-o"/> -->
                     </div>
                     <h3>
-                        <field name="reference_copy" class="oe_read_only"/>
+                        <field name="document_object_copy" class="oe_read_only"/>
                     </h3>
                     <group>
                         <group>
@@ -115,19 +114,11 @@
                         </group>
                     </group>
                     <group>
-                        <field name="date" />
-                        <field name="reference"
-                               class="oe_edit_only"
-                               placeholder="Reference..." />
-                    </group>
-                    <group>
-                        <field name="main_purpose_ids"
-                               widget="many2many_tags"
-                               options="{'no_create_edit': True}" />
-                        <field name="secondary_purpose_ids"
-                               attrs="{'invisible':[('main_purpose_ids','=',False)]}"
-                               widget="many2many_tags"
-                               options="{'no_create_edit': True}" />
+                        <group string="Reference">
+                            <field name="date" />
+                            <field name="document_object"
+                                   class="oe_edit_only" />
+                        </group>
                     </group>
                     <group>
                         <notebook>
@@ -178,7 +169,7 @@
                        search_domain="['|', ('period', '=', self)]" />
                 <field name="dependence_id"
                        filter_domain="[('dependence_id', 'ilike', self)]" />
-                <field name="reference"
+                <field name="document_object"
                        filter_domain="[('reference', 'ilike', self)]" />
                 <field name="secondary_purpose_ids"
                        filter_domain="[('secondary_purpose_ids', 'ilike', self)]" />
