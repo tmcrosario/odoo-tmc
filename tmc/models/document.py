@@ -87,6 +87,11 @@ class Document(models.Model):
         string='Highlights Count'
     )
 
+    important = fields.Boolean(
+        compute='_get_important_topic',
+        store=True
+    )
+
     _sql_constraints = [
         ('name_unique',
             'UNIQUE(name)',
@@ -221,3 +226,19 @@ class Document(models.Model):
             highlight_level = highlight.highlight_level_id
             self.priority = highlight_level.priority
             self.color = highlight.color
+
+    @api.one
+    @api.depends('main_topic_ids',
+                 'secondary_topic_ids')
+    def _get_important_topic(self):
+        domain = [
+            '|', ('id', 'in', self.main_topic_ids.ids),
+            ('id', 'in', self.secondary_topic_ids.ids),
+            ('important', '=', True)
+        ]
+        important_related_topics = self.env[
+            'tmc.document_topic'].search(domain)
+
+        if important_related_topics:
+            self.important = True
+

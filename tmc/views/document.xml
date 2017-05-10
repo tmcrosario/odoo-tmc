@@ -10,6 +10,16 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <!-- WINDOW ACTION -->
+    <record model="ir.actions.act_window"
+            id="important_document_list_action">
+        <field name="name">Documents</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('important', '=', True)]</field>
+    </record>
+
     <!-- TREE VIEW -->
     <record id="view_document_tree"
             model="ir.ui.view">
@@ -112,6 +122,7 @@
                         <group>
                             <field name="number" />
                             <field name="period" />
+                            <field name="important" />
                         </group>
                     </group>
                     <group>
