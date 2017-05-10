@@ -38,6 +38,9 @@ class Institutional_Classifier(models.Model):
         self.display_name = 'Nomenclador Institucional %s' % str(self.period)
         if not self.due_date:
             self.display_name += ' (Actual)'
+        else:
+            month = datetime.strptime(self.due_date, "%Y-%m-%d").strftime("%b")
+            self.display_name += ' (%s)' % month
 
     @api.model
     def create(self, values):
