@@ -18,14 +18,14 @@ class document_topic(models.Model):
 
     document_ids = fields.Many2many(
         'tmc.document',
-        'main_purpose_ids',
-        'document_main_purpose_rel',
+        'main_topic_ids',
+        'document_main_topic_rel',
         string='Document'
     )
 
     parent_id = fields.Many2one(
         'tmc.document_topic',
-        string='Main Purpose'
+        string='Main Topic'
     )
 
     child_ids = fields.One2many(

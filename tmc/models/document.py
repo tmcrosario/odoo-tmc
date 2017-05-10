@@ -46,18 +46,18 @@ class Document(models.Model):
         compute="_get_document_object_copy"
     )
 
-    main_purpose_ids = fields.Many2many(
+    main_topic_ids = fields.Many2many(
         comodel_name='tmc.document_topic',
-        relation='document_main_purpose_rel',
-        string='Main Purposes',
+        relation='document_main_topic_rel',
+        string='Main Topic',
         domain="[('parent_id', '=', False)]"
     )
 
-    secondary_purpose_ids = fields.Many2many(
+    secondary_topic_ids = fields.Many2many(
         comodel_name='tmc.document_topic',
-        relation='document_secondary_purpose_rel',
-        string='Secondary Purposes',
-        domain="[('parent_id', 'in', main_purpose_ids[0][2])]"
+        relation='document_secondary_topic_rel',
+        string='Secondary Topic',
+        domain="[('parent_id', 'in', main_topic_ids[0][2])]"
     )
 
     reference_model = fields.Char(
@@ -174,16 +174,16 @@ class Document(models.Model):
         }
 
     @api.multi
-    @api.onchange('main_purpose_ids')
-    def _onchange_main_purpose_ids(self):
-        new_secondary_purpose_ids = self.secondary_purpose_ids.filtered(
-            lambda record: record.parent_id in self.main_purpose_ids
+    @api.onchange('main_topic_ids')
+    def _onchange_main_topic_ids(self):
+        new_secondary_topic_ids = self.secondary_topic_ids.filtered(
+            lambda record: record.parent_id in self.main_topic_ids
         )
-        self.secondary_purpose_ids = new_secondary_purpose_ids
+        self.secondary_topic_ids = new_secondary_topic_ids
         return {
             'domain': {
-                'secondary_purpose_ids': [
-                    ('first_parent_id', 'in', self.main_purpose_ids.ids)
+                'secondary_topic_ids': [
+                    ('first_parent_id', 'in', self.main_topic_ids.ids)
                 ]
             }
         }

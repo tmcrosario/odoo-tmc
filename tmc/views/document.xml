@@ -42,6 +42,7 @@
                 <field name="name" />
                 <field name="date" />
                 <field name="document_object" />
+                <field name="secondary_topic_ids"
                        invisible="1" />
             </tree>
         </field>
@@ -119,6 +120,15 @@
                             <field name="document_object"
                                    class="oe_edit_only" />
                         </group>
+                        <group string="Topics">
+                            <field name="main_topic_ids"
+                                   widget="many2many_tags"
+                                   options="{'no_create_edit': True}" />
+                            <field name="secondary_topic_ids"
+                                   attrs="{'invisible':[('main_topic_ids','=',False)]}"
+                                   widget="many2many_tags"
+                                   options="{'no_create_edit': True}" />
+                        </group>
                     </group>
                     <group>
                         <notebook>
@@ -171,8 +181,8 @@
                        filter_domain="[('dependence_id', 'ilike', self)]" />
                 <field name="document_object"
                        filter_domain="[('reference', 'ilike', self)]" />
-                <field name="secondary_purpose_ids"
-                       filter_domain="[('secondary_purpose_ids', 'ilike', self)]" />
+                <field name="secondary_topic_ids"
+                       filter_domain="[('secondary_topic_ids', 'ilike', self)]" />
             </search>
         </field>
     </record>
