@@ -122,7 +122,6 @@
                         <group>
                             <field name="number" />
                             <field name="period" />
-                            <field name="important" />
                         </group>
                     </group>
                     <group>
