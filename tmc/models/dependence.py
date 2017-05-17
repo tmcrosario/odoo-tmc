@@ -5,28 +5,11 @@ from odoo import _, api, fields, models
 
 class Dependence(models.Model):
     _name = 'tmc.dependence'
-    _order = 'code'
-
-    code = fields.Char(
-        size=7,
-        required=True
-    )
 
     name = fields.Char()
 
     abbreviation = fields.Char(
         size=4
-    )
-
-    parent_id = fields.Many2one(
-        'tmc.dependence',
-        string='Parent'
-    )
-
-    child_ids = fields.One2many(
-        'tmc.dependence',
-        'parent_id',
-        string='Childs'
     )
 
     document_type_ids = fields.Many2many(
@@ -39,26 +22,7 @@ class Dependence(models.Model):
         string='Systems'
     )
 
-    institutional_classifier_ids = fields.Many2many(
-        comodel_name='tmc.institutional_classifier',
-        relation='institutional_classifier_dependence_rel',
-        column1='dependence_id',
-        column2='institutional_classifier_id'
-    )
-
-    in_actual_nomenclator = fields.Boolean(
-        compute='_get_in_actual_nomenclator',
-        store=True
-    )
-
-    @api.one
-    @api.depends('institutional_classifier_ids')
-    def _get_in_actual_nomenclator(self):
-        if self.institutional_classifier_ids:
-            if self.env['tmc.institutional_classifier'].search([
-                ('id', 'in', self.institutional_classifier_ids.mapped('id')),
-                    ('due_date', '=', False)], limit=1):
-                self.in_actual_nomenclator = True
+    in_actual_nomenclator = fields.Boolean()
 
     @api.model
     def name_search(self, name, args=None, operator='ilike', limit=100):

@@ -34,23 +34,16 @@
               parent="menu_main_tmc"
               sequence="10" />
 
-    <menuitem id="menu_main_tmc_institutional_classifiers_dependence_list"
-              name="Dependences"
+    <menuitem id="menu_main_tmc_dependence_hierarchys_list"
+              name="Dependence Hierarchy"
               parent="menu_main_tmc_institutional_classifiers"
               sequence="5"
-              action="dependence_list_action"
-              groups="tmc.group_manager" />
-
-    <menuitem id="menu_main_tmc_institutional_classifiers_current_nomenclator_list"
-              name="Current Nomenclator"
-              parent="menu_main_tmc_institutional_classifiers"
-              sequence="10"
-              action="current_nomenclator_list_action" />
+              action="dependence_hierarchy_list_action" />
 
     <menuitem id="menu_main_tmc_institutional_classifiers_nomenclator_list"
               name="Nomenclators"
               parent="menu_main_tmc_institutional_classifiers"
-              sequence="15"
+              sequence="10"
               action="institutional_classifier_list_action" />
 
     <menuitem id="menu_tmc_config"
@@ -58,16 +51,23 @@
               parent="base.menu_administration"
               sequence="90" />
 
+    <menuitem id="menu_main_tmc_dependence_config"
+              name="Dependences"
+              parent="tmc.menu_tmc_config"
+              sequence="5"
+              action="dependence_list_action"
+              groups="tmc.group_manager" />
+
     <menuitem id="menu_tmc_document_types_config"
               name="Document Types"
               parent="tmc.menu_tmc_config"
-              sequence="5"
+              sequence="15"
               action="tmc.document_type_list_action" />
 
     <menuitem id="menu_tmc_highlight_level_config"
               name="Highlight Levels"
               parent="tmc.menu_tmc_config"
-              sequence="10"
+              sequence="20"
               action="tmc.highlight_level_list_action" />
 
 </odoo>

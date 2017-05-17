@@ -28,6 +28,7 @@
         'views/document.xml',
         'views/document_type.xml',
         'views/dependence.xml',
+        'views/dependence_hierarchy.xml',
         'views/institutional_classifier.xml',
         'views/document_topic.xml',
         'views/document_exp.xml',

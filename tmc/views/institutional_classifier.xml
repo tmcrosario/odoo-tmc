@@ -50,7 +50,7 @@
                     </group>
                     <notebook>
                         <page string="Dependences">
-                            <field name="dependence_ids" />
+                            <field name="dependence_hierarchy_ids" />
                         </page>
                     </notebook>
                 </sheet>
