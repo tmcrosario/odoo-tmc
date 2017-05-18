@@ -2,7 +2,7 @@
 
 from datetime import datetime
 
-from odoo import _, api, fields, models
+from odoo import _, api, exceptions, fields, models
 
 
 class Document(models.Model):
@@ -241,4 +241,15 @@ class Document(models.Model):
 
         if important_related_topics:
             self.important = True
+
+    @api.multi
+    @api.onchange('dependence_id',
+                  'period',
+                  'document_type_id',
+                  'number')
+    def _onchange_document_data(self):
+        if self.dependence_id and self.document_type_id \
+                and self.number and self.period:
+            if self.env['tmc.document'].search([('name', '=', self.name)]):
+                raise exceptions.Warning(_('Document already exists'))
 
