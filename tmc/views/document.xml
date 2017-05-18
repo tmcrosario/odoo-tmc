@@ -125,12 +125,14 @@
                         </group>
                     </group>
                     <group>
-                        <group string="Reference">
+                        <group string="Reference"
+                               attrs="{'invisible':[('name', '=', u'Unnamed Document')]}">
                             <field name="date" />
                             <field name="document_object"
                                    class="oe_edit_only" />
                         </group>
-                        <group string="Topics">
+                        <group string="Topics"
+                               attrs="{'invisible':[('name', '=', u'Unnamed Document')]}">>
                             <field name="main_topic_ids"
                                    widget="many2many_tags"
                                    options="{'no_create_edit': True}" />
@@ -140,13 +142,11 @@
                                    options="{'no_create_edit': True}" />
                         </group>
                     </group>
-                    <group>
-                        <notebook>
-                            <page string="Highlights">
-                                <field name="highlight_ids" />
-                            </page>
-                        </notebook>
-                    </group>
+                    <notebook attrs="{'invisible':[('name', '=', u'Unnamed Document')]}">>
+                        <page string="Highlights">
+                            <field name="highlight_ids" />
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
