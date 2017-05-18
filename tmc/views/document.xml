@@ -117,7 +117,7 @@
                                    context="{'search_default_filter_actual_nomenclator': True}"
                                    default_focus="1" />
                             <field name="document_type_id"
-                                   attrs="{'invisible':[('dependence_id','=',False)]}" />
+                                   attrs="{'invisible':[('dependence_id','=',False)], 'readonly':[('name','!=', u'Unnamed Document')]}" />
                         </group>
                         <group>
                             <field name="number" />
