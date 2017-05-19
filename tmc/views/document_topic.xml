@@ -18,7 +18,7 @@
                         domain="[('important', '=', True)]" />
                 <group expand="1">
                     <filter name="group_by_parent_id"
-                            string="Main Purpose"
+                            string="Main Topic"
                             context="{'group_by':'parent_id'}" />
                 </group>
             </search>
