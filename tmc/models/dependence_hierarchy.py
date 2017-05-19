@@ -32,6 +32,11 @@ class Dependence_Hierarchy(models.Model):
         comodel_name='tmc.dependence'
     )
 
+    parent_name = fields.Char(
+        related='parent_id.name',
+        readonly=True
+    )
+
     institutional_classifier_ids = fields.Many2many(
         comodel_name='tmc.institutional_classifier',
         relation='institutional_classifier_dependence_hierarchy_rel',

@@ -21,11 +21,13 @@
         <field name="model">tmc.dependence_hierarchy</field>
         <field name="arch"
                type="xml">
-            <tree>
+            <tree fonts="bold:parent_name in [u'ADMINISTRACI\xd3N CENTRAL', u'ORGANISMOS DESCENTRALIZADOS', u'INSTITUCIONES DE SEGURIDAD SOCIAL', u'EMPRESAS, SOCIEDADES Y OTROS ENTES DEL ESTADO', False]">
                 <field name="code" />
                 <field name="name" />
                 <field name="abbreviation" />
                 <field name="institutional_classifier_ids" />
+                <field name="parent_name"
+                       invisible="True" />
             </tree>
         </field>
     </record>
