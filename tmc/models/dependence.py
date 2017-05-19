@@ -9,7 +9,7 @@ class Dependence(models.Model):
     name = fields.Char()
 
     abbreviation = fields.Char(
-        size=4
+        size=6
     )
 
     document_type_ids = fields.Many2many(

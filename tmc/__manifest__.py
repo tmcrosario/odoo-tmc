@@ -45,6 +45,7 @@
         'data/institutional_classifier.xml',
         'data/document_type.xml',
         'data/dependence.xml',
+        'data/dependence_hierarchy.xml',
         'data/highlight_level.xml'
     ],
     'demo': [],
