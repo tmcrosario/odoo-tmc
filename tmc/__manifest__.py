@@ -8,6 +8,7 @@
     'author': 'Tribunal Municipal de Cuentas - Municipalidad de Rosario',
     'license': 'AGPL-3',
     'depends': [
+        'web_x2many_delete_all',
         'web_hide_db_manager_link',
         'auditlog',
         'web_favicon',
@@ -18,7 +19,9 @@
         'web_notify',
         'web_sheet_full_width',
         'mass_editing',
-        'web_tree_many2one_clickable'
+        'web_tree_many2one_clickable',
+        'base_technical_features',
+        'web_search_with_and'
     ],
     'data': [
         'security/groups.xml',
