@@ -41,6 +41,7 @@
                         <group>
                             <field name="period" />
                             <field name="due_date" />
+                            <field name="document_id" />
                         </group>
                         <group>
                             <field name="pdf"

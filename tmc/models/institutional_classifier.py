@@ -33,6 +33,10 @@ class Institutional_Classifier(models.Model):
 
     pdf = fields.Binary()
 
+    document_id = fields.Many2one(
+        comodel_name='tmc.document'
+    )
+
     @api.one
     def _get_display_name(self):
         self.display_name = 'Nomenclador Institucional %s' % str(self.period)
