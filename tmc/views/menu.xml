@@ -34,11 +34,11 @@
               parent="menu_main_tmc"
               sequence="10" />
 
-    <menuitem id="menu_main_tmc_dependence_hierarchys_list"
-              name="Dependence Hierarchy"
+    <menuitem id="menu_main_tmc_dependence_orders_list"
+              name="Dependence Order"
               parent="menu_main_tmc_institutional_classifiers"
               sequence="5"
-              action="dependence_hierarchy_list_action" />
+              action="dependence_order_list_action" />
 
     <menuitem id="menu_main_tmc_institutional_classifiers_nomenclator_list"
               name="Nomenclators"

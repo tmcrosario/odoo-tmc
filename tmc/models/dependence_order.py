@@ -3,9 +3,9 @@
 from odoo import fields, models
 
 
-class Dependence_Hierarchy(models.Model):
+class Dependence_Order(models.Model):
 
-    _name = 'tmc.dependence_hierarchy'
+    _name = 'tmc.dependence_order'
     _order = 'code'
 
     name = fields.Char(
@@ -39,8 +39,8 @@ class Dependence_Hierarchy(models.Model):
 
     institutional_classifier_ids = fields.Many2many(
         comodel_name='tmc.institutional_classifier',
-        relation='institutional_classifier_dependence_hierarchy_rel',
-        column1='dependence_hierarchy_id',
+        relation='institutional_classifier_dependence_order_rel',
+        column1='dependence_order_id',
         column2='institutional_classifier_id',
         readonly=True
     )

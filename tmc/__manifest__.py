@@ -31,7 +31,7 @@
         'views/document.xml',
         'views/document_type.xml',
         'views/dependence.xml',
-        'views/dependence_hierarchy.xml',
+        'views/dependence_order.xml',
         'views/institutional_classifier.xml',
         'views/document_topic.xml',
         'views/document_exp.xml',
@@ -45,7 +45,7 @@
         'data/institutional_classifier.xml',
         'data/document_type.xml',
         'data/dependence.xml',
-        'data/dependence_hierarchy.xml',
+        'data/dependence_order.xml',
         'data/document_topic.xml',
         'data/highlight_level.xml'
     ],

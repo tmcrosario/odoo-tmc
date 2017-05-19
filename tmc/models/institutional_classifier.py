@@ -24,11 +24,11 @@ class Institutional_Classifier(models.Model):
 
     due_date = fields.Date()
 
-    dependence_hierarchy_ids = fields.Many2many(
-        comodel_name='tmc.dependence_hierarchy',
-        relation='institutional_classifier_dependence_hierarchy_rel',
+    dependence_order_ids = fields.Many2many(
+        comodel_name='tmc.dependence_order',
+        relation='institutional_classifier_dependence_order_rel',
         column1='institutional_classifier_id',
-        column2='dependence_hierarchy_id'
+        column2='dependence_order_id'
     )
 
     pdf = fields.Binary()
@@ -75,10 +75,10 @@ class Institutional_Classifier(models.Model):
 
     @api.multi
     def write(self, vals):
-        if not self.due_date and vals.get('dependence_hierarchy_ids'):
+        if not self.due_date and vals.get('dependence_order_ids'):
 
-            dependence_hierarchies = vals['dependence_hierarchy_ids'][0][2]
-            dependences = self.env['tmc.dependence_hierarchy'].search(
+            dependence_hierarchies = vals['dependence_order_ids'][0][2]
+            dependences = self.env['tmc.dependence_order'].search(
                 [('id', 'in', dependence_hierarchies)]).mapped('dependence_id')
 
             self.env['tmc.dependence'].search([]).write(

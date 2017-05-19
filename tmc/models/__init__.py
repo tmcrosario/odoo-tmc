@@ -2,7 +2,7 @@
 
 import category
 import dependence
-import dependence_hierarchy
+import dependence_order
 import document
 import document_dec
 import document_dic
