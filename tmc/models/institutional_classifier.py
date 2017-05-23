@@ -77,9 +77,9 @@ class Institutional_Classifier(models.Model):
     def write(self, vals):
         if not self.due_date and vals.get('dependence_order_ids'):
 
-            dependence_hierarchies = vals['dependence_order_ids'][0][2]
+            dependence_orders = vals['dependence_order_ids'][0][2]
             dependences = self.env['tmc.dependence_order'].search(
-                [('id', 'in', dependence_hierarchies)]).mapped('dependence_id')
+                [('id', 'in', dependence_orders)]).mapped('dependence_id')
 
             self.env['tmc.dependence'].search([]).write(
                 {'in_actual_nomenclator': False})

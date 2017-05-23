@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields
+from odoo import fields, models
 
 
 class Highlight(models.Model):
@@ -12,8 +12,7 @@ class Highlight(models.Model):
     )
 
     document_id = fields.Many2one(
-        comodel_name='tmc.document',
-        string='Document'
+        comodel_name='tmc.document'
     )
 
     level = fields.Selection(

@@ -135,8 +135,8 @@ class Document(models.Model):
             raise Warning(_('Invalid number'))
 
     @api.one
-    @api.depends('document_type_id.abbreviation',
-                 'dependence_id.abbreviation',
+    @api.depends('document_type_id',
+                 'dependence_id',
                  'number',
                  'period')
     def _get_name(self):
@@ -241,8 +241,8 @@ class Document(models.Model):
 
     @api.multi
     @api.onchange('dependence_id',
-                  'period',
                   'document_type_id',
+                  'period',
                   'number')
     def _onchange_document_data(self):
         if self.dependence_id and self.document_type_id \

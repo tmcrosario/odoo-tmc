@@ -89,11 +89,9 @@
                         <button class="oe_inline oe_stat_button"
                                 type="action"
                                 attrs="{'invisible':[('highlights_count','=', 0)]}"
-                                icon="fa-star">
-                          <field string="Highlight(s)"
-                                 name="highlights_count"
-                                 widget="statinfo"/>
-                      </button>
+                                icon="fa-warning">
+                            <field string="Highlight(s)" name="highlights_count" widget="statinfo"/>
+                        </button>
                         <!-- <button class="oe_inline oe_stat_button"
                               type="object"
                               string="Show Content"
@@ -113,16 +111,17 @@
                         <field name="document_object_copy" class="oe_read_only"/>
                     </h3>
                     <group>
-
-                        <field name="dependence_id"
-                               context="{'search_default_filter_actual_nomenclator': True}"
-                               default_focus="1" />
-                        <field name="document_type_id"
-                               attrs="{'invisible':[('dependence_id','=',False)], 'readonly':[('name','!=', u'Unnamed Document')]}" />
-                    </group>
-                    <group>
-                        <field name="number" />
-                        <field name="period" />
+                        <group>
+                            <field name="dependence_id"
+                                   context="{'search_default_filter_actual_nomenclator': True}"
+                                   default_focus="1" />
+                            <field name="document_type_id"
+                                   attrs="{'invisible':[('dependence_id','=', False)]}" />
+                        </group>
+                        <group>
+                            <field name="number" />
+                            <field name="period" />
+                        </group>
                     </group>
                     <group>
                         <group string="Reference"
