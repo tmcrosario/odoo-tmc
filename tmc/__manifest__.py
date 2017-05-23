@@ -12,7 +12,6 @@
         'web_hide_db_manager_link',
         'auditlog',
         'web_favicon',
-        'web_widget_color',
         'base_optional_quick_create',
         'web_export_view',
         'web_listview_range_select',
@@ -27,7 +26,6 @@
         'security/groups.xml',
         'security/ir.model.access.csv',
         'views/highlight.xml',
-        'views/highlight_level.xml',
         'views/document.xml',
         'views/document_type.xml',
         'views/dependence.xml',
@@ -46,8 +44,7 @@
         'data/document_type.xml',
         'data/dependence.xml',
         'data/dependence_order.xml',
-        'data/document_topic.xml',
-        'data/highlight_level.xml'
+        'data/document_topic.xml'
     ],
     'demo': [],
     'installable': True,

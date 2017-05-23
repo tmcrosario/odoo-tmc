@@ -14,6 +14,5 @@ import document_res
 import document_topic
 import document_type
 import highlight
-import highlight_level
 import institutional_classifier
 import system

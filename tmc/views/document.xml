@@ -30,12 +30,13 @@
                type="xml">
             <tree string="Document"
                   default_order="period desc, number desc, dependence_id, document_type_id"
-                  colors="red:color=='red';goldenrod:color=='yellow'">
+                  decoration-danger="highest_highlight=='high'"
+                  decoration-warning="highest_highlight=='medium'">
                 <field name="name" />
                 <field name="date" />
                 <field name="document_object" />
-                <field name="color"
-                       invisible="1" />
+                <field name="highest_highlight"
+                       invisible="True" />
             </tree>
         </field>
     </record>

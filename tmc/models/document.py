@@ -73,18 +73,16 @@ class Document(models.Model):
         inverse_name='document_id'
     )
 
-    priority = fields.Integer(
-        compute='_get_priority_and_color',
-        store=True
-    )
-
-    color = fields.Char(
-        compute='_get_priority_and_color',
-    )
-
     highlights_count = fields.Integer(
         compute='_highlights_count',
         string='Highlights Count'
+    )
+
+    highest_highlight = fields.Selection(
+        selection=[('high', 'High'),
+                   ('medium', 'Medium')],
+        compute='_get_highest_highlight'
+
     )
 
     important = fields.Boolean(
@@ -210,22 +208,21 @@ class Document(models.Model):
 
     @api.one
     @api.depends('highlight_ids')
-    def _get_priority_and_color(self):
-        domain = [
+    def _get_highest_highlight(self):
+        high_highlights = self.env['tmc.highlight'].search([
             ('document_id', '=', self.id),
-            ('applicable', '=', True)
-        ]
-        related_highlights = self.env['tmc.highlight'].search(domain)
-
-        highest = related_highlights.sorted(
-            key=lambda r: r.highlight_level_id.priority,
-            reverse=True)
-
-        if highest:
-            highlight = highest[0]
-            highlight_level = highlight.highlight_level_id
-            self.priority = highlight_level.priority
-            self.color = highlight.color
+            ('applicable', '=', True),
+            ('level', '=', 'high')]
+        )
+        medium_highlights = self.env['tmc.highlight'].search([
+            ('document_id', '=', self.id),
+            ('applicable', '=', True),
+            ('level', '=', 'medium')]
+        )
+        if high_highlights:
+            self.highest_highlight = 'high'
+        elif medium_highlights:
+            self.highest_highlight = 'medium'
 
     @api.one
     @api.depends('main_topic_ids',

@@ -16,14 +16,9 @@ class Highlight(models.Model):
         string='Document'
     )
 
-    highlight_level_id = fields.Many2one(
-        comodel_name='tmc.highlight_level',
-        string='Highlight Level',
-        required=True
-    )
-
-    color = fields.Char(
-        related='highlight_level_id.color'
+    level = fields.Selection(
+        selection=[('high', 'High'),
+                   ('medium', 'Medium')]
     )
 
     applicable = fields.Boolean()

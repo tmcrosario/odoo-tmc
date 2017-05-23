@@ -64,10 +64,4 @@
               sequence="15"
               action="tmc.document_type_list_action" />
 
-    <menuitem id="menu_tmc_highlight_level_config"
-              name="Highlight Levels"
-              parent="tmc.menu_tmc_config"
-              sequence="20"
-              action="tmc.highlight_level_list_action" />
-
 </odoo>
