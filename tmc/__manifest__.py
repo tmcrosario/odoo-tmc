@@ -15,7 +15,6 @@
         'base_optional_quick_create',
         'web_export_view',
         'web_listview_range_select',
-        'web_notify',
         'web_sheet_full_width',
         'mass_editing',
         'web_tree_many2one_clickable',
