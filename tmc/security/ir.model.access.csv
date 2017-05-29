@@ -1,6 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_tmc_dependence_manager,tmc.dependence.manager,model_tmc_dependence,group_manager,1,1,1,1
 access_tmc_dependence_user,tmc.dependence.user,model_tmc_dependence,group_user,1,0,0,0
+access_tmc_dependence_order_manager,tmc.dependence_order.manager,model_tmc_dependence_order,group_manager,1,1,1,1
+access_tmc_dependence_order_user,tmc.dependence_order.user,model_tmc_dependence_order,group_user,1,0,0,0
 access_tmc_document_manager,tmc.document.manager,model_tmc_document,group_manager,1,1,1,1
 access_tmc_document_user,tmc.document.user,model_tmc_document,group_user,1,0,1,0
 access_tmc_document_type_manager,tmc.document_type.manager,model_tmc_document_type,group_manager,1,1,1,1
@@ -9,8 +11,6 @@ access_tmc_document_topic_manager,tmc.document_topic.manager,model_tmc_document_
 access_tmc_document_topic_user,tmc.document_topic.user,model_tmc_document_topic,group_user,1,0,0,0
 access_tmc_highlight_manager,tmc.highlight.manager,model_tmc_highlight,group_manager,1,1,1,1
 access_tmc_highlight_user,tmc.highlight.user,model_tmc_highlight,group_user,1,1,1,1
-access_tmc_highlight_level_manager,tmc.highlight_level.manager,model_tmc_highlight_level,group_manager,1,1,1,1
-access_tmc_highlight_level_user,tmc.highlight_level.user,model_tmc_highlight_level,group_user,1,0,0,0
 access_tmc_document_exp_manager,tmc.document_exp.manager,model_tmc_document_exp,group_manager,1,1,1,1
 access_tmc_document_exp_user,tmc.document_exp.user,model_tmc_document_exp,group_user,1,0,0,0
 access_tmc_document_ext_manager,tmc.document_ext.manager,model_tmc_document_ext,group_manager,1,1,1,1
@@ -27,3 +27,5 @@ access_tmc_document_dic_manager,tmc.document_dic.manager,model_tmc_document_dic,
 access_tmc_document_dic_user,tmc.document_dic.user,model_tmc_document_dic,group_user,1,0,0,0
 access_tmc_institutional_classifier_manager,tmc.institutional_classifier.manager,model_tmc_institutional_classifier,group_manager,1,1,1,1
 access_tmc_institutional_classifier_user,tmc.institutional_classifier.user,model_tmc_institutional_classifier,group_user,1,0,0,0
+access_tmc_system_manager,tmc.system.manager,model_tmc_system,group_manager,1,1,1,1
+access_tmc_system_user,tmc.system.user,model_tmc_system,group_user,1,0,0,0
