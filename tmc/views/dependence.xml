@@ -71,6 +71,9 @@
             <search>
                 <field name="name" />
                 <field name="abbreviation" />
+                <filter string="Actual Nomenclator"
+                        name="filter_actual_nomenclator"
+                        domain="[('in_actual_nomenclator', '=', True)]" />
             </search>
         </field>
     </record>
