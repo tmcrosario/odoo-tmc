@@ -15,7 +15,6 @@
             model="ir.ui.view">
         <field name="name">tmc.institutional_classifier.tree</field>
         <field name="model">tmc.institutional_classifier</field>
-        <field name="limit">20</field>
         <field name="arch"
                type="xml">
             <tree>

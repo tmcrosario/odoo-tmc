@@ -15,7 +15,6 @@
             model="ir.ui.view">
         <field name="name">tmc.dependence.tree</field>
         <field name="model">tmc.dependence</field>
-        <field name="limit">20</field>
         <field name="arch"
                type="xml">
             <tree>
