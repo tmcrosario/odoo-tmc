@@ -1,0 +1,863 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * tmc
+# 
+# Translators:
+# Liso <lisandrogallo@tmcrosario.gov.ar>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-01 11:46+0000\n"
+"PO-Revision-Date: 2017-06-01 11:46+0000\n"
+"Last-Translator: Liso <lisandrogallo@tmcrosario.gov.ar>, 2017\n"
+"Language-Team: Spanish (Argentina) (https://www.transifex.com/tmcrosario/teams/73663/es_AR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es_AR\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: tmc
+#: code:addons/tmc/models/institutional_classifier.py:44
+#, python-format
+msgid " (Current)"
+msgstr " (Actual)"
+
+#. module: tmc
+#: selection:tmc.institutional_classifier,period:0
+msgid "2007"
+msgstr ""
+
+#. module: tmc
+#: selection:tmc.institutional_classifier,period:0
+msgid "2008"
+msgstr ""
+
+#. module: tmc
+#: selection:tmc.institutional_classifier,period:0
+msgid "2009"
+msgstr ""
+
+#. module: tmc
+#: selection:tmc.institutional_classifier,period:0
+msgid "2010"
+msgstr ""
+
+#. module: tmc
+#: selection:tmc.institutional_classifier,period:0
+msgid "2011"
+msgstr ""
+
+#. module: tmc
+#: selection:tmc.institutional_classifier,period:0
+msgid "2012"
+msgstr ""
+
+#. module: tmc
+#: selection:tmc.institutional_classifier,period:0
+msgid "2013"
+msgstr ""
+
+#. module: tmc
+#: selection:tmc.institutional_classifier,period:0
+msgid "2014"
+msgstr ""
+
+#. module: tmc
+#: selection:tmc.institutional_classifier,period:0
+msgid "2015"
+msgstr ""
+
+#. module: tmc
+#: selection:tmc.institutional_classifier,period:0
+msgid "2016"
+msgstr ""
+
+#. module: tmc
+#: selection:tmc.institutional_classifier,period:0
+msgid "2017"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_abbreviation
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_abbreviation
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_type_abbreviation
+msgid "Abbreviation"
+msgstr "Abreviatura"
+
+#. module: tmc
+#: model:ir.ui.view,arch_db:tmc.dependence_filter_view
+msgid "Actual Nomenclator"
+msgstr "Nomenclador Actual"
+
+#. module: tmc
+#: model:ir.ui.view,arch_db:tmc.dependence_order_filter_view
+msgid "Actual Period"
+msgstr "Período Actual"
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_documents_document_list
+msgid "All Documents"
+msgstr "Todos los Documentos"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_highlight_applicable
+msgid "Applicable"
+msgstr "Aplicable"
+
+#. module: tmc
+#: code:addons/tmc/models/institutional_classifier.py:72
+#, python-format
+msgid ""
+"Before adding a nomenclator you must set due date"
+"                                 prior to the current"
+msgstr ""
+"Antes de agregar un nomenclador debe establecerse una fecha de vencimiento "
+"al nomenclador anterior"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_child_ids
+msgid "Childs"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_code
+msgid "Code"
+msgstr "Código"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_highlight_comment
+msgid "Comment"
+msgstr "Comentario"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_category_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_type_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_highlight_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_system_create_uid
+msgid "Created by"
+msgstr "Creado Por"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_category_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_type_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_highlight_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_system_create_date
+msgid "Created on"
+msgstr "Fecha de Creación"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_dec_list_action
+#: model:ir.actions.act_window,name:tmc.document_dic_list_action
+#: model:ir.actions.act_window,name:tmc.document_exp_list_action
+#: model:ir.actions.act_window,name:tmc.document_ext_list_action
+#: model:ir.actions.act_window,name:tmc.document_leg_list_action
+#: model:ir.actions.act_window,name:tmc.document_res_list_action
+msgid "Decretos"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_dependence_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dependence_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_dependence_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_dependence_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_dependence_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_dependence_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_dependence_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_dependence_id
+msgid "Dependence"
+msgstr "Dependencia"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.dependence_order_list_action
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_dependence_orders_list
+msgid "Dependence Order"
+msgstr "Dependencias"
+
+#. module: tmc
+#: code:addons/tmc/models/dependence.py:46
+#, python-format
+msgid "Dependence abbreviation must be unique"
+msgstr "La abreviatura de la dependencia debe ser única"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_dependence_id
+msgid "Dependence id"
+msgstr "Dependencia"
+
+#. module: tmc
+#: code:addons/tmc/models/dependence.py:42
+#, python-format
+msgid "Dependence name must be unique"
+msgstr "El nombre de la dependencia debe ser única"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_dependence_order_ids
+msgid "Dependence order ids"
+msgstr "Dependencias"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.dependence_list_action
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_dependence_config
+#: model:ir.ui.view,arch_db:tmc.view_tmc_institutional_classifier_form
+msgid "Dependences"
+msgstr "Dependencias"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_category_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_type_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_highlight_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_system_display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_display_name
+msgid "Display name"
+msgstr "Nombre"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_document_ids
+#: model:ir.ui.view,arch_db:tmc.document_search_view
+#: model:ir.ui.view,arch_db:tmc.view_document_simple_tree
+#: model:ir.ui.view,arch_db:tmc.view_document_tree
+msgid "Document"
+msgstr "Documento"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_document_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_document_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_document_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_document_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_document_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_document_id
+#: model:ir.ui.view,arch_db:tmc.view_document_form
+msgid "Document Name"
+msgstr "Documento"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_topic_list_action
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_documents_document_topics
+msgid "Document Topics"
+msgstr "Temas de Documento"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_type_name
+#: model:ir.ui.view,arch_db:tmc.view_tmc_document_type_tree
+msgid "Document Type"
+msgstr "Tipo de Documento"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_type_list_action
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_document_type_ids
+#: model:ir.ui.menu,name:tmc.menu_tmc_document_types_config
+#: model:ir.ui.view,arch_db:tmc.view_tmc_dependence_form
+msgid "Document Types"
+msgstr "Tipos de Documento"
+
+#. module: tmc
+#: code:addons/tmc/models/document.py:96
+#: code:addons/tmc/models/document.py:251
+#, python-format
+msgid "Document already exists"
+msgstr "El documento ya existe"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_highlight_document_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_document_id
+msgid "Document id"
+msgstr "Documento Asociado"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_object_copy
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_document_object_copy
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_document_object_copy
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_document_object_copy
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_document_object_copy
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_document_object_copy
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_document_object_copy
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_document_object_copy
+msgid "Document object copy"
+msgstr ""
+
+#. module: tmc
+#: code:addons/tmc/models/document_type.py:33
+#, python-format
+msgid "Document type abbreviation must be unique"
+msgstr "La abreviatura debe ser única"
+
+#. module: tmc
+#: code:addons/tmc/models/document_type.py:30
+#, python-format
+msgid "Document type name must be unique"
+msgstr "El nombre debe ser único"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_list_action
+#: model:ir.actions.act_window,name:tmc.important_document_list_action
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_documents
+msgid "Documents"
+msgstr "Documentos"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_due_date
+msgid "Due date"
+msgstr "Vigente Hasta"
+
+#. module: tmc
+#: sql_constraint:tmc.document:0
+msgid "El documento ya existe"
+msgstr ""
+
+#. module: tmc
+#: sql_constraint:tmc.dependence:0
+msgid "El nombre de la dependencia debe ser única"
+msgstr ""
+
+#. module: tmc
+#: sql_constraint:tmc.document_type:0
+msgid "El nombre debe ser único"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_first_parent_id
+msgid "First Parent"
+msgstr ""
+
+#. module: tmc
+#: model:ir.ui.view,arch_db:tmc.dependence_order_filter_view
+msgid "Group By"
+msgstr ""
+
+#. module: tmc
+#: selection:tmc.document,highest_highlight:0 selection:tmc.highlight,level:0
+msgid "High"
+msgstr "Alto"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_highest_highlight
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_highest_highlight
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_highest_highlight
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_highest_highlight
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_highest_highlight
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_highest_highlight
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_highest_highlight
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_highest_highlight
+msgid "Highest highlight"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_highlight_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_highlight_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_highlight_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_highlight_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_highlight_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_highlight_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_highlight_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_highlight_ids
+msgid "Highlight ids"
+msgstr "Resaltados"
+
+#. module: tmc
+#: model:ir.ui.view,arch_db:tmc.view_document_form
+msgid "Highlight(s)"
+msgstr "Resaltado(s)"
+
+#. module: tmc
+#: model:ir.ui.view,arch_db:tmc.view_document_form
+msgid "Highlights"
+msgstr "Resaltados"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_highlights_count
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_highlights_count
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_highlights_count
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_highlights_count
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_highlights_count
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_highlights_count
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_highlights_count
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_highlights_count
+msgid "Highlights Count"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_category_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_highlight_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_system_id
+msgid "ID"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_important
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_important
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_important
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_important
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_important
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_important
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_important
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_important
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_important
+#: model:ir.ui.view,arch_db:tmc.document_topic_search_view
+msgid "Important"
+msgstr "Importante"
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_important_documents_document_list
+msgid "Important Documents"
+msgstr "Documentos de Interés"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_in_actual_nomenclator
+msgid "In actual nomenclator"
+msgstr "En Nomenclador Actual"
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_institutional_classifiers
+msgid "Institutional Classifiers"
+msgstr "Clasificadores Institucionales"
+
+#. module: tmc
+#: model:ir.ui.view,arch_db:tmc.dependence_order_filter_view
+msgid "Institutional Unit"
+msgstr "Unidad Institucional"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_institutional_classifier_ids
+msgid "Institutional classifier ids"
+msgstr "Clasificadores Institucionales"
+
+#. module: tmc
+#: code:addons/tmc/models/document.py:135
+#, python-format
+msgid "Invalid number"
+msgstr "Número inválido"
+
+#. module: tmc
+#: code:addons/tmc/models/document.py:125
+#: code:addons/tmc/models/institutional_classifier.py:55
+#, python-format
+msgid "Invalid period"
+msgstr "Período inválido"
+
+#. module: tmc
+#: code:addons/tmc/models/document.py:120
+#, python-format
+msgid "Invalid year"
+msgstr "Año Inválido"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_type_junco_code
+msgid "Junco code"
+msgstr ""
+
+#. module: tmc
+#: sql_constraint:tmc.dependence:0
+msgid "La abreviatura de la dependencia debe ser única"
+msgstr ""
+
+#. module: tmc
+#: sql_constraint:tmc.document_type:0
+msgid "La abreviatura debe ser única"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_category___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_document___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_type___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_highlight___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_system___last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_category_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_type_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_highlight_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_system_write_uid
+msgid "Last Updated by"
+msgstr "Modificado Por"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_category_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_type_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_highlight_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_system_write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_highlight_level
+msgid "Level"
+msgstr "Nivel"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_main_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_main_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_main_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_main_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_main_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_main_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_main_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_main_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_parent_id
+#: model:ir.ui.view,arch_db:tmc.document_topic_search_view
+msgid "Main Topic"
+msgstr "Tema Principal"
+
+#. module: tmc
+#: model:res.groups,name:tmc.group_manager
+msgid "Manager"
+msgstr "Responsable"
+
+#. module: tmc
+#: selection:tmc.document,highest_highlight:0 selection:tmc.highlight,level:0
+msgid "Medium"
+msgstr "Medio"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_reference_model
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_reference_model
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_reference_model
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_reference_model
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_reference_model
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_reference_model
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_reference_model
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_reference_model
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_type_model
+msgid "Model"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_category_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_parent_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_system_name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.institutional_classifier_list_action
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_institutional_classifiers_nomenclator_list
+msgid "Nomenclators"
+msgstr "Nomencladores"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_number
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_number
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_number
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_number
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_number
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_number
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_number
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_number
+msgid "Number"
+msgstr "Número"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_object
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_document_object
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_document_object
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_document_object
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_document_object
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_document_object
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_document_object
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_document_object
+msgid "Object"
+msgstr "Objeto"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_parent_id
+msgid "Parent id"
+msgstr "Superior"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_pdf
+msgid "Pdf"
+msgstr "PDF"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_period
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_period
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_period
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_period
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_period
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_period
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_period
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_period
+#: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_period
+msgid "Period"
+msgstr "Período"
+
+#. module: tmc
+#: model:ir.ui.view,arch_db:tmc.view_document_form
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_reference_document
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_reference_document
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_reference_document
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_reference_document
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_reference_document
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_reference_document
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_reference_document
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_reference_document
+msgid "Reference document"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_secondary_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_secondary_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_secondary_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_secondary_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_secondary_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_secondary_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_secondary_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_secondary_topic_ids
+msgid "Secondary Topic"
+msgstr "Tema Secundario"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_system_ids
+#: model:ir.ui.view,arch_db:tmc.view_tmc_dependence_form
+msgid "Systems"
+msgstr "Sistemas"
+
+#. module: tmc
+#: model:ir.module.category,name:tmc.module_category_tmc
+msgid "TMC"
+msgstr ""
+
+#. module: tmc
+#: code:addons/tmc/models/institutional_classifier.py:67
+#, python-format
+msgid "There is already a more recent nomenclator"
+msgstr "Ya existe un nomenclador más actual"
+
+#. module: tmc
+#: model:ir.ui.view,arch_db:tmc.view_document_form
+msgid "Topics"
+msgstr "Temas"
+
+#. module: tmc
+#: model:ir.module.category,description:tmc.module_category_tmc
+msgid "Tribunal Municipal de Cuentas"
+msgstr ""
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.menu_main_tmc
+#: model:ir.ui.menu,name:tmc.menu_tmc_config
+msgid "Tribunal de Cuentas"
+msgstr ""
+
+#. module: tmc
+#: code:addons/tmc/models/document.py:156
+#, python-format
+msgid "Unnamed Document"
+msgstr "Documento Sin Nombre"
+
+#. module: tmc
+#: model:res.groups,name:tmc.group_user
+msgid "User"
+msgstr "Usuario"
+
+#. module: tmc
+#: code:addons/tmc/models/institutional_classifier.py:42
+#, python-format
+msgid "Year %s"
+msgstr "Año %s"
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_category
+msgid "category"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_document_topic
+msgid "document_topic"
+msgstr "Tema de Documento"
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_dependence
+msgid "tmc.dependence"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_dependence_order
+msgid "tmc.dependence_order"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_document
+msgid "tmc.document"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_document_dec
+msgid "tmc.document_dec"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_document_dic
+msgid "tmc.document_dic"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_document_exp
+msgid "tmc.document_exp"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_document_ext
+msgid "tmc.document_ext"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_document_leg
+msgid "tmc.document_leg"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_document_ord
+msgid "tmc.document_ord"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_document_res
+msgid "tmc.document_res"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_document_type
+msgid "tmc.document_type"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_highlight
+msgid "tmc.highlight"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_institutional_classifier
+msgid "tmc.institutional_classifier"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_system
+msgid "tmc.system"
+msgstr ""

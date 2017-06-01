@@ -7,6 +7,7 @@
     'website': 'https://www.tmcrosario.gob.ar',
     'author': 'Tribunal Municipal de Cuentas - Municipalidad de Rosario',
     'license': 'AGPL-3',
+    'sequence': 150,
     'depends': [
         'web_x2many_delete_all',
         'web_hide_db_manager_link',
