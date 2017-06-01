@@ -39,11 +39,11 @@ class Institutional_Classifier(models.Model):
 
     @api.one
     def _get_display_name(self):
-        self.display_name = 'Nomenclador Institucional %s' % str(self.period)
+        self.display_name = _('Year %s') % str(self.period)
         if not self.due_date:
-            self.display_name += ' (Actual)'
+            self.display_name += _(' (Current)')
         else:
-            month = datetime.strptime(self.due_date, "%Y-%m-%d").strftime("%b")
+            month = datetime.strptime(self.due_date, '%Y-%m-%d').strftime('%b')
             self.display_name += ' (%s)' % month
 
     @api.model
