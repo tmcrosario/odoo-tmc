@@ -32,6 +32,34 @@
         </field>
     </record>
 
+    <!-- FORM VIEW -->
+    <record id="view_tmc_dependence_order_form"
+            model="ir.ui.view">
+        <field name="name">tmc.dependence_order.form</field>
+        <field name="model">tmc.dependence_order</field>
+        <field name="arch"
+               type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="parent_id" />
+                            <field name="name" />
+                        </group>
+                        <group>
+                            <field name="code" />
+                            <field name="abbreviation" />
+                        </group>
+                        <group>
+                            <field name="institutional_classifier_ids"
+                                   widget="many2many_tags" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
     <!-- SEARCH VIEW -->
     <record model="ir.ui.view"
             id="dependence_order_filter_view">
