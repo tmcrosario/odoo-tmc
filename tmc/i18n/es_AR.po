@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * tmc
-# 
+#
 # Translators:
 # Liso <lisandrogallo@tmcrosario.gov.ar>, 2017
 msgid ""
@@ -513,11 +513,6 @@ msgstr "Período inválido"
 #, python-format
 msgid "Invalid year"
 msgstr "Año Inválido"
-
-#. module: tmc
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_type_junco_code
-msgid "Junco code"
-msgstr ""
 
 #. module: tmc
 #: sql_constraint:tmc.dependence:0
