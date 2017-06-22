@@ -18,13 +18,11 @@ class Document(models.Model):
         comodel_name='tmc.dependence',
         domain=[('document_type_ids', '!=', False),
                 ('system_ids', 'ilike', u'TMC Base')],
-        string='Dependence',
         required=True
     )
 
     document_type_id = fields.Many2one(
         comodel_name='tmc.document_type',
-        string='Document Type',
         required=True
     )
 
@@ -49,14 +47,12 @@ class Document(models.Model):
     main_topic_ids = fields.Many2many(
         comodel_name='tmc.document_topic',
         relation='document_main_topic_rel',
-        string='Main Topic',
         domain="[('parent_id', '=', False)]"
     )
 
     secondary_topic_ids = fields.Many2many(
         comodel_name='tmc.document_topic',
         relation='document_secondary_topic_rel',
-        string='Secondary Topic',
         domain="[('parent_id', 'in', main_topic_ids[0][2])]"
     )
 
@@ -74,8 +70,7 @@ class Document(models.Model):
     )
 
     highlights_count = fields.Integer(
-        compute='_highlights_count',
-        string='Highlights Count'
+        compute='_highlights_count'
     )
 
     highest_highlight = fields.Selection(
@@ -249,4 +244,3 @@ class Document(models.Model):
                 and self.number and self.period:
             if self.env['tmc.document'].search([('name', '=', self.name)]):
                 raise exceptions.Warning(_('Document already exists'))
-

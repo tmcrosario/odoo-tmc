@@ -17,7 +17,7 @@ class Institutional_Classifier(models.Model):
     )
 
     period = fields.Selection(
-        [(num, str(num)) for num in reversed(
+        selection=[(num, str(num)) for num in reversed(
             range(((datetime.now().year) - 10), ((datetime.now().year) + 1)))],
         required=True
     )

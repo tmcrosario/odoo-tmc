@@ -13,13 +13,11 @@ class Dependence(models.Model):
     )
 
     document_type_ids = fields.Many2many(
-        'tmc.document_type',
-        string='Document Types'
+        comodel_name='tmc.document_type'
     )
 
     system_ids = fields.Many2many(
-        comodel_name='tmc.system',
-        string='Systems'
+        comodel_name='tmc.system'
     )
 
     in_actual_nomenclator = fields.Boolean()

@@ -10,28 +10,25 @@ class document_topic(models.Model):
     _inherit = 'tmc.category'
 
     first_parent_id = fields.Many2one(
-        'tmc.document_topic',
+        comodel_name='tmc.document_topic',
         compute='_get_first_parent',
-        string='First Parent',
         store=True
     )
 
     document_ids = fields.Many2many(
-        'tmc.document',
-        'main_topic_ids',
-        'document_main_topic_rel',
-        string='Document'
+        comodel_name='tmc.document',
+        relation='document_main_topic_rel',
+        column1='main_topic_ids'
     )
 
     parent_id = fields.Many2one(
-        'tmc.document_topic',
+        comodel_name='tmc.document_topic',
         string='Main Topic'
     )
 
     child_ids = fields.One2many(
-        'tmc.document_topic',
-        'parent_id',
-        string='Childs'
+        comodel_name='tmc.document_topic',
+        inverse_name='parent_id'
     )
 
     important = fields.Boolean()
