@@ -15,4 +15,5 @@ import document_topic
 import document_type
 import highlight
 import institutional_classifier
+import report
 import system
