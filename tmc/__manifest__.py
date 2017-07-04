@@ -40,13 +40,7 @@
         'views/document_dic.xml',
         'views/employee.xml',
         'views/office.xml',
-        'views/menu.xml',
-        'data/system.xml',
-        'data/institutional_classifier.xml',
-        'data/document_type.xml',
-        'data/dependence.xml',
-        'data/dependence_order.xml',
-        'data/document_topic.xml'
+        'views/menu.xml'
     ],
     'demo': [],
     'installable': True,
