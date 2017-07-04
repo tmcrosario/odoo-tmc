@@ -64,4 +64,9 @@
               sequence="15"
               action="tmc.document_type_list_action" />
 
+    <menuitem id="menu_main_personal"
+              name="Personal"
+              sequence="10"
+              action="tmc_hr_employee_list_action" />
+
 </odoo>
