@@ -29,3 +29,12 @@ access_tmc_institutional_classifier_manager,tmc.institutional_classifier.manager
 access_tmc_institutional_classifier_user,tmc.institutional_classifier.user,model_tmc_institutional_classifier,group_user,1,0,0,0
 access_tmc_system_manager,tmc.system.manager,model_tmc_system,group_manager,1,1,1,1
 access_tmc_system_user,tmc.system.user,model_tmc_system,group_user,1,0,0,0
+access_tmc_hr_employee_manager,tmc.hr.employee.manager,model_tmc_hr_employee,group_manager,1,1,1,1
+access_tmc_hr_employee_user,tmc.hr.employee.user,model_tmc_hr_employee,group_user,1,0,0,0
+access_tmc_hr_employee_personal,tmc.hr.employee.personal,model_tmc_hr_employee,group_personal,1,1,1,1
+access_tmc_hr_employee_job_manager,tmc.hr.employee_job.manager,model_tmc_hr_employee_job,group_manager,1,1,1,1
+access_tmc_hr_employee_job_user,tmc.hr.employee_job.user,model_tmc_hr_employee_job,group_user,1,0,0,0
+access_tmc_hr_employee_title_manager,tmc.hr.employee_title.manager,model_tmc_hr_employee_title,group_manager,1,1,1,1
+access_tmc_hr_employee_title_user,tmc.hr.employee_title.user,model_tmc_hr_employee_title,group_user,1,0,0,0
+access_tmc_hr_office_manager,tmc.hr.office.manager,model_tmc_hr_office,group_manager,1,1,1,1
+access_tmc_hr_office_user,tmc.hr.office.user,model_tmc_hr_office,group_user,1,0,0,0

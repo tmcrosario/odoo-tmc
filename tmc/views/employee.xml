@@ -43,10 +43,10 @@
                         <button name="toggle_active"
                                 type="object"
                                 class="oe_stat_button"
-                                icon="fa-archive">
+                                icon="fa-archive"
+                                groups="tmc.group_personal,tmc.group_manager">
                                 <field name="active" widget="boolean_button"
                                     options='{"terminology": "archive"}'/>
-                                <!-- groups="hr.group_hr_user" -->
                         </button>
                     </div>
                     <div class="oe_title">
@@ -71,7 +71,8 @@
                             <field name="job_id" />
                             <field name="office_id" />
                         </group>
-                        <group string="Administration">
+                        <group string="Administration"
+                               groups="tmc.group_personal,tmc.group_manager">
                             <field name="docket_number" />
                             <field name="admission_date" />
                             <field name="bank_account_number" />

@@ -1,23 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record model="ir.module.category" id="module_category_tmc">
+    <record model="ir.module.category"
+            id="module_category_tmc">
         <field name="name">TMC</field>
         <field name="description">Tribunal Municipal de Cuentas</field>
         <field name="sequence">1</field>
     </record>
 
-    <record id="group_user" model="res.groups">
+    <record id="group_user"
+            model="res.groups">
         <field name="name">User</field>
-        <field name="users" eval="[(4, ref('base.user_root'))]" />
-        <field name="category_id" ref="module_category_tmc" />
+        <field name="users"
+               eval="[(4, ref('base.user_root'))]" />
+        <field name="category_id"
+               ref="module_category_tmc" />
     </record>
 
-    <record id="group_manager" model="res.groups">
+    <record id="group_manager"
+            model="res.groups">
         <field name="name">Manager</field>
-        <field name="users" eval="[(4, ref('base.user_root'))]" />
-        <field name="category_id" ref="module_category_tmc" />
-        <field name="implied_ids" eval="[(4,ref('group_user'))]" />
+        <field name="users"
+               eval="[(4, ref('base.user_root'))]" />
+        <field name="category_id"
+               ref="module_category_tmc" />
+        <field name="implied_ids"
+               eval="[(4,ref('group_user'))]" />
+    </record>
+
+    <record id="group_personal"
+            model="res.groups">
+        <field name="name">Personal</field>
+        <field name="users"
+               eval="[(4, ref('base.user_root'))]" />
+        <field name="category_id"
+               ref="module_category_tmc" />
+        <field name="implied_ids"
+               eval="[(4,ref('group_user'))]" />
     </record>
 
 </odoo>
