@@ -4,7 +4,7 @@
     <menuitem id="menu_main_tmc"
               name="Tribunal de Cuentas"
               sequence="5"
-              groups="tmc.group_manager,tmc.group_user" />
+              groups="tmc.group_manager,tmc.group_user,tmc.group_read_only" />
 
     <menuitem id="menu_main_tmc_documents"
               name="Documents"
@@ -67,6 +67,7 @@
     <menuitem id="menu_main_personal"
               name="Personal"
               sequence="10"
-              action="tmc_hr_employee_list_action" />
+              action="tmc_hr_employee_list_action"
+              groups="tmc.group_manager,tmc.group_user,tmc.group_read_only" />
 
 </odoo>
