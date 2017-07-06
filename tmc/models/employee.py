@@ -37,7 +37,7 @@ class Employee(models.Model):
         comodel_name='tmc.hr.employee_title'
     )
 
-    job_id = fields.Many2one(
+    employee_job_id = fields.Many2one(
         comodel_name='tmc.hr.employee_job'
     )
 

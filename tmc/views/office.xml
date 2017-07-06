@@ -37,6 +37,7 @@
                                     <field name="name" />
                                     <field name="email" />
                                     <field name="internal_number" />
+                                    <field name="employee_job_id" />
                                 </tree>
                             </field>
                         </page>

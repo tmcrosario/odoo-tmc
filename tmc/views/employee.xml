@@ -24,7 +24,8 @@
                 <field name="name" />
                 <field name="email" />
                 <field name="internal_number" />
-                <field name="job_id" />
+                <field name="employee_job_id"
+                       widget="many2one_unclickable" />
             </tree>
         </field>
     </record>
@@ -68,7 +69,7 @@
                     </group>
                     <group>
                         <group string="Position">
-                            <field name="job_id" />
+                            <field name="employee_job_id" />
                             <field name="office_id" />
                         </group>
                         <group string="Administration"
