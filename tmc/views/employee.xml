@@ -4,7 +4,7 @@
     <!-- WINDOW ACTION -->
     <record model="ir.actions.act_window"
             id="tmc_hr_employee_list_action">
-        <field name="name">Employee</field>
+        <field name="name">Employees</field>
         <field name="res_model">tmc.hr.employee</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
