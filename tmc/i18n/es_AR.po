@@ -1,15 +1,15 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * tmc
-#
+# 
 # Translators:
 # Liso <lisandrogallo@tmcrosario.gov.ar>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 11:46+0000\n"
-"PO-Revision-Date: 2017-06-01 11:46+0000\n"
+"POT-Creation-Date: 2017-07-06 13:14+0000\n"
+"PO-Revision-Date: 2017-07-06 13:14+0000\n"
 "Last-Translator: Liso <lisandrogallo@tmcrosario.gov.ar>, 2017\n"
 "Language-Team: Spanish (Argentina) (https://www.transifex.com/tmcrosario/teams/73663/es_AR/)\n"
 "MIME-Version: 1.0\n"
@@ -83,8 +83,14 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_abbreviation
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_abbreviation
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_type_abbreviation
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_abbreviation
 msgid "Abbreviation"
 msgstr "Abreviatura"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_active
+msgid "Active"
+msgstr "Activo"
 
 #. module: tmc
 #: model:ir.ui.view,arch_db:tmc.dependence_filter_view
@@ -97,6 +103,16 @@ msgid "Actual Period"
 msgstr "Período Actual"
 
 #. module: tmc
+#: model:ir.ui.view,arch_db:tmc.view_tmc_hr_employee_form
+msgid "Administration"
+msgstr "Administración"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_admission_date
+msgid "Admission date"
+msgstr "Fecha de Ingreso"
+
+#. module: tmc
 #: model:ir.ui.menu,name:tmc.menu_main_tmc_documents_document_list
 msgid "All Documents"
 msgstr "Todos los Documentos"
@@ -105,6 +121,16 @@ msgstr "Todos los Documentos"
 #: model:ir.model.fields,field_description:tmc.field_tmc_highlight_applicable
 msgid "Applicable"
 msgstr "Aplicable"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_bank_account_number
+msgid "Bank account number"
+msgstr "Cuenta Bancaria"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_bank_branch
+msgid "Bank branch"
+msgstr "Sucursal Bancaria"
 
 #. module: tmc
 #: code:addons/tmc/models/institutional_classifier.py:72
@@ -118,8 +144,9 @@ msgstr ""
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_child_ids
-msgid "Childs"
-msgstr ""
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_child_ids
+msgid "Child ids"
+msgstr "Miembros"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_code
@@ -146,7 +173,12 @@ msgstr "Comentario"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_create_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_type_create_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_highlight_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_job_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_title_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_create_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_report_create_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_system_create_uid
 msgid "Created by"
 msgstr "Creado Por"
@@ -166,7 +198,12 @@ msgstr "Creado Por"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_create_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_type_create_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_highlight_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_job_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_title_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_create_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_report_create_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_system_create_date
 msgid "Created on"
 msgstr "Fecha de Creación"
@@ -194,6 +231,19 @@ msgid "Decretos"
 msgstr ""
 
 #. module: tmc
+#: model:ir.actions.act_window,name:tmc.dependence_order_list_action
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_dependence_orders_list
+msgid "Dependence Order"
+msgstr "Dependencias"
+
+#. module: tmc
+#: code:addons/tmc/models/dependence.py:44
+#, python-format
+msgid "Dependence abbreviation must be unique"
+msgstr "La abreviatura de la dependencia debe ser única"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_dependence_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_dependence_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dependence_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_dependence_id
@@ -202,28 +252,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_dependence_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_dependence_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_dependence_id
-msgid "Dependence"
-msgstr "Dependencia"
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.dependence_order_list_action
-#: model:ir.ui.menu,name:tmc.menu_main_tmc_dependence_orders_list
-msgid "Dependence Order"
-msgstr "Dependencias"
-
-#. module: tmc
-#: code:addons/tmc/models/dependence.py:46
-#, python-format
-msgid "Dependence abbreviation must be unique"
-msgstr "La abreviatura de la dependencia debe ser única"
-
-#. module: tmc
-#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_dependence_id
 msgid "Dependence id"
 msgstr "Dependencia"
 
 #. module: tmc
-#: code:addons/tmc/models/dependence.py:42
+#: code:addons/tmc/models/dependence.py:40
 #, python-format
 msgid "Dependence name must be unique"
 msgstr "El nombre de la dependencia debe ser única"
@@ -254,6 +287,11 @@ msgstr "Dependencias"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_type_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_highlight_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_job_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_title_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_report_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_system_display_name
 msgid "Display Name"
 msgstr "Nombre"
@@ -264,7 +302,11 @@ msgid "Display name"
 msgstr "Nombre"
 
 #. module: tmc
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_document_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_docket_number
+msgid "Docket number"
+msgstr "Nº de Legajo"
+
+#. module: tmc
 #: model:ir.ui.view,arch_db:tmc.document_search_view
 #: model:ir.ui.view,arch_db:tmc.view_document_simple_tree
 #: model:ir.ui.view,arch_db:tmc.view_document_tree
@@ -290,14 +332,6 @@ msgid "Document Topics"
 msgstr "Temas de Documento"
 
 #. module: tmc
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_type_id
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_document_type_id
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_document_type_id
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_document_type_id
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_document_type_id
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_document_type_id
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_document_type_id
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_document_type_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_type_name
 #: model:ir.ui.view,arch_db:tmc.view_tmc_document_type_tree
 msgid "Document Type"
@@ -305,15 +339,14 @@ msgstr "Tipo de Documento"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_type_list_action
-#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_document_type_ids
 #: model:ir.ui.menu,name:tmc.menu_tmc_document_types_config
 #: model:ir.ui.view,arch_db:tmc.view_tmc_dependence_form
 msgid "Document Types"
 msgstr "Tipos de Documento"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:96
-#: code:addons/tmc/models/document.py:251
+#: code:addons/tmc/models/document.py:91
+#: code:addons/tmc/models/document.py:246
 #, python-format
 msgid "Document already exists"
 msgstr "El documento ya existe"
@@ -323,6 +356,11 @@ msgstr "El documento ya existe"
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_document_id
 msgid "Document id"
 msgstr "Documento Asociado"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_document_ids
+msgid "Document ids"
+msgstr "Documentos"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_object_copy
@@ -337,13 +375,30 @@ msgid "Document object copy"
 msgstr ""
 
 #. module: tmc
-#: code:addons/tmc/models/document_type.py:33
+#: code:addons/tmc/models/document_type.py:29
 #, python-format
 msgid "Document type abbreviation must be unique"
 msgstr "La abreviatura debe ser única"
 
 #. module: tmc
-#: code:addons/tmc/models/document_type.py:30
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_document_type_id
+msgid "Document type id"
+msgstr "Tipo de Documento"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_document_type_ids
+msgid "Document type ids"
+msgstr "Tipos de Documento"
+
+#. module: tmc
+#: code:addons/tmc/models/document_type.py:26
 #, python-format
 msgid "Document type name must be unique"
 msgstr "El nombre debe ser único"
@@ -376,8 +431,38 @@ msgid "El nombre debe ser único"
 msgstr ""
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_email
+msgid "Email"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_employee_ids
+msgid "Employee ids"
+msgstr "Miembros"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_employee_job_id
+msgid "Employee job id"
+msgstr "Puesto"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_employee_job_ids
+msgid "Employee job ids"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_employee_title_ids
+msgid "Employee title ids"
+msgstr "Títulos del Agente"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.tmc_hr_employee_list_action
+msgid "Employees"
+msgstr "Personal"
+
+#. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_first_parent_id
-msgid "First Parent"
+msgid "First parent id"
 msgstr ""
 
 #. module: tmc
@@ -433,7 +518,7 @@ msgstr "Resaltados"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_highlights_count
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_highlights_count
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_highlights_count
-msgid "Highlights Count"
+msgid "Highlights count"
 msgstr ""
 
 #. module: tmc
@@ -451,7 +536,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_type_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_highlight_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_job_id_1793
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_title_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_report_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_system_id
 msgid "ID"
 msgstr ""
@@ -496,20 +586,25 @@ msgid "Institutional classifier ids"
 msgstr "Clasificadores Institucionales"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:135
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_internal_number
+msgid "Internal number"
+msgstr "Nº de Interno"
+
+#. module: tmc
+#: code:addons/tmc/models/document.py:130
 #, python-format
 msgid "Invalid number"
 msgstr "Número inválido"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:125
+#: code:addons/tmc/models/document.py:120
 #: code:addons/tmc/models/institutional_classifier.py:55
 #, python-format
 msgid "Invalid period"
 msgstr "Período inválido"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:120
+#: code:addons/tmc/models/document.py:115
 #, python-format
 msgid "Invalid year"
 msgstr "Año Inválido"
@@ -539,7 +634,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic___last_update
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_type___last_update
 #: model:ir.model.fields,field_description:tmc.field_tmc_highlight___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_job___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_title___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_office___last_update
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_report___last_update
 #: model:ir.model.fields,field_description:tmc.field_tmc_system___last_update
 msgid "Last Modified on"
 msgstr ""
@@ -559,7 +659,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_type_write_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_write_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_highlight_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_job_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_title_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_write_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_report_write_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_system_write_uid
 msgid "Last Updated by"
 msgstr "Modificado Por"
@@ -579,7 +684,12 @@ msgstr "Modificado Por"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_type_write_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_write_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_highlight_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_job_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_title_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_write_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_report_write_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_system_write_date
 msgid "Last Updated on"
 msgstr ""
@@ -590,6 +700,12 @@ msgid "Level"
 msgstr "Nivel"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_parent_id
+#: model:ir.ui.view,arch_db:tmc.document_topic_search_view
+msgid "Main Topic"
+msgstr "Tema Principal"
+
+#. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_main_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_main_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_main_topic_ids
@@ -598,10 +714,8 @@ msgstr "Nivel"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_main_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_main_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_main_topic_ids
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_parent_id
-#: model:ir.ui.view,arch_db:tmc.document_topic_search_view
-msgid "Main Topic"
-msgstr "Tema Principal"
+msgid "Main topic ids"
+msgstr ""
 
 #. module: tmc
 #: model:res.groups,name:tmc.group_manager
@@ -609,9 +723,19 @@ msgid "Manager"
 msgstr "Responsable"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_manager_id
+msgid "Manager id"
+msgstr "Responsable"
+
+#. module: tmc
 #: selection:tmc.document,highest_highlight:0 selection:tmc.highlight,level:0
 msgid "Medium"
 msgstr "Medio"
+
+#. module: tmc
+#: model:ir.ui.view,arch_db:tmc.view_tmc_hr_office_form
+msgid "Members"
+msgstr "Miembros"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_reference_model
@@ -640,6 +764,10 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_job_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_title_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_system_name
 msgid "Name"
@@ -664,6 +792,11 @@ msgid "Number"
 msgstr "Número"
 
 #. module: tmc
+#: sql_constraint:tmc.hr.employee:0
+msgid "Number must be unique!"
+msgstr "El número debe ser único"
+
+#. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_object
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_document_object
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_document_object
@@ -674,6 +807,18 @@ msgstr "Número"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_document_object
 msgid "Object"
 msgstr "Objeto"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.tmc_hr_office_list_action
+#: model:ir.ui.view,arch_db:tmc.view_tmc_hr_employee_search
+msgid "Office"
+msgstr "Oficina"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_job_office_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_office_id
+msgid "Office id"
+msgstr "Oficina"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_parent_id
@@ -699,6 +844,22 @@ msgid "Period"
 msgstr "Período"
 
 #. module: tmc
+#: model:ir.ui.menu,name:tmc.menu_main_personal
+#: model:res.groups,name:tmc.group_personal
+msgid "Personal"
+msgstr ""
+
+#. module: tmc
+#: model:ir.ui.view,arch_db:tmc.view_tmc_hr_employee_form
+msgid "Position"
+msgstr "Posición"
+
+#. module: tmc
+#: model:res.groups,name:tmc.group_read_only
+msgid "Read Only"
+msgstr "Sólo Lectura"
+
+#. module: tmc
 #: model:ir.ui.view,arch_db:tmc.view_document_form
 msgid "Reference"
 msgstr "Referencia"
@@ -713,7 +874,7 @@ msgstr "Referencia"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_reference_document
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_reference_document
 msgid "Reference document"
-msgstr ""
+msgstr "Dcoumento de Referencia"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_secondary_topic_ids
@@ -724,11 +885,20 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_secondary_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_secondary_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_secondary_topic_ids
-msgid "Secondary Topic"
-msgstr "Tema Secundario"
+msgid "Secondary topic ids"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_parent_id
+msgid "Superior"
+msgstr "Oficina Superior"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_system_ids
+msgid "System ids"
+msgstr ""
+
+#. module: tmc
 #: model:ir.ui.view,arch_db:tmc.view_tmc_dependence_form
 msgid "Systems"
 msgstr "Sistemas"
@@ -761,7 +931,7 @@ msgid "Tribunal de Cuentas"
 msgstr ""
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:156
+#: code:addons/tmc/models/document.py:151
 #, python-format
 msgid "Unnamed Document"
 msgstr "Documento Sin Nombre"
@@ -848,8 +1018,33 @@ msgid "tmc.highlight"
 msgstr ""
 
 #. module: tmc
+#: model:ir.model,name:tmc.model_tmc_hr_employee
+msgid "tmc.hr.employee"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_hr_employee_job
+msgid "tmc.hr.employee_job"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_hr_employee_title
+msgid "tmc.hr.employee_title"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_hr_office
+msgid "tmc.hr.office"
+msgstr ""
+
+#. module: tmc
 #: model:ir.model,name:tmc.model_tmc_institutional_classifier
 msgid "tmc.institutional_classifier"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_report
+msgid "tmc.report"
 msgstr ""
 
 #. module: tmc
