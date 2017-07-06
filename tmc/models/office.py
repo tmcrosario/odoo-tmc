@@ -32,6 +32,11 @@ class Office(models.Model):
         required=True
     )
 
+    employee_job_ids = fields.One2many(
+        comodel_name='tmc.hr.employee_job',
+        inverse_name='office_id'
+    )
+
     @api.multi
     def name_get(self):
         result = []

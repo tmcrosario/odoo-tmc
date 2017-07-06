@@ -10,5 +10,5 @@ class Employee_Job(models.Model):
     name = fields.Char()
 
     office_id = fields.Many2one(
-        comodel='tmc.hr.office'
+        comodel_name='tmc.hr.office'
     )
