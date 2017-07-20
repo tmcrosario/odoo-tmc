@@ -37,7 +37,8 @@ class Document(models.Model):
     date = fields.Date()
 
     document_object = fields.Char(
-        string="Object"
+        string="Object",
+        index=True
     )
 
     document_object_copy = fields.Char(
