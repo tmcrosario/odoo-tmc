@@ -69,6 +69,32 @@
                type="xml">
             <form duplicate="0">
                 <sheet>
+                    <div class="oe_right oe_button_box"
+                         name="buttons"
+                         groups="base.group_user"
+                         attrs="{'invisible':[('create_date','=', False)]}">
+                        <button class="oe_inline oe_stat_button"
+                                type="action"
+                                attrs="{'invisible':[('highlights_count','=', 0)]}"
+                                icon="fa-warning"
+                                name="highlights_count_button">
+                            <field string="Highlight(s)" name="highlights_count" widget="statinfo"/>
+                        </button>
+                        <!-- <button class="oe_inline oe_stat_button"
+                                type="object"
+                                string="Show Content"
+                                name="show_or_add_content"
+                                attrs="{'invisible':[('reference_document','=', 0)]}"
+                                context="{'default_document_id': active_id}"
+                                icon="fa-file-text" />
+                        <button class="oe_inline oe_stat_button"
+                                type="object"
+                                string="Add Content"
+                                name="show_or_add_content"
+                                attrs="{'invisible':[('reference_document','!=', 0)]}"
+                                context="{'default_document_id': active_id}"
+                                icon="fa-file-text-o" /> -->
+                    </div>
                     <div class="oe_title">
                         <label for="name"
                                class="oe_edit_only"
@@ -77,39 +103,14 @@
                             <field name="name"
                                    string="Document Name"/>
                         </h1>
+                        <h3>
+                            <field name="document_object_copy" class="oe_read_only"/>
+                        </h3>
                     </div>
                     <field name="create_date"
                            invisible="True" />
                     <field name="reference_document"
                            invisible="True" />
-                    <div class="oe_right oe_button_box"
-                         name="buttons"
-                         groups="base.group_user"
-                         attrs="{'invisible':[('create_date','=', False)]}">
-                        <button class="oe_inline oe_stat_button"
-                                type="action"
-                                attrs="{'invisible':[('highlights_count','=', 0)]}"
-                                icon="fa-warning">
-                            <field string="Highlight(s)" name="highlights_count" widget="statinfo"/>
-                        </button>
-                        <!-- <button class="oe_inline oe_stat_button"
-                              type="object"
-                              string="Show Content"
-                              name="show_or_add_content"
-                              attrs="{'invisible':[('reference_document','=', 0)]}"
-                              context="{'default_document_id': active_id}"
-                              icon="fa-file-text"/>
-                      <button class="oe_inline oe_stat_button"
-                              type="object"
-                              string="Add Content"
-                              name="show_or_add_content"
-                              attrs="{'invisible':[('reference_document','!=', 0)]}"
-                              context="{'default_document_id': active_id}"
-                              icon="fa-file-text-o"/> -->
-                    </div>
-                    <h3>
-                        <field name="document_object_copy" class="oe_read_only"/>
-                    </h3>
                     <group>
                         <group>
                             <field name="dependence_id"
@@ -142,7 +143,8 @@
                         </group>
                     </group>
                     <notebook attrs="{'invisible':[('name', '=', u'Unnamed Document')]}">>
-                        <page string="Highlights">
+                        <page name="highlights"
+                              string="Highlights">
                             <field name="highlight_ids" />
                         </page>
                     </notebook>
