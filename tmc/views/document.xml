@@ -193,7 +193,8 @@
                 <field name="document_object"
                        filter_domain="[('reference', 'ilike', self)]" />
                 <field name="secondary_topic_ids"
-                       filter_domain="[('secondary_topic_ids', 'ilike', self)]" />
+                       string="Document Topic"
+                       filter_domain="[('secondary_topic_ids.display_name', 'ilike', self)]" />
             </search>
         </field>
     </record>
