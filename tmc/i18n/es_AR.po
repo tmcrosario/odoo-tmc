@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-06 13:14+0000\n"
-"PO-Revision-Date: 2017-07-06 13:14+0000\n"
+"POT-Creation-Date: 2017-07-20 19:53+0000\n"
+"PO-Revision-Date: 2017-07-20 19:53+0000\n"
 "Last-Translator: Liso <lisandrogallo@tmcrosario.gov.ar>, 2017\n"
 "Language-Team: Spanish (Argentina) (https://www.transifex.com/tmcrosario/teams/73663/es_AR/)\n"
 "MIME-Version: 1.0\n"
@@ -237,7 +237,7 @@ msgid "Dependence Order"
 msgstr "Dependencias"
 
 #. module: tmc
-#: code:addons/tmc/models/dependence.py:44
+#: code:addons/tmc/models/dependence.py:44 sql_constraint:tmc.dependence:0
 #, python-format
 msgid "Dependence abbreviation must be unique"
 msgstr "La abreviatura de la dependencia debe ser única"
@@ -256,7 +256,7 @@ msgid "Dependence id"
 msgstr "Dependencia"
 
 #. module: tmc
-#: code:addons/tmc/models/dependence.py:40
+#: code:addons/tmc/models/dependence.py:40 sql_constraint:tmc.dependence:0
 #, python-format
 msgid "Dependence name must be unique"
 msgstr "El nombre de la dependencia debe ser única"
@@ -326,6 +326,11 @@ msgid "Document Name"
 msgstr "Documento"
 
 #. module: tmc
+#: model:ir.ui.view,arch_db:tmc.document_search_view
+msgid "Document Topic"
+msgstr "Tema Principal o Secundario"
+
+#. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_topic_list_action
 #: model:ir.ui.menu,name:tmc.menu_main_tmc_documents_document_topics
 msgid "Document Topics"
@@ -345,8 +350,8 @@ msgid "Document Types"
 msgstr "Tipos de Documento"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:91
-#: code:addons/tmc/models/document.py:246
+#: code:addons/tmc/models/document.py:92
+#: code:addons/tmc/models/document.py:247 sql_constraint:tmc.document:0
 #, python-format
 msgid "Document already exists"
 msgstr "El documento ya existe"
@@ -376,6 +381,7 @@ msgstr ""
 
 #. module: tmc
 #: code:addons/tmc/models/document_type.py:29
+#: sql_constraint:tmc.document_type:0
 #, python-format
 msgid "Document type abbreviation must be unique"
 msgstr "La abreviatura debe ser única"
@@ -399,6 +405,7 @@ msgstr "Tipos de Documento"
 
 #. module: tmc
 #: code:addons/tmc/models/document_type.py:26
+#: sql_constraint:tmc.document_type:0
 #, python-format
 msgid "Document type name must be unique"
 msgstr "El nombre debe ser único"
@@ -414,21 +421,6 @@ msgstr "Documentos"
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_due_date
 msgid "Due date"
 msgstr "Vigente Hasta"
-
-#. module: tmc
-#: sql_constraint:tmc.document:0
-msgid "El documento ya existe"
-msgstr ""
-
-#. module: tmc
-#: sql_constraint:tmc.dependence:0
-msgid "El nombre de la dependencia debe ser única"
-msgstr ""
-
-#. module: tmc
-#: sql_constraint:tmc.document_type:0
-msgid "El nombre debe ser único"
-msgstr ""
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_email
@@ -469,6 +461,11 @@ msgstr ""
 #: model:ir.ui.view,arch_db:tmc.dependence_order_filter_view
 msgid "Group By"
 msgstr ""
+
+#. module: tmc
+#: model:res.groups,name:tmc.group_hidden_elements
+msgid "Hidden Elements"
+msgstr "Elementos Ocultos"
 
 #. module: tmc
 #: selection:tmc.document,highest_highlight:0 selection:tmc.highlight,level:0
@@ -537,7 +534,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_type_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_highlight_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_id
-#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_job_id_1793
+#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_job_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_title_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier_id
@@ -591,33 +588,23 @@ msgid "Internal number"
 msgstr "Nº de Interno"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:130
+#: code:addons/tmc/models/document.py:131
 #, python-format
 msgid "Invalid number"
 msgstr "Número inválido"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:120
+#: code:addons/tmc/models/document.py:121
 #: code:addons/tmc/models/institutional_classifier.py:55
 #, python-format
 msgid "Invalid period"
 msgstr "Período inválido"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:115
+#: code:addons/tmc/models/document.py:116
 #, python-format
 msgid "Invalid year"
 msgstr "Año Inválido"
-
-#. module: tmc
-#: sql_constraint:tmc.dependence:0
-msgid "La abreviatura de la dependencia debe ser única"
-msgstr ""
-
-#. module: tmc
-#: sql_constraint:tmc.document_type:0
-msgid "La abreviatura debe ser única"
-msgstr ""
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_category___last_update
@@ -715,7 +702,7 @@ msgstr "Tema Principal"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_main_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_main_topic_ids
 msgid "Main topic ids"
-msgstr ""
+msgstr "Temas Principales"
 
 #. module: tmc
 #: model:res.groups,name:tmc.group_manager
@@ -886,7 +873,7 @@ msgstr "Dcoumento de Referencia"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_secondary_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_secondary_topic_ids
 msgid "Secondary topic ids"
-msgstr ""
+msgstr "Temas Secundarios"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_parent_id
@@ -920,18 +907,13 @@ msgid "Topics"
 msgstr "Temas"
 
 #. module: tmc
-#: model:ir.module.category,description:tmc.module_category_tmc
-msgid "Tribunal Municipal de Cuentas"
-msgstr ""
-
-#. module: tmc
 #: model:ir.ui.menu,name:tmc.menu_main_tmc
 #: model:ir.ui.menu,name:tmc.menu_tmc_config
 msgid "Tribunal de Cuentas"
 msgstr ""
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:151
+#: code:addons/tmc/models/document.py:152
 #, python-format
 msgid "Unnamed Document"
 msgstr "Documento Sin Nombre"
