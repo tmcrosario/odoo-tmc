@@ -194,7 +194,7 @@
                        filter_domain="[('reference', 'ilike', self)]" />
                 <field name="secondary_topic_ids"
                        string="Document Topic"
-                       filter_domain="[('secondary_topic_ids.display_name', 'ilike', self)]" />
+                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
             </search>
         </field>
     </record>
