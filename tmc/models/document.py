@@ -125,7 +125,7 @@ class Document(models.Model):
         max_number = 6000
         if self.document_type_id.abbreviation == 'EXP':
             max_number = 999999
-        if self.dependence_id.name in ['Concejo Municipal']:
+        if self.dependence_id.abbreviation in ['CM', 'HCM']:
             max_number = 999999
         if not self.number > 0 or not self.number <= max_number:
             raise Warning(_('Invalid number'))
