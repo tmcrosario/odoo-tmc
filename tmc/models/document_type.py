@@ -3,7 +3,7 @@
 from odoo import _, fields, models
 
 
-class Document_Type(models.Model):
+class DocumentType(models.Model):
 
     _name = 'tmc.document_type'
 

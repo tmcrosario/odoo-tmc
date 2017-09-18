@@ -6,13 +6,13 @@ from odoo import _, api, fields, models
 from odoo.exceptions import Warning
 
 
-class Institutional_Classifier(models.Model):
+class InstitutionalClassifier(models.Model):
     _name = 'tmc.institutional_classifier'
     _rec_name = 'period'
     _order = 'period desc, due_date desc'
 
     display_name = fields.Char(
-        compute='_get_display_name',
+        compute='_compute_display_name',
         string='Name'
     )
 
@@ -37,8 +37,9 @@ class Institutional_Classifier(models.Model):
         comodel_name='tmc.document'
     )
 
-    @api.one
-    def _get_display_name(self):
+    @api.multi
+    def _compute_display_name(self):
+        self.ensure_one()
         self.display_name = _('Year %s') % str(self.period)
         if not self.due_date:
             self.display_name += _(' (Current)')

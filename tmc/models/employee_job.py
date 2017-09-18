@@ -3,7 +3,7 @@
 from odoo import fields, models
 
 
-class Employee_Job(models.Model):
+class EmployeeJob(models.Model):
 
     _name = 'tmc.hr.employee_job'
 

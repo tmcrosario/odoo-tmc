@@ -3,7 +3,7 @@
 from odoo import fields, models
 
 
-class Dependence_Order(models.Model):
+class DependenceOrder(models.Model):
 
     _name = 'tmc.dependence_order'
     _order = 'code'

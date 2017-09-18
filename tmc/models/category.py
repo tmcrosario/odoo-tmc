@@ -11,11 +11,12 @@ class Category(models.Model):
     name = fields.Char()
 
     display_name = fields.Char(
-        compute='_get_display_name',
+        compute='_compute_display_name',
     )
 
-    @api.one
-    def _get_display_name(self):
+    @api.multi
+    def _compute_display_name(self):
+        self.ensure_one()
         parent = self.parent_id
         computed_name = self.name
         while parent:

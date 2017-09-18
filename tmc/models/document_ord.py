@@ -3,7 +3,7 @@
 from odoo import models, fields
 
 
-class Document_Ord(models.Model):
+class DocumentOrd(models.Model):
     _name = 'tmc.document_ord'
 
     document_id = fields.Many2one(

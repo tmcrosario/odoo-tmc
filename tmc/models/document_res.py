@@ -3,7 +3,7 @@
 from odoo import models, fields
 
 
-class Document_Res(models.Model):
+class DocumentRes(models.Model):
     _name = 'tmc.document_res'
 
     document_id = fields.Many2one(

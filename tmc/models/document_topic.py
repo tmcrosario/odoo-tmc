@@ -3,7 +3,7 @@
 from odoo import api, fields, models
 
 
-class document_topic(models.Model):
+class DocumentTopic(models.Model):
 
     _name = 'tmc.document_topic'
     _description = 'document_topic'
@@ -11,7 +11,7 @@ class document_topic(models.Model):
 
     first_parent_id = fields.Many2one(
         comodel_name='tmc.document_topic',
-        compute='_get_first_parent',
+        compute='_compute_first_parent',
         store=True
     )
 
@@ -33,9 +33,10 @@ class document_topic(models.Model):
 
     important = fields.Boolean()
 
-    @api.one
+    @api.multi
     @api.depends('parent_id', 'parent_id.parent_id')
-    def _get_first_parent(self):
+    def _compute_first_parent(self):
+        self.ensure_one()
         first_parent_id = False
         parent = self.parent_id
         while parent:

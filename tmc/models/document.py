@@ -10,7 +10,7 @@ class Document(models.Model):
     _name = 'tmc.document'
 
     name = fields.Char(
-        compute='_get_name',
+        compute='_compute_name',
         store=True
     )
 
@@ -42,7 +42,7 @@ class Document(models.Model):
     )
 
     document_object_copy = fields.Char(
-        compute="_get_document_object_copy"
+        compute="_compute_document_object_copy"
     )
 
     main_topic_ids = fields.Many2many(
@@ -62,7 +62,7 @@ class Document(models.Model):
     )
 
     reference_document = fields.Integer(
-        compute='_get_reference_document'
+        compute='_compute_reference_document'
     )
 
     highlight_ids = fields.One2many(
@@ -71,18 +71,18 @@ class Document(models.Model):
     )
 
     highlights_count = fields.Integer(
-        compute='_highlights_count'
+        compute='_compute_highlights_count'
     )
 
     highest_highlight = fields.Selection(
         selection=[('high', 'High'),
                    ('medium', 'Medium')],
-        compute='_get_highest_highlight'
+        compute='_compute_highest_highlight'
 
     )
 
     important = fields.Boolean(
-        compute='_get_important_topic',
+        compute='_compute_important_topic',
         store=True
     )
 
@@ -130,12 +130,12 @@ class Document(models.Model):
         if not self.number > 0 or not self.number <= max_number:
             raise Warning(_('Invalid number'))
 
-    @api.one
+    @api.multi
     @api.depends('document_type_id',
                  'dependence_id',
                  'number',
                  'period')
-    def _get_name(self):
+    def _compute_name(self):
         doc_abbr = self.document_type_id.abbreviation
         doc_number = self.number
         doc_period = self.period
@@ -151,9 +151,10 @@ class Document(models.Model):
         else:
             self.name = _('Unnamed Document')
 
-    @api.one
+    @api.multi
     @api.depends('highlight_ids')
-    def _highlights_count(self):
+    def _compute_highlights_count(self):
+        self.ensure_one()
         applicable_highlight_ids = self.highlight_ids.filtered(
             lambda record: record.applicable == True
         )
@@ -187,14 +188,16 @@ class Document(models.Model):
             }
         }
 
-    @api.one
+    @api.multi
     @api.depends('document_object')
-    def _get_document_object_copy(self):
+    def _compute_document_object_copy(self):
+        self.ensure_one()
         self.document_object_copy = self.document_object
 
-    @api.one
+    @api.multi
     @api.depends('reference_model')
-    def _get_reference_document(self):
+    def _compute_reference_document(self):
+        self.ensure_one()
         if self.reference_model:
             reference_model = 'tmc.' + self.reference_model
             reference_document = self.env[reference_model].search(
@@ -202,9 +205,10 @@ class Document(models.Model):
             if reference_document:
                 self.reference_document = reference_document[0]
 
-    @api.one
+    @api.multi
     @api.depends('highlight_ids')
-    def _get_highest_highlight(self):
+    def _compute_highest_highlight(self):
+        self.ensure_one()
         high_highlights = self.env['tmc.highlight'].search([
             ('document_id', '=', self.id),
             ('applicable', '=', True),
@@ -220,10 +224,11 @@ class Document(models.Model):
         elif medium_highlights:
             self.highest_highlight = 'medium'
 
-    @api.one
+    @api.multi
     @api.depends('main_topic_ids',
                  'secondary_topic_ids')
-    def _get_important_topic(self):
+    def _compute_important_topic(self):
+        self.ensure_one()
         domain = [
             '|', ('id', 'in', self.main_topic_ids.ids),
             ('id', 'in', self.secondary_topic_ids.ids),
