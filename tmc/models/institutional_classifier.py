@@ -72,7 +72,7 @@ class InstitutionalClassifier(models.Model):
                         raise Warning(
                             _('Before adding a nomenclator you must set due date \
                                 prior to the current'))
-        return super(Institutional_Classifier, self).create(values)
+        return super(InstitutionalClassifier, self).create(values)
 
     @api.multi
     def write(self, vals):
@@ -87,4 +87,4 @@ class InstitutionalClassifier(models.Model):
             for dependence in dependences:
                 dependence.in_actual_nomenclator = True
 
-        return super(Institutional_Classifier, self).write(vals)
+        return super(InstitutionalClassifier, self).write(vals)
