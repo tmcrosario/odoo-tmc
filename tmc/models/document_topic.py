@@ -34,12 +34,13 @@ class DocumentTopic(models.Model):
     important = fields.Boolean()
 
     @api.multi
-    @api.depends('parent_id', 'parent_id.parent_id')
+    @api.depends('parent_id',
+                 'parent_id.parent_id')
     def _compute_first_parent(self):
-        self.ensure_one()
-        first_parent_id = False
-        parent = self.parent_id
-        while parent:
-            first_parent_id = parent.id
-            parent = parent.parent_id
-        self.first_parent_id = first_parent_id
+        for document_topic in self:
+            first_parent_id = False
+            parent = document_topic.parent_id
+            while parent:
+                first_parent_id = parent.id
+                parent = parent.parent_id
+            document_topic.first_parent_id = first_parent_id

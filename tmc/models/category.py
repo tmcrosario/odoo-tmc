@@ -16,13 +16,13 @@ class Category(models.Model):
 
     @api.multi
     def _compute_display_name(self):
-        self.ensure_one()
-        parent = self.parent_id
-        computed_name = self.name
-        while parent:
-            computed_name = parent.name + ' / ' + computed_name
-            parent = parent.parent_id
-        self.display_name = computed_name
+        for category in self:
+            parent = category.parent_id
+            computed_name = category.name
+            while parent:
+                computed_name = parent.name + ' / ' + computed_name
+                parent = parent.parent_id
+            category.display_name = computed_name
 
     @api.multi
     def name_get(self):
