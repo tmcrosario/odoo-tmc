@@ -16,7 +16,7 @@
                 <filter string="Important"
                         name="filter_important"
                         domain="[('important', '=', True)]" />
-                <group expand="1">
+                <group expand="True">
                     <filter name="group_by_parent_id"
                             string="Main Topic"
                             context="{'group_by':'parent_id'}" />
@@ -38,11 +38,18 @@
                 <sheet>
                     <group>
                         <field name="name" />
-                        <field name="parent_id" />
+                        <field name="parent_id"
+                               attrs="{'invisible':[('parent_id','=', False)]}" />
                     </group>
                     <group>
                         <field name="important" />
                     </group>
+                    <notebook attrs="{'invisible':[('parent_id','!=', False)]}">
+                        <page name="secondary_topic_ids"
+                              string="Secondary Topics">
+                            <field name="child_ids" />
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -66,9 +73,22 @@
     </record>
 
     <!-- WINDOW ACTION -->
-    <record id="document_topic_list_action"
+    <record id="main_topic_list_action"
             model="ir.actions.act_window">
-        <field name="name">Document Topics</field>
+        <field name="name">Main Topics</field>
+        <field name="res_model">tmc.document_topic</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id"
+               ref="document_topic_tree_view" />
+        <field name="context">{'search_default_filter_important': True }</field>
+        <field name="domain">[('parent_id', '=', False)]</field>
+    </record>
+
+    <!-- WINDOW ACTION -->
+    <record id="secondary_topic_list_action"
+            model="ir.actions.act_window">
+        <field name="name">Secondary Topics</field>
         <field name="res_model">tmc.document_topic</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
@@ -77,7 +97,7 @@
         <field name="search_view_id"
                ref="document_topic_search_view" />
         <field name="context">{'search_default_group_by_parent_id': True, 'search_default_filter_important': True }</field>
-        <field name="domain">[('child_ids', '=', False)]</field>
+        <field name="domain">[('parent_id', '!=', False)]</field>
     </record>
 
 </odoo>
