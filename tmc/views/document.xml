@@ -126,7 +126,7 @@
                     </group>
                     <group>
                         <group string="Reference"
-                               attrs="{'invisible':[('name', '=', u'Unnamed Document')]}">
+                               attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
                             <field name="date" />
                             <field name="document_object_required"
                                    invisible="True" />
@@ -134,7 +134,7 @@
                                    attrs="{'required':[('document_object_required', '=', True)]}" />
                         </group>
                         <group string="Topics"
-                               attrs="{'invisible':[('name', '=', u'Unnamed Document')]}">>
+                               attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
                             <field name="main_topic_ids"
                                    widget="many2many_tags"
                                    options="{'no_create_edit': True}" />
@@ -144,7 +144,7 @@
                                    options="{'no_create_edit': True}" />
                         </group>
                     </group>
-                    <notebook attrs="{'invisible':[('name', '=', u'Unnamed Document')]}">>
+                    <notebook attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
                         <page name="highlights"
                               string="Highlights">
                             <field name="highlight_ids" />
