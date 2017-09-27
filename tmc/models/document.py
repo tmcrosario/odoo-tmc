@@ -41,6 +41,8 @@ class Document(models.Model):
         index=True
     )
 
+    document_object_required = fields.Boolean()
+
     document_object_copy = fields.Char(
         compute="_compute_document_object_copy"
     )
@@ -176,6 +178,10 @@ class Document(models.Model):
     @api.multi
     @api.onchange('main_topic_ids')
     def _onchange_main_topic_ids(self):
+        if u'Varios' in self.main_topic_ids.mapped('name'):
+            self.document_object_required = True
+        else:
+            self.document_object_required = False
         new_secondary_topic_ids = self.secondary_topic_ids.filtered(
             lambda record: record.parent_id in self.main_topic_ids
         )
