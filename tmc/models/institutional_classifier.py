@@ -39,13 +39,14 @@ class InstitutionalClassifier(models.Model):
 
     @api.multi
     def _compute_display_name(self):
-        self.ensure_one()
-        self.display_name = _('Year %s') % str(self.period)
-        if not self.due_date:
-            self.display_name += _(' (Current)')
-        else:
-            month = datetime.strptime(self.due_date, '%Y-%m-%d').strftime('%b')
-            self.display_name += ' (%s)' % month
+        for classifier in self:
+            classifier.display_name = _('Year %s') % str(classifier.period)
+            if not classifier.due_date:
+                classifier.display_name += _(' (Current)')
+            else:
+                month = datetime.strptime(
+                    classifier.due_date, '%Y-%m-%d').strftime('%b')
+                classifier.display_name += ' (%s)' % month
 
     @api.model
     def create(self, values):

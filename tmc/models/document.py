@@ -214,21 +214,21 @@ class Document(models.Model):
     @api.multi
     @api.depends('highlight_ids')
     def _compute_highest_highlight(self):
-        self.ensure_one()
-        high_highlights = self.env['tmc.highlight'].search([
-            ('document_id', '=', self.id),
-            ('applicable', '=', True),
-            ('level', '=', 'high')]
-        )
-        medium_highlights = self.env['tmc.highlight'].search([
-            ('document_id', '=', self.id),
-            ('applicable', '=', True),
-            ('level', '=', 'medium')]
-        )
-        if high_highlights:
-            self.highest_highlight = 'high'
-        elif medium_highlights:
-            self.highest_highlight = 'medium'
+        for document in self:
+            high_highlights = self.env['tmc.highlight'].search([
+                ('document_id', '=', document.id),
+                ('applicable', '=', True),
+                ('level', '=', 'high')]
+            )
+            medium_highlights = self.env['tmc.highlight'].search([
+                ('document_id', '=', document.id),
+                ('applicable', '=', True),
+                ('level', '=', 'medium')]
+            )
+            if high_highlights:
+                document.highest_highlight = 'high'
+            elif medium_highlights:
+                document.highest_highlight = 'medium'
 
     @api.multi
     @api.depends('main_topic_ids',
