@@ -3,14 +3,14 @@
 # * tmc
 # 
 # Translators:
-# Liso <lisandrogallo@tmcrosario.gov.ar>, 2017
+# Lisandro <lisandrogallo@tmcrosario.gov.ar>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-20 19:53+0000\n"
-"PO-Revision-Date: 2017-07-20 19:53+0000\n"
-"Last-Translator: Liso <lisandrogallo@tmcrosario.gov.ar>, 2017\n"
+"POT-Creation-Date: 2017-10-11 18:35+0000\n"
+"PO-Revision-Date: 2017-10-11 18:35+0000\n"
+"Last-Translator: Lisandro <lisandrogallo@tmcrosario.gov.ar>, 2017\n"
 "Language-Team: Spanish (Argentina) (https://www.transifex.com/tmcrosario/teams/73663/es_AR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: tmc
-#: code:addons/tmc/models/institutional_classifier.py:44
+#: code:addons/tmc/models/institutional_classifier.py:45
 #, python-format
 msgid " (Current)"
 msgstr " (Actual)"
@@ -133,7 +133,7 @@ msgid "Bank branch"
 msgstr "Sucursal Bancaria"
 
 #. module: tmc
-#: code:addons/tmc/models/institutional_classifier.py:72
+#: code:addons/tmc/models/institutional_classifier.py:74
 #, python-format
 msgid ""
 "Before adding a nomenclator you must set due date"
@@ -331,7 +331,6 @@ msgid "Document Topic"
 msgstr "Tema Principal o Secundario"
 
 #. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_topic_list_action
 #: model:ir.ui.menu,name:tmc.menu_main_tmc_documents_document_topics
 msgid "Document Topics"
 msgstr "Temas de Documento"
@@ -350,8 +349,8 @@ msgid "Document Types"
 msgstr "Tipos de Documento"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:92
-#: code:addons/tmc/models/document.py:247 sql_constraint:tmc.document:0
+#: code:addons/tmc/models/document.py:94
+#: code:addons/tmc/models/document.py:258 sql_constraint:tmc.document:0
 #, python-format
 msgid "Document already exists"
 msgstr "El documento ya existe"
@@ -377,6 +376,18 @@ msgstr "Documentos"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_document_object_copy
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_document_object_copy
 msgid "Document object copy"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_object_required
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_document_object_required
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_document_object_required
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_document_object_required
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_document_object_required
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_document_object_required
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_document_object_required
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_document_object_required
+msgid "Document object required"
 msgstr ""
 
 #. module: tmc
@@ -588,20 +599,20 @@ msgid "Internal number"
 msgstr "Nº de Interno"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:131
+#: code:addons/tmc/models/document.py:133
 #, python-format
 msgid "Invalid number"
 msgstr "Número inválido"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:121
-#: code:addons/tmc/models/institutional_classifier.py:55
+#: code:addons/tmc/models/document.py:123
+#: code:addons/tmc/models/institutional_classifier.py:57
 #, python-format
 msgid "Invalid period"
 msgstr "Período inválido"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:116
+#: code:addons/tmc/models/document.py:118
 #, python-format
 msgid "Invalid year"
 msgstr "Año Inválido"
@@ -691,6 +702,12 @@ msgstr "Nivel"
 #: model:ir.ui.view,arch_db:tmc.document_topic_search_view
 msgid "Main Topic"
 msgstr "Tema Principal"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.main_topic_list_action
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_documents_document_main_topics
+msgid "Main Topics"
+msgstr "Temas Principales"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_main_topic_ids
@@ -864,6 +881,13 @@ msgid "Reference document"
 msgstr "Dcoumento de Referencia"
 
 #. module: tmc
+#: model:ir.actions.act_window,name:tmc.secondary_topic_list_action
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_documents_document_secondary_topics
+#: model:ir.ui.view,arch_db:tmc.view_document_topic_form
+msgid "Secondary Topics"
+msgstr "Temas Secundarios"
+
+#. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_secondary_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_secondary_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_secondary_topic_ids
@@ -896,7 +920,7 @@ msgid "TMC"
 msgstr ""
 
 #. module: tmc
-#: code:addons/tmc/models/institutional_classifier.py:67
+#: code:addons/tmc/models/institutional_classifier.py:69
 #, python-format
 msgid "There is already a more recent nomenclator"
 msgstr "Ya existe un nomenclador más actual"
@@ -913,7 +937,7 @@ msgid "Tribunal de Cuentas"
 msgstr ""
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:152
+#: code:addons/tmc/models/document.py:154
 #, python-format
 msgid "Unnamed Document"
 msgstr "Documento Sin Nombre"
@@ -924,7 +948,7 @@ msgid "User"
 msgstr "Usuario"
 
 #. module: tmc
-#: code:addons/tmc/models/institutional_classifier.py:42
+#: code:addons/tmc/models/institutional_classifier.py:43
 #, python-format
 msgid "Year %s"
 msgstr "Año %s"

@@ -13,12 +13,12 @@
                        search_domain="['|', ('name', '=', self)]" />
                 <field name="parent_id"
                        search_domain="['|', ('parent_id', '=', self)]" />
-                <filter string="Important"
+                <filter string="Importante"
                         name="filter_important"
                         domain="[('important', '=', True)]" />
                 <group expand="True">
                     <filter name="group_by_parent_id"
-                            string="Main Topic"
+                            string="Tema Principal"
                             context="{'group_by':'parent_id'}" />
                 </group>
             </search>
