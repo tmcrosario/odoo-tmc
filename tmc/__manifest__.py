@@ -32,12 +32,6 @@
         'views/dependence_order.xml',
         'views/institutional_classifier.xml',
         'views/document_topic.xml',
-        'views/document_exp.xml',
-        'views/document_ext.xml',
-        'views/document_res.xml',
-        'views/document_leg.xml',
-        'views/document_dec.xml',
-        'views/document_dic.xml',
         'views/employee.xml',
         'views/office.xml',
         'views/menu.xml'

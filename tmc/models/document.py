@@ -256,3 +256,94 @@ class Document(models.Model):
                 and self.number and self.period:
             if self.env['tmc.document'].search([('name', '=', self.name)]):
                 raise exceptions.Warning(_('Document already exists'))
+
+
+class DocumentDec(models.Model):
+    _name = 'tmc.document_dec'
+
+    document_id = fields.Many2one(
+        comodel_name='tmc.document',
+        domain=[('document_type_id.abbreviation', '=', 'DEC')],
+        string='Document Name',
+        required=True,
+        ondelete='cascade',
+        delegate=True
+    )
+
+
+class DocumentDic(models.Model):
+    _name = 'tmc.document_dic'
+
+    document_id = fields.Many2one(
+        comodel_name='tmc.document',
+        domain=[('document_type_id.abbreviation', '=', 'DIC')],
+        string='Document Name',
+        required=True,
+        ondelete='cascade',
+        delegate=True
+    )
+
+
+class DocumentExp(models.Model):
+    _name = 'tmc.document_exp'
+
+    document_id = fields.Many2one(
+        comodel_name='tmc.document',
+        domain=[('document_type_id.abbreviation', '=', 'EXP')],
+        string='Document Name',
+        required=True,
+        ondelete='cascade',
+        delegate=True
+    )
+
+
+class DocumentExt(models.Model):
+    _name = 'tmc.document_ext'
+
+    document_id = fields.Many2one(
+        comodel_name='tmc.document',
+        domain=[('document_type_id.abbreviation', '=', 'EXT')],
+        string='Document Name',
+        required=True,
+        ondelete='cascade',
+        delegate=True
+    )
+
+
+class DocumentLeg(models.Model):
+    _name = 'tmc.document_leg'
+
+    document_id = fields.Many2one(
+        comodel_name='tmc.document',
+        domain=[('document_type_id.abbreviation', '=', 'LEG')],
+        string='Document Name',
+        required=True,
+        ondelete='cascade',
+        delegate=True
+    )
+
+
+class DocumentOrd(models.Model):
+    _name = 'tmc.document_ord'
+
+    document_id = fields.Many2one(
+        comodel_name='tmc.document',
+        domain=[('document_type_id.abbreviation', '=', 'ORD')],
+        string='Document Name',
+        required=True,
+        ondelete='cascade',
+        delegate=True
+    )
+
+
+class DocumentRes(models.Model):
+    _name = 'tmc.document_res'
+
+    document_id = fields.Many2one(
+        comodel_name='tmc.document',
+        domain=[('document_type_id.abbreviation', '=', 'RES')],
+        string='Document Name',
+        required=True,
+        ondelete='cascade',
+        delegate=True
+    )

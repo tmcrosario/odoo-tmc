@@ -201,4 +201,274 @@
         </field>
     </record>
 
+    <!-- DECRETO -->
+    <!-- WINDOW ACTION -->
+    <record model="ir.actions.act_window"
+            id="document_dec_list_action">
+        <field name="name">Decretos</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('document_type_id','=','Decreto')]</field>
+    </record>
+
+    <!-- TREE VIEW -->
+    <record id="view_document_dec_tree"
+            model="ir.ui.view">
+        <field name="name">tmc.document_dec.tree</field>
+        <field name="model">tmc.document_dec</field>
+        <field name="arch"
+               type="xml">
+            <tree>
+                <field name="document_id" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_document_dec_form"
+            model="ir.ui.view">
+        <field name="name">tmc.document_dec.form</field>
+        <field name="model">tmc.document_dec</field>
+        <field name="inherit_id"
+               ref="tmc.view_document_form" />
+        <field name="priority">5</field>
+        <field name="arch"
+               type="xml">
+            <xpath expr="//field[@name='name']"
+                   position="after">
+                <field name="document_id"
+                       invisible="True" />
+            </xpath>
+            <!-- <button name="show_or_add_content" position="attributes">
+            <attribute name="invisible">True</attribute>
+        </button> -->
+        </field>
+    </record>
+
+    <!-- DICTAMEN -->
+    <!-- WINDOW ACTION -->
+    <record model="ir.actions.act_window"
+            id="document_dic_list_action">
+        <field name="name">Decretos</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('document_type_id','=','Dictámen')]</field>
+    </record>
+
+    <!-- TREE VIEW -->
+    <record id="view_document_dic_tree"
+            model="ir.ui.view">
+        <field name="name">tmc.document_dic.tree</field>
+        <field name="model">tmc.document_dic</field>
+        <field name="arch"
+               type="xml">
+            <tree>
+                <field name="document_id" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_document_dic_form"
+            model="ir.ui.view">
+        <field name="name">tmc.document_dic.form</field>
+        <field name="model">tmc.document_dic</field>
+        <field name="inherit_id"
+               ref="tmc.view_document_form" />
+        <field name="priority">5</field>
+        <field name="arch"
+               type="xml">
+            <xpath expr="//field[@name='name']"
+                   position="after">
+                <field name="document_id"
+                       invisible="True" />
+            </xpath>
+            <!-- <button name="show_or_add_content" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </button> -->
+        </field>
+    </record>
+
+    <!-- EXPEDIENTE -->
+    <!-- WINDOW ACTION -->
+    <record model="ir.actions.act_window"
+            id="document_exp_list_action">
+        <field name="name">Decretos</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('document_type_id','=','Expediente')]</field>
+    </record>
+
+    <!-- TREE VIEW -->
+    <record id="view_document_exp_tree"
+            model="ir.ui.view">
+        <field name="name">tmc.document_exp.tree</field>
+        <field name="model">tmc.document_exp</field>
+        <field name="arch"
+               type="xml">
+            <tree>
+                <field name="document_id" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_document_exp_form"
+            model="ir.ui.view">
+        <field name="name">tmc.document_exp.form</field>
+        <field name="model">tmc.document_exp</field>
+        <field name="inherit_id"
+               ref="tmc.view_document_form" />
+        <field name="priority">5</field>
+        <field name="arch"
+               type="xml">
+            <xpath expr="//field[@name='name']"
+                   position="after">
+                <field name="document_id"
+                       invisible="True" />
+            </xpath>
+            <!-- <button name="show_or_add_content" position="attributes">
+            <attribute name="invisible">True</attribute>
+        </button> -->
+        </field>
+    </record>
+
+    <!-- RESOLUCION EXTRAORDINARIA -->
+    <!-- WINDOW ACTION -->
+    <record model="ir.actions.act_window"
+            id="document_ext_list_action">
+        <field name="name">Decretos</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('document_type_id','=','Resolución Extraordinaria')]</field>
+    </record>
+
+    <!-- TREE VIEW -->
+    <record id="view_document_ext_tree"
+            model="ir.ui.view">
+        <field name="name">tmc.document_ext.tree</field>
+        <field name="model">tmc.document_ext</field>
+        <field name="arch"
+               type="xml">
+            <tree>
+                <field name="document_id" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_document_ext_form"
+            model="ir.ui.view">
+        <field name="name">tmc.document_ext.form</field>
+        <field name="model">tmc.document_ext</field>
+        <field name="inherit_id"
+               ref="tmc.view_document_form" />
+        <field name="priority">5</field>
+        <field name="arch"
+               type="xml">
+            <xpath expr="//field[@name='name']"
+                   position="after">
+                <field name="document_id"
+                       invisible="True" />
+            </xpath>
+            <!-- <button name="show_or_add_content" position="attributes">
+            <attribute name="invisible">True</attribute>
+        </button> -->
+        </field>
+    </record>
+
+    <!-- LEGAJO -->
+    <!-- WINDOW ACTION -->
+    <record model="ir.actions.act_window"
+            id="document_leg_list_action">
+        <field name="name">Decretos</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('document_type_id','=','Legajo')]</field>
+    </record>
+
+    <!-- TREE VIEW -->
+    <record id="view_document_leg_tree"
+            model="ir.ui.view">
+        <field name="name">tmc.document_leg.tree</field>
+        <field name="model">tmc.document_leg</field>
+        <field name="arch"
+               type="xml">
+            <tree>
+                <field name="document_id" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_document_leg_form"
+            model="ir.ui.view">
+        <field name="name">tmc.document_leg.form</field>
+        <field name="model">tmc.document_leg</field>
+        <field name="inherit_id"
+               ref="tmc.view_document_form" />
+        <field name="priority">5</field>
+        <field name="arch"
+               type="xml">
+            <xpath expr="//field[@name='name']"
+                   position="after">
+                <field name="document_id"
+                       invisible="True" />
+            </xpath>
+            <!-- <button name="show_or_add_content" position="attributes">
+            <attribute name="invisible">True</attribute>
+        </button> -->
+        </field>
+    </record>
+
+    <!-- RESOLUCION -->
+    <!-- WINDOW ACTION -->
+    <record model="ir.actions.act_window"
+            id="document_res_list_action">
+        <field name="name">Decretos</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('document_type_id','=','Resolución')]</field>
+    </record>
+
+    <!-- TREE VIEW -->
+    <record id="view_document_res_tree"
+            model="ir.ui.view">
+        <field name="name">tmc.document_res.tree</field>
+        <field name="model">tmc.document_res</field>
+        <field name="arch"
+               type="xml">
+            <tree>
+                <field name="document_id" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_document_res_form"
+            model="ir.ui.view">
+        <field name="name">tmc.document_res.form</field>
+        <field name="model">tmc.document_res</field>
+        <field name="inherit_id"
+               ref="tmc.view_document_form" />
+        <field name="priority">5</field>
+        <field name="arch"
+               type="xml">
+            <xpath expr="//field[@name='name']"
+                   position="after">
+                <field name="document_id"
+                       invisible="True" />
+            </xpath>
+            <!-- <button name="show_or_add_content" position="attributes">
+            <attribute name="invisible">True</attribute>
+        </button> -->
+        </field>
+    </record>
+
 </odoo>
