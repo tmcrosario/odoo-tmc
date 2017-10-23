@@ -133,13 +133,15 @@
                             <field name="document_object"
                                    attrs="{'required':[('document_object_required', '=', True)]}" />
                         </group>
+                        <field name="document_topic_ids"
+                               invisible="True" />
                         <group string="Topics"
-                               attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
+                               attrs="{'invisible':['|', ('document_topic_ids', '=', []), ('create_date','=', False)]}">
                             <field name="main_topic_ids"
                                    widget="many2many_tags"
                                    options="{'no_create_edit': True}" />
                             <field name="secondary_topic_ids"
-                                   attrs="{'invisible':[('main_topic_ids','=',False)]}"
+                                   attrs="{'invisible':[('main_topic_ids', '=', [])]}"
                                    widget="many2many_tags"
                                    options="{'no_create_edit': True}" />
                         </group>

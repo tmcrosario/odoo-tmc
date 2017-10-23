@@ -37,20 +37,24 @@ class Document(models.Model):
     date = fields.Date()
 
     document_object = fields.Char(
-        string="Object",
+        string='Object',
         index=True
     )
 
     document_object_required = fields.Boolean()
 
     document_object_copy = fields.Char(
-        compute="_compute_document_object_copy"
+        compute='_compute_document_object_copy'
+    )
+
+    document_topic_ids = fields.Many2many(
+        related='dependence_id.document_topic_ids'
     )
 
     main_topic_ids = fields.Many2many(
         comodel_name='tmc.document_topic',
         relation='document_main_topic_rel',
-        domain="[('parent_id', '=', False)]"
+        domain="[('parent_id', '=', False), ('id', 'in', document_topic_ids[0][2])]"
     )
 
     secondary_topic_ids = fields.Many2many(

@@ -16,6 +16,10 @@ class Dependence(models.Model):
         comodel_name='tmc.document_type'
     )
 
+    document_topic_ids = fields.Many2many(
+        comodel_name='tmc.document_topic'
+    )
+
     system_ids = fields.Many2many(
         comodel_name='tmc.system'
     )

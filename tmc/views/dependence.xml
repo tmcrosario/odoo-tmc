@@ -54,6 +54,10 @@
                               string="Systems">
                             <field name="system_ids" />
                         </page>
+                        <page name="document_topics"
+                              string="Document Topics">
+                            <field name="document_topic_ids" />
+                        </page>
                     </notebook>
                 </sheet>
             </form>
