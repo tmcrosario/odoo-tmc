@@ -142,20 +142,21 @@ class Document(models.Model):
                  'number',
                  'period')
     def _compute_name(self):
-        doc_abbr = self.document_type_id.abbreviation
-        doc_number = self.number
-        doc_period = self.period
-        dep_abbr = self.dependence_id.abbreviation
+        for document in self:
+            doc_abbr = document.document_type_id.abbreviation
+            doc_number = document.number
+            doc_period = document.period
+            dep_abbr = document.dependence_id.abbreviation
 
-        if (doc_abbr and doc_number and doc_period and dep_abbr):
-            self.name = "%s-%s-%s/%s" % (
-                doc_abbr,
-                str(doc_number).zfill(6),
-                dep_abbr,
-                doc_period
-            )
-        else:
-            self.name = _('Unnamed Document')
+            if (doc_abbr and doc_number and doc_period and dep_abbr):
+                document.name = "%s-%s-%s/%s" % (
+                    doc_abbr,
+                    str(doc_number).zfill(6),
+                    dep_abbr,
+                    doc_period
+                )
+            else:
+                document.name = _('Unnamed Document')
 
     @api.multi
     @api.depends('highlight_ids')
@@ -201,19 +202,19 @@ class Document(models.Model):
     @api.multi
     @api.depends('document_object')
     def _compute_document_object_copy(self):
-        self.ensure_one()
-        self.document_object_copy = self.document_object
+        for document in self:
+            self.document_object_copy = self.document_object
 
     @api.multi
     @api.depends('reference_model')
     def _compute_reference_document(self):
-        self.ensure_one()
-        if self.reference_model:
-            reference_model = 'tmc.' + self.reference_model
-            reference_document = self.env[reference_model].search(
-                [('document_id', '=', self.id)], limit=1)
-            if reference_document:
-                self.reference_document = reference_document[0]
+        for document in self:
+            if self.reference_model:
+                reference_model = 'tmc.' + self.reference_model
+                reference_document = self.env[reference_model].search(
+                    [('document_id', '=', self.id)], limit=1)
+                if reference_document:
+                    self.reference_document = reference_document[0]
 
     @api.multi
     @api.depends('highlight_ids')
@@ -238,17 +239,17 @@ class Document(models.Model):
     @api.depends('main_topic_ids',
                  'secondary_topic_ids')
     def _compute_important_topic(self):
-        self.ensure_one()
-        domain = [
-            '|', ('id', 'in', self.main_topic_ids.ids),
-            ('id', 'in', self.secondary_topic_ids.ids),
-            ('important', '=', True)
-        ]
-        important_related_topics = self.env[
-            'tmc.document_topic'].search(domain)
+        for document in self:
+            domain = [
+                '|', ('id', 'in', document.main_topic_ids.ids),
+                ('id', 'in', document.secondary_topic_ids.ids),
+                ('important', '=', True)
+            ]
+            important_related_topics = self.env[
+                'tmc.document_topic'].search(domain)
 
-        if important_related_topics:
-            self.important = True
+            if important_related_topics:
+                document.important = True
 
     @api.multi
     @api.onchange('dependence_id',
