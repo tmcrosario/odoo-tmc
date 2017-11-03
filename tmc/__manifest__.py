@@ -34,6 +34,7 @@
         'views/document_topic.xml',
         'views/employee.xml',
         'views/office.xml',
+        'views/country_state.xml',
         'views/menu.xml'
     ],
     'demo': [],

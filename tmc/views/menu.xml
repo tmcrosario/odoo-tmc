@@ -72,8 +72,14 @@
     <menuitem id="menu_tmc_document_types_config"
               name="Document Types"
               parent="tmc.menu_tmc_config"
-              sequence="15"
+              sequence="10"
               action="tmc.document_type_list_action" />
+
+    <menuitem id="menu_country_state_config"
+              name="States"
+              parent="tmc.menu_tmc_config"
+              sequence="15"
+              action="tmc.country_state_list_action" />
 
     <menuitem id="menu_main_personal"
               name="Personal"
