@@ -11,17 +11,17 @@
               parent="menu_main_tmc"
               sequence="5" />
 
-    <menuitem id="menu_main_tmc_important_documents_document_list"
-              name="Important Documents"
-              parent="menu_main_tmc_documents"
-              sequence="5"
-              action="important_document_list_action" />
-
     <menuitem id="menu_main_tmc_documents_document_list"
               name="All Documents"
               parent="menu_main_tmc_documents"
-              sequence="10"
+              sequence="5"
               action="document_list_action" />
+
+    <menuitem id="menu_main_tmc_important_documents_document_list"
+              name="Important Documents"
+              parent="menu_main_tmc_documents"
+              sequence="10"
+              action="important_document_list_action" />
 
     <menuitem id="menu_main_tmc_documents_document_topics"
               name="Document Topics"
