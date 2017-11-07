@@ -17,9 +17,7 @@
         <field name="model">tmc.document_type</field>
         <field name="arch"
                type="xml">
-            <tree string="Document Type"
-                  edit="false"
-                  create="false">
+            <tree string="Document Type">
                 <field name="name"
                        string="Document Type" />
                 <field name="abbreviation" />
