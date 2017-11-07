@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-11 18:35+0000\n"
-"PO-Revision-Date: 2017-10-11 18:35+0000\n"
+"POT-Creation-Date: 2017-11-06 16:55+0000\n"
+"PO-Revision-Date: 2017-11-06 16:55+0000\n"
 "Last-Translator: Lisandro <lisandrogallo@tmcrosario.gov.ar>, 2017\n"
 "Language-Team: Spanish (Argentina) (https://www.transifex.com/tmcrosario/teams/73663/es_AR/)\n"
 "MIME-Version: 1.0\n"
@@ -237,7 +237,7 @@ msgid "Dependence Order"
 msgstr "Dependencias"
 
 #. module: tmc
-#: code:addons/tmc/models/dependence.py:44 sql_constraint:tmc.dependence:0
+#: code:addons/tmc/models/dependence.py:48 sql_constraint:tmc.dependence:0
 #, python-format
 msgid "Dependence abbreviation must be unique"
 msgstr "La abreviatura de la dependencia debe ser única"
@@ -256,7 +256,7 @@ msgid "Dependence id"
 msgstr "Dependencia"
 
 #. module: tmc
-#: code:addons/tmc/models/dependence.py:40 sql_constraint:tmc.dependence:0
+#: code:addons/tmc/models/dependence.py:44 sql_constraint:tmc.dependence:0
 #, python-format
 msgid "Dependence name must be unique"
 msgstr "El nombre de la dependencia debe ser única"
@@ -332,6 +332,7 @@ msgstr "Tema Principal o Secundario"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.menu_main_tmc_documents_document_topics
+#: model:ir.ui.view,arch_db:tmc.view_tmc_dependence_form
 msgid "Document Topics"
 msgstr "Temas de Documento"
 
@@ -349,8 +350,8 @@ msgid "Document Types"
 msgstr "Tipos de Documento"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:94
-#: code:addons/tmc/models/document.py:258 sql_constraint:tmc.document:0
+#: code:addons/tmc/models/document.py:98
+#: code:addons/tmc/models/document.py:263 sql_constraint:tmc.document:0
 #, python-format
 msgid "Document already exists"
 msgstr "El documento ya existe"
@@ -376,7 +377,7 @@ msgstr "Documentos"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_document_object_copy
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_document_object_copy
 msgid "Document object copy"
-msgstr ""
+msgstr "Objeto"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_object_required
@@ -389,6 +390,19 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_document_object_required
 msgid "Document object required"
 msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_document_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_document_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_document_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_document_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_document_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_document_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_document_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_document_topic_ids
+msgid "Document topic ids"
+msgstr "Temas de Documento"
 
 #. module: tmc
 #: code:addons/tmc/models/document_type.py:29
@@ -564,7 +578,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_important
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_important
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_important
-#: model:ir.ui.view,arch_db:tmc.document_topic_search_view
 msgid "Important"
 msgstr "Importante"
 
@@ -572,6 +585,11 @@ msgstr "Importante"
 #: model:ir.ui.menu,name:tmc.menu_main_tmc_important_documents_document_list
 msgid "Important Documents"
 msgstr "Documentos de Interés"
+
+#. module: tmc
+#: model:ir.ui.view,arch_db:tmc.document_topic_search_view
+msgid "Importante"
+msgstr ""
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_in_actual_nomenclator
@@ -599,20 +617,20 @@ msgid "Internal number"
 msgstr "Nº de Interno"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:133
+#: code:addons/tmc/models/document.py:137
 #, python-format
 msgid "Invalid number"
 msgstr "Número inválido"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:123
+#: code:addons/tmc/models/document.py:127
 #: code:addons/tmc/models/institutional_classifier.py:57
 #, python-format
 msgid "Invalid period"
 msgstr "Período inválido"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:118
+#: code:addons/tmc/models/document.py:122
 #, python-format
 msgid "Invalid year"
 msgstr "Año Inválido"
@@ -699,7 +717,6 @@ msgstr "Nivel"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_parent_id
-#: model:ir.ui.view,arch_db:tmc.document_topic_search_view
 msgid "Main Topic"
 msgstr "Tema Principal"
 
@@ -900,6 +917,12 @@ msgid "Secondary topic ids"
 msgstr "Temas Secundarios"
 
 #. module: tmc
+#: model:ir.actions.act_window,name:tmc.country_state_list_action
+#: model:ir.ui.menu,name:tmc.menu_country_state_config
+msgid "States"
+msgstr "Provincias"
+
+#. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_parent_id
 msgid "Superior"
 msgstr "Oficina Superior"
@@ -920,6 +943,11 @@ msgid "TMC"
 msgstr ""
 
 #. module: tmc
+#: model:ir.ui.view,arch_db:tmc.document_topic_search_view
+msgid "Tema Principal"
+msgstr ""
+
+#. module: tmc
 #: code:addons/tmc/models/institutional_classifier.py:69
 #, python-format
 msgid "There is already a more recent nomenclator"
@@ -937,7 +965,7 @@ msgid "Tribunal de Cuentas"
 msgstr ""
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:154
+#: code:addons/tmc/models/document.py:159
 #, python-format
 msgid "Unnamed Document"
 msgstr "Documento Sin Nombre"
