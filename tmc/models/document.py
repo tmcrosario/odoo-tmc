@@ -161,11 +161,11 @@ class Document(models.Model):
     @api.multi
     @api.depends('highlight_ids')
     def _compute_highlights_count(self):
-        self.ensure_one()
-        applicable_highlight_ids = self.highlight_ids.filtered(
-            lambda record: record.applicable == True
-        )
-        self.highlights_count = len(applicable_highlight_ids)
+        for document in self:
+            applicable_highlight_ids = document.highlight_ids.filtered(
+                lambda record: record.applicable == True
+            )
+            document.highlights_count = len(applicable_highlight_ids)
 
     @api.multi
     @api.onchange('dependence_id')
@@ -203,18 +203,18 @@ class Document(models.Model):
     @api.depends('document_object')
     def _compute_document_object_copy(self):
         for document in self:
-            self.document_object_copy = self.document_object
+            document.document_object_copy = document.document_object
 
     @api.multi
     @api.depends('reference_model')
     def _compute_reference_document(self):
         for document in self:
-            if self.reference_model:
-                reference_model = 'tmc.' + self.reference_model
-                reference_document = self.env[reference_model].search(
-                    [('document_id', '=', self.id)], limit=1)
+            if document.reference_model:
+                reference_model = 'tmc.' + document.reference_model
+                reference_document = document.env[reference_model].search(
+                    [('document_id', '=', document.id)], limit=1)
                 if reference_document:
-                    self.reference_document = reference_document[0]
+                    document.reference_document = reference_document[0]
 
     @api.multi
     @api.depends('highlight_ids')
