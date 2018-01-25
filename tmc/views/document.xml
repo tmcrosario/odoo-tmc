@@ -147,6 +147,14 @@
                         </group>
                     </group>
                     <notebook attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
+                        <page name="related_documents"
+                              string="Related Documents">
+                            <field name="related_document_ids">
+                                <tree>
+                                    <field name="name" />
+                                </tree>
+                            </field>
+                        </page>
                         <page name="highlights"
                               string="Highlights">
                             <field name="highlight_ids" />

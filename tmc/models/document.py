@@ -92,6 +92,14 @@ class Document(models.Model):
         store=True
     )
 
+    related_document_ids = fields.Many2many(
+        comodel_name='tmc.document',
+        relation='tmc_document_relation',
+        column1='left_document_id',
+        column2='right_document_id',
+        domain="[('id', '!=', id)]"
+    )
+
     _sql_constraints = [
         ('name_unique',
             'UNIQUE(name)',
@@ -261,6 +269,29 @@ class Document(models.Model):
                 and self.number and self.period:
             if self.env['tmc.document'].search([('name', '=', self.name)]):
                 raise exceptions.Warning(_('Document already exists'))
+
+    @api.multi
+    def write(self, vals, write_inverse=True):
+        if write_inverse and vals.get('related_document_ids'):
+            domain = [('id', 'in', vals['related_document_ids'][0][2])]
+            new_related_documents = self.env['tmc.document'].search(
+                domain)
+            new_related_documents.write(
+                {'related_document_ids': [(4, self.id)]},
+                write_inverse=False
+            )
+            current_rd_map = self.related_document_ids.mapped('id')
+            new_rd_map = new_related_documents.mapped('id')
+            new_rd_set = set(new_rd_map)
+            rd_diff = [x for x in current_rd_map if x not in new_rd_set]
+            if rd_diff:
+                domain = [('id', 'in', rd_diff)]
+                self.env['tmc.document'].search(domain).write(
+                    {'related_document_ids': [(3, self.id)]},
+                    write_inverse=False
+                )
+
+        return super(Document, self).write(vals)
 
 
 class DocumentDec(models.Model):
