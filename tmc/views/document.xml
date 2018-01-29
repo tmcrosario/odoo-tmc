@@ -35,6 +35,7 @@
                 <field name="name" />
                 <field name="date" />
                 <field name="document_object" />
+                <field name="topics_display_name" />
                 <field name="highest_highlight"
                        invisible="True" />
             </tree>

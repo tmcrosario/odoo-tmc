@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime
-
 from odoo import _, api, exceptions, fields, models
 
 
@@ -63,6 +62,13 @@ class Document(models.Model):
         domain="[('parent_id', 'in', main_topic_ids[0][2])]"
     )
 
+    topics_display_name = fields.Char(
+        compute='_compute_topics_display_name',
+        string='Topics',
+        readonly=True,
+        store=True
+    )
+
     reference_model = fields.Char(
         related='document_type_id.model'
     )
@@ -84,7 +90,6 @@ class Document(models.Model):
         selection=[('high', 'High'),
                    ('medium', 'Medium')],
         compute='_compute_highest_highlight'
-
     )
 
     important = fields.Boolean(
@@ -292,6 +297,50 @@ class Document(models.Model):
                 )
 
         return super(Document, self).write(vals)
+
+    def lookahead(self, iterable):
+        """Pass through all values from the given iterable, augmented by the
+        information if there are more values to come after the current one
+        (True), or if it is the last value (False).
+        """
+        # Get an iterator and pull the first value
+        it = iter(iterable)
+        last = next(it)
+        # Run the iterator to exhaustion (starting from the second value)
+        for val in it:
+            # Report the *previous* value (more to come)
+            yield last, True
+            last = val
+        # Report the last value
+        yield last, False
+
+    @api.multi
+    @api.depends('main_topic_ids',
+                 'secondary_topic_ids')
+    def _compute_topics_display_name(self):
+        for document in self:
+            document.topics_display_name = ''
+            if document.main_topic_ids:
+                for mt, has_more_mt in self.lookahead(document.main_topic_ids):
+                    aux = ''
+                    aux += mt.name
+                    st_filtered = document.secondary_topic_ids.filtered(
+                        lambda record: record.parent_id.id == mt.id
+                    )
+                    is_first = True
+                    for st, has_more_st in self.lookahead(st_filtered):
+                        if st.parent_id == mt:
+                            if is_first:
+                                is_first = False
+                                aux += ' ('
+                            aux += st.name
+                            if has_more_st:
+                                aux += ', '
+                            else:
+                                aux += ')'
+                    if has_more_mt:
+                        aux += ', '
+                    document.topics_display_name += aux
 
 
 class DocumentDec(models.Model):
