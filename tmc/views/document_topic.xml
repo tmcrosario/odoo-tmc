@@ -43,6 +43,7 @@
                     </group>
                     <group>
                         <field name="important" />
+                        <field name="color" />
                     </group>
                     <notebook attrs="{'invisible':[('parent_id','!=', False)]}">
                         <page name="secondary_topic_ids"

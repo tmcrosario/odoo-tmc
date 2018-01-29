@@ -34,6 +34,8 @@ class DocumentTopic(models.Model):
 
     important = fields.Boolean()
 
+    color = fields.Integer()
+
     @api.multi
     @api.depends('parent_id',
                  'parent_id.parent_id')
