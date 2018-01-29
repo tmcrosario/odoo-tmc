@@ -47,3 +47,8 @@ class DocumentTopic(models.Model):
                 first_parent_id = parent.id
                 parent = parent.parent_id
             document_topic.first_parent_id = first_parent_id
+
+    @api.multi
+    def _compute_display_name(self):
+        for topic in self:
+            topic.display_name = topic.name

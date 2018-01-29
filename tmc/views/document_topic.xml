@@ -57,7 +57,7 @@
     </record>
 
     <!-- TREEVIEW -->
-    <record id="document_topic_tree_view"
+    <record id="document_main_topic_tree_view"
             model="ir.ui.view">
         <field name="name">tmc.document_topic.tree</field>
         <field name="model">tmc.document_topic</field>
@@ -65,8 +65,24 @@
                type="xml">
             <tree colors="gray:important==False">
                 <field name="name" />
-                <field name="parent_id"
+                <field name="important"
                        invisible="True" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- TREEVIEW -->
+    <record id="document_secondary_topic_tree_view"
+            model="ir.ui.view">
+        <field name="name">tmc.document_topic.tree</field>
+        <field name="model">tmc.document_topic</field>
+        <field name="arch"
+               type="xml">
+            <tree colors="gray:important==False"
+                  default_order="parent_id">
+                <field name="parent_id"
+                       widget="many2one_unclickable" />
+                <field name="name" />
                 <field name="important"
                        invisible="True" />
             </tree>
@@ -81,7 +97,7 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id"
-               ref="document_topic_tree_view" />
+               ref="document_main_topic_tree_view" />
         <field name="context">{'search_default_filter_important': True }</field>
         <field name="domain">[('parent_id', '=', False)]</field>
     </record>
@@ -94,7 +110,7 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id"
-               ref="document_topic_tree_view" />
+               ref="document_secondary_topic_tree_view" />
         <field name="search_view_id"
                ref="document_topic_search_view" />
         <field name="context">{'search_default_group_by_parent_id': True, 'search_default_filter_important': True }</field>

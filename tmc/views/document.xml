@@ -144,7 +144,8 @@
                             <field name="secondary_topic_ids"
                                    attrs="{'invisible':[('main_topic_ids', '=', [])]}"
                                    widget="many2many_tags"
-                                   options="{'no_create_edit': True}" />
+                                   options="{'no_create_edit': True}"
+                                   context="{'tree_view_ref':'tmc.document_secondary_topic_tree_view'}" />
                         </group>
                     </group>
                     <notebook attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
