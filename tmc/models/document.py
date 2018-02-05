@@ -37,6 +37,7 @@ class Document(models.Model):
 
     document_object = fields.Char(
         string='Object',
+        size=75,
         index=True
     )
 
@@ -341,6 +342,11 @@ class Document(models.Model):
                     if has_more_mt:
                         aux += ', '
                     document.topics_display_name += aux
+
+    @api.multi
+    @api.onchange('document_object')
+    def _onchange_document_object(self):
+        self.document_object = self.document_object.title()
 
 
 class DocumentDec(models.Model):
