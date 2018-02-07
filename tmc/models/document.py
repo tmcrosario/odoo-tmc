@@ -278,6 +278,31 @@ class Document(models.Model):
 
     @api.multi
     def write(self, vals, write_inverse=True):
+        if vals.get('main_topic_ids'):
+            message = _('You must specify a period.')
+            main_topics_set = set(vals['main_topic_ids'][0][2])
+
+            mp_topic = self.env.ref(
+                'tmc_data.tmc_document_topic_modifica_presupuesto')
+            p_topic = self.env.ref(
+                'tmc_data.tmc_document_topic_periodo')
+
+            p_topic_map = p_topic.mapped('id')
+            if main_topics_set.intersection(p_topic_map):
+                if vals.get('secondary_topic_ids'):
+                    domain = [
+                        ('id', 'in', vals['secondary_topic_ids'][0][2]),
+                        ('parent_id', '=', p_topic.id)
+                    ]
+                    if not self.env['tmc.document_topic'].search(domain):
+                        raise exceptions.UserError(message)
+                else:
+                    raise exceptions.UserError(message)
+            else:
+                mp_topic_map = mp_topic.mapped('id')
+                if main_topics_set.intersection(mp_topic_map):
+                    raise exceptions.UserError(message)
+
         if write_inverse and vals.get('related_document_ids'):
             new_related_documents = self.browse(
                 vals['related_document_ids'][0][2])
