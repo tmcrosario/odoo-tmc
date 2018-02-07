@@ -346,7 +346,8 @@ class Document(models.Model):
     @api.multi
     @api.onchange('document_object')
     def _onchange_document_object(self):
-        self.document_object = self.document_object.title()
+        if self.document_object:
+            self.document_object = self.document_object.title()
 
 
 class DocumentDec(models.Model):
