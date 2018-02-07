@@ -279,9 +279,8 @@ class Document(models.Model):
     @api.multi
     def write(self, vals, write_inverse=True):
         if write_inverse and vals.get('related_document_ids'):
-            domain = [('id', 'in', vals['related_document_ids'][0][2])]
-            new_related_documents = self.env['tmc.document'].search(
-                domain)
+            new_related_documents = self.browse(
+                vals['related_document_ids'][0][2])
             new_related_documents.write(
                 {'related_document_ids': [(4, self.id)]},
                 write_inverse=False
@@ -291,8 +290,7 @@ class Document(models.Model):
             new_rd_set = set(new_rd_map)
             rd_diff = [x for x in current_rd_map if x not in new_rd_set]
             if rd_diff:
-                domain = [('id', 'in', rd_diff)]
-                self.env['tmc.document'].search(domain).write(
+                self.browse(rd_diff).write(
                     {'related_document_ids': [(3, self.id)]},
                     write_inverse=False
                 )
