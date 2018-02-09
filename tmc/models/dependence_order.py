@@ -23,6 +23,10 @@ class DependenceOrder(models.Model):
         required=True
     )
 
+    in_actual_nomenclator = fields.Boolean(
+        related='dependence_id.in_actual_nomenclator'
+    )
+
     abbreviation = fields.Char(
         related='dependence_id.abbreviation',
         readonly=True

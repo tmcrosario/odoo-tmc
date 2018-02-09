@@ -8,8 +8,7 @@
         <field name="res_model">tmc.dependence_order</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
-        <field name="context">
-            { 'search_default_filter_actual_period': True, 'search_default_group_by_parent_id': True}
+        <field name="context">{ 'search_default_filter_actual_nomenclator': True, 'search_default_group_by_parent_id': True }
         </field>
         <field name="domain">[('parent_id', '!=', False), (u'parent_id', u'not ilike', u'ADMINISTRACI\xd3N CENTRAL')]</field>
     </record>
@@ -77,9 +76,9 @@
                             string="Institutional Unit"
                             context="{'group_by': 'parent_id'}" />
                 </group>
-                <filter string="Actual Period"
-                        name="filter_actual_period"
-                        domain="[('institutional_classifier_ids', 'ilike', (context_today().strftime('%%Y')))]" />
+                <filter string="Actual Nomenclator"
+                        name="filter_actual_nomenclator"
+                        domain="[('in_actual_nomenclator', '=', True)]" />
             </search>
         </field>
     </record>
