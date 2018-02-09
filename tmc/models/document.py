@@ -37,7 +37,6 @@ class Document(models.Model):
 
     document_object = fields.Char(
         string='Object',
-        size=75,
         index=True
     )
 
@@ -217,7 +216,12 @@ class Document(models.Model):
     @api.depends('document_object')
     def _compute_document_object_copy(self):
         for document in self:
-            document.document_object_copy = document.document_object
+            if document.document_object:
+                if len(document.document_object) > 45:
+                    string = document.document_object[:45] + '...'
+                else:
+                    string = document.document_object
+                document.document_object_copy = string.title()
 
     @api.multi
     @api.depends('reference_model')

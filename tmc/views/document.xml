@@ -34,7 +34,7 @@
                   decoration-warning="highest_highlight=='medium'">
                 <field name="name" />
                 <field name="date" />
-                <field name="document_object" />
+                <field name="document_object_copy" />
                 <field name="topics_display_name" />
                 <field name="highest_highlight"
                        invisible="True" />
@@ -53,7 +53,7 @@
                   default_order="period desc, number desc, dependence_id, document_type_id">
                 <field name="name" />
                 <field name="date" />
-                <field name="document_object" />
+                <field name="document_object_copy" />
                 <field name="secondary_topic_ids"
                        invisible="1" />
             </tree>
