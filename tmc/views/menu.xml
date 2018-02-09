@@ -26,19 +26,8 @@
     <menuitem id="menu_main_tmc_documents_document_topics"
               name="Document Topics"
               parent="menu_main_tmc_documents"
+              action="document_topic_list_action"
               sequence="15" />
-
-    <menuitem id="menu_main_tmc_documents_document_main_topics"
-              name="Main Topics"
-              parent="menu_main_tmc_documents_document_topics"
-              sequence="15"
-              action="main_topic_list_action" />
-
-    <menuitem id="menu_main_tmc_documents_document_secondary_topics"
-              name="Secondary Topics"
-              parent="menu_main_tmc_documents_document_topics"
-              sequence="15"
-              action="secondary_topic_list_action" />
 
     <menuitem id="menu_main_tmc_institutional_classifiers"
               name="Institutional Classifiers"

@@ -46,9 +46,13 @@
                         <field name="color" />
                     </group>
                     <notebook attrs="{'invisible':[('parent_id','!=', False)]}">
-                        <page name="secondary_topic_ids"
+                        <page name="secondary_topics"
                               string="Secondary Topics">
                             <field name="child_ids" />
+                        </page>
+                        <page name="dependences"
+                              string="Dependences">
+                            <field name="dependence_ids" />
                         </page>
                     </notebook>
                 </sheet>
@@ -57,64 +61,34 @@
     </record>
 
     <!-- TREEVIEW -->
-    <record id="document_main_topic_tree_view"
+    <record id="document_topic_tree_view"
             model="ir.ui.view">
         <field name="name">tmc.document_topic.tree</field>
         <field name="model">tmc.document_topic</field>
         <field name="arch"
                type="xml">
             <tree colors="gray:important==False">
-                <field name="name" />
+                <field name="name"
+                       string="Tema Principal" />
                 <field name="important"
                        invisible="True" />
-            </tree>
-        </field>
-    </record>
-
-    <!-- TREEVIEW -->
-    <record id="document_secondary_topic_tree_view"
-            model="ir.ui.view">
-        <field name="name">tmc.document_topic.tree</field>
-        <field name="model">tmc.document_topic</field>
-        <field name="arch"
-               type="xml">
-            <tree colors="gray:important==False"
-                  default_order="parent_id">
-                <field name="parent_id"
-                       widget="many2one_unclickable" />
-                <field name="name" />
-                <field name="important"
-                       invisible="True" />
+                <field name="secondary_topics_display_name" />
+                <field name="dependences_display_name" />
             </tree>
         </field>
     </record>
 
     <!-- WINDOW ACTION -->
-    <record id="main_topic_list_action"
+    <record id="document_topic_list_action"
             model="ir.actions.act_window">
-        <field name="name">Main Topics</field>
+        <field name="name">Document Topics</field>
         <field name="res_model">tmc.document_topic</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id"
-               ref="document_main_topic_tree_view" />
+               ref="document_topic_tree_view" />
         <field name="context">{'search_default_filter_important': True }</field>
         <field name="domain">[('parent_id', '=', False)]</field>
-    </record>
-
-    <!-- WINDOW ACTION -->
-    <record id="secondary_topic_list_action"
-            model="ir.actions.act_window">
-        <field name="name">Secondary Topics</field>
-        <field name="res_model">tmc.document_topic</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id"
-               ref="document_secondary_topic_tree_view" />
-        <field name="search_view_id"
-               ref="document_topic_search_view" />
-        <field name="context">{'search_default_group_by_parent_id': True, 'search_default_filter_important': True }</field>
-        <field name="domain">[('parent_id', '!=', False)]</field>
     </record>
 
 </odoo>

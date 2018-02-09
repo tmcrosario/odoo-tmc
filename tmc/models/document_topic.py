@@ -32,6 +32,20 @@ class DocumentTopic(models.Model):
         inverse_name='parent_id'
     )
 
+    dependence_ids = fields.Many2many(
+        comodel_name='tmc.dependence'
+    )
+
+    dependences_display_name = fields.Char(
+        compute='_compute_dependences_display_name',
+        string='Dependences'
+    )
+
+    secondary_topics_display_name = fields.Char(
+        compute='_compute_secondary_topics_display_name',
+        string='Secondary Topics'
+    )
+
     important = fields.Boolean()
 
     color = fields.Integer()
@@ -52,3 +66,19 @@ class DocumentTopic(models.Model):
     def _compute_display_name(self):
         for topic in self:
             topic.display_name = topic.name
+
+    @api.multi
+    @api.depends('dependence_ids')
+    def _compute_dependences_display_name(self):
+        for document_topic in self:
+            if document_topic.dependence_ids:
+                document_topic.dependences_display_name = ', '.join(
+                    document_topic.dependence_ids.mapped('abbreviation'))
+
+    @api.multi
+    @api.depends('child_ids')
+    def _compute_secondary_topics_display_name(self):
+        for document_topic in self:
+            if document_topic.child_ids:
+                document_topic.secondary_topics_display_name = ', '.join(
+                    document_topic.child_ids.mapped('name'))
