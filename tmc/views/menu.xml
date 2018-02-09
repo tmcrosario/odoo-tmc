@@ -72,7 +72,7 @@
 
     <menuitem id="menu_main_personal"
               name="Personal"
-              sequence="10"
+              sequence="95"
               action="tmc_hr_employee_list_action"
               groups="tmc.group_manager,tmc.group_user,tmc.group_read_only" />
 
