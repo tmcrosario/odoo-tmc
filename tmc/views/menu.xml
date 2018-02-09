@@ -2,7 +2,7 @@
 <odoo>
 
     <menuitem id="menu_main_tmc"
-              name="Tribunal de Cuentas"
+              name="Gestión Documental"
               sequence="5"
               groups="tmc.group_manager,tmc.group_user,tmc.group_read_only" />
 
@@ -30,7 +30,7 @@
               sequence="15" />
 
     <menuitem id="menu_main_tmc_institutional_classifiers"
-              name="Institutional Classifiers"
+              name="Institutional Classifier"
               parent="menu_main_tmc"
               sequence="10" />
 
