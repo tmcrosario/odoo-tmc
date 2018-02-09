@@ -11,13 +11,10 @@ class Employee(models.Model):
     name = fields.Char()
 
     internal_number = fields.Char(
-        size=3,
-        required=True
+        size=3
     )
 
-    docket_number = fields.Integer(
-        required=True
-    )
+    docket_number = fields.Integer()
 
     bank_account_number = fields.Char()
 
