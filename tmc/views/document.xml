@@ -119,9 +119,12 @@
                                    default_focus="1" />
                             <field name="document_type_id"
                                    attrs="{'invisible':[('dependence_id','=', False)]}" />
+                            <field name="document_type_abbr"
+                                   invisible="True" />
                         </group>
                         <group>
-                            <field name="number" />
+                            <field name="number"
+                                   attrs="{'required':[('document_type_abbr', '!=', 'ACT')], 'invisible':[('document_type_abbr', '=', 'ACT')]}" />
                             <field name="period" />
                         </group>
                     </group>

@@ -25,9 +25,11 @@ class Document(models.Model):
         required=True
     )
 
-    number = fields.Integer(
-        required=True
+    document_type_abbr = fields.Char(
+        related='document_type_id.abbreviation',
     )
+
+    number = fields.Integer()
 
     period = fields.Integer(
         required=True
@@ -142,11 +144,13 @@ class Document(models.Model):
     @api.constrains('number')
     def _check_number(self):
         max_number = 6000
-        if self.document_type_id.abbreviation == 'EXP':
+        if self.document_type_id.abbreviation in ['EXP', 'ACT']:
             max_number = 999999
-        if self.dependence_id.abbreviation in ['CM', 'HCM']:
+        if self.dependence_id.abbreviation in ['CM', 'HCM', 'CONC']:
             max_number = 999999
-        if not self.number > 0 or not self.number <= max_number:
+        if self.number == 0 and self.document_type_id.abbreviation != 'ACT':
+            raise Warning(_('Invalid number'))
+        if self.number > max_number:
             raise Warning(_('Invalid number'))
 
     @api.multi
@@ -160,6 +164,10 @@ class Document(models.Model):
             doc_number = document.number
             doc_period = document.period
             dep_abbr = document.dependence_id.abbreviation
+
+            if doc_abbr == 'ACT':
+                doc_number = self.env.ref(
+                    'tmc_data.seq_tmc_act').number_next_actual
 
             if (doc_abbr and doc_number and doc_period and dep_abbr):
                 document.name = "%s-%s-%s/%s" % (
@@ -279,6 +287,15 @@ class Document(models.Model):
                 and self.number and self.period:
             if self.env['tmc.document'].search([('name', '=', self.name)]):
                 raise exceptions.Warning(_('Document already exists'))
+
+    @api.model
+    def create(self, vals):
+        if vals.get('document_type_abbr') == 'ACT':
+            vals['number'] = self.env.ref(
+                'tmc_data.seq_tmc_act').number_next_actual
+            seq = self.env['ir.sequence']
+            seq.next_by_code('tmc.document')
+        return super(Document, self).create(vals)
 
     @api.multi
     def write(self, vals, write_inverse=True):
@@ -461,6 +478,32 @@ class DocumentRes(models.Model):
     document_id = fields.Many2one(
         comodel_name='tmc.document',
         domain=[('document_type_id.abbreviation', '=', 'RES')],
+        string='Document Name',
+        required=True,
+        ondelete='cascade',
+        delegate=True
+    )
+
+
+class DocumentConv(models.Model):
+    _name = 'tmc.document_conv'
+
+    document_id = fields.Many2one(
+        comodel_name='tmc.document',
+        domain=[('document_type_id.abbreviation', '=', 'CONV')],
+        string='Document Name',
+        required=True,
+        ondelete='cascade',
+        delegate=True
+    )
+
+
+class DocumentAct(models.Model):
+    _name = 'tmc.document_act'
+
+    document_id = fields.Many2one(
+        comodel_name='tmc.document',
+        domain=[('document_type_id.abbreviation', '=', 'ACT')],
         string='Document Name',
         required=True,
         ondelete='cascade',
