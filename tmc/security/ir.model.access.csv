@@ -35,6 +35,12 @@ access_tmc_document_dec_read_only,tmc.document_dec.read_only,model_tmc_document_
 access_tmc_document_ord_manager,tmc.document_ord.manager,model_tmc_document_ord,group_manager,1,1,1,1
 access_tmc_document_ord_user,tmc.document_ord.user,model_tmc_document_ord,group_user,1,0,0,0
 access_tmc_document_ord_read_only,tmc.document_ord.read_only,model_tmc_document_ord,group_read_only,1,0,0,0
+access_tmc_document_conv_manager,tmc.document_conv.manager,model_tmc_document_conv,group_manager,1,1,1,1
+access_tmc_document_conv_user,tmc.document_conv.user,model_tmc_document_conv,group_user,1,0,0,0
+access_tmc_document_conv_read_only,tmc.document_conv.read_only,model_tmc_document_conv,group_read_only,1,0,0,0
+access_tmc_document_act_manager,tmc.document_act.manager,model_tmc_document_act,group_manager,1,1,1,1
+access_tmc_document_act_user,tmc.document_act.user,model_tmc_document_act,group_user,1,0,0,0
+access_tmc_document_act_read_only,tmc.document_act.read_only,model_tmc_document_act,group_read_only,1,0,0,0
 access_tmc_document_dic_manager,tmc.document_dic.manager,model_tmc_document_dic,group_manager,1,1,1,1
 access_tmc_document_dic_user,tmc.document_dic.user,model_tmc_document_dic,group_user,1,0,0,0
 access_tmc_document_dic_read_only,tmc.document_dic.read_only,model_tmc_document_dic,group_read_only,1,0,0,0
