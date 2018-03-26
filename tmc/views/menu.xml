@@ -23,11 +23,22 @@
               sequence="10"
               action="important_document_list_action" />
 
-    <menuitem id="menu_main_tmc_documents_document_topics"
+    <menuitem id="menu_main_tmc_documents_document_topics_list"
               name="Document Topics"
               parent="menu_main_tmc_documents"
-              action="document_topic_list_action"
               sequence="15" />
+
+    <menuitem id="menu_main_tmc_documents_document_topics"
+              name="Main and Secondary Topics"
+              parent="menu_main_tmc_documents_document_topics_list"
+              action="document_topic_list_action"
+              sequence="5" />
+
+    <menuitem id="menu_main_tmc_dependences_document_topics"
+              name="Dependences with Document Topics"
+              parent="menu_main_tmc_documents_document_topics_list"
+              action="dependence_document_topic_list_action"
+              sequence="10" />
 
     <menuitem id="menu_main_tmc_institutional_classifiers"
               name="Institutional Classifier"

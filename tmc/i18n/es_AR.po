@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-09 18:47+0000\n"
-"PO-Revision-Date: 2018-02-09 18:47+0000\n"
+"POT-Creation-Date: 2018-03-26 14:22+0000\n"
+"PO-Revision-Date: 2018-03-26 14:22+0000\n"
 "Last-Translator: Lisandro, 2017\n"
 "Language-Team: Spanish (Argentina) (https://www.transifex.com/tmcrosario/teams/73663/es_AR/)\n"
 "MIME-Version: 1.0\n"
@@ -82,6 +82,16 @@ msgstr ""
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_abbreviation
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_abbreviation
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_document_type_abbr
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_document_type_abbr
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_type_abbr
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_document_type_abbr
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_document_type_abbr
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_document_type_abbr
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_document_type_abbr
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_document_type_abbr
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_document_type_abbr
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_document_type_abbr
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_type_abbreviation
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_office_abbreviation
 msgid "Abbreviation"
@@ -163,6 +173,8 @@ msgstr "Comentario"
 #: model:ir.model.fields,field_description:tmc.field_tmc_category_create_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_create_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_create_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_create_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_create_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_create_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_create_uid
@@ -188,6 +200,8 @@ msgstr "Creado Por"
 #: model:ir.model.fields,field_description:tmc.field_tmc_category_create_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_create_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_create_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_create_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_create_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_create_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_create_date
@@ -210,6 +224,8 @@ msgid "Created on"
 msgstr "Fecha de Creación"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_date
@@ -245,6 +261,8 @@ msgstr "La abreviatura de la dependencia debe ser única"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_dependence_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_dependence_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_dependence_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_dependence_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dependence_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_dependence_id
@@ -282,9 +300,17 @@ msgid "Dependences"
 msgstr "Dependencias"
 
 #. module: tmc
+#: model:ir.actions.act_window,name:tmc.dependence_document_topic_list_action
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_dependences_document_topics
+msgid "Dependences with Document Topics"
+msgstr "Dependencias con Temas"
+
+#. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_category_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_display_name
@@ -322,6 +348,8 @@ msgid "Document"
 msgstr "Documento"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_document_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_document_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_document_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_document_id
@@ -339,8 +367,7 @@ msgid "Document Topic"
 msgstr "Tema Principal o Secundario"
 
 #. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_topic_list_action
-#: model:ir.ui.menu,name:tmc.menu_main_tmc_documents_document_topics
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_documents_document_topics_list
 #: model:ir.ui.view,arch_db:tmc.view_tmc_dependence_form
 msgid "Document Topics"
 msgstr "Temas de Documento"
@@ -359,8 +386,8 @@ msgid "Document Types"
 msgstr "Tipos de Documento"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:111
-#: code:addons/tmc/models/document.py:281 sql_constraint:tmc.document:0
+#: code:addons/tmc/models/document.py:113
+#: code:addons/tmc/models/document.py:289 sql_constraint:tmc.document:0
 #, python-format
 msgid "Document already exists"
 msgstr "El documento ya existe"
@@ -377,6 +404,8 @@ msgid "Document ids"
 msgstr "Documentos"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_document_object_copy
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_document_object_copy
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_object_copy
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_document_object_copy
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_document_object_copy
@@ -389,6 +418,8 @@ msgid "Document object copy"
 msgstr "Objeto"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_document_object_required
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_document_object_required
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_object_required
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_document_object_required
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_document_object_required
@@ -402,6 +433,8 @@ msgstr ""
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_document_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_document_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_document_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_document_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_document_topic_ids
@@ -421,6 +454,8 @@ msgid "Document type abbreviation must be unique"
 msgstr "La abreviatura debe ser única"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_document_type_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_document_type_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_type_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_document_type_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_document_type_id
@@ -512,6 +547,8 @@ msgid "High"
 msgstr "Alto"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_highest_highlight
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_highest_highlight
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_highest_highlight
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_highest_highlight
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_highest_highlight
@@ -524,6 +561,8 @@ msgid "Highest highlight"
 msgstr ""
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_highlight_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_highlight_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_highlight_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_highlight_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_highlight_ids
@@ -546,6 +585,8 @@ msgid "Highlights"
 msgstr "Resaltados"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_highlights_count
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_highlights_count
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_highlights_count
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_highlights_count
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_highlights_count
@@ -561,6 +602,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_category_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_id
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_id
@@ -583,6 +626,8 @@ msgid "ID"
 msgstr ""
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_important
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_important
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_important
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_important
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_important
@@ -598,7 +643,7 @@ msgstr "Importante"
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.menu_main_tmc_important_documents_document_list
 msgid "Important Documents"
-msgstr "Documentos de Interés"
+msgstr "Documentos con Temas"
 
 #. module: tmc
 #: model:ir.ui.view,arch_db:tmc.document_topic_search_view
@@ -632,20 +677,21 @@ msgid "Internal number"
 msgstr "Nº de Interno"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:150
+#: code:addons/tmc/models/document.py:152
+#: code:addons/tmc/models/document.py:154
 #, python-format
 msgid "Invalid number"
 msgstr "Número inválido"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:140
+#: code:addons/tmc/models/document.py:142
 #: code:addons/tmc/models/institutional_classifier.py:57
 #, python-format
 msgid "Invalid period"
 msgstr "Período inválido"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:135
+#: code:addons/tmc/models/document.py:137
 #, python-format
 msgid "Invalid year"
 msgstr "Año Inválido"
@@ -655,6 +701,8 @@ msgstr "Año Inválido"
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence___last_update
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order___last_update
 #: model:ir.model.fields,field_description:tmc.field_tmc_document___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act___last_update
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv___last_update
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec___last_update
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic___last_update
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp___last_update
@@ -679,6 +727,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_category_write_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_write_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_write_uid
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_write_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_write_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_write_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_write_uid
@@ -704,6 +754,8 @@ msgstr "Modificado Por"
 #: model:ir.model.fields,field_description:tmc.field_tmc_category_write_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_write_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_write_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_write_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_write_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_write_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_write_date
@@ -736,6 +788,19 @@ msgid "Main Topic"
 msgstr "Tema Principal"
 
 #. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_topic_list_action
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_documents_document_topics
+msgid "Main and Secondary Topics"
+msgstr "Principales y Secundarios"
+
+#. module: tmc
+#: model:ir.actions.report.xml,name:tmc.dependence_document_topics_report
+msgid "Main and Secondary Topics by Dependence"
+msgstr "Temas por Dependencia"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_main_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_main_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_main_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_main_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_main_topic_ids
@@ -768,6 +833,8 @@ msgid "Members"
 msgstr "Miembros"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_reference_model
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_reference_model
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_reference_model
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_reference_model
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_reference_model
@@ -785,6 +852,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_parent_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_name
@@ -810,6 +879,8 @@ msgid "Nomenclators"
 msgstr "Nomencladores"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_number
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_number
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_number
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_number
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_number
@@ -827,6 +898,8 @@ msgid "Number must be unique!"
 msgstr "El número debe ser único"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_document_object
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_document_object
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_document_object
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_document_object
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_document_object
@@ -861,6 +934,8 @@ msgid "Pdf"
 msgstr "PDF"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_period
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_period
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_period
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_period
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_period
@@ -895,6 +970,8 @@ msgid "Reference"
 msgstr "Referencia"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_reference_document
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_reference_document
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_reference_document
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_reference_document
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_reference_document
@@ -912,6 +989,8 @@ msgid "Related Documents"
 msgstr "Documentos Relacionados"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_related_document_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_related_document_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_related_document_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_related_document_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_related_document_ids
@@ -930,6 +1009,8 @@ msgid "Secondary Topics"
 msgstr "Temas Secundarios"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_secondary_topic_ids
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_secondary_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_secondary_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_secondary_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_secondary_topic_ids
@@ -974,12 +1055,19 @@ msgid "Tema Principal"
 msgstr ""
 
 #. module: tmc
+#: model:ir.ui.view,arch_db:tmc.dependece_document_topic_tree_view
+msgid "Temas Principales"
+msgstr ""
+
+#. module: tmc
 #: code:addons/tmc/models/institutional_classifier.py:69
 #, python-format
 msgid "There is already a more recent nomenclator"
 msgstr "Ya existe un nomenclador más actual"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_topics_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_topics_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_topics_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_topics_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_topics_display_name
@@ -998,7 +1086,7 @@ msgid "Tribunal de Cuentas"
 msgstr ""
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:172
+#: code:addons/tmc/models/document.py:180
 #, python-format
 msgid "Unnamed Document"
 msgstr "Documento Sin Nombre"
@@ -1015,7 +1103,7 @@ msgid "Year %s"
 msgstr "Año %s"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:286
+#: code:addons/tmc/models/document.py:303
 #, python-format
 msgid "You must specify a period."
 msgstr ""
@@ -1043,6 +1131,16 @@ msgstr ""
 #. module: tmc
 #: model:ir.model,name:tmc.model_tmc_document
 msgid "tmc.document"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_document_act
+msgid "tmc.document_act"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_document_conv
+msgid "tmc.document_conv"
 msgstr ""
 
 #. module: tmc

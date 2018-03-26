@@ -20,7 +20,8 @@
         'mass_editing',
         'web_tree_many2one_clickable',
         'base_technical_features',
-        'web_search_with_and'
+        'web_search_with_and',
+        'report_py3o'
     ],
     'data': [
         'security/groups.xml',
@@ -35,6 +36,7 @@
         'views/employee.xml',
         'views/office.xml',
         'views/country_state.xml',
+        'report/dependence_document_topics.xml',
         'views/menu.xml'
     ],
     'demo': [],

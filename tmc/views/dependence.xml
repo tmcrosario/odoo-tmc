@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- WINDOW ACTION -->
-    <record model="ir.actions.act_window"
-            id="dependence_list_action">
-        <field name="name">Dependences</field>
-        <field name="res_model">tmc.dependence</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
     <!-- TREE VIEW -->
     <record id="view_tmc_dependence_tree"
             model="ir.ui.view">
@@ -21,6 +12,20 @@
                 <field name="name" />
                 <field name="abbreviation" />
                 <field name="in_actual_nomenclator" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="dependece_document_topic_tree_view"
+            model="ir.ui.view">
+        <field name="name">tmc.dependence.tree</field>
+        <field name="model">tmc.dependence</field>
+        <field name="arch"
+               type="xml">
+            <tree>
+                <field name="name" />
+                <field name="document_topic_ids"
+                       string="Temas Principales" />
             </tree>
         </field>
     </record>
@@ -79,6 +84,26 @@
                         domain="[('in_actual_nomenclator', '=', True)]" />
             </search>
         </field>
+    </record>
+
+    <!-- WINDOW ACTION -->
+    <record model="ir.actions.act_window"
+            id="dependence_list_action">
+        <field name="name">Dependences</field>
+        <field name="res_model">tmc.dependence</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="dependence_document_topic_list_action">
+        <field name="name">Dependences with Document Topics</field>
+        <field name="res_model">tmc.dependence</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[('document_topic_ids', '!=', False)]</field>
+        <field name="view_id"
+               ref="dependece_document_topic_tree_view" />
     </record>
 
 </odoo>

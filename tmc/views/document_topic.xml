@@ -81,7 +81,7 @@
     <!-- WINDOW ACTION -->
     <record id="document_topic_list_action"
             model="ir.actions.act_window">
-        <field name="name">Document Topics</field>
+        <field name="name">Main and Secondary Topics</field>
         <field name="res_model">tmc.document_topic</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
