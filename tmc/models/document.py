@@ -144,7 +144,7 @@ class Document(models.Model):
     @api.constrains('number')
     def _check_number(self):
         max_number = 6000
-        if self.document_type_id.abbreviation in ['EXP', 'ACT']:
+        if self.document_type_id.abbreviation in ['EXP', 'ACT', 'CONV']:
             max_number = 999999
         if self.dependence_id.abbreviation in ['CM', 'HCM', 'CONC']:
             max_number = 999999
