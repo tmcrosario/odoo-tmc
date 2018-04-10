@@ -415,7 +415,7 @@ msgstr "Documentos"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_document_object_copy
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_document_object_copy
 msgid "Document object copy"
-msgstr "Objeto"
+msgstr "Referencia"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_act_document_object_required
@@ -909,7 +909,7 @@ msgstr "El número debe ser único"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_document_object
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_document_object
 msgid "Object"
-msgstr "Objeto"
+msgstr "Referencia"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.tmc_hr_office_list_action
