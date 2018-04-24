@@ -7,6 +7,7 @@ from odoo import _, api, exceptions, fields, models
 class Document(models.Model):
 
     _name = 'tmc.document'
+    _order = 'period desc, number'
 
     name = fields.Char(
         compute='_compute_name',
