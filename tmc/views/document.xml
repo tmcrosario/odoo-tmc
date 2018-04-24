@@ -10,16 +10,6 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- WINDOW ACTION -->
-    <record model="ir.actions.act_window"
-            id="important_document_list_action">
-        <field name="name">Documents</field>
-        <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
-        <field name="domain">[('important', '=', True)]</field>
-    </record>
-
     <!-- TREE VIEW -->
     <record id="view_document_tree"
             model="ir.ui.view">
@@ -38,24 +28,6 @@
                 <field name="topics_display_name" />
                 <field name="highest_highlight"
                        invisible="True" />
-            </tree>
-        </field>
-    </record>
-
-    <!-- SIMPLE TREE VIEW -->
-    <record id="view_document_simple_tree"
-            model="ir.ui.view">
-        <field name="name">tmc.document.simple.tree</field>
-        <field name="model">tmc.document</field>
-        <field name="arch"
-               type="xml">
-            <tree string="Document"
-                  default_order="period desc, number desc, dependence_id, document_type_id">
-                <field name="name" />
-                <field name="date" />
-                <field name="document_object_copy" />
-                <field name="secondary_topic_ids"
-                       invisible="1" />
             </tree>
         </field>
     </record>
@@ -81,20 +53,6 @@
                                 name="highlights_count_button">
                             <field string="Highlight(s)" name="highlights_count" widget="statinfo"/>
                         </button>
-                        <!-- <button class="oe_inline oe_stat_button"
-                                type="object"
-                                string="Show Content"
-                                name="show_or_add_content"
-                                attrs="{'invisible':[('reference_document','=', 0)]}"
-                                context="{'default_document_id': active_id}"
-                                icon="fa-file-text" />
-                        <button class="oe_inline oe_stat_button"
-                                type="object"
-                                string="Add Content"
-                                name="show_or_add_content"
-                                attrs="{'invisible':[('reference_document','!=', 0)]}"
-                                context="{'default_document_id': active_id}"
-                                icon="fa-file-text-o" /> -->
                     </div>
                     <div class="oe_title">
                         <label for="name"
@@ -171,27 +129,6 @@
         </field>
     </record>
 
-    <!-- SIMPLE FORM VIEW -->
-    <record id="view_simple_tmc_document_form"
-            model="ir.ui.view">
-        <field name="name">tmc.document.form</field>
-        <field name="model">tmc.document</field>
-        <field name="priority">10</field>
-        <field name="arch"
-               type="xml">
-            <form duplicate="0">
-                <sheet>
-                    <h2>
-                        <field name="name"/>
-                    </h2>
-                    <group>
-                        <field name="date" />
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
-
     <!-- SEARCH VIEW -->
     <record model="ir.ui.view"
             id="document_search_view">
@@ -217,274 +154,193 @@
         </field>
     </record>
 
+    <record model="ir.ui.view"
+            id="document_simple_search_view">
+        <field name="name">document.simple.search</field>
+        <field name="model">tmc.document</field>
+        <field name="arch"
+               type="xml">
+            <search string="Document">
+                <field name="number"
+                       search_domain="['|', ('number', '=', self)]" />
+                <field name="period"
+                       search_domain="['|', ('period', '=', self)]" />
+                <field name="document_object"
+                       filter_domain="[('document_object', 'ilike', self)]" />
+                <field name="secondary_topic_ids"
+                       string="Document Topic"
+                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+            </search>
+        </field>
+    </record>
+
     <!-- DECRETO -->
     <!-- WINDOW ACTION -->
     <record model="ir.actions.act_window"
             id="document_dec_list_action">
-        <field name="name">Decretos</field>
+        <field name="name">Decretos del Departamento Ejecutivo</field>
         <field name="res_model">tmc.document</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
         <field name="domain">[('document_type_id','=','Decreto')]</field>
-    </record>
-
-    <!-- TREE VIEW -->
-    <record id="view_document_dec_tree"
-            model="ir.ui.view">
-        <field name="name">tmc.document_dec.tree</field>
-        <field name="model">tmc.document_dec</field>
-        <field name="arch"
-               type="xml">
-            <tree>
-                <field name="document_id" />
-            </tree>
-        </field>
-    </record>
-
-    <!-- FORM VIEW -->
-    <record id="view_document_dec_form"
-            model="ir.ui.view">
-        <field name="name">tmc.document_dec.form</field>
-        <field name="model">tmc.document_dec</field>
-        <field name="inherit_id"
-               ref="tmc.view_document_form" />
-        <field name="priority">5</field>
-        <field name="arch"
-               type="xml">
-            <xpath expr="//field[@name='name']"
-                   position="after">
-                <field name="document_id"
-                       invisible="True" />
-            </xpath>
-            <!-- <button name="show_or_add_content" position="attributes">
-            <attribute name="invisible">True</attribute>
-        </button> -->
-        </field>
-    </record>
-
-    <!-- DICTAMEN -->
-    <!-- WINDOW ACTION -->
-    <record model="ir.actions.act_window"
-            id="document_dic_list_action">
-        <field name="name">Decretos</field>
-        <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
-        <field name="domain">[('document_type_id','=','Dictámen')]</field>
-    </record>
-
-    <!-- TREE VIEW -->
-    <record id="view_document_dic_tree"
-            model="ir.ui.view">
-        <field name="name">tmc.document_dic.tree</field>
-        <field name="model">tmc.document_dic</field>
-        <field name="arch"
-               type="xml">
-            <tree>
-                <field name="document_id" />
-            </tree>
-        </field>
-    </record>
-
-    <!-- FORM VIEW -->
-    <record id="view_document_dic_form"
-            model="ir.ui.view">
-        <field name="name">tmc.document_dic.form</field>
-        <field name="model">tmc.document_dic</field>
-        <field name="inherit_id"
-               ref="tmc.view_document_form" />
-        <field name="priority">5</field>
-        <field name="arch"
-               type="xml">
-            <xpath expr="//field[@name='name']"
-                   position="after">
-                <field name="document_id"
-                       invisible="True" />
-            </xpath>
-            <!-- <button name="show_or_add_content" position="attributes">
-                <attribute name="invisible">True</attribute>
-            </button> -->
-        </field>
-    </record>
-
-    <!-- EXPEDIENTE -->
-    <!-- WINDOW ACTION -->
-    <record model="ir.actions.act_window"
-            id="document_exp_list_action">
-        <field name="name">Decretos</field>
-        <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
-        <field name="domain">[('document_type_id','=','Expediente')]</field>
-    </record>
-
-    <!-- TREE VIEW -->
-    <record id="view_document_exp_tree"
-            model="ir.ui.view">
-        <field name="name">tmc.document_exp.tree</field>
-        <field name="model">tmc.document_exp</field>
-        <field name="arch"
-               type="xml">
-            <tree>
-                <field name="document_id" />
-            </tree>
-        </field>
-    </record>
-
-    <!-- FORM VIEW -->
-    <record id="view_document_exp_form"
-            model="ir.ui.view">
-        <field name="name">tmc.document_exp.form</field>
-        <field name="model">tmc.document_exp</field>
-        <field name="inherit_id"
-               ref="tmc.view_document_form" />
-        <field name="priority">5</field>
-        <field name="arch"
-               type="xml">
-            <xpath expr="//field[@name='name']"
-                   position="after">
-                <field name="document_id"
-                       invisible="True" />
-            </xpath>
-            <!-- <button name="show_or_add_content" position="attributes">
-            <attribute name="invisible">True</attribute>
-        </button> -->
-        </field>
-    </record>
-
-    <!-- RESOLUCION EXTRAORDINARIA -->
-    <!-- WINDOW ACTION -->
-    <record model="ir.actions.act_window"
-            id="document_ext_list_action">
-        <field name="name">Decretos</field>
-        <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
-        <field name="domain">[('document_type_id','=','Resolución Extraordinaria')]</field>
-    </record>
-
-    <!-- TREE VIEW -->
-    <record id="view_document_ext_tree"
-            model="ir.ui.view">
-        <field name="name">tmc.document_ext.tree</field>
-        <field name="model">tmc.document_ext</field>
-        <field name="arch"
-               type="xml">
-            <tree>
-                <field name="document_id" />
-            </tree>
-        </field>
-    </record>
-
-    <!-- FORM VIEW -->
-    <record id="view_document_ext_form"
-            model="ir.ui.view">
-        <field name="name">tmc.document_ext.form</field>
-        <field name="model">tmc.document_ext</field>
-        <field name="inherit_id"
-               ref="tmc.view_document_form" />
-        <field name="priority">5</field>
-        <field name="arch"
-               type="xml">
-            <xpath expr="//field[@name='name']"
-                   position="after">
-                <field name="document_id"
-                       invisible="True" />
-            </xpath>
-            <!-- <button name="show_or_add_content" position="attributes">
-            <attribute name="invisible">True</attribute>
-        </button> -->
-        </field>
-    </record>
-
-    <!-- LEGAJO -->
-    <!-- WINDOW ACTION -->
-    <record model="ir.actions.act_window"
-            id="document_leg_list_action">
-        <field name="name">Decretos</field>
-        <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
-        <field name="domain">[('document_type_id','=','Legajo')]</field>
-    </record>
-
-    <!-- TREE VIEW -->
-    <record id="view_document_leg_tree"
-            model="ir.ui.view">
-        <field name="name">tmc.document_leg.tree</field>
-        <field name="model">tmc.document_leg</field>
-        <field name="arch"
-               type="xml">
-            <tree>
-                <field name="document_id" />
-            </tree>
-        </field>
-    </record>
-
-    <!-- FORM VIEW -->
-    <record id="view_document_leg_form"
-            model="ir.ui.view">
-        <field name="name">tmc.document_leg.form</field>
-        <field name="model">tmc.document_leg</field>
-        <field name="inherit_id"
-               ref="tmc.view_document_form" />
-        <field name="priority">5</field>
-        <field name="arch"
-               type="xml">
-            <xpath expr="//field[@name='name']"
-                   position="after">
-                <field name="document_id"
-                       invisible="True" />
-            </xpath>
-            <!-- <button name="show_or_add_content" position="attributes">
-            <attribute name="invisible">True</attribute>
-        </button> -->
-        </field>
     </record>
 
     <!-- RESOLUCION -->
     <!-- WINDOW ACTION -->
     <record model="ir.actions.act_window"
-            id="document_res_list_action">
-        <field name="name">Decretos</field>
+            id="document_res_hac_list_action">
+        <field name="name">Resoluciones de Secretaría de Hacienda y Economía (HAC)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
-        <field name="domain">[('document_type_id','=','Resolución')]</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE HACIENDA Y ECONOMÍA')]</field>
     </record>
 
-    <!-- TREE VIEW -->
-    <record id="view_document_res_tree"
-            model="ir.ui.view">
-        <field name="name">tmc.document_res.tree</field>
-        <field name="model">tmc.document_res</field>
-        <field name="arch"
-               type="xml">
-            <tree>
-                <field name="document_id" />
-            </tree>
-        </field>
+    <record model="ir.actions.act_window"
+            id="document_res_pla_list_action">
+        <field name="name">Resoluciones de Planeamiento (PLA)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE PLANEAMIENTO')]</field>
     </record>
 
-    <!-- FORM VIEW -->
-    <record id="view_document_res_form"
-            model="ir.ui.view">
-        <field name="name">tmc.document_res.form</field>
-        <field name="model">tmc.document_res</field>
-        <field name="inherit_id"
-               ref="tmc.view_document_form" />
-        <field name="priority">5</field>
-        <field name="arch"
-               type="xml">
-            <xpath expr="//field[@name='name']"
-                   position="after">
-                <field name="document_id"
-                       invisible="True" />
-            </xpath>
-            <!-- <button name="show_or_add_content" position="attributes">
-            <attribute name="invisible">True</attribute>
-        </button> -->
-        </field>
+    <record model="ir.actions.act_window"
+            id="document_res_gob_list_action">
+        <field name="name">Resoluciones de Gobierno (GOB)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE GOBIERNO')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_res_obr_list_action">
+        <field name="name">Resoluciones de Obras Públicas (OBR)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE OBRAS PÚBLICAS')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_res_amb_list_action">
+        <field name="name">Resoluciones de Ambiente y Espacios Públicos (AMB)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE AMBIENTE Y ESPACIOS PÚBLICOS')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_res_sal_list_action">
+        <field name="name">Resoluciones de Salud Pública (SAL)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE SALUD PÚBLICA')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_res_des_list_action">
+        <field name="name">Resoluciones de Desarrollo Social (DES)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE DESARROLLO SOCIAL')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_res_prod_list_action">
+        <field name="name">Resoluciones de Producción y Desarrollo Local (PROD)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE PRODUCCIÓN Y DESARROLLO LOCAL')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_res_cul_list_action">
+        <field name="name">Resoluciones de Cultura y Educación (CUL)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE CULTURA Y EDUCACIÓN')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_res_gral_list_action">
+        <field name="name">Resoluciones de Secretaría General (GRAL)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA GENERAL')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_res_tur_list_action">
+        <field name="name">Resoluciones de Turismo (TUR)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE TURISMO')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_res_conv_list_action">
+        <field name="name">Resoluciones de Control y Convivencia (CONV)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE CONTROL Y CONVIVENCIA CIUDADANA')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_res_mov_list_action">
+        <field name="name">Resoluciones de Transporte y Movilidad (SAL)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE TRANSPORTE Y MOVILIDAD')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_res_econ_list_action">
+        <field name="name">Resoluciones de Economía Social (ECON)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE ECONOMÍA SOCIAL')]</field>
     </record>
 
 </odoo>
