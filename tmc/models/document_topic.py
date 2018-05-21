@@ -33,7 +33,8 @@ class DocumentTopic(models.Model):
     )
 
     dependence_ids = fields.Many2many(
-        comodel_name='tmc.dependence'
+        comodel_name='tmc.dependence',
+        domain="[('abbreviation', '!=', False)]"
     )
 
     dependences_display_name = fields.Char(
