@@ -17,7 +17,7 @@
         'web_export_view',
         'web_listview_range_select',
         'web_sheet_full_width',
-        'mass_editing',
+        # 'mass_editing',
         'web_tree_many2one_clickable',
         'base_technical_features',
         'web_search_with_and',
