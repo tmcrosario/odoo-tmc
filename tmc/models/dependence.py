@@ -41,9 +41,5 @@ class Dependence(models.Model):
     _sql_constraints = [
         ('name_unique',
          'UNIQUE(name)',
-         _('Dependence name must be unique')),
-
-        ('abbreviation_unique',
-         'UNIQUE(abbreviation)',
-         _('Dependence abbreviation must be unique'))
+         _('Dependence name must be unique'))
     ]
