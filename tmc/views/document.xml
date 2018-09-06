@@ -19,7 +19,7 @@
         <field name="arch"
                type="xml">
             <tree string="Document"
-                  default_order="period desc, number desc, dependence_id, document_type_id"
+                  default_order="period desc, name desc, dependence_id, document_type_id"
                   decoration-danger="highest_highlight=='high'"
                   decoration-warning="highest_highlight=='medium'">
                 <field name="name" />
