@@ -112,6 +112,47 @@
               sequence="70"
               action="document_res_econ_list_action" />
 
+   <menuitem id="menu_main_tmc_entes_document_list"
+              name="Entes Descentralizados"
+              parent="menu_main_tmc_documents"
+              sequence="20" />
+
+    <menuitem id="menu_main_tmc_entes_ter_document_list"
+              name="Terminal de Ómnibus"
+              parent="menu_main_tmc_entes_document_list"
+              sequence="5"
+              action="document_ter_list_action" />
+
+    <menuitem id="menu_main_tmc_entes_emr_document_list"
+              name="Ente de la Movilidad"
+              parent="menu_main_tmc_entes_document_list"
+              sequence="10"
+              action="document_emr_list_action" />
+
+    <menuitem id="menu_main_tmc_entes_ilar_document_list"
+              name="ILAR"
+              parent="menu_main_tmc_entes_document_list"
+              sequence="15"
+              action="document_ilar_list_action" />
+
+    <menuitem id="menu_main_tmc_entes_imps_document_list"
+              name="IMPS"
+              parent="menu_main_tmc_entes_document_list"
+              sequence="20"
+              action="document_imps_list_action" />
+
+    <menuitem id="menu_main_tmc_entes_spv_document_list"
+              name="SPVyH"
+              parent="menu_main_tmc_entes_document_list"
+              sequence="25"
+              action="document_spv_list_action" />
+
+    <menuitem id="menu_main_tmc_entes_hipodromo_document_list"
+              name="Hipódromo"
+              parent="menu_main_tmc_entes_document_list"
+              sequence="30"
+              action="document_hipodromo_list_action" />                            
+
     <menuitem id="menu_main_tmc_documents_document_topics_list"
               name="Document Topics"
               parent="menu_main_tmc"

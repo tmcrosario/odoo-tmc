@@ -343,4 +343,70 @@
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE ECONOMÍA SOCIAL')]</field>
     </record>
 
+    <record model="ir.actions.act_window"
+            id="document_ter_list_action">
+        <field name="name">Resoluciones de Terminal de Ómnibus (TER)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','Terminal de Omnibus Rosario')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_emr_list_action">
+        <field name="name">Resoluciones de Ente de la Movilidad (EMR)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','Ente de la Movilidad de Rosario')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_ilar_list_action">
+        <field name="name">Resoluciones de ILAR</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','INSTITUTO DE LUCHA ANTIPOLIOMIEL\xcdTICA DE ROSARIO')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_imps_list_action">
+        <field name="name">Documentos de Instituto Municipal de Previsión Social (IMPS)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('dependence_id', '=', 'INSTITUTO MUNICIPAL DE PREVISI\xd3N SOCIAL')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_spv_list_action">
+        <field name="name">Documentos de Servicio Público de la Vivienda y el Hábitat (SPV)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('dependence_id','=','SERVICIO P\xdaBLICO DE LA VIVIENDA Y EL H\xc1BITAT')]</field>
+    </record>    
+
+    <record model="ir.actions.act_window"
+            id="document_hipodromo_list_action">
+        <field name="name">Resoluciones de Hipódromo Rosario (HIP)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','Hipódromo Rosario')]</field>
+    </record>  
+
 </odoo>
