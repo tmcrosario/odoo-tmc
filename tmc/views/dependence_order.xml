@@ -43,6 +43,7 @@
                     <group>
                         <group>
                             <field name="parent_id" />
+                            <field name="dependence_id" class="oe_edit_only"/>
                             <field name="name" />
                         </group>
                         <group>
