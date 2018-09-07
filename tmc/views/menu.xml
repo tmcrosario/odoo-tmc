@@ -76,6 +76,12 @@
               sequence="40"
               action="document_res_prod_list_action" />
 
+    <menuitem id="menu_main_tmc_res_prodei_document_list"
+              name="Producción, Empleo e Innovación"
+              parent="menu_main_tmc_res_document_list"
+              sequence="42"
+              action="document_res_prodei_list_action" />
+
     <menuitem id="menu_main_tmc_res_cul_document_list"
               name="Cultura y Educación"
               parent="menu_main_tmc_res_document_list"
