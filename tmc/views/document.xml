@@ -334,7 +334,7 @@
 
     <record model="ir.actions.act_window"
             id="document_res_mov_list_action">
-        <field name="name">Resoluciones de Transporte y Movilidad (SAL)</field>
+        <field name="name">Resoluciones de Transporte y Movilidad (MOV)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
