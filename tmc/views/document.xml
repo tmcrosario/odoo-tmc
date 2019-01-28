@@ -420,4 +420,17 @@
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','Hipódromo Rosario')]</field>
     </record>  
 
+    <!-- CONVENIO -->
+    <!-- WINDOW ACTION -->
+    <record model="ir.actions.act_window"
+            id="document_conv_list_action">
+        <field name="name">Convenios</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Convenio')]</field>
+    </record>
+
 </odoo>

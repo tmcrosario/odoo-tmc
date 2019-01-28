@@ -23,6 +23,12 @@
               sequence="10"
               action="document_dec_list_action" />
 
+   <menuitem id="menu_main_tmc_convenios_document_list"
+              name="Convenios"
+              parent="menu_main_tmc_documents"
+              sequence="12"
+              action="document_conv_list_action" />
+
     <menuitem id="menu_main_tmc_res_document_list"
               name="Resoluciones"
               parent="menu_main_tmc_documents"
