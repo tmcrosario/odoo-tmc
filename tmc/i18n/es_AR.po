@@ -1,30 +1,27 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* tmc
+# 	* tmc
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-24 18:50+0000\n"
-"PO-Revision-Date: 2018-04-24 18:50+0000\n"
+"POT-Creation-Date: 2019-01-29 17:44+0000\n"
+"PO-Revision-Date: 2019-01-29 14:55-0300\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"Language: es_AR\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. module: tmc
 #: code:addons/tmc/models/institutional_classifier.py:45
 #, python-format
 msgid " (Current)"
 msgstr " (Actual)"
-
-#. module: tmc
-#: selection:tmc.institutional_classifier,period:0
-msgid "2008"
-msgstr "2008"
 
 #. module: tmc
 #: selection:tmc.institutional_classifier,period:0
@@ -75,6 +72,11 @@ msgstr "2017"
 #: selection:tmc.institutional_classifier,period:0
 msgid "2018"
 msgstr "2018"
+
+#. module: tmc
+#: selection:tmc.institutional_classifier,period:0
+msgid "2019"
+msgstr "2019"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_abbreviation
@@ -173,6 +175,12 @@ msgid "Control y Convivencia"
 msgstr "Control y Convivencia"
 
 #. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_conv_list_action
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_convenios_document_list
+msgid "Convenios"
+msgstr "Convenios"
+
+#. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_category_create_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_create_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_create_uid
@@ -246,6 +254,12 @@ msgid "Date"
 msgstr "Fecha"
 
 #. module: tmc
+#: code:addons/tmc/models/document.py:408
+#, python-format
+msgid "Date does not match with period"
+msgstr "La fecha del documento no coincide con el período del mismo"
+
+#. module: tmc
 #: model:ir.ui.menu,name:tmc.menu_main_tmc_dec_document_list
 msgid "Decretos"
 msgstr "Decretos"
@@ -260,13 +274,6 @@ msgstr "Decretos del Departamento Ejecutivo"
 #: model:ir.ui.menu,name:tmc.menu_main_tmc_dependence_orders_list
 msgid "Dependence Order"
 msgstr "Dependencias"
-
-#. module: tmc
-#: code:addons/tmc/models/dependence.py:48
-#: sql_constraint:tmc.dependence:0
-#, python-format
-msgid "Dependence abbreviation must be unique"
-msgstr "La abreviatura de la dependencia debe ser única"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_dependence_id
@@ -289,8 +296,7 @@ msgid "Dependence ids"
 msgstr "Dependencias"
 
 #. module: tmc
-#: code:addons/tmc/models/dependence.py:44
-#: sql_constraint:tmc.dependence:0
+#: code:addons/tmc/models/dependence.py:44 sql_constraint:tmc.dependence:0
 #, python-format
 msgid "Dependence name must be unique"
 msgstr "El nombre de la dependencia debe ser única"
@@ -334,6 +340,7 @@ msgstr "Desarrollo Social"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res_display_name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_type_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_highlight_display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_display_name
@@ -344,11 +351,6 @@ msgstr "Desarrollo Social"
 #: model:ir.model.fields,field_description:tmc.field_tmc_system_display_name
 msgid "Display Name"
 msgstr "Mostrar Nombre"
-
-#. module: tmc
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_display_name
-msgid "Display name"
-msgstr "Nombre"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_docket_number
@@ -402,9 +404,8 @@ msgid "Document Types"
 msgstr "Tipos de Documento"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:114
-#: code:addons/tmc/models/document.py:290
-#: sql_constraint:tmc.document:0
+#: code:addons/tmc/models/document.py:119
+#: code:addons/tmc/models/document.py:295 sql_constraint:tmc.document:0
 #, python-format
 msgid "Document already exists"
 msgstr "El documento ya existe"
@@ -497,6 +498,16 @@ msgid "Document type name must be unique"
 msgstr "El nombre debe ser único"
 
 #. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_imps_list_action
+msgid "Documentos de Instituto Municipal de Previsión Social (IMPS)"
+msgstr "Documentos de Instituto Municipal de Previsión Social (IMPS)"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_spv_list_action
+msgid "Documentos de Servicio Público de la Vivienda y el Hábitat (SPV)"
+msgstr "Documentos de Servicio Público de la Vivienda y el Hábitat (SPV)"
+
+#. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_list_action
 #: model:ir.ui.menu,name:tmc.menu_main_tmc_documents
 msgid "Documents"
@@ -543,6 +554,30 @@ msgid "Employees"
 msgstr "Empleados"
 
 #. module: tmc
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_entes_emr_document_list
+msgid "Ente de la Movilidad"
+msgstr "Ente de la Movilidad"
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_entes_document_list
+msgid "Entes Descentralizados"
+msgstr "Entes Descentralizados"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act_entry_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv_entry_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec_entry_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic_entry_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_entry_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp_entry_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext_entry_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg_entry_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord_entry_date
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res_entry_date
+msgid "Entry date"
+msgstr "Ingreso al TMC"
+
+#. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic_first_parent_id
 msgid "First parent id"
 msgstr "First parent id"
@@ -573,8 +608,7 @@ msgid "Hidden Elements"
 msgstr "Elementos Ocultos"
 
 #. module: tmc
-#: selection:tmc.document,highest_highlight:0
-#: selection:tmc.highlight,level:0
+#: selection:tmc.document,highest_highlight:0 selection:tmc.highlight,level:0
 msgid "High"
 msgstr "Alto"
 
@@ -631,6 +665,11 @@ msgid "Highlights count"
 msgstr "Highlights count"
 
 #. module: tmc
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_entes_hipodromo_document_list
+msgid "Hipódromo"
+msgstr "Hipódromo"
+
+#. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_category_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order_id
@@ -656,6 +695,16 @@ msgstr "Highlights count"
 #: model:ir.model.fields,field_description:tmc.field_tmc_system_id
 msgid "ID"
 msgstr "ID"
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_entes_ilar_document_list
+msgid "ILAR"
+msgstr "ILAR"
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_entes_imps_document_list
+msgid "IMPS"
+msgstr "IMPS"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_act_important
@@ -704,21 +753,21 @@ msgid "Internal number"
 msgstr "Nº de Interno"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:153
-#: code:addons/tmc/models/document.py:155
+#: code:addons/tmc/models/document.py:158
+#: code:addons/tmc/models/document.py:160
 #, python-format
 msgid "Invalid number"
 msgstr "Número inválido"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:143
+#: code:addons/tmc/models/document.py:148
 #: code:addons/tmc/models/institutional_classifier.py:57
 #, python-format
 msgid "Invalid period"
 msgstr "Período inválido"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:138
+#: code:addons/tmc/models/document.py:143
 #, python-format
 msgid "Invalid year"
 msgstr "Año Inválido"
@@ -850,8 +899,7 @@ msgid "Manager id"
 msgstr "Responsable"
 
 #. module: tmc
-#: selection:tmc.document,highest_highlight:0
-#: selection:tmc.highlight,level:0
+#: selection:tmc.document,highest_highlight:0 selection:tmc.highlight,level:0
 msgid "Medium"
 msgstr "Medio"
 
@@ -1003,6 +1051,11 @@ msgid "Producción y Desarrollo Local"
 msgstr "Producción y Desarrollo Local"
 
 #. module: tmc
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_res_prodei_document_list
+msgid "Producción, Empleo e Innovación"
+msgstr "Producción, Empleo e Innovación"
+
+#. module: tmc
 #: model:res.groups,name:tmc.group_read_only
 msgid "Read Only"
 msgstr "Sólo Lectura"
@@ -1076,9 +1129,24 @@ msgid "Resoluciones de Economía Social (ECON)"
 msgstr "Resoluciones de Economía Social (ECON)"
 
 #. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_emr_list_action
+msgid "Resoluciones de Ente de la Movilidad (EMR)"
+msgstr "Resoluciones de Ente de la Movilidad (EMR)"
+
+#. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_res_gob_list_action
 msgid "Resoluciones de Gobierno (GOB)"
 msgstr "Resoluciones de Gobierno (GOB)"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_hipodromo_list_action
+msgid "Resoluciones de Hipódromo Rosario (HIP)"
+msgstr "Resoluciones de Hipódromo Rosario (HIP)"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_ilar_list_action
+msgid "Resoluciones de ILAR"
+msgstr "Resoluciones de ILAR"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_res_obr_list_action
@@ -1096,6 +1164,11 @@ msgid "Resoluciones de Producción y Desarrollo Local (PROD)"
 msgstr "Resoluciones de Producción y Desarrollo Local (PROD)"
 
 #. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_res_prodei_list_action
+msgid "Resoluciones de Producción, Empleo e Innovación (PROD)"
+msgstr "Resoluciones de Producción, Empleo e Innovación (PROD)"
+
+#. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_res_sal_list_action
 msgid "Resoluciones de Salud Pública (SAL)"
 msgstr "Resoluciones de Salud Pública (SAL)"
@@ -1111,14 +1184,24 @@ msgid "Resoluciones de Secretaría de Hacienda y Economía (HAC)"
 msgstr "Resoluciones de Secretaría de Hacienda y Economía (HAC)"
 
 #. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_ter_list_action
+msgid "Resoluciones de Terminal de Ómnibus (TER)"
+msgstr "Resoluciones de Terminal de Ómnibus (TER)"
+
+#. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_res_mov_list_action
-msgid "Resoluciones de Transporte y Movilidad (SAL)"
-msgstr "Resoluciones de Transporte y Movilidad (SAL)"
+msgid "Resoluciones de Transporte y Movilidad (MOV)"
+msgstr "Resoluciones de Transporte y Movilidad (MOV)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_res_tur_list_action
 msgid "Resoluciones de Turismo (TUR)"
 msgstr "Resoluciones de Turismo (TUR)"
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_entes_spv_document_list
+msgid "SPVyH"
+msgstr "SPVyH"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.menu_main_tmc_res_sal_document_list
@@ -1188,6 +1271,11 @@ msgid "Temas Principales"
 msgstr "Temas Principales"
 
 #. module: tmc
+#: model:ir.ui.menu,name:tmc.menu_main_tmc_entes_ter_document_list
+msgid "Terminal de Ómnibus"
+msgstr "Terminal de Ómnibus"
+
+#. module: tmc
 #: code:addons/tmc/models/institutional_classifier.py:69
 #, python-format
 msgid "There is already a more recent nomenclator"
@@ -1224,7 +1312,7 @@ msgid "Turismo"
 msgstr "Turismo"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:181
+#: code:addons/tmc/models/document.py:186
 #, python-format
 msgid "Unnamed Document"
 msgstr "Documento Sin Nombre"
@@ -1241,7 +1329,7 @@ msgid "Year %s"
 msgstr "Año %s"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:304
+#: code:addons/tmc/models/document.py:309
 #, python-format
 msgid "You must specify a period."
 msgstr "You must specify a period."
@@ -1285,6 +1373,11 @@ msgstr "tmc.document_conv"
 #: model:ir.model,name:tmc.model_tmc_document_dec
 msgid "tmc.document_dec"
 msgstr "tmc.document_dec"
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_document_details
+msgid "tmc.document_details"
+msgstr "tmc.document_details"
 
 #. module: tmc
 #: model:ir.model,name:tmc.model_tmc_document_dic
@@ -1361,3 +1454,12 @@ msgstr "tmc.report"
 msgid "tmc.system"
 msgstr "tmc.system"
 
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_third_part
+msgid "tmc.third_part"
+msgstr "tmc.third_part"
+
+#. module: tmc
+#: model:ir.model,name:tmc.model_tmc_third_parties
+msgid "tmc.third_parties"
+msgstr "tmc.third_parties"
