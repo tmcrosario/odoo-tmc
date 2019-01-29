@@ -397,8 +397,9 @@ class Document(models.Model):
     @api.multi
     @api.onchange('date')
     def _onchange_date(self):
-        if self.date:
-            if int(self.date[:4]) != self.period:
+        for document in self:
+            if document.date:
+                if int(document.date[:4]) != document.period:
                 raise exceptions.Warning(_('Date does not match with period'))
 
 
