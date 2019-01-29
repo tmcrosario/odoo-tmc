@@ -62,6 +62,9 @@
                             <field name="name"
                                    string="Document Name"/>
                         </h1>
+                        <group>
+                            <field name="entry_date"/>
+                        </group>    
                         <h3>
                             <field name="document_object_copy" class="oe_read_only"/>
                         </h3>

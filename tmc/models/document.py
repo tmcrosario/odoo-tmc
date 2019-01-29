@@ -38,6 +38,11 @@ class Document(models.Model):
 
     date = fields.Date()
 
+    entry_date = fields.Date(
+        compute='_compute_entry_date',
+        readonly=True
+    )
+
     document_object = fields.Char(
         string='Object',
         index=True
@@ -400,7 +405,16 @@ class Document(models.Model):
         for document in self:
             if document.date:
                 if int(document.date[:4]) != document.period:
-                raise exceptions.Warning(_('Date does not match with period'))
+                    raise exceptions.Warning(_('Date does not match with period'))
+
+    @api.multi
+    def _compute_entry_date(self):
+        for document in self:
+            raa_object = self.env['raa.registry_aa'].search([
+                ('document_id', '=', document.id)
+            ])
+            if raa_object:
+                document.entry_date = raa_object.entry_date
 
 
 class DocumentDec(models.Model):
