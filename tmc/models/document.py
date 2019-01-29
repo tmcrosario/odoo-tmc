@@ -394,6 +394,13 @@ class Document(models.Model):
         if self.document_object:
             self.document_object = self.document_object.title()
 
+    @api.multi
+    @api.onchange('date')
+    def _onchange_date(self):
+        if self.date:
+            if int(self.date[:4]) != self.period:
+                raise exceptions.Warning(_('Date does not match with period'))
+
 
 class DocumentDec(models.Model):
     _name = 'tmc.document_dec'
