@@ -330,6 +330,11 @@ class Document(models.Model):
                 if main_topics_set.intersection(mp_topic_map):
                     raise exceptions.UserError(message)
 
+        if vals.get('date'):
+            if int(vals.get('date')[:4]) != self.period:
+                message = _('Date does not match with period')
+                raise exceptions.Warning(message)
+
         if write_inverse and vals.get('related_document_ids'):
             new_related_documents = self.browse(
                 vals['related_document_ids'][0][2])
@@ -398,14 +403,6 @@ class Document(models.Model):
     def _onchange_document_object(self):
         if self.document_object:
             self.document_object = self.document_object.title()
-
-    @api.multi
-    @api.onchange('date')
-    def _onchange_date(self):
-        for document in self:
-            if document.date:
-                if int(document.date[:4]) != document.period:
-                    raise exceptions.Warning(_('Date does not match with period'))
 
     @api.multi
     def _compute_entry_date(self):

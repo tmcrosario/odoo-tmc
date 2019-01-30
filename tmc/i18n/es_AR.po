@@ -1,21 +1,19 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* tmc
+#	* tmc
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-29 17:44+0000\n"
-"PO-Revision-Date: 2019-01-29 14:55-0300\n"
+"POT-Creation-Date: 2019-01-30 14:21+0000\n"
+"PO-Revision-Date: 2019-01-30 14:21+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"Language: es_AR\n"
-"X-Generator: Poedit 2.2.1\n"
 
 #. module: tmc
 #: code:addons/tmc/models/institutional_classifier.py:45
@@ -254,7 +252,7 @@ msgid "Date"
 msgstr "Fecha"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:408
+#: code:addons/tmc/models/document.py:335
 #, python-format
 msgid "Date does not match with period"
 msgstr "La fecha del documento no coincide con el período del mismo"
@@ -296,7 +294,8 @@ msgid "Dependence ids"
 msgstr "Dependencias"
 
 #. module: tmc
-#: code:addons/tmc/models/dependence.py:44 sql_constraint:tmc.dependence:0
+#: code:addons/tmc/models/dependence.py:44
+#: sql_constraint:tmc.dependence:0
 #, python-format
 msgid "Dependence name must be unique"
 msgstr "El nombre de la dependencia debe ser única"
@@ -405,7 +404,8 @@ msgstr "Tipos de Documento"
 
 #. module: tmc
 #: code:addons/tmc/models/document.py:119
-#: code:addons/tmc/models/document.py:295 sql_constraint:tmc.document:0
+#: code:addons/tmc/models/document.py:295
+#: sql_constraint:tmc.document:0
 #, python-format
 msgid "Document already exists"
 msgstr "El documento ya existe"
@@ -608,7 +608,8 @@ msgid "Hidden Elements"
 msgstr "Elementos Ocultos"
 
 #. module: tmc
-#: selection:tmc.document,highest_highlight:0 selection:tmc.highlight,level:0
+#: selection:tmc.document,highest_highlight:0
+#: selection:tmc.highlight,level:0
 msgid "High"
 msgstr "Alto"
 
@@ -899,7 +900,8 @@ msgid "Manager id"
 msgstr "Responsable"
 
 #. module: tmc
-#: selection:tmc.document,highest_highlight:0 selection:tmc.highlight,level:0
+#: selection:tmc.document,highest_highlight:0
+#: selection:tmc.highlight,level:0
 msgid "Medium"
 msgstr "Medio"
 
@@ -1463,3 +1465,4 @@ msgstr "tmc.third_part"
 #: model:ir.model,name:tmc.model_tmc_third_parties
 msgid "tmc.third_parties"
 msgstr "tmc.third_parties"
+
