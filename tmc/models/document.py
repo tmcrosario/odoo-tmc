@@ -1,4 +1,3 @@
-
 from datetime import datetime
 from odoo import _, api, exceptions, fields, models
 
