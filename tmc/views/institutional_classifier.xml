@@ -2,8 +2,8 @@
 <odoo>
 
     <!-- WINDOW ACTION -->
-    <record model="ir.actions.act_window"
-            id="institutional_classifier_list_action">
+    <record id="institutional_classifier_action_form" 
+        model="ir.actions.act_window">
         <field name="name">Nomenclators</field>
         <field name="res_model">tmc.institutional_classifier</field>
         <field name="view_type">form</field>
@@ -11,12 +11,12 @@
     </record>
 
     <!-- TREE VIEW -->
-    <record id="view_tmc_institutional_classifier_tree"
-            model="ir.ui.view">
-        <field name="name">tmc.institutional_classifier.tree</field>
+    <record id="institutional_classifier_view_tree" 
+        model="ir.ui.view">
+        <field name="name">tmc.institutional_classifier.view.tree</field>
         <field name="model">tmc.institutional_classifier</field>
-        <field name="arch"
-               type="xml">
+        <field name="arch" 
+            type="xml">
             <tree>
                 <field name="display_name" />
                 <field name="due_date" />
@@ -25,12 +25,12 @@
     </record>
 
     <!-- FORM VIEW -->
-    <record id="view_tmc_institutional_classifier_form"
-            model="ir.ui.view">
-        <field name="name">tmc.institutional_classifier.form</field>
+    <record id="institutional_classifier_view_form" 
+        model="ir.ui.view">
+        <field name="name">tmc.institutional_classifier.view.form</field>
         <field name="model">tmc.institutional_classifier</field>
-        <field name="arch"
-               type="xml">
+        <field name="arch" 
+            type="xml">
             <form>
                 <sheet>
                     <h2>
@@ -43,9 +43,9 @@
                             <field name="document_id" />
                         </group>
                         <group>
-                            <field name="pdf"
-                                   filename="display_name"
-                                   nolabel="1" />
+                            <field name="pdf" 
+                                filename="display_name" 
+                                nolabel="1" />
                         </group>
                     </group>
                     <notebook>
@@ -59,12 +59,12 @@
     </record>
 
     <!-- SEARCH VIEW -->
-    <record model="ir.ui.view"
-            id="view_tmc_institutional_classifier_filter">
-        <field name="name">institutional_classifier.filter</field>
+    <record model="ir.ui.view" 
+        id="institutional_classifier_view_search">
+        <field name="name">institutional_classifier.view.search</field>
         <field name="model">tmc.institutional_classifier</field>
-        <field name="arch"
-               type="xml">
+        <field name="arch" 
+            type="xml">
             <search>
                 <field name="period" />
             </search>

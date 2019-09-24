@@ -2,8 +2,8 @@
 <odoo>
 
     <!-- WINDOW ACTION -->
-    <record model="ir.actions.act_window"
-            id="tmc_hr_office_list_action">
+    <record id="hr_office_action_form" 
+        model="ir.actions.act_window">
         <field name="name">Office</field>
         <field name="res_model">tmc.hr.office</field>
         <field name="view_type">form</field>
@@ -11,17 +11,17 @@
     </record>
 
     <!-- FORM VIEW -->
-    <record id="view_tmc_hr_office_form"
-            model="ir.ui.view">
-        <field name="name">tmc.hr.office.form</field>
+    <record id="hr_office_view_form" 
+        model="ir.ui.view">
+        <field name="name">tmc.hr.office.view.form</field>
         <field name="model">tmc.hr.office</field>
-        <field name="arch"
-               type="xml">
+        <field name="arch" 
+            type="xml">
             <form>
                 <sheet>
                     <div class="oe_title">
-                        <label for="name"
-                               class="oe_edit_only" />
+                        <label for="name" 
+                            class="oe_edit_only" />
                         <h1>
                             <field name="name"/>
                         </h1>
