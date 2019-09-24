@@ -15,7 +15,7 @@ class Document(models.Model):
     dependence_id = fields.Many2one(
         comodel_name='tmc.dependence',
         domain=[('document_type_ids', '!=', False),
-                ('system_ids', 'ilike', u'TMC Base')],
+                ('system_ids', 'ilike', 'TMC Base')],
         required=True
     )
 
@@ -208,7 +208,7 @@ class Document(models.Model):
     @api.multi
     @api.onchange('main_topic_ids')
     def _onchange_main_topic_ids(self):
-        if u'Varios' in self.main_topic_ids.mapped('name'):
+        if 'Varios' in self.main_topic_ids.mapped('name'):
             self.document_object_required = True
         else:
             self.document_object_required = False
