@@ -168,13 +168,8 @@
     <menuitem id="tmc_menu_documents_document_topics" 
         name="Document Topics" 
         parent="tmc_menu_root" 
-        sequence="10" />
-
-    <menuitem id="tmc_menu_documents_document_topics_main_secondary" 
-        name="Main and Secondary Topics" 
-        parent="tmc_menu_documents_document_topics" 
         action="document_topic_action_form" 
-        sequence="5" />
+        sequence="10" />
 
     <menuitem id="tmc_menu_documents_dependences_document_topics" 
         name="Dependences with Document Topics" 
