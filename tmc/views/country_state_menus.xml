@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem id="tmc_menu_country_state_config" 
+        name="States" 
+        parent="tmc.tmc_menu_config" 
+        sequence="15" 
+        action="tmc.country_state_action_form" />
+
+</odoo>

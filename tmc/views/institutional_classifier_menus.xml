@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem id="tmc_menu_institutional_classifiers" 
+        name="Institutional Classifiers" 
+        parent="tmc_menu_root" 
+        sequence="15" />
+
+    <menuitem id="tmc_menu_dependence_order" 
+        name="Dependence Order" 
+        parent="tmc_menu_institutional_classifiers" 
+        sequence="5" 
+        action="dependence_order_action_form" />
+
+    <menuitem id="tmc_menu_institutional_classifiers_nomenclators" 
+        name="Nomenclators" 
+        parent="tmc_menu_institutional_classifiers" 
+        sequence="10" 
+        action="institutional_classifier_action_form" />
+
+</odoo>

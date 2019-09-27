@@ -11,4 +11,3 @@ from . import highlight
 from . import institutional_classifier
 from . import office
 from . import system
-from . import report
