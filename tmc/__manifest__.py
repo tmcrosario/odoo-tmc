@@ -25,6 +25,7 @@
     'data': [
         'security/groups.xml',
         'security/ir.model.access.csv',
+        'views/tmc_menus.xml',
         'views/country_state_views.xml',
         'views/country_state_menus.xml',
         'views/dependence_views.xml',
@@ -42,7 +43,6 @@
         'views/institutional_classifier_views.xml',
         'views/institutional_classifier_menus.xml',
         'views/office_views.xml',
-        'views/tmc_menus.xml',
         'report/report_dependence_document_topics.xml'
     ],
     'demo': [],
