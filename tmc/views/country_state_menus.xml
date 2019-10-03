@@ -3,8 +3,8 @@
 
     <menuitem id="tmc_menu_country_state_config" 
         name="States" 
-        parent="tmc.tmc_menu_config" 
+        parent="tmc_menu_config" 
         sequence="15" 
-        action="tmc.country_state_action_form" />
+        action="country_state_action_form" />
 
 </odoo>
