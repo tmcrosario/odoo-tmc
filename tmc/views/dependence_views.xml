@@ -91,7 +91,6 @@
         model="ir.actions.act_window">
         <field name="name">Dependences</field>
         <field name="res_model">tmc.dependence</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
 
@@ -99,7 +98,6 @@
         model="ir.actions.act_window">
         <field name="name">Dependences with Document Topics</field>
         <field name="res_model">tmc.dependence</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree</field>
         <field name="domain">[('document_topic_ids', '!=', False)]</field>
         <field name="view_id" 

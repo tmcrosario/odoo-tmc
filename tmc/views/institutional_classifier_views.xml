@@ -6,7 +6,6 @@
         model="ir.actions.act_window">
         <field name="name">Nomenclators</field>
         <field name="res_model">tmc.institutional_classifier</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
 

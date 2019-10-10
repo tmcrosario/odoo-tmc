@@ -6,7 +6,6 @@
         model="ir.actions.act_window">
         <field name="name">Dependence Order</field>
         <field name="res_model">tmc.dependence_order</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="context">{ 'search_default_filter_actual_nomenclator': True, 'search_default_group_by_parent_id': True }
         </field>

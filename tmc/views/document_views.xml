@@ -6,7 +6,6 @@
         model="ir.actions.act_window">
         <field name="name">Documents</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
 
@@ -185,7 +184,6 @@
         model="ir.actions.act_window">
         <field name="name">Decretos del Departamento Ejecutivo</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -198,7 +196,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Secretaría de Hacienda y Economía (HAC)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -209,7 +206,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Planeamiento (PLA)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -220,7 +216,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Gobierno (GOB)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -231,7 +226,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Obras Públicas (OBR)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -242,7 +236,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Ambiente y Espacios Públicos (AMB)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -253,7 +246,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Salud Pública (SAL)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -264,7 +256,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Desarrollo Social (DES)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -275,7 +266,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Producción y Desarrollo Local (PROD)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -286,7 +276,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Producción, Empleo e Innovación (PROD)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -297,7 +286,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Cultura y Educación (CUL)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -308,7 +296,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Secretaría General (GRAL)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -319,7 +306,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Turismo (TUR)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -330,7 +316,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Control y Convivencia (CONV)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -341,7 +326,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Transporte y Movilidad (MOV)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -352,7 +336,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Economía Social (ECON)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -363,7 +346,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Terminal de Ómnibus (TER)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -374,7 +356,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Ente de la Movilidad (EMR)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -385,7 +366,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de ILAR</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -396,7 +376,6 @@
         model="ir.actions.act_window">
         <field name="name">Documentos de Instituto Municipal de Previsión Social (IMPS)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -407,7 +386,6 @@
         model="ir.actions.act_window">
         <field name="name">Documentos de Servicio Público de la Vivienda y el Hábitat (SPV)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -418,7 +396,6 @@
         model="ir.actions.act_window">
         <field name="name">Resoluciones de Hipódromo Rosario (HIP)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
@@ -431,7 +408,6 @@
         model="ir.actions.act_window">
         <field name="name">Convenios</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" 
             ref="document_view_search_simple" />
