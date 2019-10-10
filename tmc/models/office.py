@@ -35,7 +35,6 @@ class Office(models.Model):
         inverse_name='office_id'
     )
 
-    @api.multi
     def name_get(self):
         result = []
         for office in self:

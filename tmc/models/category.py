@@ -12,7 +12,6 @@ class Category(models.Model):
         compute='_compute_display_name',
     )
 
-    @api.multi
     def _compute_display_name(self):
         for category in self:
             parent = category.parent_id
@@ -22,7 +21,6 @@ class Category(models.Model):
                 parent = parent.parent_id
             category.display_name = computed_name
 
-    @api.multi
     def name_get(self):
         result = []
         for cat in self:
@@ -31,5 +29,3 @@ class Category(models.Model):
                 prefix = cat.parent_id.name_get()[0][1] + ' / '
             result.append((cat.id, "%s %s" % (prefix or '', cat.name)))
         return result
-
-

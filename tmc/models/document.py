@@ -117,7 +117,6 @@ class Document(models.Model):
             _('Document already exists'))
     ]
 
-    @api.multi
     def show_or_add_content(self):
         reference_model = 'tmc.' + self.reference_model
         view_xmlid = 'tmc.view_' + self.reference_model + '_form'
@@ -157,7 +156,6 @@ class Document(models.Model):
         if self.number > max_number:
             raise Warning(_('Invalid number'))
 
-    @api.multi
     @api.depends('document_type_id',
                  'dependence_id',
                  'number',
@@ -183,7 +181,6 @@ class Document(models.Model):
             else:
                 document.name = _('Unnamed Document')
 
-    @api.multi
     @api.depends('highlight_ids')
     def _compute_highlights_count(self):
         for document in self:
@@ -192,7 +189,6 @@ class Document(models.Model):
             )
             document.highlights_count = len(applicable_highlight_ids)
 
-    @api.multi
     @api.onchange('dependence_id')
     def _onchange_dependence(self):
         self.document_type_id = False
@@ -205,7 +201,6 @@ class Document(models.Model):
             }
         }
 
-    @api.multi
     @api.onchange('main_topic_ids')
     def _onchange_main_topic_ids(self):
         if 'Varios' in self.main_topic_ids.mapped('name'):
@@ -224,7 +219,6 @@ class Document(models.Model):
             }
         }
 
-    @api.multi
     @api.depends('document_object')
     def _compute_document_object_copy(self):
         for document in self:
@@ -235,7 +229,6 @@ class Document(models.Model):
                     string = document.document_object
                 document.document_object_copy = string.title()
 
-    @api.multi
     @api.depends('reference_model')
     def _compute_reference_document(self):
         for document in self:
@@ -246,7 +239,6 @@ class Document(models.Model):
                 if reference_document:
                     document.reference_document = reference_document[0]
 
-    @api.multi
     @api.depends('highlight_ids')
     def _compute_highest_highlight(self):
         for document in self:
@@ -265,7 +257,6 @@ class Document(models.Model):
             elif medium_highlights:
                 document.highest_highlight = 'medium'
 
-    @api.multi
     @api.depends('main_topic_ids',
                  'secondary_topic_ids')
     def _compute_important_topic(self):
@@ -281,7 +272,6 @@ class Document(models.Model):
             if important_related_topics:
                 document.important = True
 
-    @api.multi
     @api.onchange('dependence_id',
                   'document_type_id',
                   'period',
@@ -301,7 +291,6 @@ class Document(models.Model):
             seq.next_by_code('tmc.document')
         return super(Document, self).create(vals)
 
-    @api.multi
     def write(self, vals, write_inverse=True):
         if vals.get('main_topic_ids'):
             message = _('You must specify a period.')
@@ -368,7 +357,6 @@ class Document(models.Model):
         # Report the last value
         yield last, False
 
-    @api.multi
     @api.depends('main_topic_ids',
                  'secondary_topic_ids')
     def _compute_topics_display_name(self):
@@ -396,13 +384,11 @@ class Document(models.Model):
                         aux += ', '
                     document.topics_display_name += aux
 
-    @api.multi
     @api.onchange('document_object')
     def _onchange_document_object(self):
         if self.document_object:
             self.document_object = self.document_object.title()
 
-    @api.multi
     def _compute_entry_date(self):
         for document in self:
             raa_object = self.env['raa.registry_aa'].search([

@@ -34,7 +34,6 @@ class InstitutionalClassifier(models.Model):
         comodel_name='tmc.document'
     )
 
-    @api.multi
     def _compute_display_name(self):
         for classifier in self:
             classifier.display_name = _('Year %s') % str(classifier.period)
@@ -72,7 +71,6 @@ class InstitutionalClassifier(models.Model):
                                 prior to the current'))
         return super(InstitutionalClassifier, self).create(values)
 
-    @api.multi
     def write(self, vals):
         if not self.due_date and vals.get('dependence_order_ids'):
 

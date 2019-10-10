@@ -49,7 +49,6 @@ class DocumentTopic(models.Model):
 
     color = fields.Integer()
 
-    @api.multi
     @api.depends('parent_id',
                  'parent_id.parent_id')
     def _compute_first_parent(self):
@@ -61,12 +60,10 @@ class DocumentTopic(models.Model):
                 parent = parent.parent_id
             document_topic.first_parent_id = first_parent_id
 
-    @api.multi
     def _compute_display_name(self):
         for topic in self:
             topic.display_name = topic.name
 
-    @api.multi
     @api.depends('dependence_ids')
     def _compute_dependences_display_name(self):
         for document_topic in self:
@@ -74,7 +71,6 @@ class DocumentTopic(models.Model):
                 document_topic.dependences_display_name = ', '.join(
                     document_topic.dependence_ids.mapped('abbreviation'))
 
-    @api.multi
     @api.depends('child_ids')
     def _compute_secondary_topics_display_name(self):
         for document_topic in self:
