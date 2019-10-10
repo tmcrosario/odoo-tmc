@@ -33,7 +33,7 @@
             <form>
                 <sheet>
                     <h2>
-                        <field name="display_name"/>
+                        <field name="display_name" />
                     </h2>
                     <group>
                         <group>

@@ -47,14 +47,14 @@
                             groups="tmc.group_personal,tmc.group_manager">
                             <field name="active" 
                                 widget="boolean_button" 
-                                options='{"terminology": "archive"}'/>
+                                options='{"terminology": "archive"}' />
                         </button>
                     </div>
                     <div class="oe_title">
                         <label for="name" 
                             class="oe_edit_only" />
                         <h1>
-                            <field name="name"/>
+                            <field name="name" />
                         </h1>
                     </div>
                     <field name="employee_title_ids" 

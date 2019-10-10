@@ -41,7 +41,7 @@
                 <sheet>
                     <h2>
                         <field name="display_name" 
-                            attrs="{'invisible':[('name','=',False)]}"/>
+                            attrs="{'invisible':[('name','=',False)]}" />
                     </h2>
                     <group>
                         <group>
