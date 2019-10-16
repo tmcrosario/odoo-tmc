@@ -19,7 +19,7 @@
         <field name="model">tmc.dependence_order</field>
         <field name="arch" 
             type="xml">
-            <tree fonts="bold:parent_name in [u'ADMINISTRACI\xd3N CENTRAL', u'ORGANISMOS DESCENTRALIZADOS', u'INSTITUCIONES DE SEGURIDAD SOCIAL', u'EMPRESAS, SOCIEDADES Y OTROS ENTES DEL ESTADO', False]">
+            <tree decoration-bf="parent_name in [u'ADMINISTRACI\xd3N CENTRAL', u'ORGANISMOS DESCENTRALIZADOS', u'INSTITUCIONES DE SEGURIDAD SOCIAL', u'EMPRESAS, SOCIEDADES Y OTROS ENTES DEL ESTADO', False]">
                 <field name="code" />
                 <field name="name" />
                 <field name="abbreviation" />

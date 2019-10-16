@@ -67,7 +67,7 @@
         <field name="model">tmc.document_topic</field>
         <field name="arch" 
             type="xml">
-            <tree colors="gray:important==False">
+            <tree decoration-muted="important == False">
                 <field name="name" 
                     string="Tema Principal" />
                 <field name="important" 
