@@ -40,8 +40,7 @@ class InstitutionalClassifier(models.Model):
             if not classifier.due_date:
                 classifier.display_name += _(' (Current)')
             else:
-                month = datetime.strptime(
-                    classifier.due_date, '%Y-%m-%d').strftime('%b')
+                month = classifier.due_date.strftime("%b")
                 classifier.display_name += ' (%s)' % month
 
     @api.model
