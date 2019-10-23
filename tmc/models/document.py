@@ -222,6 +222,7 @@ class Document(models.Model):
     @api.depends('document_object')
     def _compute_document_object_copy(self):
         for document in self:
+            document.document_object_copy = None
             if document.document_object:
                 if len(document.document_object) > 45:
                     string = document.document_object[:45] + '...'
@@ -232,6 +233,7 @@ class Document(models.Model):
     @api.depends('reference_model')
     def _compute_reference_document(self):
         for document in self:
+            document.reference_document = None
             if document.reference_model:
                 reference_model = 'tmc.' + document.reference_model
                 reference_document = document.env[reference_model].search(
@@ -271,6 +273,8 @@ class Document(models.Model):
 
             if important_related_topics:
                 document.important = True
+            else:
+                document.important = False
 
     @api.onchange('dependence_id',
                   'document_type_id',

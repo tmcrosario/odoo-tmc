@@ -67,6 +67,7 @@ class DocumentTopic(models.Model):
     @api.depends('dependence_ids')
     def _compute_dependences_display_name(self):
         for document_topic in self:
+            document_topic.dependences_display_name = None
             if document_topic.dependence_ids:
                 document_topic.dependences_display_name = ', '.join(
                     document_topic.dependence_ids.mapped('abbreviation'))
@@ -74,6 +75,7 @@ class DocumentTopic(models.Model):
     @api.depends('child_ids')
     def _compute_secondary_topics_display_name(self):
         for document_topic in self:
+            document_topic.secondary_topics_display_name = None
             if document_topic.child_ids:
                 document_topic.secondary_topics_display_name = ', '.join(
                     document_topic.child_ids.mapped('name'))
