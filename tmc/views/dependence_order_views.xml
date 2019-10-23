@@ -23,9 +23,10 @@
                 <field name="code" />
                 <field name="name" />
                 <field name="abbreviation" />
-                <field name="institutional_classifier_ids" />
-                <field name="parent_name" 
-                    invisible="True" />
+                <field name="institutional_classifier_ids"
+                       widget="many2many_tags" />
+                <field name="parent_name"
+                       invisible="True" />
             </tree>
         </field>
     </record>

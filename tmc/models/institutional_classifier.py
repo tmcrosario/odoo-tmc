@@ -36,7 +36,7 @@ class InstitutionalClassifier(models.Model):
 
     def _compute_display_name(self):
         for classifier in self:
-            classifier.display_name = _('Year %s') % str(classifier.period)
+            classifier.display_name = str(classifier.period)
             if not classifier.due_date:
                 classifier.display_name += _(' (Current)')
             else:
