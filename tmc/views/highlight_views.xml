@@ -2,37 +2,37 @@
 <odoo>
 
     <!-- TREE VIEW -->
-    <record id="highlight_view_tree" 
-        model="ir.ui.view">
+    <record id="highlight_view_tree"
+            model="ir.ui.view">
         <field name="name">tmc.highlight.view.tree</field>
         <field name="model">tmc.highlight</field>
         <field name="priority">5</field>
-        <field name="arch" 
-            type="xml">
-            <tree decoration-danger="level=='high'" 
-                decoration-warning="level=='medium'" 
-                decoration-muted="applicable==False">
+        <field name="arch"
+               type="xml">
+            <tree decoration-danger="level=='high'"
+                  decoration-warning="level=='medium'"
+                  decoration-muted="applicable==False">
                 <field name="comment" />
                 <field name="level" />
-                <field name="create_uid" 
-                    readonly="True" />
-                <field name="write_uid" 
-                    readonly="True" />
-                <field name="create_date" 
-                    readonly="True" />
-                <field name="applicable" 
-                    invisible="True" />
+                <field name="create_uid"
+                       readonly="True" />
+                <field name="write_uid"
+                       readonly="True" />
+                <field name="create_date"
+                       readonly="True" />
+                <field name="applicable"
+                       invisible="True" />
             </tree>
         </field>
     </record>
 
     <!-- FORM VIEW -->
-    <record id="highlight_view_form" 
-        model="ir.ui.view">
+    <record id="highlight_view_form"
+            model="ir.ui.view">
         <field name="name">tmc.highlight.view.form</field>
         <field name="model">tmc.highlight</field>
-        <field name="arch" 
-            type="xml">
+        <field name="arch"
+               type="xml">
             <form>
                 <sheet>
                     <group>

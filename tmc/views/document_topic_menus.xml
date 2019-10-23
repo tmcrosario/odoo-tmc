@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <menuitem id="tmc_menu_documents_document_topics" 
-        name="Document Topics" 
-        parent="tmc_menu_root" 
-        action="document_topic_action_form" 
-        sequence="10" />
+    <menuitem id="tmc_menu_documents_document_topics"
+              name="Document Topics"
+              parent="tmc_menu_root"
+              action="document_topic_action_form"
+              sequence="10" />
 
 </odoo>

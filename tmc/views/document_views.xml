@@ -2,129 +2,130 @@
 <odoo>
 
     <!-- WINDOW ACTION -->
-    <record id="document_action_form" 
-        model="ir.actions.act_window">
+    <record id="document_action_form"
+            model="ir.actions.act_window">
         <field name="name">Documents</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
     </record>
 
     <!-- TREE VIEW -->
-    <record id="document_view_tree" 
-        model="ir.ui.view">
+    <record id="document_view_tree"
+            model="ir.ui.view">
         <field name="name">tmc.document.view.tree</field>
         <field name="model">tmc.document</field>
         <field name="priority">5</field>
-        <field name="arch" 
-            type="xml">
-            <tree default_order="period desc, name desc, dependence_id, document_type_id" 
-                decoration-danger="highest_highlight=='high'" 
-                decoration-warning="highest_highlight=='medium'">
+        <field name="arch"
+               type="xml">
+            <tree default_order="period desc, name desc, dependence_id, document_type_id"
+                  decoration-danger="highest_highlight=='high'"
+                  decoration-warning="highest_highlight=='medium'">
                 <field name="name" />
                 <field name="date" />
                 <field name="document_object_copy" />
                 <field name="topics_display_name" />
-                <field name="highest_highlight" 
-                    invisible="True" />
+                <field name="highest_highlight"
+                       invisible="True" />
             </tree>
         </field>
     </record>
 
     <!-- FORM VIEW -->
-    <record id="document_view_form" 
-        model="ir.ui.view">
+    <record id="document_view_form"
+            model="ir.ui.view">
         <field name="name">tmc.document.view.form</field>
         <field name="model">tmc.document</field>
         <field name="priority">5</field>
-        <field name="arch" 
-            type="xml">
+        <field name="arch"
+               type="xml">
             <form duplicate="0">
                 <sheet>
-                    <div class="oe_right oe_button_box" 
-                        name="buttons" 
-                        groups="base.group_user" 
-                        attrs="{'invisible':[('create_date','=', False)]}">
-                        <button class="oe_inline oe_stat_button" 
-                            type="action" 
-                            attrs="{'invisible':[('highlights_count','=', 0)]}" 
-                            icon="fa-warning" 
-                            name="highlights_count_button">
-                            <field string="Highlight(s)" 
-                                name="highlights_count" 
-                                widget="statinfo" />
+                    <div class="oe_right oe_button_box"
+                         name="buttons"
+                         groups="base.group_user"
+                         attrs="{'invisible':[('create_date','=', False)]}">
+                        <button class="oe_inline oe_stat_button"
+                                type="action"
+                                attrs="{'invisible':[('highlights_count','=', 0)]}"
+                                icon="fa-warning"
+                                name="highlights_count_button">
+                            <field string="Highlight(s)"
+                                   name="highlights_count"
+                                   widget="statinfo" />
                         </button>
                     </div>
                     <div class="oe_title">
-                        <label for="name" 
-                            class="oe_edit_only" 
-                            string="Document Name" />
+                        <label for="name"
+                               class="oe_edit_only"
+                               string="Document Name" />
                         <h1>
-                            <field name="name" 
-                                string="Document Name" />
+                            <field name="name"
+                                   string="Document Name" />
                         </h1>
                         <group>
                             <field name="entry_date" />
                         </group>
                         <h3>
-                            <field name="document_object_copy" 
-                                class="oe_read_only" />
+                            <field name="document_object_copy"
+                                   class="oe_read_only" />
                         </h3>
                     </div>
-                    <field name="create_date" 
-                        invisible="True" />
-                    <field name="reference_document" 
-                        invisible="True" />
+                    <field name="create_date"
+                           invisible="True" />
+                    <field name="reference_document"
+                           invisible="True" />
                     <group>
                         <group>
-                            <field name="dependence_id" 
-                                context="{'search_default_filter_actual_nomenclator': True}" 
-                                default_focus="1" />
-                            <field name="document_type_id" 
-                                attrs="{'invisible':[('dependence_id','=', False)]}" />
-                            <field name="document_type_abbr" 
-                                invisible="True" />
+                            <field name="dependence_id"
+                                   context="{'search_default_filter_actual_nomenclator': True}"
+                                   default_focus="1" />
+                            <field name="document_type_id"
+                                   attrs="{'invisible':[('dependence_id','=', False)]}" />
+                            <field name="document_type_abbr"
+                                   invisible="True" />
                         </group>
                         <group>
-                            <field name="number" 
-                                attrs="{'required':[('document_type_abbr', '!=', 'ACT')], 'invisible':[('document_type_abbr', '=', 'ACT')]}" />
+                            <field name="number"
+                                   attrs="{'required':[('document_type_abbr', '!=', 'ACT')], 'invisible':[('document_type_abbr', '=', 'ACT')]}" />
                             <field name="period" />
                         </group>
                     </group>
                     <group>
-                        <group string="Reference" 
-                            attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
+                        <group string="Reference"
+                               attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
                             <field name="date" />
-                            <field name="document_object_required" 
-                                invisible="True" />
-                            <field name="document_object" 
-                                attrs="{'required':[('document_object_required', '=', True)]}" />
+                            <field name="document_object_required"
+                                   invisible="True" />
+                            <field name="document_object"
+                                   attrs="{'required':[('document_object_required', '=', True)]}" />
                         </group>
-                        <field name="document_topic_ids" 
-                            invisible="True" />
-                        <group string="Topics" 
-                            attrs="{'invisible':['|', ('document_topic_ids', '=', []), ('create_date','=', False)]}">
-                            <field name="main_topic_ids" 
-                                widget="many2many_tags" 
-                                options="{'no_create_edit': True}" 
-                                attrs="{'required':[('document_object', '!=', False), ('document_type_abbr', 'in', ['DEC', 'RES'])]}" />
-                            <field name="secondary_topic_ids" 
-                                attrs="{'invisible':[('main_topic_ids', '=', [])]}" 
-                                widget="many2many_tags" 
-                                options="{'no_create_edit': True}" 
-                                context="{'tree_view_ref':'tmc.document_secondary_topic_tree_view'}" />
+                        <field name="document_topic_ids"
+                               invisible="True" />
+                        <!-- <group string="Topics" -->
+                        <!-- attrs="{'invisible':['|', ('document_topic_ids', '=', []), ('create_date','=', False)]}"> -->
+                        <group>
+                            <field name="main_topic_ids" />
+                            <!-- widget="many2many_tags" -->
+                            <!-- options="{'no_create_edit': True}" -->
+                            <!-- attrs="{'required':[('document_object', '!=', False), ('document_type_abbr', 'in', ['DEC', 'RES'])]}" /> -->
+                            <field name="secondary_topic_ids"
+                                   attrs="{'invisible':[('main_topic_ids', '=', [])]}"
+                                   widget="many2many_tags"
+                                   options="{'no_create_edit': True}"
+                                   context="{'tree_view_ref':'tmc.document_secondary_topic_tree_view'}" />
                         </group>
                     </group>
                     <notebook attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
-                        <page name="related_documents" 
-                            string="Related Documents">
+                        <page name="related_documents"
+                              string="Related Documents">
                             <field name="related_document_ids">
                                 <tree>
                                     <field name="name" />
                                 </tree>
                             </field>
                         </page>
-                        <page name="highlights" 
-                            string="Highlights">
+                        <page name="highlights"
+                              string="Highlights">
                             <field name="highlight_ids" />
                         </page>
                     </notebook>
@@ -134,283 +135,283 @@
     </record>
 
     <!-- SEARCH VIEW -->
-    <record id="document_view_search" 
-        model="ir.ui.view">
+    <record id="document_view_search"
+            model="ir.ui.view">
         <field name="name">tmc.document.view.search</field>
         <field name="model">tmc.document</field>
-        <field name="arch" 
-            type="xml">
+        <field name="arch"
+               type="xml">
             <search string="Document">
-                <field name="document_type_id" 
-                    filter_domain="['|', ('document_type_id', '=', self)]" />
-                <field name="number" 
-                    filter_domain="['|', ('number', '=', self)]" />
-                <field name="period" 
-                    filter_domain="['|', ('period', '=', self)]" />
-                <field name="dependence_id" 
-                    filter_domain="[('dependence_id', 'ilike', self)]" />
-                <field name="document_object" 
-                    filter_domain="[('document_object', 'ilike', self)]" />
-                <field name="secondary_topic_ids" 
-                    string="Document Topic" 
-                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                <field name="document_type_id"
+                       filter_domain="['|', ('document_type_id', '=', self)]" />
+                <field name="number"
+                       filter_domain="['|', ('number', '=', self)]" />
+                <field name="period"
+                       filter_domain="['|', ('period', '=', self)]" />
+                <field name="dependence_id"
+                       filter_domain="[('dependence_id', 'ilike', self)]" />
+                <field name="document_object"
+                       filter_domain="[('document_object', 'ilike', self)]" />
+                <field name="secondary_topic_ids"
+                       string="Document Topic"
+                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
             </search>
         </field>
     </record>
 
-    <record id="document_view_search_simple" 
-        model="ir.ui.view">
+    <record id="document_view_search_simple"
+            model="ir.ui.view">
         <field name="name">tmc.document.view.search.simple</field>
         <field name="model">tmc.document</field>
-        <field name="arch" 
-            type="xml">
+        <field name="arch"
+               type="xml">
             <search string="Document">
-                <field name="number" 
-                    filter_domain="['|', ('number', '=', self)]" />
-                <field name="period" 
-                    filter_domain="['|', ('period', '=', self)]" />
-                <field name="document_object" 
-                    filter_domain="[('document_object', 'ilike', self)]" />
-                <field name="secondary_topic_ids" 
-                    string="Document Topic" 
-                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                <field name="number"
+                       filter_domain="['|', ('number', '=', self)]" />
+                <field name="period"
+                       filter_domain="['|', ('period', '=', self)]" />
+                <field name="document_object"
+                       filter_domain="[('document_object', 'ilike', self)]" />
+                <field name="secondary_topic_ids"
+                       string="Document Topic"
+                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
             </search>
         </field>
     </record>
 
     <!-- DECRETO -->
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_dec" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_dec"
+            model="ir.actions.act_window">
         <field name="name">Decretos del Departamento Ejecutivo</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Decreto')]</field>
     </record>
 
     <!-- RESOLUCION -->
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_res_hac" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_res_hac"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Secretaría de Hacienda y Economía (HAC)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE HACIENDA Y ECONOMÍA')]</field>
     </record>
 
-    <record id="document_action_form_res_pla" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_res_pla"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Planeamiento (PLA)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE PLANEAMIENTO')]</field>
     </record>
 
-    <record id="document_action_form_res_gob" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_res_gob"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Gobierno (GOB)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE GOBIERNO')]</field>
     </record>
 
-    <record id="document_action_form_res_obr" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_res_obr"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Obras Públicas (OBR)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE OBRAS PÚBLICAS')]</field>
     </record>
 
-    <record id="document_action_form_res_amb" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_res_amb"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Ambiente y Espacios Públicos (AMB)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE AMBIENTE Y ESPACIOS PÚBLICOS')]</field>
     </record>
 
-    <record id="document_action_form_res_sal" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_res_sal"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Salud Pública (SAL)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE SALUD PÚBLICA')]</field>
     </record>
 
-    <record id="document_action_form_res_des" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_res_des"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Desarrollo Social (DES)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE DESARROLLO SOCIAL')]</field>
     </record>
 
-    <record id="document_action_form_res_prod" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_res_prod"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Producción y Desarrollo Local (PROD)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE PRODUCCIÓN Y DESARROLLO LOCAL')]</field>
     </record>
 
-    <record id="document_action_form_res_prodei" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_res_prodei"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Producción, Empleo e Innovación (PROD)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE PRODUCCIÓN, EMPLEO E INNOVACIÓN')]</field>
     </record>
 
-    <record id="document_action_form_res_cul" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_res_cul"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Cultura y Educación (CUL)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE CULTURA Y EDUCACIÓN')]</field>
     </record>
 
-    <record id="document_action_form_res_gral" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_res_gral"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Secretaría General (GRAL)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA GENERAL')]</field>
     </record>
 
-    <record id="document_action_form_res_tur" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_res_tur"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Turismo (TUR)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE TURISMO')]</field>
     </record>
 
-    <record id="document_action_form_res_conv" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_res_conv"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Control y Convivencia (CONV)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE CONTROL Y CONVIVENCIA CIUDADANA')]</field>
     </record>
 
-    <record id="document_action_form_res_mov" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_res_mov"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Transporte y Movilidad (MOV)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE TRANSPORTE Y MOVILIDAD')]</field>
     </record>
 
-    <record id="document_action_form_res_econ" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_res_econ"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Economía Social (ECON)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE ECONOMÍA SOCIAL')]</field>
     </record>
 
-    <record id="document_action_form_ter" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_ter"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Terminal de Ómnibus (TER)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','Terminal de Omnibus Rosario')]</field>
     </record>
 
-    <record id="document_action_form_emr" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_emr"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Ente de la Movilidad (EMR)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','Ente de la Movilidad de Rosario')]</field>
     </record>
 
-    <record id="document_action_form_ilar" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_ilar"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de ILAR</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','INSTITUTO DE LUCHA ANTIPOLIOMIEL\xcdTICA DE ROSARIO')]</field>
     </record>
 
-    <record id="document_action_form_imps" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_imps"
+            model="ir.actions.act_window">
         <field name="name">Documentos de Instituto Municipal de Previsión Social (IMPS)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('dependence_id', '=', 'INSTITUTO MUNICIPAL DE PREVISI\xd3N SOCIAL')]</field>
     </record>
 
-    <record id="document_action_form_spv" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_spv"
+            model="ir.actions.act_window">
         <field name="name">Documentos de Servicio Público de la Vivienda y el Hábitat (SPV)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('dependence_id','=','SERVICIO P\xdaBLICO DE LA VIVIENDA Y EL H\xc1BITAT')]</field>
     </record>
 
-    <record id="document_action_form_hip" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_hip"
+            model="ir.actions.act_window">
         <field name="name">Resoluciones de Hipódromo Rosario (HIP)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','Hipódromo Rosario')]</field>
     </record>
 
     <!-- CONVENIO -->
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_conv" 
-        model="ir.actions.act_window">
+    <record id="document_action_form_conv"
+            model="ir.actions.act_window">
         <field name="name">Convenios</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" 
-            ref="document_view_search_simple" />
+        <field name="search_view_id"
+               ref="document_view_search_simple" />
         <field name="domain">[('document_type_id','=','Convenio')]</field>
     </record>
 

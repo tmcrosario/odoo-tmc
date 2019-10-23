@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <menuitem id="tmc_menu_document_types_config" 
-        name="Document Types" 
-        parent="tmc.tmc_menu_config" 
-        sequence="10" 
-        action="document_type_action_form" />
+    <menuitem id="tmc_menu_document_types_config"
+              name="Document Types"
+              parent="tmc.tmc_menu_config"
+              sequence="10"
+              action="document_type_action_form" />
 
 </odoo>

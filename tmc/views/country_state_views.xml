@@ -2,20 +2,20 @@
 <odoo>
 
     <!-- WINDOW ACTION -->
-    <record id="country_state_action_form" 
-        model="ir.actions.act_window">
+    <record id="country_state_action_form"
+            model="ir.actions.act_window">
         <field name="name">States</field>
         <field name="res_model">res.country.state</field>
         <field name="view_mode">tree,form</field>
     </record>
 
     <!-- TREE VIEW -->
-    <record id="country_state_view_tree" 
-        model="ir.ui.view">
+    <record id="country_state_view_tree"
+            model="ir.ui.view">
         <field name="name">res.country_state.view.tree</field>
         <field name="model">res.country.state</field>
-        <field name="arch" 
-            type="xml">
+        <field name="arch"
+               type="xml">
             <tree>
                 <field name="name" />
                 <field name="country_id" />

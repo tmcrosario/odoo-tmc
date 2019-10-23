@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <menuitem id="tmc_menu_root" 
-        name="Gestión Documental" 
-        sequence="5" 
-        groups="tmc.group_manager,tmc.group_user,tmc.group_read_only" />
+    <menuitem id="tmc_menu_root"
+              name="Gestión Documental"
+              sequence="5"
+              groups="tmc.group_manager,tmc.group_user,tmc.group_read_only" />
 
-    <menuitem id="tmc_menu_config" 
-        name="Tribunal de Cuentas" 
-        parent="base.menu_administration" 
-        sequence="90" />
+    <menuitem id="tmc_menu_config"
+              name="Tribunal de Cuentas"
+              parent="base.menu_administration"
+              sequence="90" />
 
 </odoo>

@@ -2,23 +2,24 @@
 <odoo>
 
     <!-- WINDOW ACTION -->
-    <record id="dependence_order_action_form" 
-        model="ir.actions.act_window">
+    <record id="dependence_order_action_form"
+            model="ir.actions.act_window">
         <field name="name">Dependence Order</field>
         <field name="res_model">tmc.dependence_order</field>
         <field name="view_mode">tree,form</field>
-        <field name="context">{ 'search_default_filter_actual_nomenclator': True, 'search_default_group_by_parent_id': True }
+        <field name="context">
+            { 'search_default_filter_actual_nomenclator': True, 'search_default_group_by_parent_id': True }
         </field>
         <field name="domain">[('parent_id', '!=', False), (u'parent_id', u'not ilike', u'ADMINISTRACI\xd3N CENTRAL')]</field>
     </record>
 
     <!-- TREE VIEW -->
-    <record id="dependence_order_view_tree" 
-        model="ir.ui.view">
+    <record id="dependence_order_view_tree"
+            model="ir.ui.view">
         <field name="name">tmc.dependence_order.view.tree</field>
         <field name="model">tmc.dependence_order</field>
-        <field name="arch" 
-            type="xml">
+        <field name="arch"
+               type="xml">
             <tree decoration-bf="parent_name in [u'ADMINISTRACI\xd3N CENTRAL', u'ORGANISMOS DESCENTRALIZADOS', u'INSTITUCIONES DE SEGURIDAD SOCIAL', u'EMPRESAS, SOCIEDADES Y OTROS ENTES DEL ESTADO', False]">
                 <field name="code" />
                 <field name="name" />
@@ -32,19 +33,19 @@
     </record>
 
     <!-- FORM VIEW -->
-    <record id="dependence_order_view_form" 
-        model="ir.ui.view">
+    <record id="dependence_order_view_form"
+            model="ir.ui.view">
         <field name="name">tmc.dependence_order.view.form</field>
         <field name="model">tmc.dependence_order</field>
-        <field name="arch" 
-            type="xml">
+        <field name="arch"
+               type="xml">
             <form>
                 <sheet>
                     <group>
                         <group>
                             <field name="parent_id" />
-                            <field name="dependence_id" 
-                                class="oe_edit_only" />
+                            <field name="dependence_id"
+                                   class="oe_edit_only" />
                             <field name="name" />
                         </group>
                         <group>
@@ -52,8 +53,8 @@
                             <field name="abbreviation" />
                         </group>
                         <group>
-                            <field name="institutional_classifier_ids" 
-                                widget="many2many_tags" />
+                            <field name="institutional_classifier_ids"
+                                   widget="many2many_tags" />
                         </group>
                     </group>
                 </sheet>
@@ -62,25 +63,25 @@
     </record>
 
     <!-- SEARCH VIEW -->
-    <record model="ir.ui.view" 
-        id="dependence_order_view_search">
+    <record model="ir.ui.view"
+            id="dependence_order_view_search">
         <field name="name">tmc.dependence_order.view.search</field>
         <field name="model">tmc.dependence_order</field>
-        <field name="arch" 
-            type="xml">
+        <field name="arch"
+               type="xml">
             <search>
                 <field name="code" />
                 <field name="name" />
                 <field name="abbreviation" />
                 <field name="institutional_classifier_ids" />
                 <group string="Group By">
-                    <filter name="group_by_parent_id" 
-                        string="Institutional Unit" 
-                        context="{'group_by': 'parent_id'}" />
+                    <filter name="group_by_parent_id"
+                            string="Institutional Unit"
+                            context="{'group_by': 'parent_id'}" />
                 </group>
-                <filter string="Actual Nomenclator" 
-                    name="filter_actual_nomenclator" 
-                    domain="[('in_actual_nomenclator', '=', True)]" />
+                <filter string="Actual Nomenclator"
+                        name="filter_actual_nomenclator"
+                        domain="[('in_actual_nomenclator', '=', True)]" />
             </search>
         </field>
     </record>
