@@ -244,6 +244,7 @@ class Document(models.Model):
     @api.depends('highlight_ids')
     def _compute_highest_highlight(self):
         for document in self:
+            document.highest_highlight = None
             high_highlights = self.env['tmc.highlight'].search([
                 ('document_id', '=', document.id),
                 ('applicable', '=', True),
