@@ -75,8 +75,30 @@ class Document(models.Model):
                                             column2='right_document_id',
                                             domain="[('id', '!=', id)]")
 
+    period_selection = fields.Selection(
+        selection=lambda self: self.generate_period_selection(),
+        compute='_compute_period_selection',
+        store=True)
+
     _sql_constraints = [('name_unique', 'UNIQUE(name)',
                          _('Document already exists'))]
+
+    @api.depends('document_type_id', 'dependence_id', 'number', 'period')
+    def _compute_period_selection(self):
+        this_year = datetime.today().year
+        for document in self:
+            if (this_year - 3) <= document.period <= this_year:
+                document.period_selection = str(document.period)
+            else:
+                document.period_selection = None
+
+    def generate_period_selection(self):
+        this_year = datetime.today().year
+        res = [(str(this_year), str(this_year)),
+               (str(this_year - 1), str(this_year - 1)),
+               (str(this_year - 2), str(this_year - 2)),
+               (str(this_year - 3), str(this_year - 3))]
+        return res
 
     def show_or_add_content(self):
         reference_model = 'tmc.' + self.reference_model

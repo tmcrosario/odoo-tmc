@@ -88,6 +88,7 @@
                             <field name="number"
                                    attrs="{'required':[('document_type_abbr', '!=', 'ACT')], 'invisible':[('document_type_abbr', '=', 'ACT')]}" />
                             <field name="period" />
+                            <field name="period_selection" />
                         </group>
                     </group>
                     <group>
@@ -150,6 +151,10 @@
                 <field name="secondary_topic_ids"
                        string="Document Topic"
                        filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                <searchpanel>
+                    <field name="period_selection" string="Period" icon="fa-calendar"/>
+                    <field name="main_topic_ids" select="multi" icon="fa-tags" />
+                </searchpanel>
             </search>
         </field>
     </record>
@@ -167,6 +172,10 @@
                 <field name="secondary_topic_ids"
                        string="Document Topic"
                        filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                <searchpanel>
+                    <field name="period_selection" string="Period" icon="fa-calendar"/>
+                    <field name="main_topic_ids" select="multi" icon="fa-tags" />
+                </searchpanel>
             </search>
         </field>
     </record>
