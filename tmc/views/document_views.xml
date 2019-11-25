@@ -142,16 +142,11 @@
         <field name="arch"
                type="xml">
             <search string="Document">
-                <field name="document_type_id"
-                       filter_domain="['|', ('document_type_id', '=', self)]" />
-                <field name="number"
-                       filter_domain="['|', ('number', '=', self)]" />
-                <field name="period"
-                       filter_domain="['|', ('period', '=', self)]" />
-                <field name="dependence_id"
-                       filter_domain="[('dependence_id', 'ilike', self)]" />
-                <field name="document_object"
-                       filter_domain="[('document_object', 'ilike', self)]" />
+                <field name="document_type_id" />
+                <field name="number" />
+                <field name="period" />
+                <field name="dependence_id"/>
+                <field name="document_object" />
                 <field name="secondary_topic_ids"
                        string="Document Topic"
                        filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
@@ -166,12 +161,9 @@
         <field name="arch"
                type="xml">
             <search string="Document">
-                <field name="number"
-                       filter_domain="['|', ('number', '=', self)]" />
-                <field name="period"
-                       filter_domain="['|', ('period', '=', self)]" />
-                <field name="document_object"
-                       filter_domain="[('document_object', 'ilike', self)]" />
+                <field name="number" />
+                <field name="period" />
+                <field name="document_object" />
                 <field name="secondary_topic_ids"
                        string="Document Topic"
                        filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />

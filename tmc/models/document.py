@@ -1,4 +1,5 @@
 from datetime import datetime
+
 from odoo import _, api, exceptions, fields, models
 
 
@@ -7,115 +8,75 @@ class Document(models.Model):
     _name = 'tmc.document'
     _order = 'period desc, name desc'
 
-    name = fields.Char(
-        compute='_compute_name',
-        store=True
-    )
+    name = fields.Char(compute='_compute_name', store=True)
 
-    dependence_id = fields.Many2one(
-        comodel_name='tmc.dependence',
-        domain=[('document_type_ids', '!=', False),
-                ('system_ids', 'ilike', 'TMC Base')],
-        required=True
-    )
+    dependence_id = fields.Many2one(comodel_name='tmc.dependence',
+                                    domain=[('document_type_ids', '!=', False),
+                                            ('system_ids', 'ilike', 'TMC Base')
+                                            ],
+                                    required=True)
 
-    document_type_id = fields.Many2one(
-        comodel_name='tmc.document_type',
-        required=True
-    )
+    document_type_id = fields.Many2one(comodel_name='tmc.document_type',
+                                       required=True)
 
-    document_type_abbr = fields.Char(
-        related='document_type_id.abbreviation',
-    )
+    document_type_abbr = fields.Char(related='document_type_id.abbreviation')
 
     number = fields.Integer()
 
-    period = fields.Integer(
-        required=True
-    )
+    period = fields.Integer(required=True)
 
     date = fields.Date()
 
-    entry_date = fields.Date(
-        compute='_compute_entry_date',
-        readonly=True
-    )
+    entry_date = fields.Date(compute='_compute_entry_date', readonly=True)
 
-    document_object = fields.Char(
-        string='Object',
-        index=True
-    )
+    document_object = fields.Char(string='Object', index=True)
 
     document_object_required = fields.Boolean()
 
-    document_object_copy = fields.Char(
-        compute='_compute_document_object_copy'
-    )
+    document_object_copy = fields.Char(compute='_compute_document_object_copy')
 
     document_topic_ids = fields.Many2many(
-        related='dependence_id.document_topic_ids'
-    )
+        related='dependence_id.document_topic_ids')
 
     main_topic_ids = fields.Many2many(
         comodel_name='tmc.document_topic',
         relation='document_main_topic_rel',
-        domain="[('parent_id', '=', False), ('id', 'in', document_topic_ids[0][2])]"
-    )
+        domain=
+        "[('parent_id', '=', False), ('id', 'in', document_topic_ids[0][2])]")
 
     secondary_topic_ids = fields.Many2many(
         comodel_name='tmc.document_topic',
         relation='document_secondary_topic_rel',
-        domain="[('parent_id', 'in', main_topic_ids[0][2])]"
-    )
+        domain="[('parent_id', 'in', main_topic_ids[0][2])]")
 
-    topics_display_name = fields.Char(
-        compute='_compute_topics_display_name',
-        string='Topics',
-        readonly=True,
-        store=True
-    )
+    topics_display_name = fields.Char(compute='_compute_topics_display_name',
+                                      string='Topics',
+                                      readonly=True,
+                                      store=True)
 
-    reference_model = fields.Char(
-        related='document_type_id.model'
-    )
+    reference_model = fields.Char(related='document_type_id.model')
 
-    reference_document = fields.Integer(
-        compute='_compute_reference_document'
-    )
+    reference_document = fields.Integer(compute='_compute_reference_document')
 
-    highlight_ids = fields.One2many(
-        comodel_name='tmc.highlight',
-        inverse_name='document_id'
-    )
+    highlight_ids = fields.One2many(comodel_name='tmc.highlight',
+                                    inverse_name='document_id')
 
-    highlights_count = fields.Integer(
-        compute='_compute_highlights_count'
-    )
+    highlights_count = fields.Integer(compute='_compute_highlights_count')
 
-    highest_highlight = fields.Selection(
-        selection=[('high', 'High'),
-                   ('medium', 'Medium')],
-        compute='_compute_highest_highlight'
-    )
+    highest_highlight = fields.Selection(selection=[('high', 'High'),
+                                                    ('medium', 'Medium')],
+                                         compute='_compute_highest_highlight')
 
-    important = fields.Boolean(
-        compute='_compute_important_topic',
-        store=True
-    )
+    important = fields.Boolean(compute='_compute_important_topic', store=True)
 
-    related_document_ids = fields.Many2many(
-        comodel_name='tmc.document',
-        relation='tmc_document_relation',
-        column1='left_document_id',
-        column2='right_document_id',
-        domain="[('id', '!=', id)]"
-    )
+    related_document_ids = fields.Many2many(comodel_name='tmc.document',
+                                            relation='tmc_document_relation',
+                                            column1='left_document_id',
+                                            column2='right_document_id',
+                                            domain="[('id', '!=', id)]")
 
-    _sql_constraints = [
-        ('name_unique',
-            'UNIQUE(name)',
-            _('Document already exists'))
-    ]
+    _sql_constraints = [('name_unique', 'UNIQUE(name)',
+                         _('Document already exists'))]
 
     def show_or_add_content(self):
         reference_model = 'tmc.' + self.reference_model
@@ -156,10 +117,7 @@ class Document(models.Model):
         if self.number > max_number:
             raise Warning(_('Invalid number'))
 
-    @api.depends('document_type_id',
-                 'dependence_id',
-                 'number',
-                 'period')
+    @api.depends('document_type_id', 'dependence_id', 'number', 'period')
     def _compute_name(self):
         for document in self:
             doc_abbr = document.document_type_id.abbreviation
@@ -173,11 +131,7 @@ class Document(models.Model):
 
             if (doc_abbr and doc_number and doc_period and dep_abbr):
                 document.name = "%s-%s-%s/%s" % (
-                    doc_abbr,
-                    str(doc_number).zfill(6),
-                    dep_abbr,
-                    doc_period
-                )
+                    doc_abbr, str(doc_number).zfill(6), dep_abbr, doc_period)
             else:
                 document.name = _('Unnamed Document')
 
@@ -185,8 +139,7 @@ class Document(models.Model):
     def _compute_highlights_count(self):
         for document in self:
             applicable_highlight_ids = document.highlight_ids.filtered(
-                lambda record: record.applicable == True
-            )
+                lambda record: record.applicable == True)
             document.highlights_count = len(applicable_highlight_ids)
 
     @api.onchange('dependence_id')
@@ -208,14 +161,12 @@ class Document(models.Model):
         else:
             self.document_object_required = False
         new_secondary_topic_ids = self.secondary_topic_ids.filtered(
-            lambda record: record.parent_id in self.main_topic_ids
-        )
+            lambda record: record.parent_id in self.main_topic_ids)
         self.secondary_topic_ids = new_secondary_topic_ids
         return {
             'domain': {
-                'secondary_topic_ids': [
-                    ('first_parent_id', 'in', self.main_topic_ids.ids)
-                ]
+                'secondary_topic_ids':
+                [('first_parent_id', 'in', self.main_topic_ids.ids)]
             }
         }
 
@@ -246,22 +197,19 @@ class Document(models.Model):
         for document in self:
             document.highest_highlight = None
             high_highlights = self.env['tmc.highlight'].search([
-                ('document_id', '=', document.id),
-                ('applicable', '=', True),
-                ('level', '=', 'high')]
-            )
+                ('document_id', '=', document.id), ('applicable', '=', True),
+                ('level', '=', 'high')
+            ])
             medium_highlights = self.env['tmc.highlight'].search([
-                ('document_id', '=', document.id),
-                ('applicable', '=', True),
-                ('level', '=', 'medium')]
-            )
+                ('document_id', '=', document.id), ('applicable', '=', True),
+                ('level', '=', 'medium')
+            ])
             if high_highlights:
                 document.highest_highlight = 'high'
             elif medium_highlights:
                 document.highest_highlight = 'medium'
 
-    @api.depends('main_topic_ids',
-                 'secondary_topic_ids')
+    @api.depends('main_topic_ids', 'secondary_topic_ids')
     def _compute_important_topic(self):
         for document in self:
             domain = [
@@ -269,18 +217,15 @@ class Document(models.Model):
                 ('id', 'in', document.secondary_topic_ids.ids),
                 ('important', '=', True)
             ]
-            important_related_topics = self.env[
-                'tmc.document_topic'].search(domain)
+            important_related_topics = self.env['tmc.document_topic'].search(
+                domain)
 
             if important_related_topics:
                 document.important = True
             else:
                 document.important = False
 
-    @api.onchange('dependence_id',
-                  'document_type_id',
-                  'period',
-                  'number')
+    @api.onchange('dependence_id', 'document_type_id', 'period', 'number')
     def _onchange_document_data(self):
         if self.dependence_id and self.document_type_id \
                 and self.number and self.period:
@@ -303,16 +248,13 @@ class Document(models.Model):
 
             mp_topic = self.env.ref(
                 'tmc_data.tmc_document_topic_modifica_presupuesto')
-            p_topic = self.env.ref(
-                'tmc_data.tmc_document_topic_periodo')
+            p_topic = self.env.ref('tmc_data.tmc_document_topic_periodo')
 
             p_topic_map = p_topic.mapped('id')
             if main_topics_set.intersection(p_topic_map):
                 if vals.get('secondary_topic_ids'):
-                    domain = [
-                        ('id', 'in', vals['secondary_topic_ids'][0][2]),
-                        ('parent_id', '=', p_topic.id)
-                    ]
+                    domain = [('id', 'in', vals['secondary_topic_ids'][0][2]),
+                              ('parent_id', '=', p_topic.id)]
                     if not self.env['tmc.document_topic'].search(domain):
                         raise exceptions.UserError(message)
                 else:
@@ -331,9 +273,7 @@ class Document(models.Model):
             new_related_documents = self.browse(
                 vals['related_document_ids'][0][2])
             new_related_documents.write(
-                {'related_document_ids': [(4, self.id)]},
-                write_inverse=False
-            )
+                {'related_document_ids': [(4, self.id)]}, write_inverse=False)
             current_rd_map = self.related_document_ids.mapped('id')
             new_rd_map = new_related_documents.mapped('id')
             new_rd_set = set(new_rd_map)
@@ -341,8 +281,7 @@ class Document(models.Model):
             if rd_diff:
                 self.browse(rd_diff).write(
                     {'related_document_ids': [(3, self.id)]},
-                    write_inverse=False
-                )
+                    write_inverse=False)
 
         return super(Document, self).write(vals)
 
@@ -362,8 +301,7 @@ class Document(models.Model):
         # Report the last value
         yield last, False
 
-    @api.depends('main_topic_ids',
-                 'secondary_topic_ids')
+    @api.depends('main_topic_ids', 'secondary_topic_ids')
     def _compute_topics_display_name(self):
         for document in self:
             document.topics_display_name = ''
@@ -372,8 +310,7 @@ class Document(models.Model):
                     aux = ''
                     aux += mt.name
                     st_filtered = document.secondary_topic_ids.filtered(
-                        lambda record: record.parent_id.id == mt.id
-                    )
+                        lambda record: record.parent_id.id == mt.id)
                     is_first = True
                     for st, has_more_st in self.lookahead(st_filtered):
                         if st.parent_id == mt:
@@ -406,115 +343,106 @@ class Document(models.Model):
 class DocumentDec(models.Model):
     _name = 'tmc.document_dec'
 
-    document_id = fields.Many2one(
-        comodel_name='tmc.document',
-        domain=[('document_type_id.abbreviation', '=', 'DEC')],
-        string='Document Name',
-        required=True,
-        ondelete='cascade',
-        delegate=True
-    )
+    document_id = fields.Many2one(comodel_name='tmc.document',
+                                  domain=[('document_type_id.abbreviation',
+                                           '=', 'DEC')],
+                                  string='Document Name',
+                                  required=True,
+                                  ondelete='cascade',
+                                  delegate=True)
 
 
 class DocumentDic(models.Model):
     _name = 'tmc.document_dic'
 
-    document_id = fields.Many2one(
-        comodel_name='tmc.document',
-        domain=[('document_type_id.abbreviation', '=', 'DIC')],
-        string='Document Name',
-        required=True,
-        ondelete='cascade',
-        delegate=True
-    )
+    document_id = fields.Many2one(comodel_name='tmc.document',
+                                  domain=[('document_type_id.abbreviation',
+                                           '=', 'DIC')],
+                                  string='Document Name',
+                                  required=True,
+                                  ondelete='cascade',
+                                  delegate=True)
 
 
 class DocumentExp(models.Model):
     _name = 'tmc.document_exp'
 
-    document_id = fields.Many2one(
-        comodel_name='tmc.document',
-        domain=[('document_type_id.abbreviation', '=', 'EXP')],
-        string='Document Name',
-        required=True,
-        ondelete='cascade',
-        delegate=True
-    )
+    document_id = fields.Many2one(comodel_name='tmc.document',
+                                  domain=[('document_type_id.abbreviation',
+                                           '=', 'EXP')],
+                                  string='Document Name',
+                                  required=True,
+                                  ondelete='cascade',
+                                  delegate=True)
 
 
 class DocumentExt(models.Model):
     _name = 'tmc.document_ext'
 
-    document_id = fields.Many2one(
-        comodel_name='tmc.document',
-        domain=[('document_type_id.abbreviation', '=', 'EXT')],
-        string='Document Name',
-        required=True,
-        ondelete='cascade',
-        delegate=True
-    )
+    document_id = fields.Many2one(comodel_name='tmc.document',
+                                  domain=[('document_type_id.abbreviation',
+                                           '=', 'EXT')],
+                                  string='Document Name',
+                                  required=True,
+                                  ondelete='cascade',
+                                  delegate=True)
 
 
 class DocumentLeg(models.Model):
     _name = 'tmc.document_leg'
 
-    document_id = fields.Many2one(
-        comodel_name='tmc.document',
-        domain=[('document_type_id.abbreviation', '=', 'LEG')],
-        string='Document Name',
-        required=True,
-        ondelete='cascade',
-        delegate=True
-    )
+    document_id = fields.Many2one(comodel_name='tmc.document',
+                                  domain=[('document_type_id.abbreviation',
+                                           '=', 'LEG')],
+                                  string='Document Name',
+                                  required=True,
+                                  ondelete='cascade',
+                                  delegate=True)
 
 
 class DocumentOrd(models.Model):
     _name = 'tmc.document_ord'
 
-    document_id = fields.Many2one(
-        comodel_name='tmc.document',
-        domain=[('document_type_id.abbreviation', '=', 'ORD')],
-        string='Document Name',
-        required=True,
-        ondelete='cascade',
-        delegate=True
-    )
+    document_id = fields.Many2one(comodel_name='tmc.document',
+                                  domain=[('document_type_id.abbreviation',
+                                           '=', 'ORD')],
+                                  string='Document Name',
+                                  required=True,
+                                  ondelete='cascade',
+                                  delegate=True)
 
 
 class DocumentRes(models.Model):
     _name = 'tmc.document_res'
 
-    document_id = fields.Many2one(
-        comodel_name='tmc.document',
-        domain=[('document_type_id.abbreviation', '=', 'RES')],
-        string='Document Name',
-        required=True,
-        ondelete='cascade',
-        delegate=True
-    )
+    document_id = fields.Many2one(comodel_name='tmc.document',
+                                  domain=[('document_type_id.abbreviation',
+                                           '=', 'RES')],
+                                  string='Document Name',
+                                  required=True,
+                                  ondelete='cascade',
+                                  delegate=True)
 
 
 class DocumentConv(models.Model):
     _name = 'tmc.document_conv'
 
-    document_id = fields.Many2one(
-        comodel_name='tmc.document',
-        domain=[('document_type_id.abbreviation', '=', 'CONV')],
-        string='Document Name',
-        required=True,
-        ondelete='cascade',
-        delegate=True
-    )
+    document_id = fields.Many2one(comodel_name='tmc.document',
+                                  domain=[('document_type_id.abbreviation',
+                                           '=', 'CONV')],
+                                  string='Document Name',
+                                  required=True,
+                                  ondelete='cascade',
+                                  delegate=True)
 
 
 class DocumentAct(models.Model):
     _name = 'tmc.document_act'
 
-    document_id = fields.Many2one(
-        comodel_name='tmc.document',
-        domain=[('document_type_id.abbreviation', '=', 'ACT')],
-        string='Document Name',
-        required=True,
-        ondelete='cascade',
-        delegate=True
-    )
+    document_id = fields.Many2one(comodel_name='tmc.document',
+                                  domain=[('document_type_id.abbreviation',
+                                           '=', 'ACT')],
+                                  string='Document Name',
+                                  required=True,
+                                  ondelete='cascade',
+                                  delegate=True)
