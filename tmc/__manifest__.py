@@ -1,4 +1,3 @@
-
 {
     'name': "TMC Base",
     'summary': 'Main TMC models and functionality',
@@ -15,7 +14,6 @@
         # 'web_listview_range_select',
         # 'web_tree_many2one_clickable',
         # 'base_technical_features',
-        # 'mass_editing',
         # 'web_m2x_options',
         # 'report_py3o',
         # 'web_search_with_and'
@@ -47,4 +45,4 @@
     'installable': True,
     'application': False,
     'qweb': [],
-}
+}  # yapf: disable
