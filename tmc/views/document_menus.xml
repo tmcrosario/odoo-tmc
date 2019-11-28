@@ -35,17 +35,17 @@
               sequence="5"
               action="document_action_form_res_hac" />
 
-    <menuitem id="tmc_menu_documents_res_pla"
-              name="Planeamiento"
-              parent="tmc_menu_documents_res"
-              sequence="10"
-              action="document_action_form_res_pla" />
-
     <menuitem id="tmc_menu_documents_res_gob"
               name="Gobierno"
               parent="tmc_menu_documents_res"
-              sequence="15"
+              sequence="10"
               action="document_action_form_res_gob" />
+
+    <menuitem id="tmc_menu_documents_res_pla"
+              name="Planeamiento"
+              parent="tmc_menu_documents_res"
+              sequence="15"
+              action="document_action_form_res_pla" />
 
     <menuitem id="tmc_menu_documents_res_obr"
               name="Obras Públicas"
