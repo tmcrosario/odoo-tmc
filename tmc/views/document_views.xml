@@ -144,7 +144,7 @@
         <field name="model">tmc.document</field>
         <field name="arch"
                type="xml">
-            <search string="Document">
+            <search>
                 <field name="document_type_id" />
                 <field name="number" />
                 <field name="period" />

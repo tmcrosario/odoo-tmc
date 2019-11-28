@@ -8,49 +8,35 @@ class DocumentTopic(models.Model):
     _inherit = 'tmc.category'
     _order = 'name'
 
-    first_parent_id = fields.Many2one(
-        comodel_name='tmc.document_topic',
-        compute='_compute_first_parent',
-        store=True
-    )
+    first_parent_id = fields.Many2one(comodel_name='tmc.document_topic',
+                                      compute='_compute_first_parent',
+                                      store=True)
 
-    document_ids = fields.Many2many(
-        comodel_name='tmc.document',
-        relation='document_main_topic_rel',
-        column1='main_topic_ids'
-    )
+    document_ids = fields.Many2many(comodel_name='tmc.document',
+                                    relation='document_main_topic_rel',
+                                    column1='main_topic_ids')
 
-    parent_id = fields.Many2one(
-        comodel_name='tmc.document_topic',
-        string='Main Topic'
-    )
+    parent_id = fields.Many2one(comodel_name='tmc.document_topic',
+                                string='Main Topic')
 
-    child_ids = fields.One2many(
-        comodel_name='tmc.document_topic',
-        inverse_name='parent_id'
-    )
+    child_ids = fields.One2many(comodel_name='tmc.document_topic',
+                                inverse_name='parent_id')
 
-    dependence_ids = fields.Many2many(
-        comodel_name='tmc.dependence',
-        domain="[('abbreviation', '!=', False)]"
-    )
+    dependence_ids = fields.Many2many(comodel_name='tmc.dependence',
+                                      domain="[('abbreviation', '!=', False)]")
 
     dependences_display_name = fields.Char(
-        compute='_compute_dependences_display_name',
-        string='Dependences'
-    )
+        compute='_compute_dependences_display_name', string='Dependences')
 
     secondary_topics_display_name = fields.Char(
         compute='_compute_secondary_topics_display_name',
-        string='Secondary Topics'
-    )
+        string='Secondary Topics')
 
     important = fields.Boolean()
 
     color = fields.Integer()
 
-    @api.depends('parent_id',
-                 'parent_id.parent_id')
+    @api.depends('parent_id', 'parent_id.parent_id')
     def _compute_first_parent(self):
         for document_topic in self:
             first_parent_id = False

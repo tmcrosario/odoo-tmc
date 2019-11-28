@@ -5,17 +5,11 @@ class Highlight(models.Model):
 
     _name = 'tmc.highlight'
 
-    comment = fields.Text(
-        required=True
-    )
+    comment = fields.Text(required=True)
 
-    document_id = fields.Many2one(
-        comodel_name='tmc.document'
-    )
+    document_id = fields.Many2one(comodel_name='tmc.document')
 
-    level = fields.Selection(
-        selection=[('high', 'High'),
-                   ('medium', 'Medium')]
-    )
+    level = fields.Selection(selection=[('high', 'High'), ('medium',
+                                                           'Medium')])
 
     applicable = fields.Boolean()
