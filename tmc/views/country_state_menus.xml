@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <menuitem id="tmc_menu_country_state_config"
+    <menuitem id="tmc_menu_config_gestion_documental_country_state"
               name="States"
-              parent="tmc_menu_config"
+              parent="tmc_menu_config_gestion_documental"
               sequence="15"
               action="country_state_action_form" />
 

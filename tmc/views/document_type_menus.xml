@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <menuitem id="tmc_menu_document_types_config"
+    <menuitem id="tmc_menu_config_gestion_documental_document_type"
               name="Document Types"
-              parent="tmc.tmc_menu_config"
+              parent="tmc.tmc_menu_config_gestion_documental"
               sequence="10"
               action="document_type_action_form" />
 

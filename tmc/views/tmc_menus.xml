@@ -11,4 +11,9 @@
               parent="base.menu_administration"
               sequence="90" />
 
+    <menuitem id="tmc_menu_config_gestion_documental"
+              name="Gestión Documental"
+              parent="tmc_menu_config"
+              sequence="5" />
+
 </odoo>
