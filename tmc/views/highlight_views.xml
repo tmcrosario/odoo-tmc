@@ -17,9 +17,11 @@
                 <field name="create_uid"
                        readonly="True" />
                 <field name="write_uid"
-                       readonly="True" />
+                       readonly="True"
+                       optional="hide" />
                 <field name="create_date"
-                       readonly="True" />
+                       readonly="True"
+                       optional="hide" />
                 <field name="applicable"
                        invisible="True" />
             </tree>
@@ -38,13 +40,19 @@
                     <group>
                         <group>
                             <field name="level" />
+                            <field name="applicable" />
+                        </group>
+                        <group>
+                            <field name="create_date"
+                                   attrs="{'invisible': [('create_date', '=', False)]}" />
+                            <field name="create_uid"
+                                   attrs="{'invisible': [('create_date', '=', False)]}" />
+                            <field name="write_uid"
+                                   attrs="{'invisible': [('create_date', '=', False)]}" />
                         </group>
                     </group>
                     <group>
                         <field name="comment" />
-                    </group>
-                    <group>
-                        <field name="applicable" />
                     </group>
                 </sheet>
             </form>

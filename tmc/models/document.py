@@ -160,7 +160,7 @@ class Document(models.Model):
     def _compute_highlights_count(self):
         for document in self:
             applicable_highlight_ids = document.highlight_ids.filtered(
-                lambda record: record.applicable == True)
+                lambda record: record.applicable is True)
             document.highlights_count = len(applicable_highlight_ids)
 
     @api.onchange('dependence_id')

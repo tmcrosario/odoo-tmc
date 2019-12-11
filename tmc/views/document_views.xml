@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- WINDOW ACTION -->
-    <record id="document_action_form"
-            model="ir.actions.act_window">
-        <field name="name">Documents</field>
-        <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
-        <field name="search_view_id"
-               ref="document_view_search" />
-    </record>
-
     <!-- TREE VIEW -->
     <record id="document_view_tree"
             model="ir.ui.view">
@@ -42,18 +32,16 @@
                type="xml">
             <form duplicate="0">
                 <sheet>
-                    <div class="oe_right oe_button_box"
-                         name="buttons"
-                         groups="base.group_user"
-                         attrs="{'invisible':[('create_date','=', False)]}">
-                        <button class="oe_inline oe_stat_button"
-                                type="action"
+                    <div class="oe_button_box"
+                         name="button_box"
+                         groups="base.group_user">
+                        <button class="oe_stat_button"
                                 attrs="{'invisible':[('highlights_count','=', 0)]}"
-                                icon="fa-warning"
+                                icon="fa-exclamation-circle"
                                 name="highlights_count_button">
                             <field string="Highlight(s)"
                                    name="highlights_count"
-                                   widget="statinfo" />
+                                   widget="statinfo"/>
                         </button>
                     </div>
                     <div class="oe_title">
@@ -90,7 +78,6 @@
                             <field name="number"
                                    attrs="{'required':[('document_type_abbr', '!=', 'ACT')], 'invisible':[('document_type_abbr', '=', 'ACT')]}" />
                             <field name="period" />
-                            <field name="period_selection" />
                         </group>
                     </group>
                     <group>
@@ -104,18 +91,16 @@
                         </group>
                         <field name="document_topic_ids"
                                invisible="True" />
-                        <!-- <group string="Topics" -->
-                        <!-- attrs="{'invisible':['|', ('document_topic_ids', '=', []), ('create_date','=', False)]}"> -->
-                        <group>
-                            <field name="main_topic_ids" />
-                            <!-- widget="many2many_tags" -->
-                            <!-- options="{'no_create_edit': True}" -->
-                            <!-- attrs="{'required':[('document_object', '!=', False), ('document_type_abbr', 'in', ['DEC', 'RES'])]}" /> -->
+                        <group string="Topics"
+                               attrs="{'invisible':['|', ('document_topic_ids', '=', []), ('create_date','=', False)]}">
+                            <field name="main_topic_ids"
+                                   widget="many2many_tags"
+                                   options="{'color_field': 'color', 'no_create_edit': True}"
+                                   attrs="{'required':[('document_object', '!=', False), ('document_type_abbr', 'in', ['DEC', 'RES'])]}" />
                             <field name="secondary_topic_ids"
                                    attrs="{'invisible':[('main_topic_ids', '=', [])]}"
                                    widget="many2many_tags"
-                                   options="{'no_create_edit': True}"
-                                   context="{'tree_view_ref':'tmc.document_secondary_topic_tree_view'}" />
+                                   options="{'color_field': 'color', 'no_create_edit': True}" />
                         </group>
                     </group>
                     <notebook attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
