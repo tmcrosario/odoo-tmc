@@ -41,13 +41,12 @@ class Document(models.Model):
     main_topic_ids = fields.Many2many(
         comodel_name='tmc.document_topic',
         relation='document_main_topic_rel',
-        domain=
-        "[('parent_id', '=', False), ('id', 'in', document_topic_ids[0][2])]")
+        domain="[('parent_id', '=', False), ('id', 'in', document_topic_ids)]")
 
     secondary_topic_ids = fields.Many2many(
         comodel_name='tmc.document_topic',
         relation='document_secondary_topic_rel',
-        domain="[('parent_id', 'in', main_topic_ids[0][2])]")
+        domain="[('parent_id', 'in', main_topic_ids)]")
 
     topics_display_name = fields.Char(compute='_compute_topics_display_name',
                                       string='Topics',
