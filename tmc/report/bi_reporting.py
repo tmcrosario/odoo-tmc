@@ -1,5 +1,5 @@
 from datetime import datetime
-from odoo import api, models
+from odoo import models
 
 
 class Report(models.Model):
@@ -11,11 +11,10 @@ class Report(models.Model):
         formatted_date = None
         if date_string:
             try:
-                tmp = datetime.strptime(
-                    date_string, '%Y-%m-%d')
-            except Exception:
-                tmp = datetime.strptime(
-                    date_string, '%Y-%m-%d %H:%M:%S').date()
+                tmp = datetime.strptime(date_string, '%Y-%m-%d')
+            except ValueError:
+                tmp = datetime.strptime(date_string,
+                                        '%Y-%m-%d %H:%M:%S').date()
             finally:
                 formatted_date = tmp.strftime('%d/%m/%Y')
         return formatted_date
@@ -29,5 +28,4 @@ class Report(models.Model):
         report_name = self.env.context.get('report_name')
         if report_name:
             self = self._prepare_report()
-            return self.env['report'].get_action(
-                self, report_name)
+            return self.env['report'].get_action(self, report_name)

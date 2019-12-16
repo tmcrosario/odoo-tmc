@@ -313,10 +313,10 @@ class Document(models.Model):
         (True), or if it is the last value (False).
         """
         # Get an iterator and pull the first value
-        it = iter(iterable)
-        last = next(it)
+        iterator = iter(iterable)
+        last = next(iterator)
         # Run the iterator to exhaustion (starting from the second value)
-        for val in it:
+        for val in iterator:
             # Report the *previous* value (more to come)
             yield last, True
             last = val
@@ -328,14 +328,15 @@ class Document(models.Model):
         for document in self:
             document.topics_display_name = ''
             if document.main_topic_ids:
-                for mt, has_more_mt in self.lookahead(document.main_topic_ids):
+                for main_topic, has_more_main_topic in self.lookahead(
+                        document.main_topic_ids):
                     aux = ''
-                    aux += mt.name
+                    aux += main_topic.name
                     st_filtered = document.secondary_topic_ids.filtered(
-                        lambda record: record.parent_id.id == mt.id)
+                        lambda record: record.parent_id.id == main_topic.id)
                     is_first = True
                     for st, has_more_st in self.lookahead(st_filtered):
-                        if st.parent_id == mt:
+                        if st.parent_id == main_topic:
                             if is_first:
                                 is_first = False
                                 aux += ' ('
@@ -344,7 +345,7 @@ class Document(models.Model):
                                 aux += ', '
                             else:
                                 aux += ')'
-                    if has_more_mt:
+                    if has_more_main_topic:
                         aux += ', '
                     document.topics_display_name += aux
 
