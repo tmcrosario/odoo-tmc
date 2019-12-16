@@ -4,6 +4,7 @@ from odoo import fields, models
 class Employee(models.Model):
 
     _name = 'tmc.hr.employee'
+    _description = 'Employee'
     _order = 'name'
 
     name = fields.Char()

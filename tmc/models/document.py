@@ -6,6 +6,7 @@ from odoo import _, api, exceptions, fields, models
 class Document(models.Model):
 
     _name = 'tmc.document'
+    _description = 'Document'
     _order = 'period desc, name desc'
 
     name = fields.Char(compute='_compute_name', store=True)
@@ -362,7 +363,9 @@ class Document(models.Model):
 
 
 class DocumentDec(models.Model):
+
     _name = 'tmc.document_dec'
+    _description = 'Decreto'
 
     document_id = fields.Many2one(comodel_name='tmc.document',
                                   domain=[('document_type_id.abbreviation',
@@ -374,7 +377,9 @@ class DocumentDec(models.Model):
 
 
 class DocumentDic(models.Model):
+
     _name = 'tmc.document_dic'
+    _description = 'Dictamen'
 
     document_id = fields.Many2one(comodel_name='tmc.document',
                                   domain=[('document_type_id.abbreviation',
@@ -386,7 +391,9 @@ class DocumentDic(models.Model):
 
 
 class DocumentExp(models.Model):
+
     _name = 'tmc.document_exp'
+    _description = 'Expediente'
 
     document_id = fields.Many2one(comodel_name='tmc.document',
                                   domain=[('document_type_id.abbreviation',
@@ -398,7 +405,9 @@ class DocumentExp(models.Model):
 
 
 class DocumentExt(models.Model):
+
     _name = 'tmc.document_ext'
+    _description = 'Resolucion Extraordinaria'
 
     document_id = fields.Many2one(comodel_name='tmc.document',
                                   domain=[('document_type_id.abbreviation',
@@ -410,7 +419,9 @@ class DocumentExt(models.Model):
 
 
 class DocumentLeg(models.Model):
+
     _name = 'tmc.document_leg'
+    _description = 'Legajo'
 
     document_id = fields.Many2one(comodel_name='tmc.document',
                                   domain=[('document_type_id.abbreviation',
@@ -422,7 +433,9 @@ class DocumentLeg(models.Model):
 
 
 class DocumentOrd(models.Model):
+
     _name = 'tmc.document_ord'
+    _description = 'Ordenanza'
 
     document_id = fields.Many2one(comodel_name='tmc.document',
                                   domain=[('document_type_id.abbreviation',
@@ -434,7 +447,9 @@ class DocumentOrd(models.Model):
 
 
 class DocumentRes(models.Model):
+
     _name = 'tmc.document_res'
+    _description = 'Resolucion'
 
     document_id = fields.Many2one(comodel_name='tmc.document',
                                   domain=[('document_type_id.abbreviation',
@@ -446,7 +461,9 @@ class DocumentRes(models.Model):
 
 
 class DocumentConv(models.Model):
+
     _name = 'tmc.document_conv'
+    _description = 'Convenio'
 
     document_id = fields.Many2one(comodel_name='tmc.document',
                                   domain=[('document_type_id.abbreviation',
@@ -458,7 +475,9 @@ class DocumentConv(models.Model):
 
 
 class DocumentAct(models.Model):
+
     _name = 'tmc.document_act'
+    _description = 'Acta'
 
     document_id = fields.Many2one(comodel_name='tmc.document',
                                   domain=[('document_type_id.abbreviation',

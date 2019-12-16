@@ -5,6 +5,7 @@ from odoo import api, models
 class Report(models.Model):
 
     _name = 'tmc.report'
+    _description = 'Report Template'
 
     def format_date(self, date_string):
         formatted_date = None

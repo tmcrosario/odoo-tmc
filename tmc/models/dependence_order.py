@@ -4,6 +4,7 @@ from odoo import fields, models
 class DependenceOrder(models.Model):
 
     _name = 'tmc.dependence_order'
+    _description = 'Dependence Order'
     _order = 'code'
 
     name = fields.Char(related='dependence_id.name', readonly=True)

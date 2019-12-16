@@ -4,7 +4,7 @@ from odoo import models, fields, api
 class Category(models.Model):
 
     _name = 'tmc.category'
-    _description = 'category'
+    _description = 'Category'
 
     name = fields.Char()
 

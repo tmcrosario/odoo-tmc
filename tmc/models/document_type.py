@@ -4,6 +4,7 @@ from odoo import _, fields, models
 class DocumentType(models.Model):
 
     _name = 'tmc.document_type'
+    _description = 'Document Type'
 
     name = fields.Char(string='Document Type')
 

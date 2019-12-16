@@ -4,6 +4,7 @@ from odoo import fields, models
 class Highlight(models.Model):
 
     _name = 'tmc.highlight'
+    _description = 'Highlight'
 
     comment = fields.Text(required=True)
 

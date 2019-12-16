@@ -4,7 +4,9 @@ from odoo.exceptions import Warning
 
 
 class InstitutionalClassifier(models.Model):
+
     _name = 'tmc.institutional_classifier'
+    _description = 'Institutional Classifier'
     _rec_name = 'period'
     _order = 'period desc, due_date desc'
 

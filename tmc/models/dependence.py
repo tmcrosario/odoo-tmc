@@ -2,7 +2,9 @@ from odoo import _, api, fields, models
 
 
 class Dependence(models.Model):
+
     _name = 'tmc.dependence'
+    _description = 'Dependence'
 
     name = fields.Char()
 
