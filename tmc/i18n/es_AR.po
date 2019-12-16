@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-16 14:42+0000\n"
-"PO-Revision-Date: 2019-12-16 12:34-0300\n"
+"PO-Revision-Date: 2019-12-16 13:22-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -928,7 +928,7 @@ msgstr "Tema Principal"
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_topic_action_form
 msgid "Main and Secondary Topics"
-msgstr "Principales y Secundarios"
+msgstr "Temas Principales y Secundarios"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_office__manager_id

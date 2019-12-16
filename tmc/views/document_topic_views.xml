@@ -40,11 +40,19 @@
                     <notebook attrs="{'invisible':[('parent_id','!=', False)]}">
                         <page name="secondary_topics"
                               string="Secondary Topics">
-                            <field name="child_ids" />
+                            <field name="child_ids">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
                         </page>
                         <page name="dependences"
                               string="Dependences">
-                            <field name="dependence_ids" />
+                            <field name="dependence_ids">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
                         </page>
                     </notebook>
                 </sheet>
