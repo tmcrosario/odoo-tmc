@@ -14,8 +14,10 @@
                   decoration-warning="highest_highlight=='medium'">
                 <field name="name" />
                 <field name="date" />
-                <field name="document_object_copy" />
-                <field name="topics_display_name" />
+                <field name="document_object_copy"
+                       optional="show" />
+                <field name="topics_display_name"
+                       optional="show" />
                 <field name="highest_highlight"
                        invisible="True" />
             </tree>
@@ -27,7 +29,7 @@
             model="ir.ui.view">
         <field name="name">tmc.document.simple.view.tree</field>
         <field name="model">tmc.document</field>
-        <field name="priority">5</field>
+        <field name="priority">10</field>
         <field name="arch"
                type="xml">
             <tree>
