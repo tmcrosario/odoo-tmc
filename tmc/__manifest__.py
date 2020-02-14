@@ -9,12 +9,12 @@
     'depends': [
         'report_py3o',
         'report_py3o_fusion_server',
+        'web_tree_many2one_clickable',
         # 'web_advanced_search',
         # 'auditlog',
         # 'web_favicon',
         # 'web_export_view',
         # 'web_listview_range_select',
-        # 'web_tree_many2one_clickable',
         # 'base_technical_features',
         # 'web_m2x_options',
         # 'web_search_with_and'
