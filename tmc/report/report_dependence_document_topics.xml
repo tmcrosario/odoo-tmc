@@ -8,9 +8,10 @@
         <field name="report_name">dependece_document_topics</field>
         <field name="report_type">py3o</field>
         <field name="py3o_filetype">pdf</field>
-        <!-- <field name="py3o_server_id" ref="tmc_data.local_py3o_server" /> -->
-        <field name="py3o_is_local_fusion" 
-            eval="1" />
+        <field name="py3o_server_id"
+               ref="tmc_data.local_py3o_server" />
+        <field name="py3o_is_local_fusion"
+               eval="1" />
         <field name="module">tmc</field>
         <field name="py3o_template_fallback">report/dependence_document_topics.odt</field>
     </record>

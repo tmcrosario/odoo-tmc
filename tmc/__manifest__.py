@@ -7,6 +7,8 @@
     'license': 'AGPL-3',
     'sequence': 150,
     'depends': [
+        'report_py3o',
+        'report_py3o_fusion_server',
         # 'web_advanced_search',
         # 'auditlog',
         # 'web_favicon',
@@ -15,7 +17,6 @@
         # 'web_tree_many2one_clickable',
         # 'base_technical_features',
         # 'web_m2x_options',
-        # 'report_py3o',
         # 'web_search_with_and'
     ],
     'data': [

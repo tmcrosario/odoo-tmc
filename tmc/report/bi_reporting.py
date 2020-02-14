@@ -24,8 +24,14 @@ class Report(models.Model):
         return self.with_context(context)
 
     def generate_report(self):
+        res = {}
         self.ensure_one()
         report_name = self.env.context.get('report_name')
         if report_name:
             self = self._prepare_report()
-            return self.env['report'].get_action(self, report_name)
+            res = {
+                'type': 'ir.actions.report',
+                'report_name': report_name,
+                'report_type': 'py3o'
+            }
+        return res
