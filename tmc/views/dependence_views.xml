@@ -25,8 +25,10 @@
             <tree>
                 <field name="name" />
                 <field name="document_topic_ids"
-                       string="Temas Principales" />
-                <field name="in_actual_nomenclator" />
+                       string="Temas Principales"
+                       widget="many2many_tags"/>
+                <field name="in_actual_nomenclator"
+                       optional="hide"/>
             </tree>
         </field>
     </record>
@@ -84,6 +86,9 @@
                 <filter string="Actual Nomenclator"
                         name="filter_actual_nomenclator"
                         domain="[('in_actual_nomenclator', '=', True)]" />
+                <filter string="Dependences with Topics"
+                        name="filter_dependences_with_topics"
+                        domain="[('document_topic_ids', '!=', False)]" />
             </search>
         </field>
     </record>
@@ -94,16 +99,9 @@
         <field name="name">Dependences</field>
         <field name="res_model">tmc.dependence</field>
         <field name="view_mode">tree,form</field>
-    </record>
-
-    <record id="dependence_document_topic_action_form"
-            model="ir.actions.act_window">
-        <field name="name">Dependences with Document Topics</field>
-        <field name="res_model">tmc.dependence</field>
-        <field name="view_mode">tree</field>
-        <field name="domain">[('document_topic_ids', '!=', False)]</field>
-        <field name="view_id"
-               ref="dependence_document_topic_view_tree" />
+        <field name="context">
+            {'search_default_filter_dependences_with_topics': True}
+        </field>
     </record>
 
 </odoo>

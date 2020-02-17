@@ -40,7 +40,7 @@
         'views/institutional_classifier_views.xml',
         'views/institutional_classifier_menus.xml',
         'views/office_views.xml',
-        'report/report_dependence_document_topics.xml'
+        'report/dependence_document_topics.xml'
     ],
     'demo': [],
     'installable': True,

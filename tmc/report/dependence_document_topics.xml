@@ -5,7 +5,7 @@
             model="ir.actions.report">
         <field name="name">Main and Secondary Topics by Dependence</field>
         <field name="model">tmc.dependence</field>
-        <field name="report_name">dependece_document_topics</field>
+        <field name="report_name">tmc.dependece_document_topics</field>
         <field name="report_type">py3o</field>
         <field name="py3o_filetype">pdf</field>
         <field name="py3o_server_id"
