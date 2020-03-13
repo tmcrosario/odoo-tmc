@@ -7,8 +7,6 @@
     'license': 'AGPL-3',
     'sequence': 150,
     'depends': [
-        'report_py3o',
-        'report_py3o_fusion_server',
         'web_tree_many2one_clickable',
         # 'web_advanced_search',
         # 'auditlog',
@@ -39,8 +37,7 @@
         'views/highlight_views.xml',
         'views/institutional_classifier_views.xml',
         'views/institutional_classifier_menus.xml',
-        'views/office_views.xml',
-        'report/dependence_document_topics.xml'
+        'views/office_views.xml'
     ],
     'demo': [],
     'installable': True,
