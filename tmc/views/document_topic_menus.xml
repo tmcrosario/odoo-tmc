@@ -3,8 +3,8 @@
 
     <menuitem id="tmc_menu_documents_document_topics"
               name="Document Topics"
-              parent="tmc_menu_root"
+              parent="tmc_menu_others"
               action="document_topic_action_form"
-              sequence="10" />
+              sequence="5" />
 
 </odoo>
