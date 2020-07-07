@@ -423,6 +423,72 @@
         <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','Hipódromo Rosario')]</field>
     </record>  
 
+    <record model="ir.actions.act_window"
+            id="document_res_dhh_list_action">
+        <field name="name">Resoluciones de Desarrollo Humano y Hábitat (DHH)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','DESARROLLO HUMANO Y HÁBITAT')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_res_dee_list_action">
+        <field name="name">Resoluciones de Desarrollo Económico y Empleo (DEE)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','DESARROLLO ECONÓMICO Y EMPLEO')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_res_mod_list_action">
+        <field name="name">Resoluciones de Modernización y Cercanía (MOD)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','MODERNIZACIÓN Y CERCANÍA')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_res_gdh_list_action">
+        <field name="name">Resoluciones de Género y Derechos Humanos (GDH)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','GÉNERO Y DERECHOS HUMANOS')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_res_dyt_list_action">
+        <field name="name">Resoluciones de Deporte y Turismo (DYT)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','DEPORTE Y TURISMO')]</field>
+    </record>
+
+    <record model="ir.actions.act_window"
+            id="document_res_mov_bis_list_action">
+        <field name="name">Resoluciones de Movilidad (MOV)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="document_simple_search_view" />
+        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE MOVILIDAD')]</field>
+    </record>
+
     <!-- CONVENIO -->
     <!-- WINDOW ACTION -->
     <record model="ir.actions.act_window"

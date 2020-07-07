@@ -70,23 +70,17 @@
               sequence="30"
               action="document_res_sal_list_action" />
 
-    <menuitem id="menu_main_tmc_res_des_document_list"
-              name="Desarrollo Social"
+    <menuitem id="menu_main_tmc_res_dhh_document_list"
+              name="Desarrollo Humano y Hábitat"
               parent="menu_main_tmc_res_document_list"
               sequence="35"
-              action="document_res_des_list_action" />
+              action="document_res_dhh_list_action" />   
 
-    <menuitem id="menu_main_tmc_res_prod_document_list"
-              name="Producción y Desarrollo Local"
+    <menuitem id="menu_main_tmc_res_dee_document_list"
+              name="Desarrollo Económico y Empleo"
               parent="menu_main_tmc_res_document_list"
               sequence="40"
-              action="document_res_prod_list_action" />
-
-    <menuitem id="menu_main_tmc_res_prodei_document_list"
-              name="Producción, Empleo e Innovación"
-              parent="menu_main_tmc_res_document_list"
-              sequence="42"
-              action="document_res_prodei_list_action" />
+              action="document_res_dee_list_action" />
 
     <menuitem id="menu_main_tmc_res_cul_document_list"
               name="Cultura y Educación"
@@ -94,17 +88,11 @@
               sequence="45"
               action="document_res_cul_list_action" />
 
-    <menuitem id="menu_main_tmc_res_gral_document_list"
-              name="Secretaría General"
+    <menuitem id="menu_main_tmc_res_mod_document_list"
+              name="Modernización y Cercanía"
               parent="menu_main_tmc_res_document_list"
               sequence="50"
-              action="document_res_gral_list_action" />
-
-    <menuitem id="menu_main_tmc_res_tur_document_list"
-              name="Turismo"
-              parent="menu_main_tmc_res_document_list"
-              sequence="55"
-              action="document_res_tur_list_action" />
+              action="document_res_mod_list_action" />
 
     <menuitem id="menu_main_tmc_res_conv_document_list"
               name="Control y Convivencia"
@@ -112,17 +100,70 @@
               sequence="60"
               action="document_res_conv_list_action" />
 
-    <menuitem id="menu_main_tmc_res_mov_document_list"
-              name="Transporte y Movilidad"
+    <menuitem id="menu_main_tmc_res_mov_bis_document_list"
+              name="Movilidad"
               parent="menu_main_tmc_res_document_list"
               sequence="65"
-              action="document_res_mov_list_action" />
+              action="document_res_mov_bis_list_action" />
+
+    <menuitem id="menu_main_tmc_res_dyt_document_list"
+              name="Deporte y Turismo"
+              parent="menu_main_tmc_res_document_list"
+              sequence="70"
+              action="document_res_dyt_list_action" />
+
+    <menuitem id="menu_main_tmc_res_gdh_document_list"
+              name="Género y DDHH"
+              parent="menu_main_tmc_res_document_list"
+              sequence="75"
+              action="document_res_gdh_list_action" />
+
+    <menuitem id="menu_main_tmc_ex_res_document_list"
+              name="Ex Secretarías"
+              parent="menu_main_tmc_documents"
+              sequence="18" />
+
+    <menuitem id="menu_main_tmc_res_des_document_list"
+              name="Desarrollo Social"
+              parent="menu_main_tmc_ex_res_document_list"
+              sequence="5"
+              action="document_res_des_list_action" />
+
+    <menuitem id="menu_main_tmc_res_prod_document_list"
+              name="Producción y Desarrollo Local"
+              parent="menu_main_tmc_ex_res_document_list"
+              sequence="10"
+              action="document_res_prod_list_action" />
+
+    <menuitem id="menu_main_tmc_res_prodei_document_list"
+              name="Producción, Empleo e Innovación"
+              parent="menu_main_tmc_ex_res_document_list"
+              sequence="15"
+              action="document_res_prodei_list_action" />
+
+    <menuitem id="menu_main_tmc_res_gral_document_list"
+              name="Secretaría General"
+              parent="menu_main_tmc_ex_res_document_list"
+              sequence="50"
+              action="document_res_gral_list_action" />
+
+    <menuitem id="menu_main_tmc_res_tur_document_list"
+              name="Turismo"
+              parent="menu_main_tmc_ex_res_document_list"
+              sequence="55"
+              action="document_res_tur_list_action" /> 
 
     <menuitem id="menu_main_tmc_res_econ_document_list"
               name="Economía Social"
-              parent="menu_main_tmc_res_document_list"
-              sequence="70"
+              parent="menu_main_tmc_ex_res_document_list"
+              sequence="60"
               action="document_res_econ_list_action" />
+
+    <menuitem id="menu_main_tmc_res_mov_document_list"
+              name="Transporte y Movilidad"
+              parent="menu_main_tmc_ex_res_document_list"
+              sequence="65"
+              action="document_res_mov_list_action" />
 
    <menuitem id="menu_main_tmc_entes_document_list"
               name="Entes Descentralizados"
@@ -163,7 +204,7 @@
               name="Hipódromo"
               parent="menu_main_tmc_entes_document_list"
               sequence="30"
-              action="document_hipodromo_list_action" />                            
+              action="document_hipodromo_list_action" />
 
     <menuitem id="menu_main_tmc_documents_document_topics_list"
               name="Document Topics"
