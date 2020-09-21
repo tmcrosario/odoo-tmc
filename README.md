@@ -1,5 +1,5 @@
 # Odoo TMC
-Sistema de Gestión Documental del Tribunal Municipal de Cuentas de Rosario.
+Sistema de Gestión Documental. Tribunal Municipal de Cuentas de Rosario.
 
 ## License
 
