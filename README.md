@@ -1,5 +1,5 @@
 # Odoo TMC
-Odoo TMC Rosario main addon.
+Sistema de Gestión Documental del Tribunal Municipal de Cuentas de Rosario.
 
 ## License
 
@@ -11,4 +11,4 @@ You should have received a copy of the GNU Affero General Public License along w
 
 ----
 
-<img src="https://www.tmcrosario.gob.ar/images/tmc_nuevo.png"/>
+<img align="left" src="https://iili.io/2ARo1R.png"/>
