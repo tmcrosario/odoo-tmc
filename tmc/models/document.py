@@ -331,7 +331,7 @@ class Document(models.Model):
                     raise exceptions.UserError(message)
 
         if vals.get('date'):
-            if int(vals.get('date')[:4]) != self.period:
+            if int(vals.get('date')[:4]) != self.period and self.document_type_id.abbreviation != 'CONV':
                 message = _('Date does not match with period')
                 raise exceptions.Warning(message)
 
