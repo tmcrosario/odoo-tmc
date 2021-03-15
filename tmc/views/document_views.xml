@@ -3,134 +3,134 @@
 
     <!-- TREE VIEW -->
     <record id="document_view_tree"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.view.tree</field>
         <field name="model">tmc.document</field>
         <field name="priority">5</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <tree default_order="period desc, name desc, dependence_id, document_type_id"
-                  decoration-danger="highest_highlight=='high'"
-                  decoration-warning="highest_highlight=='medium'">
+                decoration-danger="highest_highlight=='high'"
+                decoration-warning="highest_highlight=='medium'">
                 <field name="name" />
                 <field name="date" />
                 <field name="document_object_copy"
-                       optional="show" />
+                    optional="show" />
                 <field name="topics_display_name"
-                       optional="show" />
+                    optional="show" />
                 <field name="highest_highlight"
-                       invisible="True" />
+                    invisible="True" />
             </tree>
         </field>
     </record>
 
     <!-- TREE VIEW (SIMPLE) -->
     <record id="document_simple_view_tree"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.simple.view.tree</field>
         <field name="model">tmc.document</field>
         <field name="priority">10</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <tree>
                 <field name="name" />
                 <field name="date" />
                 <field name="document_object_copy"
-                       optional="hide" />
+                    optional="hide" />
             </tree>
         </field>
     </record>
 
     <!-- FORM VIEW -->
     <record id="document_view_form"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.view.form</field>
         <field name="model">tmc.document</field>
         <field name="priority">5</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <form duplicate="0">
                 <sheet>
                     <div class="oe_button_box"
-                         name="button_box"
-                         groups="base.group_user">
+                        name="button_box"
+                        groups="base.group_user">
                         <button class="oe_stat_button"
-                                attrs="{'invisible':[('highlights_count','=', 0)]}"
-                                icon="fa-exclamation-circle"
-                                name="highlights_count_button">
+                            attrs="{'invisible':[('highlights_count','=', 0)]}"
+                            icon="fa-exclamation-circle"
+                            name="highlights_count_button">
                             <field string="Highlight(s)"
-                                   name="highlights_count"
-                                   widget="statinfo"/>
+                                name="highlights_count"
+                                widget="statinfo" />
                         </button>
                     </div>
                     <div class="oe_title">
                         <label for="name"
-                               class="oe_edit_only"
-                               string="Document Name" />
+                            class="oe_edit_only"
+                            string="Document Name" />
                         <h1>
                             <field name="name"
-                                   string="Document Name" />
+                                string="Document Name" />
                         </h1>
                         <group>
                             <field name="entry_date" />
                         </group>
                         <h3>
                             <field name="document_object_copy"
-                                   class="oe_read_only" />
+                                class="oe_read_only" />
                         </h3>
                     </div>
                     <field name="create_date"
-                           invisible="True" />
+                        invisible="True" />
                     <field name="reference_document"
-                           invisible="True" />
+                        invisible="True" />
                     <group>
                         <group>
                             <field name="dependence_id"
-                                   context="{'search_default_filter_actual_nomenclator': True}"
-                                   default_focus="1" />
+                                context="{'search_default_filter_actual_nomenclator': True}"
+                                default_focus="1" />
                             <field name="document_type_id"
-                                   attrs="{'invisible':[('dependence_id','=', False)]}" />
+                                attrs="{'invisible':[('dependence_id','=', False)]}" />
                             <field name="document_type_abbr"
-                                   invisible="True" />
+                                invisible="True" />
                         </group>
                         <group>
                             <field name="number"
-                                   attrs="{'required':[('document_type_abbr', '!=', 'ACT')], 'invisible':[('document_type_abbr', '=', 'ACT')]}" />
+                                attrs="{'required':[('document_type_abbr', '!=', 'ACT')], 'invisible':[('document_type_abbr', '=', 'ACT')]}" />
                             <field name="period" />
                         </group>
                     </group>
                     <group>
                         <group string="Reference"
-                               attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
+                            attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
                             <field name="date" />
                             <field name="document_object_required"
-                                   invisible="True" />
+                                invisible="True" />
                             <field name="document_object"
-                                   attrs="{'required':[('document_object_required', '=', True)]}" />
+                                attrs="{'required':[('document_object_required', '=', True)]}" />
                         </group>
                         <field name="document_topic_ids"
-                               invisible="True" />
+                            invisible="True" />
                         <group string="Topics"
-                               attrs="{'invisible':['|', ('document_topic_ids', '=', []), ('create_date','=', False)]}">
+                            attrs="{'invisible':['|', ('document_topic_ids', '=', []), ('create_date','=', False)]}">
                             <field name="main_topic_ids"
-                                   widget="many2many_tags"
-                                   options="{'color_field': 'color', 'no_create_edit': True}"
-                                   attrs="{'required':[('document_object', '!=', False), ('document_type_abbr', 'in', ['DEC', 'RES'])]}" />
+                                widget="many2many_tags"
+                                options="{'color_field': 'color', 'no_create_edit': True}"
+                                attrs="{'required':[('document_object', '!=', False), ('document_type_abbr', 'in', ['DEC', 'RES'])]}" />
                             <field name="secondary_topic_ids"
-                                   attrs="{'invisible':[('main_topic_ids', '=', [])]}"
-                                   widget="many2many_tags"
-                                   options="{'color_field': 'color', 'no_create_edit': True}" />
+                                attrs="{'invisible':[('main_topic_ids', '=', [])]}"
+                                widget="many2many_tags"
+                                options="{'color_field': 'color', 'no_create_edit': True}" />
                         </group>
                     </group>
                     <notebook attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
                         <page name="related_documents"
-                              string="Related Documents">
+                            string="Related Documents">
                             <field name="related_document_ids"
-                                   nolabel="True"
-                                   context="{'tree_view_ref': 'tmc.document_simple_view_tree'}" />
+                                nolabel="True"
+                                context="{'tree_view_ref': 'tmc.document_simple_view_tree'}" />
                         </page>
                         <page name="highlights"
-                              string="Highlights">
+                            string="Highlights">
                             <field name="highlight_ids" />
                         </page>
                     </notebook>
@@ -141,748 +141,867 @@
 
     <!-- SEARCH VIEW -->
     <record id="document_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="document_type_id" />
                 <field name="number" />
                 <field name="period" />
-                <field name="dependence_id"/>
+                <field name="dependence_id" />
                 <field name="document_object" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
             </search>
         </field>
     </record>
 
     <!-- WINDOW ACTION -->
     <record id="document_action_form"
-            model="ir.actions.act_window">
-        <field name="name">Documents</field>
+        model="ir.actions.act_window">
+        <field name="name">All Documents</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_view_search" />
+            ref="document_view_search" />
     </record>
 
     <!-- DECRETO DEM -->
     <!-- SEARCH VIEW -->
     <record id="document_dem_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.dem.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'DEPARTAMENTO EJECUTIVO')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'DEPARTAMENTO EJECUTIVO')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_dec"
-            model="ir.actions.act_window">
-        <field name="name">Decretos del Departamento Ejecutivo</field>
+    <record id="document_action_form_dem"
+        model="ir.actions.act_window">
+        <field name="name">Departamento Ejecutivo (DEM)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_dem_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Decreto')]</field>
+            ref="document_dem_simple_view_search" />
+        <field name="domain">[('dependence_id','=','DEPARTAMENTO EJECUTIVO')]</field>
     </record>
 
     <!-- RESOLUCION HAC -->
     <!-- SEARCH VIEW -->
     <record id="document_hac_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.hac.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE HACIENDA Y ECONOMÍA')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE HACIENDA Y ECONOMÍA')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_res_hac"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Secretaría de Hacienda y Economía (HAC)</field>
+    <record id="document_action_form_hac"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Hacienda y Economía (HAC)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_hac_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE HACIENDA Y ECONOMÍA')]</field>
+            ref="document_hac_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE HACIENDA Y ECONOMÍA')]</field>
     </record>
 
     <!-- RESOLUCION GOB -->
     <!-- SEARCH VIEW -->
     <record id="document_gob_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.gob.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE GOBIERNO')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE GOBIERNO')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_res_gob"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Gobierno (GOB)</field>
+    <record id="document_action_form_gob"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Gobierno (GOB)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_gob_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE GOBIERNO')]</field>
+            ref="document_gob_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE GOBIERNO')]</field>
     </record>
 
     <!-- RESOLUCION PLA -->
     <!-- SEARCH VIEW -->
     <record id="document_pla_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.pla.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE PLANEAMIENTO')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE PLANEAMIENTO')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_res_pla"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Planeamiento (PLA)</field>
+    <record id="document_action_form_pla"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Planeamiento (PLA)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_pla_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE PLANEAMIENTO')]</field>
+            ref="document_pla_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE PLANEAMIENTO')]</field>
     </record>
 
     <!-- RESOLUCION OBR -->
     <!-- SEARCH VIEW -->
     <record id="document_obr_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.obr.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE OBRAS PÚBLICAS')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE OBRAS PÚBLICAS')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_res_obr"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Obras Públicas (OBR)</field>
+    <record id="document_action_form_obr"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Obras Públicas (OBR)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_obr_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE OBRAS PÚBLICAS')]</field>
+            ref="document_obr_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE OBRAS PÚBLICAS')]</field>
     </record>
 
     <!-- RESOLUCION AMB -->
     <!-- SEARCH VIEW -->
     <record id="document_amb_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.amb.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE AMBIENTE Y ESPACIOS PÚBLICOS')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE AMBIENTE Y ESPACIOS PÚBLICOS')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_res_amb"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Ambiente y Espacios Públicos (AMB)</field>
+    <record id="document_action_form_amb"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Ambiente y Espacios Públicos (AMB)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_amb_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE AMBIENTE Y ESPACIOS PÚBLICOS')]</field>
+            ref="document_amb_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE AMBIENTE Y ESPACIOS PÚBLICOS')]</field>
     </record>
 
     <!-- RESOLUCION SAL -->
     <!-- SEARCH VIEW -->
     <record id="document_sal_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.sal.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE SALUD PÚBLICA')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE SALUD PÚBLICA')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_res_sal"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Salud Pública (SAL)</field>
+    <record id="document_action_form_sal"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Salud Pública (SAL)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_sal_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE SALUD PÚBLICA')]</field>
+            ref="document_sal_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE SALUD PÚBLICA')]</field>
     </record>
 
     <!-- RESOLUCION DES -->
     <!-- SEARCH VIEW -->
     <record id="document_des_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.des.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE DESARROLLO SOCIAL')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE DESARROLLO SOCIAL')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_res_des"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Desarrollo Social (DES)</field>
+    <record id="document_action_form_des"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Desarrollo Social (DES)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_des_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE DESARROLLO SOCIAL')]</field>
+            ref="document_des_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE DESARROLLO SOCIAL')]</field>
     </record>
 
     <!-- RESOLUCION PROD -->
     <!-- SEARCH VIEW -->
     <record id="document_prod_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.prod.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE PRODUCCIÓN Y DESARROLLO LOCAL')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE PRODUCCIÓN Y DESARROLLO LOCAL')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_res_prod"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Producción y Desarrollo Local (PROD)</field>
+    <record id="document_action_form_prod"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Producción y Desarrollo Local (PROD)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_prod_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE PRODUCCIÓN Y DESARROLLO LOCAL')]</field>
+            ref="document_prod_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE PRODUCCIÓN Y DESARROLLO LOCAL')]</field>
     </record>
 
     <!-- RESOLUCION PRODEI -->
     <!-- SEARCH VIEW -->
     <record id="document_prodei_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.prodei.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE PRODUCCIÓN, EMPLEO E INNOVACIÓN')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE PRODUCCIÓN, EMPLEO E INNOVACIÓN')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_res_prodei"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Producción, Empleo e Innovación (PROD)</field>
+    <record id="document_action_form_prodei"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Producción, Empleo e Innovación (PROD)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_prod_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE PRODUCCIÓN, EMPLEO E INNOVACIÓN')]</field>
+            ref="document_prod_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE PRODUCCIÓN, EMPLEO E INNOVACIÓN')]</field>
     </record>
 
     <!-- RESOLUCION CUL -->
     <!-- SEARCH VIEW -->
     <record id="document_cul_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.cul.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE CULTURA Y EDUCACIÓN')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE CULTURA Y EDUCACIÓN')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_res_cul"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Cultura y Educación (CUL)</field>
+    <record id="document_action_form_cul"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Cultura y Educación (CUL)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_cul_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE CULTURA Y EDUCACIÓN')]</field>
+            ref="document_cul_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE CULTURA Y EDUCACIÓN')]</field>
     </record>
 
     <!-- RESOLUCION GRAL -->
     <!-- SEARCH VIEW -->
     <record id="document_gral_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.gral.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'SECRETARÍA GENERAL')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA GENERAL')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_res_gral"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Secretaría General (GRAL)</field>
+    <record id="document_action_form_gral"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría General (GRAL)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_gral_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA GENERAL')]</field>
+            ref="document_gral_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA GENERAL')]</field>
     </record>
 
     <!-- RESOLUCION TUR -->
     <!-- SEARCH VIEW -->
     <record id="document_tur_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.tur.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE TURISMO')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE TURISMO')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_res_tur"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Turismo (TUR)</field>
+    <record id="document_action_form_tur"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Turismo (TUR)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_tur_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE TURISMO')]</field>
+            ref="document_tur_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE TURISMO')]</field>
     </record>
 
     <!-- RESOLUCION CONV -->
     <!-- SEARCH VIEW -->
     <record id="document_conv_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.conv.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE CONTROL Y CONVIVENCIA CIUDADANA')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE CONTROL Y CONVIVENCIA CIUDADANA')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_res_conv"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Control y Convivencia (CONV)</field>
+    <record id="document_action_form_conv"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Control y Convivencia (CONV)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_conv_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE CONTROL Y CONVIVENCIA CIUDADANA')]</field>
+            ref="document_conv_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE CONTROL Y CONVIVENCIA CIUDADANA')]</field>
     </record>
 
     <!-- RESOLUCION MOV -->
     <!-- SEARCH VIEW -->
     <record id="document_mov_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.mov.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE TRANSPORTE Y MOVILIDAD')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE TRANSPORTE Y MOVILIDAD')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_res_mov"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Transporte y Movilidad (MOV)</field>
+    <record id="document_action_form_mov"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Transporte y Movilidad (MOV)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_mov_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE TRANSPORTE Y MOVILIDAD')]</field>
+            ref="document_mov_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE TRANSPORTE Y MOVILIDAD')]</field>
     </record>
 
     <!-- RESOLUCION ECON -->
     <!-- SEARCH VIEW -->
     <record id="document_econ_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.econ.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE ECONOMÍA SOCIAL')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE ECONOMÍA SOCIAL')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
-    <record id="document_action_form_res_econ"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Economía Social (ECON)</field>
+    <record id="document_action_form_econ"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Economía Social (ECON)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_econ_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','SECRETARÍA DE ECONOMÍA SOCIAL')]</field>
+            ref="document_econ_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE ECONOMÍA SOCIAL')]</field>
     </record>
 
     <!-- RESOLUCION TER -->
     <!-- SEARCH VIEW -->
     <record id="document_ter_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.ter.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'Terminal de Omnibus Rosario')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'Terminal de Omnibus Rosario')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
     <record id="document_action_form_ter"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Terminal de Ómnibus (TER)</field>
+        model="ir.actions.act_window">
+        <field name="name">Terminal de Ómnibus (TER)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_ter_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','Terminal de Omnibus Rosario')]</field>
+            ref="document_ter_simple_view_search" />
+        <field name="domain">[('dependence_id','=','Terminal de Omnibus Rosario')]</field>
     </record>
 
     <!-- RESOLUCION EMR -->
     <!-- SEARCH VIEW -->
     <record id="document_emr_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.emr.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'Ente de la Movilidad de Rosario')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'Ente de la Movilidad de Rosario')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
     <record id="document_action_form_emr"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Ente de la Movilidad (EMR)</field>
+        model="ir.actions.act_window">
+        <field name="name">Ente de la Movilidad (EMR)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_emr_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','Ente de la Movilidad de Rosario')]</field>
+            ref="document_emr_simple_view_search" />
+        <field name="domain">[('dependence_id','=','Ente de la Movilidad de Rosario')]</field>
     </record>
 
     <!-- RESOLUCION ILAR -->
     <!-- SEARCH VIEW -->
     <record id="document_ilar_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.ilar.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'INSTITUTO DE LUCHA ANTIPOLIOMIELÍTICA DE ROSARIO')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'INSTITUTO DE LUCHA ANTIPOLIOMIELÍTICA DE ROSARIO')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
     <record id="document_action_form_ilar"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de ILAR</field>
+        model="ir.actions.act_window">
+        <field name="name">Instituto De Lucha Antipoliomielítica (ILAR)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_ilar_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','INSTITUTO DE LUCHA ANTIPOLIOMIELÍTICA DE ROSARIO')]</field>
+            ref="document_ilar_simple_view_search" />
+        <field name="domain">[('dependence_id','=','INSTITUTO DE LUCHA ANTIPOLIOMIELÍTICA DE ROSARIO')]</field>
     </record>
 
     <!-- RESOLUCION IMPS -->
     <!-- SEARCH VIEW -->
     <record id="document_imps_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.imps.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'INSTITUTO MUNICIPAL DE PREVISIÓN SOCIAL')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'INSTITUTO MUNICIPAL DE PREVISIÓN SOCIAL')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
     <record id="document_action_form_imps"
-            model="ir.actions.act_window">
-        <field name="name">Documentos de Instituto Municipal de Previsión Social (IMPS)</field>
+        model="ir.actions.act_window">
+        <field name="name">Instituto Municipal de Previsión Social (IMPS)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_imps_simple_view_search" />
+            ref="document_imps_simple_view_search" />
         <field name="domain">[('dependence_id', '=', 'INSTITUTO MUNICIPAL DE PREVISIÓN SOCIAL')]</field>
     </record>
 
     <!-- RESOLUCION SPV -->
     <!-- SEARCH VIEW -->
     <record id="document_spv_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.spv.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'SERVICIO PÚBLICO DE LA VIVIENDA Y EL HÁBITAT')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SERVICIO PÚBLICO DE LA VIVIENDA Y EL HÁBITAT')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
     <record id="document_action_form_spv"
-            model="ir.actions.act_window">
-        <field name="name">Documentos de Servicio Público de la Vivienda y el Hábitat (SPV)</field>
+        model="ir.actions.act_window">
+        <field name="name">Servicio Público de la Vivienda y el Hábitat (SPV)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_spv_simple_view_search" />
+            ref="document_spv_simple_view_search" />
         <field name="domain">[('dependence_id','=','SERVICIO PÚBLICO DE LA VIVIENDA Y EL HÁBITAT')]</field>
     </record>
 
     <!-- RESOLUCION HIP -->
     <!-- SEARCH VIEW -->
     <record id="document_hip_simple_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document.hip.simple.view.search</field>
         <field name="model">tmc.document</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="number" />
                 <field name="document_object" />
+                <field name="document_type_id" />
                 <field name="secondary_topic_ids"
-                       string="Document Topic"
-                       filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection" string="Period" icon="fa-calendar"/>
-                    <field name="main_topic_ids" select="multi" icon="fa-tags" domain="[('dependence_ids', 'ilike', 'Hipódromo Rosario')]"/>
+                    <field name="period_selection"
+                        string="Período"
+                        icon="fa-calendar" />
+                    <field name="main_topic_ids"
+                        select="multi"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'Hipódromo Rosario')]" />
                 </searchpanel>
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
     <record id="document_action_form_hip"
-            model="ir.actions.act_window">
-        <field name="name">Resoluciones de Hipódromo Rosario (HIP)</field>
+        model="ir.actions.act_window">
+        <field name="name">Hipódromo Rosario (HIP)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
-               ref="document_hip_simple_view_search" />
-        <field name="domain">[('document_type_id','=','Resolución'), ('dependence_id','=','Hipódromo Rosario')]</field>
-    </record>
-
-    <!-- CONVENIO -->
-    <!-- WINDOW ACTION -->
-    <record id="document_action_form_conv"
-            model="ir.actions.act_window">
-        <field name="name">Convenios</field>
-        <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
-        <field name="search_view_id"
-               ref="document_view_search" />
-        <field name="domain">[('document_type_id','=','Convenio')]</field>
+            ref="document_hip_simple_view_search" />
+        <field name="domain">[('dependence_id','=','Hipódromo Rosario')]</field>
     </record>
 
 </odoo>

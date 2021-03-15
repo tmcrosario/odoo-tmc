@@ -2,9 +2,14 @@
 <odoo>
 
     <menuitem id="tmc_menu_root"
-              name="Gestión Documental"
+              name="Documents"
               sequence="5"
               groups="tmc.group_manager,tmc.group_user,tmc.group_read_only" />
+
+    <menuitem id="tmc_menu_others"
+              name="»"
+              parent="tmc_menu_root"
+              sequence="15"/>
 
     <menuitem id="tmc_menu_config"
               name="Tribunal de Cuentas"

@@ -3,7 +3,7 @@
 
     <!-- WINDOW ACTION -->
     <record id="hr_employee_action_form"
-            model="ir.actions.act_window">
+        model="ir.actions.act_window">
         <field name="name">Employees</field>
         <field name="res_model">tmc.hr.employee</field>
         <field name="view_mode">tree,form</field>
@@ -14,65 +14,53 @@
 
     <!-- TREE VIEW -->
     <record id="hr_employee_view_tree"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.hr.employee.view.tree</field>
         <field name="model">tmc.hr.employee</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <tree expand="True">
                 <field name="name" />
                 <field name="email" />
                 <field name="internal_number" />
-                <field name="employee_job_id"/>
+                <field name="employee_job_id" />
             </tree>
         </field>
     </record>
 
     <!-- FORM VIEW -->
     <record id="hr_employee_view_form"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.hr.employee.view.form</field>
         <field name="model">tmc.hr.employee</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <form>
                 <sheet>
-                    <div class="oe_button_box"
-                         name="button_box">
-                        <button name="toggle_active"
-                                type="object"
-                                class="oe_stat_button"
-                                icon="fa-archive"
-                                groups="tmc.group_personal,tmc.group_manager">
-                            <field name="active"
-                                   widget="boolean_button"
-                                   options='{"terminology": "archive"}' />
-                        </button>
-                    </div>
                     <div class="oe_title">
                         <label for="name"
-                               class="oe_edit_only" />
+                            class="oe_edit_only" />
                         <h1>
                             <field name="name" />
                         </h1>
                     </div>
                     <field name="employee_title_ids"
-                           widget="many2many_tags"
-                           options="{'no_create_edit': True}" />
+                        widget="many2many_tags"
+                        options="{'no_create_edit': True}" />
                     <group>
                         <group>
                             <field name="email"
-                                   widget="email" />
+                                widget="email" />
                             <field name="internal_number" />
                         </group>
                     </group>
                     <group>
-                        <group string="Position">
+                        <group string="Posición">
                             <field name="employee_job_id" />
                             <field name="office_id" />
                         </group>
-                        <group string="Administration"
-                               groups="tmc.group_personal,tmc.group_manager">
+                        <group string="Administración"
+                            groups="tmc.group_personal,tmc.group_manager">
                             <field name="docket_number" />
                             <field name="admission_date" />
                             <field name="bank_account_number" />
@@ -86,16 +74,16 @@
 
     <!-- SEARCH VIEW -->
     <record id="hr_employee_view_search"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.hr.employee.view.search</field>
         <field name="model">tmc.hr.employee</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <group expand="True">
                     <filter name="group_by_office_id"
-                            string="Office"
-                            context="{'group_by':'office_id'}" />
+                        string="Oficina"
+                        context="{'group_by':'office_id'}" />
                 </group>
             </search>
         </field>

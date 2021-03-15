@@ -4,34 +4,22 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: Odoo Server 13.0-20210217\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-16 14:42+0000\n"
-"PO-Revision-Date: 2019-12-16 13:22-0300\n"
+"POT-Creation-Date: 2021-03-15 21:17+0000\n"
+"PO-Revision-Date: 2021-03-15 21:17+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"Language: es_AR\n"
-"X-Generator: Poedit 2.2.4\n"
 
 #. module: tmc
 #: code:addons/tmc/models/institutional_classifier.py:0
 #, python-format
 msgid " (Current)"
 msgstr " (Actual)"
-
-#. module: tmc
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2009
-msgid "2009"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2010
-msgid "2010"
-msgstr ""
 
 #. module: tmc
 #: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2011
@@ -79,6 +67,16 @@ msgid "2019"
 msgstr ""
 
 #. module: tmc
+#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2020
+msgid "2020"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2021
+msgid "2021"
+msgstr ""
+
+#. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence__abbreviation
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order__abbreviation
 #: model:ir.model.fields,field_description:tmc.field_tmc_document__document_type_abbr
@@ -107,6 +105,7 @@ msgid "Active"
 msgstr "Activo"
 
 #. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_actual_nomenclator
 #: model_terms:ir.ui.view,arch_db:tmc.dependence_order_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.dependence_view_search
 msgid "Actual Nomenclator"
@@ -114,8 +113,8 @@ msgstr "Nomenclador Actual"
 
 #. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.hr_employee_view_form
-msgid "Administration"
-msgstr "Administración"
+msgid "Administración"
+msgstr ""
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee__admission_date
@@ -123,13 +122,13 @@ msgid "Admission Date"
 msgstr "Fecha de Entrada"
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_all
+#: model:ir.actions.act_window,name:tmc.document_action_form
 msgid "All Documents"
-msgstr "Todos los Documentos"
+msgstr "Documentos"
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_res_amb
-msgid "Ambiente y Espacios Públicos"
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_amb
+msgid "Ambiente y Espacio Público"
 msgstr ""
 
 #. module: tmc
@@ -151,8 +150,8 @@ msgstr "Sucursal Bancaria"
 #: code:addons/tmc/models/institutional_classifier.py:0
 #, python-format
 msgid ""
-"Before adding a nomenclator you must set due "
-"date                                 prior to the current"
+"Before adding a nomenclator you must set due date"
+"                                 prior to the current"
 msgstr ""
 "Antes de agregar un nomenclador debe establecerse una fecha de vencimiento "
 "al nomenclador anterior"
@@ -184,19 +183,13 @@ msgid "Comment"
 msgstr "Comentario"
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_res_conv
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_conv
 msgid "Control y Convivencia"
 msgstr ""
 
 #. module: tmc
 #: model:ir.model,name:tmc.model_tmc_document_conv
 msgid "Convenio"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_conv
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_conv
-msgid "Convenios"
 msgstr ""
 
 #. module: tmc
@@ -254,7 +247,7 @@ msgid "Created on"
 msgstr "Creado en"
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_res_cul
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_cul
 msgid "Cultura y Educación"
 msgstr ""
 
@@ -284,13 +277,13 @@ msgid "Decreto"
 msgstr ""
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_dec
-msgid "Decretos"
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_dem
+msgid "Departamento Ejecutivo"
 msgstr ""
 
 #. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_dec
-msgid "Decretos del Departamento Ejecutivo"
+#: model:ir.actions.act_window,name:tmc.document_action_form_dem
+msgid "Departamento Ejecutivo (DEM)"
 msgstr ""
 
 #. module: tmc
@@ -328,18 +321,34 @@ msgstr "El nombre de la dependencia debe ser única"
 #: model:ir.actions.act_window,name:tmc.dependence_action_form
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic__dependences_display_name
 #: model:ir.ui.menu,name:tmc.tmc_menu_config_gestion_documental_dependence
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents
 #: model_terms:ir.ui.view,arch_db:tmc.document_topic_view_form
 #: model_terms:ir.ui.view,arch_db:tmc.institutional_classifier_view_form
 msgid "Dependences"
 msgstr "Dependencias"
 
 #. module: tmc
-#: model:ir.actions.act_window,name:tmc.dependence_document_topic_action_form
-msgid "Dependences with Document Topics"
+#: model_terms:ir.ui.view,arch_db:tmc.dependence_view_search
+msgid "Dependences with Topics"
 msgstr "Dependencias con Temas"
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_res_des
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_dep
+msgid "Deporte y Turismo"
+msgstr ""
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_dee
+msgid "Desarrollo Económico y Empleo"
+msgstr ""
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_dhh
+msgid "Desarrollo Humano y Hábitat"
+msgstr ""
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_des
 msgid "Desarrollo Social"
 msgstr ""
 
@@ -500,7 +509,7 @@ msgid "Document Types"
 msgstr "Tipos de Documento"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:0
+#: code:addons/tmc/models/document.py:0 code:addons/tmc/models/document.py:0
 #, python-format
 msgid "Document already exists"
 msgstr "El documento ya existe"
@@ -518,18 +527,7 @@ msgid "Document type name must be unique"
 msgstr "El nombre debe ser único"
 
 #. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_imps
-msgid "Documentos de Instituto Municipal de Previsión Social (IMPS)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_spv
-msgid "Documentos de Servicio Público de la Vivienda y el Hábitat (SPV)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents
+#: model:ir.ui.menu,name:tmc.tmc_menu_root
 msgid "Documents"
 msgstr "Documentos"
 
@@ -539,7 +537,7 @@ msgid "Due Date"
 msgstr "Fecha Hasta"
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_res_econ
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_econ
 msgid "Economía Social"
 msgstr ""
 
@@ -588,12 +586,17 @@ msgid "Employees"
 msgstr "Empleados"
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_entes_emr
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes_emr
 msgid "Ente de la Movilidad"
 msgstr ""
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_entes
+#: model:ir.actions.act_window,name:tmc.document_action_form_emr
+msgid "Ente de la Movilidad (EMR)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes
 msgid "Entes Descentralizados"
 msgstr ""
 
@@ -622,13 +625,17 @@ msgid "First Parent"
 msgstr "Primer Padre"
 
 #. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_gral
+msgid "General"
+msgstr ""
+
+#. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_config_gestion_documental
-#: model:ir.ui.menu,name:tmc.tmc_menu_root
 msgid "Gestión Documental"
 msgstr ""
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_res_gob
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_gob
 msgid "Gobierno"
 msgstr ""
 
@@ -638,7 +645,12 @@ msgid "Group By"
 msgstr "Agrupar por"
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_res_hac
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_gen
+msgid "Género y Derechos Humanos"
+msgstr ""
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_hac
 msgid "Hacienda y Economía"
 msgstr ""
 
@@ -707,8 +719,13 @@ msgid "Highlights Count"
 msgstr ""
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_entes_hip
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes_hip
 msgid "Hipódromo"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_hip
+msgid "Hipódromo Rosario (HIP)"
 msgstr ""
 
 #. module: tmc
@@ -739,12 +756,12 @@ msgid "ID"
 msgstr ""
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_entes_ilar
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes_ilar
 msgid "ILAR"
 msgstr ""
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_entes_imps
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes_imps
 msgid "IMPS"
 msgstr ""
 
@@ -781,14 +798,19 @@ msgid "Institutional Classifier"
 msgstr "Clasificador Institucional"
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_institutional_classifiers
-msgid "Institutional Classifiers"
-msgstr "Clasificadores Institucionales"
-
-#. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.dependence_order_view_search
 msgid "Institutional Unit"
 msgstr "Unidad Institucional"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_ilar
+msgid "Instituto De Lucha Antipoliomielítica (ILAR)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_imps
+msgid "Instituto Municipal de Previsión Social (IMPS)"
+msgstr ""
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee__internal_number
@@ -796,7 +818,7 @@ msgid "Internal Number"
 msgstr "Nº de Interno"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:0
+#: code:addons/tmc/models/document.py:0 code:addons/tmc/models/document.py:0
 #, python-format
 msgid "Invalid number"
 msgstr "Número inválido"
@@ -963,6 +985,16 @@ msgid "Model"
 msgstr "Modelo"
 
 #. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_mod
+msgid "Modernización y Cercanía"
+msgstr ""
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_mov_2
+msgid "Movilidad"
+msgstr ""
+
+#. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_category__name
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence__name
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order__name
@@ -1027,7 +1059,7 @@ msgid "Object"
 msgstr "Objeto"
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_res_obr
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_obr
 msgid "Obras Públicas"
 msgstr ""
 
@@ -1036,9 +1068,13 @@ msgstr ""
 #: model:ir.model,name:tmc.model_tmc_hr_office
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee__office_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_job__office_id
-#: model_terms:ir.ui.view,arch_db:tmc.hr_employee_view_search
 msgid "Office"
 msgstr "Oficina"
+
+#. module: tmc
+#: model_terms:ir.ui.view,arch_db:tmc.hr_employee_view_search
+msgid "Oficina"
+msgstr ""
 
 #. module: tmc
 #: model:ir.model,name:tmc.model_tmc_document_ord
@@ -1113,23 +1149,33 @@ msgid "Personal"
 msgstr ""
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_res_pla
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_pla
 msgid "Planeamiento"
 msgstr ""
 
 #. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.hr_employee_view_form
-msgid "Position"
-msgstr "Posición"
+msgid "Posición"
+msgstr ""
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_res_prod
+#: model:ir.ui.menu,name:tmc.tmc_menu_previous_nomenclator
+msgid "Previous Nomenclators"
+msgstr "Nomencladores Anteriores"
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_prod
 msgid "Producción y Desarrollo Local"
 msgstr ""
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_res_prodei
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_prodei
 msgid "Producción, Empleo e Innovación"
+msgstr ""
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_prom
+msgid "Promoción Social"
 msgstr ""
 
 #. module: tmc
@@ -1191,112 +1237,12 @@ msgid "Resolucion Extraordinaria"
 msgstr "Resolución Extraordinaria"
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_res
-msgid "Resoluciones"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_res_amb
-msgid "Resoluciones de Ambiente y Espacios Públicos (AMB)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_res_conv
-msgid "Resoluciones de Control y Convivencia (CONV)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_res_cul
-msgid "Resoluciones de Cultura y Educación (CUL)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_res_des
-msgid "Resoluciones de Desarrollo Social (DES)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_res_econ
-msgid "Resoluciones de Economía Social (ECON)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_emr
-msgid "Resoluciones de Ente de la Movilidad (EMR)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_res_gob
-msgid "Resoluciones de Gobierno (GOB)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_hip
-msgid "Resoluciones de Hipódromo Rosario (HIP)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_ilar
-msgid "Resoluciones de ILAR"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_res_obr
-msgid "Resoluciones de Obras Públicas (OBR)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_res_pla
-msgid "Resoluciones de Planeamiento (PLA)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_res_prod
-msgid "Resoluciones de Producción y Desarrollo Local (PROD)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_res_prodei
-msgid "Resoluciones de Producción, Empleo e Innovación (PROD)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_res_sal
-msgid "Resoluciones de Salud Pública (SAL)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_res_gral
-msgid "Resoluciones de Secretaría General (GRAL)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_res_hac
-msgid "Resoluciones de Secretaría de Hacienda y Economía (HAC)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_ter
-msgid "Resoluciones de Terminal de Ómnibus (TER)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_res_mov
-msgid "Resoluciones de Transporte y Movilidad (MOV)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_res_tur
-msgid "Resoluciones de Turismo (TUR)"
-msgstr ""
-
-#. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_entes_spv
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes_spv
 msgid "SPVyH"
 msgstr ""
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_res_sal
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_sal
 msgid "Salud Pública"
 msgstr ""
 
@@ -1321,8 +1267,88 @@ msgid "Secondary Topics"
 msgstr "Temas Secundarios"
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_res_gral
-msgid "Secretaría General"
+#: model:ir.actions.act_window,name:tmc.document_action_form_gral
+msgid "Secretaría General (GRAL)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_amb
+msgid "Secretaría de Ambiente y Espacios Públicos (AMB)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_conv
+msgid "Secretaría de Control y Convivencia (CONV)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_cul
+msgid "Secretaría de Cultura y Educación (CUL)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_des
+msgid "Secretaría de Desarrollo Social (DES)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_econ
+msgid "Secretaría de Economía Social (ECON)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_gob
+msgid "Secretaría de Gobierno (GOB)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_hac
+msgid "Secretaría de Hacienda y Economía (HAC)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_obr
+msgid "Secretaría de Obras Públicas (OBR)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_pla
+msgid "Secretaría de Planeamiento (PLA)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_prod
+msgid "Secretaría de Producción y Desarrollo Local (PROD)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_prodei
+msgid "Secretaría de Producción, Empleo e Innovación (PROD)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_sal
+msgid "Secretaría de Salud Pública (SAL)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_mov
+msgid "Secretaría de Transporte y Movilidad (MOV)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_tur
+msgid "Secretaría de Turismo (TUR)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_spv
+msgid "Servicio Público de la Vivienda y el Hábitat (SPV)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_ser
+msgid "Servicios Públicos y Medio Ambiente"
 msgstr ""
 
 #. module: tmc
@@ -1363,8 +1389,13 @@ msgid "Temas Principales"
 msgstr ""
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_entes_ter
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes_ter
 msgid "Terminal de Ómnibus"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_ter
+msgid "Terminal de Ómnibus (TER)"
 msgstr ""
 
 #. module: tmc
@@ -1389,7 +1420,7 @@ msgid "Topics"
 msgstr "Temas"
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_res_mov
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_mov
 msgid "Transporte y Movilidad"
 msgstr ""
 
@@ -1399,7 +1430,7 @@ msgid "Tribunal de Cuentas"
 msgstr ""
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_documents_res_tur
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_tur
 msgid "Turismo"
 msgstr ""
 
