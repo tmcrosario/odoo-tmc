@@ -6,14 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0-20210217\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-15 21:17+0000\n"
-"PO-Revision-Date: 2021-03-15 21:17+0000\n"
+"POT-Creation-Date: 2021-03-16 13:28+0000\n"
+"PO-Revision-Date: 2021-03-16 10:33-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"Language: es_AR\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. module: tmc
 #: code:addons/tmc/models/institutional_classifier.py:0
@@ -105,8 +107,13 @@ msgid "Active"
 msgstr "Activo"
 
 #. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_config_gestion_documental
+#: model:ir.ui.menu,name:tmc.tmc_menu_root
+msgid "Actos Administrativos"
+msgstr "Actos Administrativos"
+
+#. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_actual_nomenclator
-#: model_terms:ir.ui.view,arch_db:tmc.dependence_order_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.dependence_view_search
 msgid "Actual Nomenclator"
 msgstr "Nomenclador Actual"
@@ -150,8 +157,8 @@ msgstr "Sucursal Bancaria"
 #: code:addons/tmc/models/institutional_classifier.py:0
 #, python-format
 msgid ""
-"Before adding a nomenclator you must set due date"
-"                                 prior to the current"
+"Before adding a nomenclator you must set due "
+"date                                 prior to the current"
 msgstr ""
 "Antes de agregar un nomenclador debe establecerse una fecha de vencimiento "
 "al nomenclador anterior"
@@ -509,7 +516,7 @@ msgid "Document Types"
 msgstr "Tipos de Documento"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:0 code:addons/tmc/models/document.py:0
+#: code:addons/tmc/models/document.py:0
 #, python-format
 msgid "Document already exists"
 msgstr "El documento ya existe"
@@ -525,11 +532,6 @@ msgstr "La abreviatura debe ser única"
 #, python-format
 msgid "Document type name must be unique"
 msgstr "El nombre debe ser único"
-
-#. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_root
-msgid "Documents"
-msgstr "Documentos"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier__due_date
@@ -630,19 +632,9 @@ msgid "General"
 msgstr ""
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_config_gestion_documental
-msgid "Gestión Documental"
-msgstr ""
-
-#. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_gob
 msgid "Gobierno"
 msgstr ""
-
-#. module: tmc
-#: model_terms:ir.ui.view,arch_db:tmc.dependence_order_view_search
-msgid "Group By"
-msgstr "Agrupar por"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_gen
@@ -798,11 +790,6 @@ msgid "Institutional Classifier"
 msgstr "Clasificador Institucional"
 
 #. module: tmc
-#: model_terms:ir.ui.view,arch_db:tmc.dependence_order_view_search
-msgid "Institutional Unit"
-msgstr "Unidad Institucional"
-
-#. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_ilar
 msgid "Instituto De Lucha Antipoliomielítica (ILAR)"
 msgstr ""
@@ -818,7 +805,7 @@ msgid "Internal Number"
 msgstr "Nº de Interno"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:0 code:addons/tmc/models/document.py:0
+#: code:addons/tmc/models/document.py:0
 #, python-format
 msgid "Invalid number"
 msgstr "Número inválido"
@@ -1020,6 +1007,11 @@ msgid "Name"
 msgstr "Nombre"
 
 #. module: tmc
+#: model_terms:ir.ui.view,arch_db:tmc.dependence_order_view_search
+msgid "Nomenclador Actual"
+msgstr ""
+
+#. module: tmc
 #: model:ir.actions.act_window,name:tmc.institutional_classifier_action_form
 #: model:ir.ui.menu,name:tmc.tmc_menu_institutional_classifiers_nomenclators
 msgid "Nomenclators"
@@ -1103,6 +1095,30 @@ msgstr "PDF"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__period
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res__period
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier__period
+msgid "Period"
+msgstr "Período"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document__period_selection
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act__period_selection
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv__period_selection
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec__period_selection
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic__period_selection
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp__period_selection
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext__period_selection
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg__period_selection
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__period_selection
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res__period_selection
+msgid "Period Selection"
+msgstr "Período"
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.menu_main_personal
+#: model:res.groups,name:tmc.group_personal
+msgid "Personal"
+msgstr ""
+
+#. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.document_amb_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_conv_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_cul_simple_view_search
@@ -1125,27 +1141,7 @@ msgstr "PDF"
 #: model_terms:ir.ui.view,arch_db:tmc.document_spv_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_ter_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_tur_simple_view_search
-msgid "Period"
-msgstr "Período"
-
-#. module: tmc
-#: model:ir.model.fields,field_description:tmc.field_tmc_document__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_act__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_res__period_selection
-msgid "Period Selection"
-msgstr "Período"
-
-#. module: tmc
-#: model:ir.ui.menu,name:tmc.menu_main_personal
-#: model:res.groups,name:tmc.group_personal
-msgid "Personal"
+msgid "Período"
 msgstr ""
 
 #. module: tmc
@@ -1432,6 +1428,11 @@ msgstr ""
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_tur
 msgid "Turismo"
+msgstr ""
+
+#. module: tmc
+#: model_terms:ir.ui.view,arch_db:tmc.dependence_order_view_search
+msgid "Unidad Institucional"
 msgstr ""
 
 #. module: tmc

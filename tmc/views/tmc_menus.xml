@@ -2,23 +2,23 @@
 <odoo>
 
     <menuitem id="tmc_menu_root"
-              name="Documents"
-              sequence="5"
-              groups="tmc.group_manager,tmc.group_user,tmc.group_read_only" />
+        name="Actos Administrativos"
+        sequence="5"
+        groups="tmc.group_manager,tmc.group_user,tmc.group_read_only" />
 
     <menuitem id="tmc_menu_others"
-              name="»"
-              parent="tmc_menu_root"
-              sequence="15"/>
+        name="»"
+        parent="tmc_menu_root"
+        sequence="15" />
 
     <menuitem id="tmc_menu_config"
-              name="Tribunal de Cuentas"
-              parent="base.menu_administration"
-              sequence="90" />
+        name="Tribunal de Cuentas"
+        parent="base.menu_administration"
+        sequence="90" />
 
     <menuitem id="tmc_menu_config_gestion_documental"
-              name="Gestión Documental"
-              parent="tmc_menu_config"
-              sequence="5" />
+        name="Actos Administrativos"
+        parent="tmc_menu_config"
+        sequence="5" />
 
 </odoo>
