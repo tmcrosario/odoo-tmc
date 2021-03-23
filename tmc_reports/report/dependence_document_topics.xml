@@ -5,14 +5,14 @@
         model="ir.actions.report">
         <field name="name">Main and Secondary Topics by Dependence</field>
         <field name="model">tmc.dependence</field>
-        <field name="report_name">tmc.dependece_document_topics</field>
+        <field name="report_name">tmc.dependece_document_topics_report</field>
         <field name="report_type">py3o</field>
         <field name="py3o_filetype">pdf</field>
         <field name="py3o_server_id"
             ref="tmc_data_py3o.local_server" />
         <field name="py3o_is_local_fusion"
             eval="1" />
-        <field name="module">tmc</field>
+        <field name="module">tmc_reports</field>
         <field name="py3o_template_fallback">report/dependence_document_topics.odt</field>
     </record>
 
