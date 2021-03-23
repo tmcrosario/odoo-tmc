@@ -3,11 +3,11 @@
 
     <!-- TREE VIEW -->
     <record id="dependence_view_tree"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.dependence.view.tree</field>
         <field name="model">tmc.dependence</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <tree>
                 <field name="name" />
                 <field name="abbreviation" />
@@ -17,54 +17,54 @@
     </record>
 
     <record id="dependence_document_topic_view_tree"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.dependence.document.topic.view.tree</field>
         <field name="model">tmc.dependence</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <tree>
                 <field name="name" />
                 <field name="document_topic_ids"
-                       string="Temas Principales"
-                       widget="many2many_tags"/>
+                    string="Temas Principales"
+                    widget="many2many_tags" />
                 <field name="in_actual_nomenclator"
-                       optional="hide"/>
+                    optional="hide" />
             </tree>
         </field>
     </record>
 
     <!-- FORM VIEW -->
     <record id="dependence_view_form"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.dependence.view.form</field>
         <field name="model">tmc.dependence</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <form duplicate="0">
                 <sheet>
                     <h2>
                         <field name="display_name"
-                               attrs="{'invisible':[('name','=',False)]}" />
+                            attrs="{'invisible':[('name','=',False)]}" />
                     </h2>
                     <group>
                         <group>
                             <field name="name"
-                                   class="oe_edit_only" />
+                                class="oe_edit_only" />
                             <field name="abbreviation" />
                             <field name="in_actual_nomenclator" />
                         </group>
                     </group>
                     <notebook>
                         <page name="document_types"
-                              string="Document Types">
+                            string="Document Types">
                             <field name="document_type_ids" />
                         </page>
                         <page name="systems"
-                              string="Systems">
+                            string="Systems">
                             <field name="system_ids" />
                         </page>
                         <page name="document_topics"
-                              string="Document Topics">
+                            string="Document Topics">
                             <field name="document_topic_ids" />
                         </page>
                     </notebook>
@@ -75,27 +75,27 @@
 
     <!-- SEARCH VIEW -->
     <record model="ir.ui.view"
-            id="dependence_view_search">
+        id="dependence_view_search">
         <field name="name">tmc.dependence.view.search</field>
         <field name="model">tmc.dependence</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <search>
                 <field name="name" />
                 <field name="abbreviation" />
-                <filter string="Actual Nomenclator"
-                        name="filter_actual_nomenclator"
-                        domain="[('in_actual_nomenclator', '=', True)]" />
-                <filter string="Dependences with Topics"
-                        name="filter_dependences_with_topics"
-                        domain="[('document_topic_ids', '!=', False)]" />
+                <filter string="Nomenclador Actual"
+                    name="filter_actual_nomenclator"
+                    domain="[('in_actual_nomenclator', '=', True)]" />
+                <filter string="Dependencias con Temas"
+                    name="filter_dependences_with_topics"
+                    domain="[('document_topic_ids', '!=', False)]" />
             </search>
         </field>
     </record>
 
     <!-- WINDOW ACTION -->
     <record id="dependence_action_form"
-            model="ir.actions.act_window">
+        model="ir.actions.act_window">
         <field name="name">Dependences</field>
         <field name="res_model">tmc.dependence</field>
         <field name="view_mode">tree,form</field>

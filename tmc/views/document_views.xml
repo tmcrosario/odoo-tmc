@@ -66,10 +66,10 @@
                     <div class="oe_title">
                         <label for="name"
                             class="oe_edit_only"
-                            string="Document Name" />
+                            string="Nombre del Documento" />
                         <h1>
                             <field name="name"
-                                string="Document Name" />
+                                string="Nombre del Documento" />
                         </h1>
                         <group>
                             <field name="entry_date" />
