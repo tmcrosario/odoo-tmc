@@ -299,12 +299,19 @@ class Document(models.Model):
 
     @api.model
     def create(self, vals):
-        if vals.get("document_type_abbr") == "ACT":
+        doc_type = vals.get("document_type_id")
+        doc_type_abbr = (
+            self.env["tmc.document_type"].browse(doc_type).abbreviation
+        )
+
+        if doc_type_abbr == "ACT":
             vals["number"] = self.env.ref(
                 "tmc_data.seq_tmc_act"
             ).number_next_actual
+
             seq = self.env["ir.sequence"]
             seq.next_by_code("tmc.document")
+
         return super(Document, self).create(vals)
 
     def write(self, vals, write_inverse=True):
