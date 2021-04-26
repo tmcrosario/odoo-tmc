@@ -38,8 +38,6 @@ class Document(models.Model):
 
     document_object_required = fields.Boolean()
 
-    document_object_copy = fields.Char(compute="_compute_document_object_copy")
-
     document_topic_ids = fields.Many2many(
         related="dependence_id.document_topic_ids"
     )
@@ -221,17 +219,6 @@ class Document(models.Model):
                 ]
             }
         }
-
-    @api.depends("document_object")
-    def _compute_document_object_copy(self):
-        for document in self:
-            document.document_object_copy = None
-            if document.document_object:
-                if len(document.document_object) > 45:
-                    string = document.document_object[:45] + "..."
-                else:
-                    string = document.document_object
-                document.document_object_copy = string.title()
 
     @api.depends("reference_model")
     def _compute_reference_document(self):

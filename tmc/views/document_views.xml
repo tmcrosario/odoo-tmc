@@ -14,7 +14,7 @@
                 decoration-warning="highest_highlight=='medium'">
                 <field name="name" />
                 <field name="date" />
-                <field name="document_object_copy"
+                <field name="document_object"
                     optional="show" />
                 <field name="topics_display_name"
                     optional="show" />
@@ -35,7 +35,7 @@
             <tree>
                 <field name="name" />
                 <field name="date" />
-                <field name="document_object_copy"
+                <field name="document_object"
                     optional="hide" />
             </tree>
         </field>
@@ -71,14 +71,13 @@
                             <field name="name"
                                 string="Nombre del Documento" />
                         </h1>
-                        <group>
-                            <field name="entry_date" />
-                        </group>
-                        <h3>
-                            <field name="document_object_copy"
-                                class="oe_read_only" />
-                        </h3>
                     </div>
+                    <group>
+                        <field name="document_object_required"
+                            invisible="True" />
+                        <field name="document_object"
+                            attrs="{'required':[('document_object_required', '=', True)]}" />
+                    </group>
                     <field name="create_date"
                         invisible="True" />
                     <field name="reference_document"
@@ -103,10 +102,7 @@
                         <group string="Reference"
                             attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
                             <field name="date" />
-                            <field name="document_object_required"
-                                invisible="True" />
-                            <field name="document_object"
-                                attrs="{'required':[('document_object_required', '=', True)]}" />
+                            <field name="entry_date" />
                         </group>
                         <field name="document_topic_ids"
                             invisible="True" />
