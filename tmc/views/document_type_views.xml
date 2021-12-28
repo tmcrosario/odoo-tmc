@@ -3,7 +3,7 @@
 
     <!-- WINDOW ACTION -->
     <record id="document_type_action_form"
-            model="ir.actions.act_window">
+        model="ir.actions.act_window">
         <field name="name">Document Types</field>
         <field name="res_model">tmc.document_type</field>
         <field name="view_mode">tree</field>
@@ -11,14 +11,14 @@
 
     <!-- TREE VIEW -->
     <record id="document_type_view_tree"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.document_type.view.tree</field>
         <field name="model">tmc.document_type</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <tree>
                 <field name="name"
-                       string="Document Type" />
+                    string="Document Type" />
                 <field name="abbreviation" />
             </tree>
         </field>

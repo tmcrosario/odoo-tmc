@@ -2,204 +2,204 @@
 <odoo>
 
     <menuitem id="tmc_menu_dependence_documents"
-              name="Dependences"
-              parent="tmc_menu_root"
-              sequence="5"
-              action="document_action_form" />
+        name="Dependences"
+        parent="tmc_menu_root"
+        sequence="5"
+        action="document_action_form" />
 
     <menuitem id="tmc_menu_actual_nomenclator"
-              name="Actual Nomenclator"
-              parent="tmc_menu_dependence_documents"
-              sequence="5"/>
+        name="Actual Nomenclator"
+        parent="tmc_menu_dependence_documents"
+        sequence="5" />
 
     <menuitem id="tmc_menu_dependence_documents_amb"
-              name="Ambiente y Espacio Público"
-              parent="tmc_menu_actual_nomenclator"
-              sequence="5"
-              action="document_action_form_amb" />
+        name="Ambiente y Espacio Público"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="5"
+        action="document_action_form_amb" />
 
     <menuitem id="tmc_menu_dependence_documents_conv"
-              name="Control y Convivencia"
-              parent="tmc_menu_actual_nomenclator"
-              sequence="10"
-              action="document_action_form_conv" />
+        name="Control y Convivencia"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="10"
+        action="document_action_form_conv" />
 
     <menuitem id="tmc_menu_dependence_documents_cul"
-              name="Cultura y Educación"
-              parent="tmc_menu_actual_nomenclator"
-              sequence="15"
-              action="document_action_form_cul" />
+        name="Cultura y Educación"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="15"
+        action="document_action_form_cul" />
 
     <menuitem id="tmc_menu_dependence_documents_dem"
-              name="Departamento Ejecutivo"
-              parent="tmc_menu_actual_nomenclator"
-              sequence="20"
-              action="document_action_form_dem" />
+        name="Departamento Ejecutivo"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="20"
+        action="document_action_form_dem" />
 
     <menuitem id="tmc_menu_dependence_documents_dep"
-              name="Deporte y Turismo"
-              parent="tmc_menu_actual_nomenclator"
-              sequence="25"
-              action="document_action_form_dem" />
+        name="Deporte y Turismo"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="25"
+        action="document_action_form_dem" />
 
     <menuitem id="tmc_menu_dependence_documents_dee"
-              name="Desarrollo Económico y Empleo"
-              parent="tmc_menu_actual_nomenclator"
-              sequence="30"
-              action="document_action_form_dem" />
+        name="Desarrollo Económico y Empleo"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="30"
+        action="document_action_form_dem" />
 
     <menuitem id="tmc_menu_dependence_documents_dhh"
-              name="Desarrollo Humano y Hábitat"
-              parent="tmc_menu_actual_nomenclator"
-              sequence="35"
-              action="document_action_form_dem" />
+        name="Desarrollo Humano y Hábitat"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="35"
+        action="document_action_form_dem" />
 
     <menuitem id="tmc_menu_dependence_documents_gen"
-              name="Género y Derechos Humanos"
-              parent="tmc_menu_actual_nomenclator"
-              sequence="40"
-              action="document_action_form_dem" />
+        name="Género y Derechos Humanos"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="40"
+        action="document_action_form_dem" />
 
     <menuitem id="tmc_menu_dependence_documents_gob"
-              name="Gobierno"
-              parent="tmc_menu_actual_nomenclator"
-              sequence="45"
-              action="document_action_form_gob" />
+        name="Gobierno"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="45"
+        action="document_action_form_gob" />
 
     <menuitem id="tmc_menu_dependence_documents_hac"
-              name="Hacienda y Economía"
-              parent="tmc_menu_actual_nomenclator"
-              sequence="50"
-              action="document_action_form_hac" />
+        name="Hacienda y Economía"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="50"
+        action="document_action_form_hac" />
 
     <menuitem id="tmc_menu_dependence_documents_mod"
-              name="Modernización y Cercanía"
-              parent="tmc_menu_actual_nomenclator"
-              sequence="60"
-              action="document_action_form_hac" />
+        name="Modernización y Cercanía"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="60"
+        action="document_action_form_hac" />
 
     <menuitem id="tmc_menu_dependence_documents_mov_2"
-              name="Movilidad"
-              parent="tmc_menu_actual_nomenclator"
-              sequence="65"
-              action="document_action_form_mov" />
+        name="Movilidad"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="65"
+        action="document_action_form_mov" />
 
     <menuitem id="tmc_menu_dependence_documents_obr"
-              name="Obras Públicas"
-              parent="tmc_menu_actual_nomenclator"
-              sequence="70"
-              action="document_action_form_obr" />
+        name="Obras Públicas"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="70"
+        action="document_action_form_obr" />
 
     <menuitem id="tmc_menu_dependence_documents_pla"
-              name="Planeamiento"
-              parent="tmc_menu_actual_nomenclator"
-              sequence="75"
-              action="document_action_form_pla" />
+        name="Planeamiento"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="75"
+        action="document_action_form_pla" />
 
     <menuitem id="tmc_menu_dependence_documents_sal"
-              name="Salud Pública"
-              parent="tmc_menu_actual_nomenclator"
-              sequence="80"
-              action="document_action_form_sal" />
+        name="Salud Pública"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="80"
+        action="document_action_form_sal" />
 
     <menuitem id="tmc_menu_previous_nomenclator"
-              name="Previous Nomenclators"
-              parent="tmc_menu_dependence_documents"
-              sequence="10"/>
+        name="Previous Nomenclators"
+        parent="tmc_menu_dependence_documents"
+        sequence="10" />
 
     <menuitem id="tmc_menu_dependence_documents_des"
-              name="Desarrollo Social"
-              parent="tmc_menu_previous_nomenclator"
-              sequence="5"
-              action="document_action_form_des" />
+        name="Desarrollo Social"
+        parent="tmc_menu_previous_nomenclator"
+        sequence="5"
+        action="document_action_form_des" />
 
     <menuitem id="tmc_menu_dependence_documents_econ"
-              name="Economía Social"
-              parent="tmc_menu_previous_nomenclator"
-              sequence="10"
-              action="document_action_form_econ" />
+        name="Economía Social"
+        parent="tmc_menu_previous_nomenclator"
+        sequence="10"
+        action="document_action_form_econ" />
 
     <menuitem id="tmc_menu_dependence_documents_gral"
-              name="General"
-              parent="tmc_menu_previous_nomenclator"
-              sequence="15"
-              action="document_action_form_gral" />
+        name="General"
+        parent="tmc_menu_previous_nomenclator"
+        sequence="15"
+        action="document_action_form_gral" />
 
     <menuitem id="tmc_menu_dependence_documents_prod"
-              name="Producción y Desarrollo Local"
-              parent="tmc_menu_previous_nomenclator"
-              sequence="20"
-              action="document_action_form_prod" />
+        name="Producción y Desarrollo Local"
+        parent="tmc_menu_previous_nomenclator"
+        sequence="20"
+        action="document_action_form_prod" />
 
     <menuitem id="tmc_menu_dependence_documents_prodei"
-              name="Producción, Empleo e Innovación"
-              parent="tmc_menu_previous_nomenclator"
-              sequence="25"
-              action="document_action_form_prodei" />
+        name="Producción, Empleo e Innovación"
+        parent="tmc_menu_previous_nomenclator"
+        sequence="25"
+        action="document_action_form_prodei" />
 
     <menuitem id="tmc_menu_dependence_documents_prom"
-              name="Promoción Social"
-              parent="tmc_menu_previous_nomenclator"
-              sequence="30"
-              action="document_action_form_prodei" />
+        name="Promoción Social"
+        parent="tmc_menu_previous_nomenclator"
+        sequence="30"
+        action="document_action_form_prodei" />
 
     <menuitem id="tmc_menu_dependence_documents_ser"
-              name="Servicios Públicos y Medio Ambiente"
-              parent="tmc_menu_previous_nomenclator"
-              sequence="35"
-              action="document_action_form_prodei" />
+        name="Servicios Públicos y Medio Ambiente"
+        parent="tmc_menu_previous_nomenclator"
+        sequence="35"
+        action="document_action_form_prodei" />
 
     <menuitem id="tmc_menu_dependence_documents_mov"
-              name="Transporte y Movilidad"
-              parent="tmc_menu_previous_nomenclator"
-              sequence="40"
-              action="document_action_form_mov" />
+        name="Transporte y Movilidad"
+        parent="tmc_menu_previous_nomenclator"
+        sequence="40"
+        action="document_action_form_mov" />
 
     <menuitem id="tmc_menu_dependence_documents_tur"
-              name="Turismo"
-              parent="tmc_menu_previous_nomenclator"
-              sequence="45"
-              action="document_action_form_tur" />
+        name="Turismo"
+        parent="tmc_menu_previous_nomenclator"
+        sequence="45"
+        action="document_action_form_tur" />
 
     <menuitem id="tmc_menu_dependence_documents_entes"
-              name="Entes Descentralizados"
-              parent="tmc_menu_root"
-              sequence="10" />
+        name="Entes Descentralizados"
+        parent="tmc_menu_root"
+        sequence="10" />
 
     <menuitem id="tmc_menu_dependence_documents_entes_emr"
-              name="Ente de la Movilidad"
-              parent="tmc_menu_dependence_documents_entes"
-              sequence="5"
-              action="document_action_form_emr" />
+        name="Ente de la Movilidad"
+        parent="tmc_menu_dependence_documents_entes"
+        sequence="5"
+        action="document_action_form_emr" />
 
     <menuitem id="tmc_menu_dependence_documents_entes_hip"
-              name="Hipódromo"
-              parent="tmc_menu_dependence_documents_entes"
-              sequence="10"
-              action="document_action_form_hip" />
+        name="Hipódromo"
+        parent="tmc_menu_dependence_documents_entes"
+        sequence="10"
+        action="document_action_form_hip" />
 
     <menuitem id="tmc_menu_dependence_documents_entes_ilar"
-              name="ILAR"
-              parent="tmc_menu_dependence_documents_entes"
-              sequence="15"
-              action="document_action_form_ilar" />
+        name="ILAR"
+        parent="tmc_menu_dependence_documents_entes"
+        sequence="15"
+        action="document_action_form_ilar" />
 
     <menuitem id="tmc_menu_dependence_documents_entes_imps"
-              name="IMPS"
-              parent="tmc_menu_dependence_documents_entes"
-              sequence="20"
-              action="document_action_form_imps" />
+        name="IMPS"
+        parent="tmc_menu_dependence_documents_entes"
+        sequence="20"
+        action="document_action_form_imps" />
 
     <menuitem id="tmc_menu_dependence_documents_entes_spv"
-              name="SPVyH"
-              parent="tmc_menu_dependence_documents_entes"
-              sequence="25"
-              action="document_action_form_spv" />
+        name="SPVyH"
+        parent="tmc_menu_dependence_documents_entes"
+        sequence="25"
+        action="document_action_form_spv" />
 
     <menuitem id="tmc_menu_dependence_documents_entes_ter"
-              name="Terminal de Ómnibus"
-              parent="tmc_menu_dependence_documents_entes"
-              sequence="30"
-              action="document_action_form_ter" />
+        name="Terminal de Ómnibus"
+        parent="tmc_menu_dependence_documents_entes"
+        sequence="30"
+        action="document_action_form_ter" />
 
 </odoo>

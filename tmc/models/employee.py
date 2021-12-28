@@ -3,9 +3,9 @@ from odoo import fields, models
 
 class Employee(models.Model):
 
-    _name = 'tmc.hr.employee'
-    _description = 'Employee'
-    _order = 'name'
+    _name = "tmc.hr.employee"
+    _description = "Employee"
+    _order = "name"
 
     name = fields.Char()
 
@@ -23,13 +23,16 @@ class Employee(models.Model):
 
     active = fields.Boolean(default=True)
 
-    employee_title_ids = fields.Many2many(comodel_name='tmc.hr.employee_title')
+    employee_title_ids = fields.Many2many(comodel_name="tmc.hr.employee_title")
 
-    employee_job_id = fields.Many2one(comodel_name='tmc.hr.employee_job')
+    employee_job_id = fields.Many2one(comodel_name="tmc.hr.employee_job")
 
-    office_id = fields.Many2one(comodel_name='tmc.hr.office')
+    office_id = fields.Many2one(comodel_name="tmc.hr.office")
 
     _sql_constraints = [
-        ('number_uniq', 'unique(docket_number, bank_account_number)',
-         'Number must be unique!'),
+        (
+            "number_uniq",
+            "unique(docket_number, bank_account_number)",
+            "Number must be unique!",
+        )
     ]

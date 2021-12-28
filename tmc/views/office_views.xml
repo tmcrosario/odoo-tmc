@@ -3,7 +3,7 @@
 
     <!-- WINDOW ACTION -->
     <record id="hr_office_action_form"
-            model="ir.actions.act_window">
+        model="ir.actions.act_window">
         <field name="name">Office</field>
         <field name="res_model">tmc.hr.office</field>
         <field name="view_mode">tree,form</field>
@@ -11,16 +11,16 @@
 
     <!-- FORM VIEW -->
     <record id="hr_office_view_form"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.hr.office.view.form</field>
         <field name="model">tmc.hr.office</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <form>
                 <sheet>
                     <div class="oe_title">
                         <label for="name"
-                               class="oe_edit_only" />
+                            class="oe_edit_only" />
                         <h1>
                             <field name="name" />
                         </h1>

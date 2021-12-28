@@ -2,15 +2,15 @@
 <odoo>
 
     <menuitem id="tmc_menu_dependence_order"
-              name="Dependence Order"
-              parent="tmc_menu_others"
-              sequence="10"
-              action="dependence_order_action_form" />
+        name="Dependence Order"
+        parent="tmc_menu_others"
+        sequence="10"
+        action="dependence_order_action_form" />
 
     <menuitem id="tmc_menu_institutional_classifiers_nomenclators"
-              name="Nomenclators"
-              parent="tmc_menu_others"
-              sequence="15"
-              action="institutional_classifier_action_form" />
+        name="Nomenclators"
+        parent="tmc_menu_others"
+        sequence="15"
+        action="institutional_classifier_action_form" />
 
 </odoo>

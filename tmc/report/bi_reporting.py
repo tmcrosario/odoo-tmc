@@ -1,22 +1,24 @@
 from datetime import datetime
+
 from odoo import models
 
 
 class Report(models.Model):
 
-    _name = 'tmc.report'
-    _description = 'Report Template'
+    _name = "tmc.report"
+    _description = "Report Template"
 
     def format_date(self, date_string):
         formatted_date = None
         if date_string:
             try:
-                tmp = datetime.strptime(date_string, '%Y-%m-%d')
+                tmp = datetime.strptime(date_string, "%Y-%m-%d")
             except ValueError:
-                tmp = datetime.strptime(date_string,
-                                        '%Y-%m-%d %H:%M:%S').date()
+                tmp = datetime.strptime(
+                    date_string, "%Y-%m-%d %H:%M:%S"
+                ).date()
             finally:
-                formatted_date = tmp.strftime('%d/%m/%Y')
+                formatted_date = tmp.strftime("%d/%m/%Y")
         return formatted_date
 
     def _prepare_report(self):
@@ -25,7 +27,7 @@ class Report(models.Model):
 
     def generate_report(self):
         self.ensure_one()
-        report_name = self.env.context.get('report_name')
+        report_name = self.env.context.get("report_name")
         if report_name:
             self = self._prepare_report()
             report = self.env.ref(report_name)

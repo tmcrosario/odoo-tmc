@@ -2,58 +2,58 @@
 <odoo>
 
     <record id="module_category_tmc"
-            model="ir.module.category">
+        model="ir.module.category">
         <field name="name">TMC</field>
         <field name="sequence">1</field>
     </record>
 
     <record id="group_user"
-            model="res.groups">
+        model="res.groups">
         <field name="name">User</field>
         <field name="category_id"
-               ref="tmc.module_category_tmc" />
+            ref="tmc.module_category_tmc" />
         <field name="users"
-               eval="[(4, ref('base.user_root'))]" />
+            eval="[(4, ref('base.user_root'))]" />
     </record>
 
     <record id="group_manager"
-            model="res.groups">
+        model="res.groups">
         <field name="name">Manager</field>
         <field name="category_id"
-               ref="module_category_tmc" />
+            ref="module_category_tmc" />
         <field name="users"
-               eval="[(4, ref('base.user_root'))]" />
+            eval="[(4, ref('base.user_root'))]" />
         <field name="implied_ids"
-               eval="[(4,ref('group_user'))]" />
+            eval="[(4,ref('group_user'))]" />
     </record>
 
     <record id="group_personal"
-            model="res.groups">
+        model="res.groups">
         <field name="name">Personal</field>
         <field name="category_id"
-               ref="module_category_tmc" />
+            ref="module_category_tmc" />
         <field name="users"
-               eval="[(4, ref('base.user_root'))]" />
+            eval="[(4, ref('base.user_root'))]" />
         <field name="implied_ids"
-               eval="[(4,ref('group_user'))]" />
+            eval="[(4,ref('group_user'))]" />
     </record>
 
     <record id="group_read_only"
-            model="res.groups">
+        model="res.groups">
         <field name="name">Read Only</field>
         <field name="category_id"
-               ref="module_category_tmc" />
+            ref="module_category_tmc" />
         <field name="users"
-               eval="[(4, ref('base.user_root'))]" />
+            eval="[(4, ref('base.user_root'))]" />
     </record>
 
     <record id="group_hidden_elements"
-            model="res.groups">
+        model="res.groups">
         <field name="name">Hidden Elements</field>
         <field name="category_id"
-               ref="module_category_tmc" />
+            ref="module_category_tmc" />
         <field name="users"
-               eval="[(4, ref('base.user_root'))]" />
+            eval="[(4, ref('base.user_root'))]" />
     </record>
 
 </odoo>

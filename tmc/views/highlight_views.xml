@@ -3,38 +3,38 @@
 
     <!-- TREE VIEW -->
     <record id="highlight_view_tree"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.highlight.view.tree</field>
         <field name="model">tmc.highlight</field>
         <field name="priority">5</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <tree decoration-danger="level=='high'"
-                  decoration-warning="level=='medium'"
-                  decoration-muted="applicable==False">
+                decoration-warning="level=='medium'"
+                decoration-muted="applicable==False">
                 <field name="comment" />
                 <field name="level" />
                 <field name="create_uid"
-                       readonly="True" />
+                    readonly="True" />
                 <field name="write_uid"
-                       readonly="True"
-                       optional="hide" />
+                    readonly="True"
+                    optional="hide" />
                 <field name="create_date"
-                       readonly="True"
-                       optional="hide" />
+                    readonly="True"
+                    optional="hide" />
                 <field name="applicable"
-                       invisible="True" />
+                    invisible="True" />
             </tree>
         </field>
     </record>
 
     <!-- FORM VIEW -->
     <record id="highlight_view_form"
-            model="ir.ui.view">
+        model="ir.ui.view">
         <field name="name">tmc.highlight.view.form</field>
         <field name="model">tmc.highlight</field>
         <field name="arch"
-               type="xml">
+            type="xml">
             <form>
                 <sheet>
                     <group>
@@ -44,11 +44,11 @@
                         </group>
                         <group>
                             <field name="create_date"
-                                   attrs="{'invisible': [('create_date', '=', False)]}" />
+                                attrs="{'invisible': [('create_date', '=', False)]}" />
                             <field name="create_uid"
-                                   attrs="{'invisible': [('create_date', '=', False)]}" />
+                                attrs="{'invisible': [('create_date', '=', False)]}" />
                             <field name="write_uid"
-                                   attrs="{'invisible': [('create_date', '=', False)]}" />
+                                attrs="{'invisible': [('create_date', '=', False)]}" />
                         </group>
                     </group>
                     <group>

@@ -2,9 +2,9 @@
 <odoo>
 
     <menuitem id="tmc_menu_config_gestion_documental_dependence"
-              name="Dependences"
-              parent="tmc.tmc_menu_config_gestion_documental"
-              sequence="5"
-              action="dependence_action_form"/>
+        name="Dependences"
+        parent="tmc.tmc_menu_config_gestion_documental"
+        sequence="5"
+        action="dependence_action_form" />
 
 </odoo>
