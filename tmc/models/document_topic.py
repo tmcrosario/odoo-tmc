@@ -14,7 +14,8 @@ class DocumentTopic(models.Model):
 
     document_ids = fields.Many2many(comodel_name='tmc.document',
                                     relation='document_main_topic_rel',
-                                    column1='main_topic_ids')
+                                    column1='tmc_document_topic_id',
+                                    column2='tmc_document_id')
 
     parent_id = fields.Many2one(comodel_name='tmc.document_topic',
                                 string='Main Topic')

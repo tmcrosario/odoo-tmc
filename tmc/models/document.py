@@ -45,6 +45,8 @@ class Document(models.Model):
     main_topic_ids = fields.Many2many(
         comodel_name="tmc.document_topic",
         relation="document_main_topic_rel",
+        column1="tmc_document_id",
+        column2="tmc_document_topic_id",
         domain="[('parent_id', '=', False), ('id', 'in', document_topic_ids)]",
     )
 
