@@ -9,7 +9,7 @@ class DependenceOrder(models.Model):
 
     name = fields.Char(related='dependence_id.name', readonly=True)
 
-    code = fields.Char(size=7, required=True)
+    code = fields.Char(required=True)
 
     dependence_id = fields.Many2one(comodel_name='tmc.dependence',
                                     required=True)

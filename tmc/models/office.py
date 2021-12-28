@@ -18,7 +18,7 @@ class Office(models.Model):
 
     manager_id = fields.Many2one(comodel_name='tmc.hr.employee')
 
-    abbreviation = fields.Char(size=3, required=True)
+    abbreviation = fields.Char(required=True)
 
     employee_job_ids = fields.One2many(comodel_name='tmc.hr.employee_job',
                                        inverse_name='office_id')

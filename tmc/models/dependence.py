@@ -8,7 +8,7 @@ class Dependence(models.Model):
 
     name = fields.Char()
 
-    abbreviation = fields.Char(size=6)
+    abbreviation = fields.Char()
 
     document_type_ids = fields.Many2many(comodel_name='tmc.document_type')
 

@@ -9,13 +9,13 @@ class Employee(models.Model):
 
     name = fields.Char()
 
-    internal_number = fields.Char(size=3)
+    internal_number = fields.Char()
 
     docket_number = fields.Integer()
 
     bank_account_number = fields.Char()
 
-    bank_branch = fields.Integer(size=2)
+    bank_branch = fields.Integer()
 
     admission_date = fields.Date()
 

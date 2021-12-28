@@ -8,7 +8,7 @@ class DocumentType(models.Model):
 
     name = fields.Char(string='Document Type')
 
-    abbreviation = fields.Char(size=4, required=True)
+    abbreviation = fields.Char(required=True)
 
     model = fields.Char(required=True)
 
