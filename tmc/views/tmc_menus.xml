@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <menuitem id="tmc_menu_root"
+    <menuitem id="tmc_menu"
         name="Actos Administrativos"
         sequence="5"
         groups="tmc.group_manager,tmc.group_user,tmc.group_read_only" />
 
-    <menuitem id="tmc_menu_others"
+    <menuitem id="tmc_others_menu"
         name="»"
-        parent="tmc_menu_root"
+        parent="tmc_menu"
         sequence="15" />
 
-    <menuitem id="tmc_menu_config"
+    <menuitem id="tmc_config_menu"
         name="Tribunal de Cuentas"
         parent="base.menu_administration"
         sequence="90" />
 
-    <menuitem id="tmc_menu_config_gestion_documental"
+    <menuitem id="act_adm_config_menu"
         name="Actos Administrativos"
-        parent="tmc_menu_config"
+        parent="tmc_config_menu"
         sequence="5" />
 
 </odoo>

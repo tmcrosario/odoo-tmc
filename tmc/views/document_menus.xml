@@ -3,7 +3,7 @@
 
     <menuitem id="tmc_menu_dependence_documents"
         name="Dependences"
-        parent="tmc_menu_root"
+        parent="tmc_menu"
         sequence="5"
         action="document_action_form" />
 
@@ -163,7 +163,7 @@
 
     <menuitem id="tmc_menu_dependence_documents_entes"
         name="Entes Descentralizados"
-        parent="tmc_menu_root"
+        parent="tmc_menu"
         sequence="10" />
 
     <menuitem id="tmc_menu_dependence_documents_entes_emr"

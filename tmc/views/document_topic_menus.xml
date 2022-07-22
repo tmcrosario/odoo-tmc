@@ -3,7 +3,7 @@
 
     <menuitem id="tmc_menu_documents_document_topics"
         name="Document Topics"
-        parent="tmc_menu_others"
+        parent="tmc_others_menu"
         action="document_topic_action_form"
         sequence="5" />
 
