@@ -63,3 +63,7 @@ access_tmc_hr_employee_title_read_only,tmc.hr.employee_title.read_only,model_tmc
 access_tmc_hr_office_manager,tmc.hr.office.manager,model_tmc_hr_office,group_manager,1,1,1,1
 access_tmc_hr_office_user,tmc.hr.office.user,model_tmc_hr_office,group_user,1,0,0,0
 access_tmc_hr_office_read_only,tmc.hr.office.read_only,model_tmc_hr_office,group_read_only,1,0,0,0
+access_tmc_category_user,tmc.category.user,model_tmc_category,group_user,1,0,0,0
+access_tmc_category_read_only,tmc.category.read_only,model_tmc_category,group_read_only,1,0,0,0
+access_tmc_report_user,tmc.report.user,model_tmc_report,group_user,1,0,0,0
+access_tmc_report_read_only,tmc.report.read_only,model_tmc_report,group_read_only,1,0,0,0
