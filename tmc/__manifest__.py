@@ -12,6 +12,8 @@
         "web_listview_range_select",
         "base_technical_features",
         "web_m2x_options",
+        "remove_odoo_enterprise",
+        "remove_odoo_bindings",
     ],
     "data": [
         "security/groups.xml",
