@@ -4,29 +4,24 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0-20210217\n"
+"Project-Id-Version: Odoo Server 14.0-20220727\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-16 13:28+0000\n"
-"PO-Revision-Date: 2021-03-16 10:33-0300\n"
+"POT-Creation-Date: 2022-08-09 14:08+0000\n"
+"PO-Revision-Date: 2022-08-09 11:09-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"Language: es_AR\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #. module: tmc
 #: code:addons/tmc/models/institutional_classifier.py:0
 #, python-format
 msgid " (Current)"
 msgstr " (Actual)"
-
-#. module: tmc
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2011
-msgid "2011"
-msgstr ""
 
 #. module: tmc
 #: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2012
@@ -79,6 +74,11 @@ msgid "2021"
 msgstr ""
 
 #. module: tmc
+#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2022
+msgid "2022"
+msgstr ""
+
+#. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence__abbreviation
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order__abbreviation
 #: model:ir.model.fields,field_description:tmc.field_tmc_document__document_type_abbr
@@ -107,14 +107,13 @@ msgid "Active"
 msgstr "Activo"
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_config_gestion_documental
-#: model:ir.ui.menu,name:tmc.tmc_menu_root
+#: model:ir.ui.menu,name:tmc.act_adm_config_menu
+#: model:ir.ui.menu,name:tmc.tmc_menu
 msgid "Actos Administrativos"
-msgstr "Actos Administrativos"
+msgstr ""
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_actual_nomenclator
-#: model_terms:ir.ui.view,arch_db:tmc.dependence_view_search
 msgid "Actual Nomenclator"
 msgstr "Nomenclador Actual"
 
@@ -336,8 +335,8 @@ msgstr "Dependencias"
 
 #. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.dependence_view_search
-msgid "Dependences with Topics"
-msgstr "Dependencias con Temas"
+msgid "Dependencias con Temas"
+msgstr ""
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_dep
@@ -413,23 +412,8 @@ msgstr "Documento"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_leg__document_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__document_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res__document_id
-#: model_terms:ir.ui.view,arch_db:tmc.document_view_form
 msgid "Document Name"
 msgstr "Documento"
-
-#. module: tmc
-#: model:ir.model.fields,field_description:tmc.field_tmc_document__document_object_copy
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_act__document_object_copy
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv__document_object_copy
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec__document_object_copy
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic__document_object_copy
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp__document_object_copy
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext__document_object_copy
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg__document_object_copy
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__document_object_copy
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_res__document_object_copy
-msgid "Document Object Copy"
-msgstr "Referencia"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document__document_object_required
@@ -443,7 +427,7 @@ msgstr "Referencia"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__document_object_required
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res__document_object_required
 msgid "Document Object Required"
-msgstr ""
+msgstr "Objeto es requerido"
 
 #. module: tmc
 #: model:ir.model,name:tmc.model_tmc_document_topic
@@ -1007,7 +991,13 @@ msgid "Name"
 msgstr "Nombre"
 
 #. module: tmc
+#: model_terms:ir.ui.view,arch_db:tmc.document_view_form
+msgid "Nombre del Documento"
+msgstr ""
+
+#. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.dependence_order_view_search
+#: model_terms:ir.ui.view,arch_db:tmc.dependence_view_search
 msgid "Nomenclador Actual"
 msgstr ""
 
@@ -1421,7 +1411,7 @@ msgid "Transporte y Movilidad"
 msgstr ""
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_config
+#: model:ir.ui.menu,name:tmc.tmc_config_menu
 msgid "Tribunal de Cuentas"
 msgstr ""
 
