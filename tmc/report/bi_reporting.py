@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 
 from odoo import models
 
@@ -9,17 +9,14 @@ class Report(models.Model):
     _description = "Report Template"
 
     def format_date(self, date_string):
-        formatted_date = None
         if date_string:
             try:
-                tmp = datetime.strptime(date_string, "%Y-%m-%d")
+                formatted_date = date.strftime(date_string, "%d/%m/%Y")
             except ValueError:
-                tmp = datetime.strptime(
-                    date_string, "%Y-%m-%d %H:%M:%S"
+                formatted_date = datetime.strptime(
+                    date_string, "%d/%m/%Y %H:%M:%S"
                 ).date()
-            finally:
-                formatted_date = tmp.strftime("%d/%m/%Y")
-        return formatted_date
+            return formatted_date
 
     def _prepare_report(self):
         context = self._context.copy()
