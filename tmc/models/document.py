@@ -360,7 +360,10 @@ class Document(models.Model):
         """
         # Get an iterator and pull the first value
         iterator = iter(iterable)
-        last = next(iterator)
+        try:
+            last = next(iterator)
+        except StopIteration as e:
+            raise exceptions.Error(e)
         # Run the iterator to exhaustion (starting from the second value)
         for val in iterator:
             # Report the *previous* value (more to come)
