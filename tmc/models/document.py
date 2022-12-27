@@ -362,8 +362,9 @@ class Document(models.Model):
         iterator = iter(iterable)
         try:
             last = next(iterator)
+        # Stop sending items from generator
         except StopIteration as e:
-            raise exceptions.Error(e)
+            return
         # Run the iterator to exhaustion (starting from the second value)
         for val in iterator:
             # Report the *previous* value (more to come)
