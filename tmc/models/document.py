@@ -358,20 +358,22 @@ class Document(models.Model):
         information if there are more values to come after the current one
         (True), or if it is the last value (False).
         """
-        # Get an iterator and pull the first value
+        # Get an iterator from the iterable
         iterator = iter(iterable)
-        try:
-            last = next(iterator)
-        # Stop sending items from generator
-        except StopIteration as e:
-            return
-        # Run the iterator to exhaustion (starting from the second value)
-        for val in iterator:
-            # Report the *previous* value (more to come)
-            yield last, True
-            last = val
-        # Report the last value
-        yield last, False
+
+        # Get the first item from the iterator, or None if the iterator is empty
+        prev = next(iterator, None)
+
+        # Iterate through the remaining items in the iterator
+        for item in iterator:
+            # Yield the previous item and the "more to come" flag
+            yield prev, True
+            # Set the previous item to the current item
+            prev = item
+
+        # If the iterator was not empty, yield the last item and the "last item" flag
+        if prev:
+            yield prev, False
 
     @api.depends("main_topic_ids", "secondary_topic_ids")
     def _compute_topics_display_name(self):
