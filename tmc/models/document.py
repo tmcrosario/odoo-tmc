@@ -1,13 +1,18 @@
-from datetime import datetime
-
 from odoo import _, api, exceptions, fields, models
 
 
 class Document(models.Model):
-
     _name = "tmc.document"
     _description = "Document"
     _order = "period desc, name desc"
+
+    @api.model
+    def _get_period_selection(self):
+        this_year = fields.Date.today().year
+        return [
+            (str(year), str(year))
+            for year in range(this_year - 6, this_year + 1)
+        ]
 
     name = fields.Char(compute="_compute_name", store=True)
 
@@ -89,7 +94,7 @@ class Document(models.Model):
     )
 
     period_selection = fields.Selection(
-        selection=lambda self: self.generate_period_selection(),
+        selection=_get_period_selection,
         compute="_compute_period_selection",
         store=True,
     )
@@ -100,22 +105,16 @@ class Document(models.Model):
 
     @api.depends("document_type_id", "dependence_id", "number", "period")
     def _compute_period_selection(self):
-        this_year = datetime.today().year
+        this_year = fields.Date.today().year
         for document in self:
-            if (this_year - 3) <= document.period <= this_year:
+            if (this_year - 7) <= document.period <= this_year:
                 document.period_selection = str(document.period)
             else:
                 document.period_selection = None
 
-    def generate_period_selection(self):
-        this_year = datetime.today().year
-        res = [
-            (str(this_year), str(this_year)),
-            (str(this_year - 1), str(this_year - 1)),
-            (str(this_year - 2), str(this_year - 2)),
-            (str(this_year - 3), str(this_year - 3)),
-        ]
-        return res
+    @api.onchange("period")
+    def _onchange_period(self):
+        self._compute_period_selection()
 
     def show_or_add_content(self):
         reference_model = "tmc." + self.reference_model
@@ -135,14 +134,12 @@ class Document(models.Model):
 
     @api.constrains("period")
     def _check_period(self):
-        period = str(self.period)
-        if not len(period) == 4:
-            raise Warning(_("Invalid year"))
-        else:
-            year = datetime.strptime(period, "%Y")
-            limit = datetime.strptime("1950", "%Y")
-            if year < limit or year > datetime.today():
-                raise Warning(_("Invalid period"))
+        if not (1000 <= self.period <= fields.Date.today().year):
+            raise exceptions.ValidationError(_("Invalid period"))
+        if self.period < 1948:
+            raise exceptions.ValidationError(
+                _("Periods before 1948 are not allowed.")
+            )
 
     @api.constrains("number")
     def _check_number(self):
@@ -420,7 +417,6 @@ class Document(models.Model):
 
 
 class DocumentDec(models.Model):
-
     _name = "tmc.document_dec"
     _description = "Decreto"
 
@@ -435,7 +431,6 @@ class DocumentDec(models.Model):
 
 
 class DocumentDic(models.Model):
-
     _name = "tmc.document_dic"
     _description = "Dictamen"
 
@@ -450,7 +445,6 @@ class DocumentDic(models.Model):
 
 
 class DocumentExp(models.Model):
-
     _name = "tmc.document_exp"
     _description = "Expediente"
 
@@ -465,7 +459,6 @@ class DocumentExp(models.Model):
 
 
 class DocumentExt(models.Model):
-
     _name = "tmc.document_ext"
     _description = "Resolucion Extraordinaria"
 
@@ -480,7 +473,6 @@ class DocumentExt(models.Model):
 
 
 class DocumentLeg(models.Model):
-
     _name = "tmc.document_leg"
     _description = "Legajo"
 
@@ -495,7 +487,6 @@ class DocumentLeg(models.Model):
 
 
 class DocumentOrd(models.Model):
-
     _name = "tmc.document_ord"
     _description = "Ordenanza"
 
@@ -510,7 +501,6 @@ class DocumentOrd(models.Model):
 
 
 class DocumentRes(models.Model):
-
     _name = "tmc.document_res"
     _description = "Resolucion"
 
@@ -525,7 +515,6 @@ class DocumentRes(models.Model):
 
 
 class DocumentConv(models.Model):
-
     _name = "tmc.document_conv"
     _description = "Convenio"
 
@@ -540,7 +529,6 @@ class DocumentConv(models.Model):
 
 
 class DocumentAct(models.Model):
-
     _name = "tmc.document_act"
     _description = "Acta"
 
