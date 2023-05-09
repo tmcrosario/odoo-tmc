@@ -2,7 +2,7 @@
 <odoo>
 
     <menuitem id="tmc_menu"
-        name="Actos Administrativos"
+        name="Gestión Documental"
         sequence="5"
         groups="tmc.group_manager,tmc.group_user,tmc.group_read_only" />
 
@@ -17,7 +17,7 @@
         sequence="90" />
 
     <menuitem id="act_adm_config_menu"
-        name="Actos Administrativos"
+        name="Gestión Documental"
         parent="tmc_config_menu"
         sequence="5" />
 

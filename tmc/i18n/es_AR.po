@@ -109,7 +109,7 @@ msgstr "Activo"
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.act_adm_config_menu
 #: model:ir.ui.menu,name:tmc.tmc_menu
-msgid "Actos Administrativos"
+msgid "Gestión Documental"
 msgstr ""
 
 #. module: tmc
