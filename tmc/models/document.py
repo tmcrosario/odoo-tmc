@@ -414,6 +414,10 @@ class Document(models.Model):
             )
             if raa_object:
                 document.entry_date = raa_object.entry_date
+            else:
+                document.entry_date = fields.Date.from_string(
+                    document.create_date
+                ).strftime("%Y-%m-%d")
 
 
 class DocumentDec(models.Model):
