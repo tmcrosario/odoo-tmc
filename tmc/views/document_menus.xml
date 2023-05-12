@@ -2,7 +2,7 @@
 <odoo>
 
     <menuitem id="tmc_menu_dependence_documents"
-        name="Dependences"
+        name="Ejecutivo"
         parent="tmc_menu"
         sequence="5"
         action="document_action_form" />
@@ -40,25 +40,25 @@
         name="Deporte y Turismo"
         parent="tmc_menu_actual_nomenclator"
         sequence="25"
-        action="document_action_form_dem" />
+        action="document_action_form_dep" />
 
     <menuitem id="tmc_menu_dependence_documents_dee"
         name="Desarrollo Económico y Empleo"
         parent="tmc_menu_actual_nomenclator"
         sequence="30"
-        action="document_action_form_dem" />
+        action="document_action_form_dee" />
 
     <menuitem id="tmc_menu_dependence_documents_dhh"
         name="Desarrollo Humano y Hábitat"
         parent="tmc_menu_actual_nomenclator"
         sequence="35"
-        action="document_action_form_dem" />
+        action="document_action_form_dhh" />
 
     <menuitem id="tmc_menu_dependence_documents_gen"
         name="Género y Derechos Humanos"
         parent="tmc_menu_actual_nomenclator"
         sequence="40"
-        action="document_action_form_dem" />
+        action="document_action_form_gen" />
 
     <menuitem id="tmc_menu_dependence_documents_gob"
         name="Gobierno"
@@ -76,13 +76,13 @@
         name="Modernización y Cercanía"
         parent="tmc_menu_actual_nomenclator"
         sequence="60"
-        action="document_action_form_hac" />
+        action="document_action_form_mod" />
 
     <menuitem id="tmc_menu_dependence_documents_mov_2"
         name="Movilidad"
         parent="tmc_menu_actual_nomenclator"
         sequence="65"
-        action="document_action_form_mov" />
+        action="document_action_form_mov_2" />
 
     <menuitem id="tmc_menu_dependence_documents_obr"
         name="Obras Públicas"
@@ -141,13 +141,13 @@
         name="Promoción Social"
         parent="tmc_menu_previous_nomenclator"
         sequence="30"
-        action="document_action_form_prodei" />
+        action="document_action_form_prom" />
 
     <menuitem id="tmc_menu_dependence_documents_ser"
         name="Servicios Públicos y Medio Ambiente"
         parent="tmc_menu_previous_nomenclator"
         sequence="35"
-        action="document_action_form_prodei" />
+        action="document_action_form_ser" />
 
     <menuitem id="tmc_menu_dependence_documents_mov"
         name="Transporte y Movilidad"

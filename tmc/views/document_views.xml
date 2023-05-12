@@ -12,12 +12,14 @@
             <tree default_order="period desc, name desc, dependence_id, document_type_id"
                 decoration-danger="highest_highlight=='high'"
                 decoration-warning="highest_highlight=='medium'">
-                <field name="name" />
+                <field name="name" width="200px"/>
                 <field name="date" />
                 <field name="document_object"
                     optional="show" />
                 <field name="topics_display_name"
                     optional="show" />
+                <field name="entry_date"
+                    optional="show" />                 
                 <field name="highest_highlight"
                     invisible="True" />
             </tree>
@@ -175,16 +177,15 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'DEPARTAMENTO EJECUTIVO')]" />
                 </searchpanel>
@@ -200,6 +201,11 @@
         <field name="search_view_id"
             ref="document_dem_simple_view_search" />
         <field name="domain">[('dependence_id','=','DEPARTAMENTO EJECUTIVO')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION HAC -->
@@ -212,17 +218,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE HACIENDA Y ECONOMÍA')]" />
                 </searchpanel>
@@ -238,6 +243,11 @@
         <field name="search_view_id"
             ref="document_hac_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE HACIENDA Y ECONOMÍA')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION GOB -->
@@ -250,17 +260,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE GOBIERNO')]" />
                 </searchpanel>
@@ -276,6 +285,53 @@
         <field name="search_view_id"
             ref="document_gob_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE GOBIERNO')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
+    </record>
+
+    <!-- RESOLUCION MOD -->
+    <!-- SEARCH VIEW -->
+    <record id="document_mod_simple_view_search"
+        model="ir.ui.view">
+        <field name="name">tmc.document.mod.simple.view.search</field>
+        <field name="model">tmc.document</field>
+        <field name="arch"
+            type="xml">
+            <search>
+                <field name="number" />
+                <field name="period" />
+                <field name="document_object" />
+                <field name="document_type_id" />
+                <field name="secondary_topic_ids"
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                <searchpanel>
+                    <field name="main_topic_ids"
+                        select="multi"
+                        enable_counters="1"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE MODERNIZACIÓN Y CERCANÍA')]" />
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+    <!-- WINDOW ACTION -->
+    <record id="document_action_form_mod"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Modernización y Cercanía (MOD)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+            ref="document_mod_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE MODERNIZACIÓN Y CERCANÍA')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION PLA -->
@@ -288,17 +344,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE PLANEAMIENTO')]" />
                 </searchpanel>
@@ -314,6 +369,11 @@
         <field name="search_view_id"
             ref="document_pla_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE PLANEAMIENTO')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION OBR -->
@@ -326,17 +386,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE OBRAS PÚBLICAS')]" />
                 </searchpanel>
@@ -352,6 +411,11 @@
         <field name="search_view_id"
             ref="document_obr_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE OBRAS PÚBLICAS')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION AMB -->
@@ -364,20 +428,19 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
-                <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
+                <!-- <searchpanel>
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE AMBIENTE Y ESPACIOS PÚBLICOS')]" />
-                </searchpanel>
+                </searchpanel> -->
             </search>
         </field>
     </record>
@@ -390,6 +453,11 @@
         <field name="search_view_id"
             ref="document_amb_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE AMBIENTE Y ESPACIOS PÚBLICOS')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION SAL -->
@@ -402,17 +470,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE SALUD PÚBLICA')]" />
                 </searchpanel>
@@ -428,6 +495,11 @@
         <field name="search_view_id"
             ref="document_sal_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE SALUD PÚBLICA')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION DES -->
@@ -440,17 +512,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE DESARROLLO SOCIAL')]" />
                 </searchpanel>
@@ -466,6 +537,11 @@
         <field name="search_view_id"
             ref="document_des_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE DESARROLLO SOCIAL')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION PROD -->
@@ -478,17 +554,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE PRODUCCIÓN Y DESARROLLO LOCAL')]" />
                 </searchpanel>
@@ -504,6 +579,11 @@
         <field name="search_view_id"
             ref="document_prod_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE PRODUCCIÓN Y DESARROLLO LOCAL')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION PRODEI -->
@@ -516,17 +596,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE PRODUCCIÓN, EMPLEO E INNOVACIÓN')]" />
                 </searchpanel>
@@ -542,7 +621,97 @@
         <field name="search_view_id"
             ref="document_prod_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE PRODUCCIÓN, EMPLEO E INNOVACIÓN')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
+
+    <!-- RESOLUCION PROM -->
+    <!-- SEARCH VIEW -->
+    <record id="document_prom_simple_view_search"
+        model="ir.ui.view">
+        <field name="name">tmc.document.prom.simple.view.search</field>
+        <field name="model">tmc.document</field>
+        <field name="arch"
+            type="xml">
+            <search>
+                <field name="number" />
+                <field name="period" />
+                <field name="document_object" />
+                <field name="document_type_id" />
+                <field name="secondary_topic_ids"
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                <searchpanel>
+                    <field name="main_topic_ids"
+                        select="multi"
+                        enable_counters="1"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE PROMOCIÓN SOCIAL')]" />
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+    <!-- WINDOW ACTION -->
+    <record id="document_action_form_prom"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Promoción Social (PROM)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+            ref="document_prom_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE PROMOCIÓN SOCIAL')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
+    </record>
+
+    <!-- RESOLUCION SER -->
+    <!-- SEARCH VIEW -->
+    <record id="document_ser_simple_view_search"
+        model="ir.ui.view">
+        <field name="name">tmc.document.ser.simple.view.search</field>
+        <field name="model">tmc.document</field>
+        <field name="arch"
+            type="xml">
+            <search>
+                <field name="number" />
+                <field name="period" />
+                <field name="document_object" />
+                <field name="document_type_id" />
+                <field name="secondary_topic_ids"
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                <searchpanel>
+                    <field name="main_topic_ids"
+                        select="multi"
+                        enable_counters="1"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE SERVICIOS PÚBLICOS Y MEDIO AMBIENTE')]" />
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+    <!-- WINDOW ACTION -->
+    <record id="document_action_form_ser"
+        model="ir.actions.act_window">
+        <field name="name">Servicios Públicos y Medio Ambiente (SER)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+            ref="document_ser_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE SERVICIOS PÚBLICOS Y MEDIO AMBIENTE')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
+    </record>
+
 
     <!-- RESOLUCION CUL -->
     <!-- SEARCH VIEW -->
@@ -554,20 +723,19 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
-                <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
+                <!-- <searchpanel>
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE CULTURA Y EDUCACIÓN')]" />
-                </searchpanel>
+                </searchpanel> -->
             </search>
         </field>
     </record>
@@ -580,6 +748,11 @@
         <field name="search_view_id"
             ref="document_cul_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE CULTURA Y EDUCACIÓN')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION GRAL -->
@@ -592,17 +765,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA GENERAL')]" />
                 </searchpanel>
@@ -618,6 +790,11 @@
         <field name="search_view_id"
             ref="document_gral_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA GENERAL')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION TUR -->
@@ -630,17 +807,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE TURISMO')]" />
                 </searchpanel>
@@ -656,6 +832,179 @@
         <field name="search_view_id"
             ref="document_tur_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE TURISMO')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
+    </record>
+
+    <!-- RESOLUCION DEP -->
+    <!-- SEARCH VIEW -->
+    <record id="document_dep_simple_view_search"
+        model="ir.ui.view">
+        <field name="name">tmc.document.dep.simple.view.search</field>
+        <field name="model">tmc.document</field>
+        <field name="arch"
+            type="xml">
+            <search>
+                <field name="number" />
+                <field name="period" />
+                <field name="document_object" />
+                <field name="document_type_id" />
+                <field name="secondary_topic_ids"
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                <searchpanel>
+                    <field name="main_topic_ids"
+                        select="multi"
+                        enable_counters="1"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE DEPORTE Y TURISMO')]" />
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+    <!-- WINDOW ACTION -->
+    <record id="document_action_form_dep"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Deporte y Turismo (DEP)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+            ref="document_dep_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE DEPORTE Y TURISMO')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
+    </record>
+
+    <!-- RESOLUCION DEE -->
+    <!-- SEARCH VIEW -->
+    <record id="document_dee_simple_view_search"
+        model="ir.ui.view">
+        <field name="name">tmc.document.dee.simple.view.search</field>
+        <field name="model">tmc.document</field>
+        <field name="arch"
+            type="xml">
+            <search>
+                <field name="number" />
+                <field name="period" />
+                <field name="document_object" />
+                <field name="document_type_id" />
+                <field name="secondary_topic_ids"
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                <searchpanel>
+                    <field name="main_topic_ids"
+                        select="multi"
+                        enable_counters="1"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE DESARROLLO ECONÓMICO Y EMPLEO')]" />
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+    <!-- WINDOW ACTION -->
+    <record id="document_action_form_dee"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Desarrollo Económico y Empleo (DEE)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+            ref="document_dee_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE DESARROLLO ECONÓMICO Y EMPLEO')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
+    </record>
+
+    <!-- RESOLUCION DHH -->
+    <!-- SEARCH VIEW -->
+    <record id="document_dhh_simple_view_search"
+        model="ir.ui.view">
+        <field name="name">tmc.document.dhh.simple.view.search</field>
+        <field name="model">tmc.document</field>
+        <field name="arch"
+            type="xml">
+            <search>
+                <field name="number" />
+                <field name="period" />
+                <field name="document_object" />
+                <field name="document_type_id" />
+                <field name="secondary_topic_ids"
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                <!-- <searchpanel>
+                    <field name="main_topic_ids"
+                        select="multi"
+                        enable_counters="1"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE DESARROLLO HUMANO Y HÁBITAT')]" />
+                </searchpanel> -->
+            </search>
+        </field>
+    </record>
+    <!-- WINDOW ACTION -->
+    <record id="document_action_form_dhh"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Desarrollo Humano y Hábitat (DHH)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+            ref="document_dhh_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE DESARROLLO HUMANO Y HÁBITAT')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
+    </record>
+
+    <!-- RESOLUCION GEN -->
+    <!-- SEARCH VIEW -->
+    <record id="document_gen_simple_view_search"
+        model="ir.ui.view">
+        <field name="name">tmc.document.gen.simple.view.search</field>
+        <field name="model">tmc.document</field>
+        <field name="arch"
+            type="xml">
+            <search>
+                <field name="number" />
+                <field name="period" />
+                <field name="document_object" />
+                <field name="document_type_id" />
+                <field name="secondary_topic_ids"
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                <searchpanel>
+                    <field name="main_topic_ids"
+                        select="multi"
+                        enable_counters="1"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE GÉNERO Y DERECHOS HUMANOS')]" />
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+    <!-- WINDOW ACTION -->
+    <record id="document_action_form_gen"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Género y Derechos Humanos (GEN)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+            ref="document_gen_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE GÉNERO Y DERECHOS HUMANOS')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION CONV -->
@@ -668,20 +1017,19 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
-                <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
+                <!-- <searchpanel>
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE CONTROL Y CONVIVENCIA CIUDADANA')]" />
-                </searchpanel>
+                </searchpanel> -->
             </search>
         </field>
     </record>
@@ -694,6 +1042,11 @@
         <field name="search_view_id"
             ref="document_conv_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE CONTROL Y CONVIVENCIA CIUDADANA')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION MOV -->
@@ -706,17 +1059,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE TRANSPORTE Y MOVILIDAD')]" />
                 </searchpanel>
@@ -732,6 +1084,51 @@
         <field name="search_view_id"
             ref="document_mov_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE TRANSPORTE Y MOVILIDAD')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
+    </record>
+    <!-- SEARCH VIEW -->
+    <record id="document_mov_2_simple_view_search"
+        model="ir.ui.view">
+        <field name="name">tmc.document.mov.2.simple.view.search</field>
+        <field name="model">tmc.document</field>
+        <field name="arch"
+            type="xml">
+            <search>
+                <field name="number" />
+                <field name="period" />
+                <field name="document_object" />
+                <field name="document_type_id" />
+                <field name="secondary_topic_ids"
+                    string="Document Topic"
+                    filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
+                <searchpanel>
+                    <field name="main_topic_ids"
+                        select="multi"
+                        enable_counters="1"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE MOVILIDAD')]" />
+                </searchpanel>
+            </search>
+        </field>
+    </record>    
+    <!-- WINDOW ACTION -->
+    <record id="document_action_form_mov_2"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Movilidad (MOV)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+            ref="document_mov_2_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE MOVILIDAD')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION ECON -->
@@ -744,17 +1141,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE ECONOMÍA SOCIAL')]" />
                 </searchpanel>
@@ -770,6 +1166,11 @@
         <field name="search_view_id"
             ref="document_econ_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE ECONOMÍA SOCIAL')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION TER -->
@@ -782,17 +1183,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'Terminal de Omnibus Rosario')]" />
                 </searchpanel>
@@ -808,6 +1208,11 @@
         <field name="search_view_id"
             ref="document_ter_simple_view_search" />
         <field name="domain">[('dependence_id','=','Terminal de Omnibus Rosario')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION EMR -->
@@ -820,17 +1225,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'Ente de la Movilidad de Rosario')]" />
                 </searchpanel>
@@ -846,6 +1250,11 @@
         <field name="search_view_id"
             ref="document_emr_simple_view_search" />
         <field name="domain">[('dependence_id','=','Ente de la Movilidad de Rosario')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION ILAR -->
@@ -858,17 +1267,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'INSTITUTO DE LUCHA ANTIPOLIOMIELÍTICA DE ROSARIO')]" />
                 </searchpanel>
@@ -884,6 +1292,11 @@
         <field name="search_view_id"
             ref="document_ilar_simple_view_search" />
         <field name="domain">[('dependence_id','=','INSTITUTO DE LUCHA ANTIPOLIOMIELÍTICA DE ROSARIO')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION IMPS -->
@@ -896,17 +1309,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'INSTITUTO MUNICIPAL DE PREVISIÓN SOCIAL')]" />
                 </searchpanel>
@@ -922,6 +1334,11 @@
         <field name="search_view_id"
             ref="document_imps_simple_view_search" />
         <field name="domain">[('dependence_id', '=', 'INSTITUTO MUNICIPAL DE PREVISIÓN SOCIAL')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION SPV -->
@@ -934,17 +1351,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SERVICIO PÚBLICO DE LA VIVIENDA Y EL HÁBITAT')]" />
                 </searchpanel>
@@ -960,6 +1376,11 @@
         <field name="search_view_id"
             ref="document_spv_simple_view_search" />
         <field name="domain">[('dependence_id','=','SERVICIO PÚBLICO DE LA VIVIENDA Y EL HÁBITAT')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
     <!-- RESOLUCION HIP -->
@@ -972,17 +1393,16 @@
             type="xml">
             <search>
                 <field name="number" />
+                <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
                 <field name="secondary_topic_ids"
                     string="Document Topic"
                     filter_domain="['|', ('secondary_topic_ids.name', 'ilike', self), ('main_topic_ids.name', 'ilike', self)]" />
                 <searchpanel>
-                    <field name="period_selection"
-                        string="Período"
-                        icon="fa-calendar" />
                     <field name="main_topic_ids"
                         select="multi"
+                        enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'Hipódromo Rosario')]" />
                 </searchpanel>
@@ -998,6 +1418,11 @@
         <field name="search_view_id"
             ref="document_hip_simple_view_search" />
         <field name="domain">[('dependence_id','=','Hipódromo Rosario')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
     </record>
 
 </odoo>
