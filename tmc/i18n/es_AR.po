@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0-20220727\n"
+"Project-Id-Version: Odoo Server 14.0-20230430\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-09 14:08+0000\n"
-"PO-Revision-Date: 2022-08-09 11:09-0300\n"
+"POT-Creation-Date: 2023-05-12 13:23+0000\n"
+"PO-Revision-Date: 2023-05-12 10:25-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_AR\n"
@@ -15,18 +15,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. module: tmc
 #: code:addons/tmc/models/institutional_classifier.py:0
 #, python-format
 msgid " (Current)"
 msgstr " (Actual)"
-
-#. module: tmc
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2012
-msgid "2012"
-msgstr ""
 
 #. module: tmc
 #: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2013
@@ -79,6 +74,11 @@ msgid "2022"
 msgstr ""
 
 #. module: tmc
+#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2023
+msgid "2023"
+msgstr ""
+
+#. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence__abbreviation
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order__abbreviation
 #: model:ir.model.fields,field_description:tmc.field_tmc_document__document_type_abbr
@@ -105,12 +105,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee__active
 msgid "Active"
 msgstr "Activo"
-
-#. module: tmc
-#: model:ir.ui.menu,name:tmc.act_adm_config_menu
-#: model:ir.ui.menu,name:tmc.tmc_menu
-msgid "Gestión Documental"
-msgstr ""
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_actual_nomenclator
@@ -327,7 +321,6 @@ msgstr "El nombre de la dependencia debe ser única"
 #: model:ir.actions.act_window,name:tmc.dependence_action_form
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic__dependences_display_name
 #: model:ir.ui.menu,name:tmc.tmc_menu_config_gestion_documental_dependence
-#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents
 #: model_terms:ir.ui.view,arch_db:tmc.document_topic_view_form
 #: model_terms:ir.ui.view,arch_db:tmc.institutional_classifier_view_form
 msgid "Dependences"
@@ -445,22 +438,30 @@ msgstr "Objeto es requerido"
 #: model_terms:ir.ui.view,arch_db:tmc.document_amb_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_conv_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_cul_simple_view_search
+#: model_terms:ir.ui.view,arch_db:tmc.document_dee_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_dem_simple_view_search
+#: model_terms:ir.ui.view,arch_db:tmc.document_dep_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_des_simple_view_search
+#: model_terms:ir.ui.view,arch_db:tmc.document_dhh_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_econ_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_emr_simple_view_search
+#: model_terms:ir.ui.view,arch_db:tmc.document_gen_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_gob_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_gral_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_hac_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_hip_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_ilar_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_imps_simple_view_search
+#: model_terms:ir.ui.view,arch_db:tmc.document_mod_simple_view_search
+#: model_terms:ir.ui.view,arch_db:tmc.document_mov_2_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_mov_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_obr_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_pla_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_prod_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_prodei_simple_view_search
+#: model_terms:ir.ui.view,arch_db:tmc.document_prom_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_sal_simple_view_search
+#: model_terms:ir.ui.view,arch_db:tmc.document_ser_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_spv_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_ter_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_tur_simple_view_search
@@ -526,6 +527,11 @@ msgstr "Fecha Hasta"
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_econ
 msgid "Economía Social"
 msgstr ""
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents
+msgid "Ejecutivo"
+msgstr "Ejecutivo"
 
 #. module: tmc
 #: model:ir.model.constraint,message:tmc.constraint_tmc_document_name_unique
@@ -613,6 +619,12 @@ msgstr "Primer Padre"
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_gral
 msgid "General"
+msgstr ""
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.act_adm_config_menu
+#: model:ir.ui.menu,name:tmc.tmc_menu
+msgid "Gestión Documental"
 msgstr ""
 
 #. module: tmc
@@ -802,12 +814,6 @@ msgid "Invalid period"
 msgstr "Período inválido"
 
 #. module: tmc
-#: code:addons/tmc/models/document.py:0
-#, python-format
-msgid "Invalid year"
-msgstr "Año Inválido"
-
-#. module: tmc
 #: model:ir.model.constraint,message:tmc.constraint_tmc_document_type_abbreviation_unique
 msgid "La abreviatura debe ser única"
 msgstr ""
@@ -991,6 +997,40 @@ msgid "Name"
 msgstr "Nombre"
 
 #. module: tmc
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_amb
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_conv
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_cul
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_dee
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_dem
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_dep
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_des
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_dhh
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_econ
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_emr
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_gen
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_gob
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_gral
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_hac
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_hip
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_ilar
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_imps
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_mod
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_mov
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_mov_2
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_obr
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_pla
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_prod
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_prodei
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_prom
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_sal
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_ser
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_spv
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_ter
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_tur
+msgid "No documents to show."
+msgstr ""
+
+#. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.document_view_form
 msgid "Nombre del Documento"
 msgstr ""
@@ -1103,35 +1143,15 @@ msgid "Period Selection"
 msgstr "Período"
 
 #. module: tmc
-#: model:ir.ui.menu,name:tmc.menu_main_personal
-#: model:res.groups,name:tmc.group_personal
-msgid "Personal"
+#: code:addons/tmc/models/document.py:0
+#, python-format
+msgid "Periods before 1948 are not allowed."
 msgstr ""
 
 #. module: tmc
-#: model_terms:ir.ui.view,arch_db:tmc.document_amb_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_conv_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_cul_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_dem_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_des_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_econ_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_emr_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_gob_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_gral_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_hac_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_hip_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_ilar_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_imps_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_mov_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_obr_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_pla_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_prod_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_prodei_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_sal_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_spv_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_ter_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_tur_simple_view_search
-msgid "Período"
+#: model:ir.ui.menu,name:tmc.menu_main_personal
+#: model:res.groups,name:tmc.group_personal
+msgid "Personal"
 msgstr ""
 
 #. module: tmc
@@ -1273,6 +1293,21 @@ msgid "Secretaría de Cultura y Educación (CUL)"
 msgstr ""
 
 #. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_dep
+msgid "Secretaría de Deporte y Turismo (DEP)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_dee
+msgid "Secretaría de Desarrollo Económico y Empleo (DEE)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_dhh
+msgid "Secretaría de Desarrollo Humano y Hábitat (DHH)"
+msgstr ""
+
+#. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_des
 msgid "Secretaría de Desarrollo Social (DES)"
 msgstr ""
@@ -1288,8 +1323,23 @@ msgid "Secretaría de Gobierno (GOB)"
 msgstr ""
 
 #. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_gen
+msgid "Secretaría de Género y Derechos Humanos (GEN)"
+msgstr ""
+
+#. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_hac
 msgid "Secretaría de Hacienda y Economía (HAC)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_mod
+msgid "Secretaría de Modernización y Cercanía (MOD)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_mov_2
+msgid "Secretaría de Movilidad (MOV)"
 msgstr ""
 
 #. module: tmc
@@ -1310,6 +1360,11 @@ msgstr ""
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_prodei
 msgid "Secretaría de Producción, Empleo e Innovación (PROD)"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_prom
+msgid "Secretaría de Promoción Social (PROM)"
 msgstr ""
 
 #. module: tmc
@@ -1335,6 +1390,11 @@ msgstr ""
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_ser
 msgid "Servicios Públicos y Medio Ambiente"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_ser
+msgid "Servicios Públicos y Medio Ambiente (SER)"
 msgstr ""
 
 #. module: tmc
@@ -1435,6 +1495,34 @@ msgstr "Documento Sin Nombre"
 #: model:res.groups,name:tmc.group_user
 msgid "User"
 msgstr "Usuario"
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document__write_date_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act__write_date_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv__write_date_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec__write_date_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic__write_date_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp__write_date_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext__write_date_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg__write_date_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__write_date_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res__write_date_tmp
+msgid "Write Date Tmp"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document__write_uid_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act__write_uid_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv__write_uid_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec__write_uid_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic__write_uid_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp__write_uid_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext__write_uid_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg__write_uid_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__write_uid_tmp
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res__write_uid_tmp
+msgid "Write Uid Tmp"
+msgstr ""
 
 #. module: tmc
 #: code:addons/tmc/models/document.py:0
