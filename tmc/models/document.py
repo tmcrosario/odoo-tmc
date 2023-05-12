@@ -39,7 +39,7 @@ class Document(models.Model):
 
     entry_date = fields.Date(compute="_compute_entry_date", readonly=True)
 
-    document_object = fields.Char(string="Object", index=True)
+    document_object = fields.Char(string="Object", size=125, index=True)
 
     document_object_required = fields.Boolean()
 
