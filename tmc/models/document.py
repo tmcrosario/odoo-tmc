@@ -65,7 +65,6 @@ class Document(models.Model):
         compute="_compute_topics_display_name",
         string="Topics",
         readonly=True,
-        store=True,
     )
 
     reference_model = fields.Char(related="document_type_id.model")
