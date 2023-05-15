@@ -96,4 +96,4 @@ jobs:
         run: ssh host 'docker compose --file /home/${{ secrets.SSH_USER }}/odoo/compose.yml stop web'
 
       - name: Start Odoo Server
-        run: ssh host 'docker compose --file /home/${{ secrets.SSH_USER }}/odoo/compose.yml up web --force-recreate --scale web=4 --detach'
+        run: ssh host 'docker compose --file /home/${{ secrets.SSH_USER }}/odoo/compose.yml up web --force-recreate web --scale web=4 --detach'
