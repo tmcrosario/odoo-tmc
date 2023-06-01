@@ -112,12 +112,12 @@
                             attrs="{'invisible':['|', ('document_topic_ids', '=', []), ('create_date','=', False)]}">
                             <field name="main_topic_ids"
                                 widget="many2many_tags"
-                                options="{'color_field': 'color', 'no_create_edit': True}"
+                                options="{'color_field': 'color', 'no_create': True}"
                                 attrs="{'required':[('document_object', '!=', False), ('document_type_abbr', 'in', ['DEC', 'RES'])]}" />
                             <field name="secondary_topic_ids"
                                 attrs="{'invisible':[('main_topic_ids', '=', [])]}"
                                 widget="many2many_tags"
-                                options="{'color_field': 'color', 'no_create_edit': True}" />
+                                options="{'color_field': 'color', 'no_create': True}" />
                         </group>
                     </group>
                     <notebook attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
@@ -180,6 +180,11 @@
                 <field name="document_object" />
                 <field name="main_topic_ids" />
                 <field name="secondary_topic_ids" />
+                <group>
+                    <filter name="group_by_document_type_id"
+                        string="Tipo de Documento"
+                        context="{'group_by': 'document_type_id'}" />
+                </group>
                 <searchpanel>
                     <field name="main_topic_ids"
                         select="multi"
@@ -199,6 +204,9 @@
         <field name="search_view_id"
             ref="document_dem_simple_view_search" />
         <field name="domain">[('dependence_id','=','DEPARTAMENTO EJECUTIVO')]</field>
+        <field name="context">
+            {'search_default_group_by_document_type_id': True}
+        </field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
@@ -631,13 +639,13 @@
                 <field name="document_type_id" />
                 <field name="main_topic_ids" />
                 <field name="secondary_topic_ids" />
-                <searchpanel>
+                <!-- <searchpanel>
                     <field name="main_topic_ids"
                         select="multi"
                         enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE PROMOCIÓN SOCIAL')]" />
-                </searchpanel>
+                </searchpanel> -->
             </search>
         </field>
     </record>
@@ -672,13 +680,13 @@
                 <field name="document_type_id" />
                 <field name="main_topic_ids" />
                 <field name="secondary_topic_ids" />
-                <searchpanel>
+                <!-- <searchpanel>
                     <field name="main_topic_ids"
                         select="multi"
                         enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE SERVICIOS PÚBLICOS Y MEDIO AMBIENTE')]" />
-                </searchpanel>
+                </searchpanel> -->
             </search>
         </field>
     </record>
@@ -919,13 +927,13 @@
                 <field name="document_type_id" />
                 <field name="main_topic_ids" />
                 <field name="secondary_topic_ids" />
-                <!-- <searchpanel>
+                <searchpanel>
                     <field name="main_topic_ids"
                         select="multi"
                         enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE DESARROLLO HUMANO Y HÁBITAT')]" />
-                </searchpanel> -->
+                </searchpanel>
             </search>
         </field>
     </record>
@@ -1286,13 +1294,13 @@
                 <field name="document_type_id" />
                 <field name="main_topic_ids" />
                 <field name="secondary_topic_ids" />
-                <searchpanel>
+                <!-- <searchpanel>
                     <field name="main_topic_ids"
                         select="multi"
                         enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'INSTITUTO MUNICIPAL DE PREVISIÓN SOCIAL')]" />
-                </searchpanel>
+                </searchpanel> -->
             </search>
         </field>
     </record>

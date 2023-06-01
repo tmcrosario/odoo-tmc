@@ -289,6 +289,14 @@ class Document(models.Model):
             self.env["tmc.document_type"].browse(doc_type).abbreviation
         )
 
+        if vals.get("date"):
+            if (
+                int(vals.get("date")[:4]) != vals.get("period")
+                and doc_type_abbr != "CONV"
+            ):
+                message = _("Date does not match with period")
+                raise exceptions.UserError(message)
+
         if doc_type_abbr == "ACT":
             vals["number"] = self.env.ref(
                 "tmc_data.seq_tmc_act"
@@ -326,9 +334,12 @@ class Document(models.Model):
                     raise exceptions.UserError(message)
 
         if vals.get("date"):
-            if int(vals.get("date")[:4]) != self.period:
+            if (
+                int(vals.get("date")[:4]) != self.period
+                and self.document_type_id.abbreviation != "CONV"
+            ):
                 message = _("Date does not match with period")
-                raise exceptions.Warning(message)
+                raise exceptions.UserError(message)
 
         if write_inverse and vals.get("related_document_ids"):
             new_related_documents = self.browse(

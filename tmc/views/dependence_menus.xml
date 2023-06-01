@@ -2,8 +2,8 @@
 <odoo>
 
     <menuitem id="tmc_menu_config_gestion_documental_dependence"
-        name="Dependences"
-        parent="tmc.act_adm_config_menu"
+        name="Document Topics"
+        parent="tmc_others_menu"
         sequence="5"
         action="dependence_action_form" />
 
