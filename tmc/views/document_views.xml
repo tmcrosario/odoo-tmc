@@ -639,13 +639,13 @@
                 <field name="document_type_id" />
                 <field name="main_topic_ids" />
                 <field name="secondary_topic_ids" />
-                <searchpanel>
+                <!-- <searchpanel>
                     <field name="main_topic_ids"
                         select="multi"
                         enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE PROMOCIÓN SOCIAL')]" />
-                </searchpanel>
+                </searchpanel> -->
             </search>
         </field>
     </record>
@@ -680,13 +680,13 @@
                 <field name="document_type_id" />
                 <field name="main_topic_ids" />
                 <field name="secondary_topic_ids" />
-                <searchpanel>
+                <!-- <searchpanel>
                     <field name="main_topic_ids"
                         select="multi"
                         enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE SERVICIOS PÚBLICOS Y MEDIO AMBIENTE')]" />
-                </searchpanel>
+                </searchpanel> -->
             </search>
         </field>
     </record>
@@ -927,13 +927,13 @@
                 <field name="document_type_id" />
                 <field name="main_topic_ids" />
                 <field name="secondary_topic_ids" />
-                <!-- <searchpanel>
+                <searchpanel>
                     <field name="main_topic_ids"
                         select="multi"
                         enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE DESARROLLO HUMANO Y HÁBITAT')]" />
-                </searchpanel> -->
+                </searchpanel>
             </search>
         </field>
     </record>
@@ -1294,13 +1294,13 @@
                 <field name="document_type_id" />
                 <field name="main_topic_ids" />
                 <field name="secondary_topic_ids" />
-                <searchpanel>
+                <!-- <searchpanel>
                     <field name="main_topic_ids"
                         select="multi"
                         enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'INSTITUTO MUNICIPAL DE PREVISIÓN SOCIAL')]" />
-                </searchpanel>
+                </searchpanel> -->
             </search>
         </field>
     </record>
