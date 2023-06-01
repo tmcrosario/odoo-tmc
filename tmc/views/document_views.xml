@@ -112,12 +112,12 @@
                             attrs="{'invisible':['|', ('document_topic_ids', '=', []), ('create_date','=', False)]}">
                             <field name="main_topic_ids"
                                 widget="many2many_tags"
-                                options="{'color_field': 'color', 'no_create_edit': True}"
+                                options="{'color_field': 'color', 'no_create': True}"
                                 attrs="{'required':[('document_object', '!=', False), ('document_type_abbr', 'in', ['DEC', 'RES'])]}" />
                             <field name="secondary_topic_ids"
                                 attrs="{'invisible':[('main_topic_ids', '=', [])]}"
                                 widget="many2many_tags"
-                                options="{'color_field': 'color', 'no_create_edit': True}" />
+                                options="{'color_field': 'color', 'no_create': True}" />
                         </group>
                     </group>
                     <notebook attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
