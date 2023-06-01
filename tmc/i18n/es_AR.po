@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0-20230430\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-12 13:23+0000\n"
-"PO-Revision-Date: 2023-05-12 10:25-0300\n"
+"POT-Creation-Date: 2023-06-01 15:07+0000\n"
+"PO-Revision-Date: 2023-06-01 12:11-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_AR\n"
@@ -108,6 +108,7 @@ msgstr "Activo"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_actual_nomenclator
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_order
 msgid "Actual Nomenclator"
 msgstr "Nomenclador Actual"
 
@@ -304,15 +305,14 @@ msgid "Dependence"
 msgstr "Dependencia"
 
 #. module: tmc
-#: model:ir.actions.act_window,name:tmc.dependence_order_action_form
 #: model:ir.model,name:tmc.model_tmc_dependence_order
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier__dependence_order_ids
-#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_order
 msgid "Dependence Order"
 msgstr "Dependencias"
 
 #. module: tmc
 #: code:addons/tmc/models/dependence.py:0
+#: model:ir.model.constraint,message:tmc.constraint_tmc_dependence_name_unique
 #, python-format
 msgid "Dependence name must be unique"
 msgstr "El nombre de la dependencia debe ser única"
@@ -320,10 +320,14 @@ msgstr "El nombre de la dependencia debe ser única"
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.dependence_action_form
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic__dependences_display_name
-#: model:ir.ui.menu,name:tmc.tmc_menu_config_gestion_documental_dependence
 #: model_terms:ir.ui.view,arch_db:tmc.document_topic_view_form
 #: model_terms:ir.ui.view,arch_db:tmc.institutional_classifier_view_form
 msgid "Dependences"
+msgstr "Dependencias"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.dependence_order_action_form
+msgid "Dependences in Actual Nomenclator"
 msgstr "Dependencias"
 
 #. module: tmc
@@ -435,41 +439,12 @@ msgstr "Objeto es requerido"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_leg__document_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__document_topic_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res__document_topic_ids
-#: model_terms:ir.ui.view,arch_db:tmc.document_amb_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_conv_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_cul_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_dee_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_dem_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_dep_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_des_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_dhh_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_econ_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_emr_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_gen_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_gob_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_gral_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_hac_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_hip_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_ilar_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_imps_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_mod_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_mov_2_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_mov_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_obr_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_pla_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_prod_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_prodei_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_prom_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_sal_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_ser_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_spv_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_ter_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_tur_simple_view_search
-#: model_terms:ir.ui.view,arch_db:tmc.document_view_search
 msgid "Document Topic"
 msgstr "Tema Principal o Secundario"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_dependence__document_topic_names
+#: model:ir.ui.menu,name:tmc.tmc_menu_config_gestion_documental_dependence
 #: model:ir.ui.menu,name:tmc.tmc_menu_documents_document_topics
 #: model_terms:ir.ui.view,arch_db:tmc.dependence_view_form
 msgid "Document Topics"
@@ -502,18 +477,21 @@ msgstr "Tipos de Documento"
 
 #. module: tmc
 #: code:addons/tmc/models/document.py:0
+#: model:ir.model.constraint,message:tmc.constraint_tmc_document_name_unique
 #, python-format
 msgid "Document already exists"
 msgstr "El documento ya existe"
 
 #. module: tmc
 #: code:addons/tmc/models/document_type.py:0
+#: model:ir.model.constraint,message:tmc.constraint_tmc_document_type_abbreviation_unique
 #, python-format
 msgid "Document type abbreviation must be unique"
 msgstr "La abreviatura debe ser única"
 
 #. module: tmc
 #: code:addons/tmc/models/document_type.py:0
+#: model:ir.model.constraint,message:tmc.constraint_tmc_document_type_name_unique
 #, python-format
 msgid "Document type name must be unique"
 msgstr "El nombre debe ser único"
@@ -531,21 +509,6 @@ msgstr ""
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents
 msgid "Ejecutivo"
-msgstr "Ejecutivo"
-
-#. module: tmc
-#: model:ir.model.constraint,message:tmc.constraint_tmc_document_name_unique
-msgid "El documento ya existe"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.constraint,message:tmc.constraint_tmc_dependence_name_unique
-msgid "El nombre de la dependencia debe ser única"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.constraint,message:tmc.constraint_tmc_document_type_name_unique
-msgid "El nombre debe ser único"
 msgstr ""
 
 #. module: tmc
@@ -814,11 +777,6 @@ msgid "Invalid period"
 msgstr "Período inválido"
 
 #. module: tmc
-#: model:ir.model.constraint,message:tmc.constraint_tmc_document_type_abbreviation_unique
-msgid "La abreviatura debe ser única"
-msgstr ""
-
-#. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_category____last_update
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence____last_update
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order____last_update
@@ -1027,7 +985,7 @@ msgstr "Nombre"
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_spv
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_ter
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_tur
-msgid "No documents to show."
+msgid "No hay documentos para mostrar."
 msgstr ""
 
 #. module: tmc
@@ -1146,7 +1104,7 @@ msgstr "Período"
 #: code:addons/tmc/models/document.py:0
 #, python-format
 msgid "Periods before 1948 are not allowed."
-msgstr ""
+msgstr "No se admiten periodos anteriores a 1948."
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.menu_main_personal
@@ -1295,7 +1253,7 @@ msgstr ""
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_dep
 msgid "Secretaría de Deporte y Turismo (DEP)"
-msgstr ""
+msgstr "Secretaría de Deporte y Turismo (DYT)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_dee
@@ -1325,7 +1283,7 @@ msgstr ""
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_gen
 msgid "Secretaría de Género y Derechos Humanos (GEN)"
-msgstr ""
+msgstr "Secretaría de Género y Derechos Humanos (GDH)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_hac
@@ -1430,11 +1388,6 @@ msgid "Tema Principal"
 msgstr ""
 
 #. module: tmc
-#: model_terms:ir.ui.view,arch_db:tmc.dependence_document_topic_view_tree
-msgid "Temas Principales"
-msgstr ""
-
-#. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes_ter
 msgid "Terminal de Ómnibus"
 msgstr ""
@@ -1449,6 +1402,11 @@ msgstr ""
 #, python-format
 msgid "There is already a more recent nomenclator"
 msgstr "Ya existe un nomenclador más actual"
+
+#. module: tmc
+#: model_terms:ir.ui.view,arch_db:tmc.document_dem_simple_view_search
+msgid "Tipo de Documento"
+msgstr ""
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document__topics_display_name
@@ -1495,34 +1453,6 @@ msgstr "Documento Sin Nombre"
 #: model:res.groups,name:tmc.group_user
 msgid "User"
 msgstr "Usuario"
-
-#. module: tmc
-#: model:ir.model.fields,field_description:tmc.field_tmc_document__write_date_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_act__write_date_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv__write_date_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec__write_date_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic__write_date_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp__write_date_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext__write_date_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg__write_date_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__write_date_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_res__write_date_tmp
-msgid "Write Date Tmp"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.fields,field_description:tmc.field_tmc_document__write_uid_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_act__write_uid_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv__write_uid_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec__write_uid_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic__write_uid_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp__write_uid_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext__write_uid_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg__write_uid_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__write_uid_tmp
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_res__write_uid_tmp
-msgid "Write Uid Tmp"
-msgstr ""
 
 #. module: tmc
 #: code:addons/tmc/models/document.py:0
