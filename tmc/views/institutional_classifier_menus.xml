@@ -2,14 +2,14 @@
 <odoo>
 
     <menuitem id="tmc_menu_dependence_order"
-        name="Dependence Order"
+        name="Actual Nomenclator"
         parent="tmc_others_menu"
         sequence="10"
         action="dependence_order_action_form" />
 
     <menuitem id="tmc_menu_institutional_classifiers_nomenclators"
         name="Nomenclators"
-        parent="tmc_others_menu"
+        parent="act_adm_config_menu"
         sequence="15"
         action="institutional_classifier_action_form" />
 
