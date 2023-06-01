@@ -180,6 +180,11 @@
                 <field name="document_object" />
                 <field name="main_topic_ids" />
                 <field name="secondary_topic_ids" />
+                <group>
+                    <filter name="group_by_document_type_id"
+                        string="Tipo de Documento"
+                        context="{'group_by': 'document_type_id'}" />
+                </group>
                 <searchpanel>
                     <field name="main_topic_ids"
                         select="multi"
@@ -199,6 +204,9 @@
         <field name="search_view_id"
             ref="document_dem_simple_view_search" />
         <field name="domain">[('dependence_id','=','DEPARTAMENTO EJECUTIVO')]</field>
+        <field name="context">
+            {'search_default_group_by_document_type_id': True}
+        </field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
