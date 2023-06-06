@@ -12,14 +12,16 @@
             <tree default_order="period desc, name desc, dependence_id, document_type_id"
                 decoration-danger="highest_highlight=='high'"
                 decoration-warning="highest_highlight=='medium'">
-                <field name="name" width="200px"/>
+                <field name="name" 
+                    width="200px"/>
                 <field name="date" />
                 <field name="document_object"
                     optional="show" />
                 <field name="topics_display_name"
                     optional="show" />
                 <field name="entry_date"
-                    optional="show" />                 
+                    width="150px"
+                    optional="show" />
                 <field name="highest_highlight"
                     invisible="True" />
             </tree>
@@ -1395,6 +1397,47 @@
         <field name="search_view_id"
             ref="document_hip_simple_view_search" />
         <field name="domain">[('dependence_id','=','Hipódromo Rosario')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
+    </record>
+
+    <!-- RESOLUCION ETUR -->
+    <!-- SEARCH VIEW -->
+    <record id="document_etur_simple_view_search"
+        model="ir.ui.view">
+        <field name="name">tmc.document.etur.simple.view.search</field>
+        <field name="model">tmc.document</field>
+        <field name="arch"
+            type="xml">
+            <search>
+                <field name="number" />
+                <field name="period" />
+                <field name="document_object" />
+                <field name="document_type_id" />
+                <field name="main_topic_ids" />
+                <field name="secondary_topic_ids" />
+                <!-- <searchpanel>
+                    <field name="main_topic_ids"
+                        select="multi"
+                        enable_counters="1"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'Ente Turístico Rosario')]" />
+                </searchpanel> -->
+            </search>
+        </field>
+    </record>
+    <!-- WINDOW ACTION -->
+    <record id="document_action_form_etur"
+        model="ir.actions.act_window">
+        <field name="name">Ente Turístico Rosario (ETUR)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+            ref="document_etur_simple_view_search" />
+        <field name="domain">[('dependence_id', '=', 'Ente Turístico Rosario')]</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.

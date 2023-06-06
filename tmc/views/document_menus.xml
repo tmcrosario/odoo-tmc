@@ -172,34 +172,40 @@
         sequence="5"
         action="document_action_form_emr" />
 
+    <menuitem id="tmc_menu_dependence_documents_entes_etur"
+        name="Ente Turístico Rosario"
+        parent="tmc_menu_dependence_documents_entes"
+        sequence="10"
+        action="document_action_form_etur" />
+
     <menuitem id="tmc_menu_dependence_documents_entes_hip"
         name="Hipódromo"
         parent="tmc_menu_dependence_documents_entes"
-        sequence="10"
+        sequence="15"
         action="document_action_form_hip" />
 
     <menuitem id="tmc_menu_dependence_documents_entes_ilar"
         name="ILAR"
         parent="tmc_menu_dependence_documents_entes"
-        sequence="15"
+        sequence="20"
         action="document_action_form_ilar" />
 
     <menuitem id="tmc_menu_dependence_documents_entes_imps"
         name="IMPS"
         parent="tmc_menu_dependence_documents_entes"
-        sequence="20"
+        sequence="25"
         action="document_action_form_imps" />
 
     <menuitem id="tmc_menu_dependence_documents_entes_spv"
         name="SPVyH"
         parent="tmc_menu_dependence_documents_entes"
-        sequence="25"
+        sequence="30"
         action="document_action_form_spv" />
 
     <menuitem id="tmc_menu_dependence_documents_entes_ter"
         name="Terminal de Ómnibus"
         parent="tmc_menu_dependence_documents_entes"
-        sequence="30"
+        sequence="35"
         action="document_action_form_ter" />
 
 </odoo>
