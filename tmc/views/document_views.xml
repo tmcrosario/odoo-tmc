@@ -12,14 +12,16 @@
             <tree default_order="period desc, name desc, dependence_id, document_type_id"
                 decoration-danger="highest_highlight=='high'"
                 decoration-warning="highest_highlight=='medium'">
-                <field name="name" width="200px"/>
+                <field name="name" 
+                    width="200px"/>
                 <field name="date" />
                 <field name="document_object"
                     optional="show" />
                 <field name="topics_display_name"
                     optional="show" />
                 <field name="entry_date"
-                    optional="show" />                 
+                    width="150px"
+                    optional="show" />
                 <field name="highest_highlight"
                     invisible="True" />
             </tree>
