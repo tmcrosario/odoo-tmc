@@ -7,4 +7,10 @@
         sequence="5"
         action="dependence_action_form" />
 
+    <menuitem id="tmc_menu_dependences"
+    name="Dependences"
+    parent="act_adm_config_menu"
+    sequence="20"
+    action="dependence_action_form_2" />
+
 </odoo>
