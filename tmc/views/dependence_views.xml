@@ -100,4 +100,12 @@
         </field>
     </record>
 
+    <!-- WINDOW ACTION -->
+    <record id="dependence_action_form_2"
+        model="ir.actions.act_window">
+        <field name="name">Dependences</field>
+        <field name="res_model">tmc.dependence</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
 </odoo>
