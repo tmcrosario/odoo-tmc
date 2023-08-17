@@ -12,8 +12,8 @@
             <tree default_order="period desc, name desc, dependence_id, document_type_id"
                 decoration-danger="highest_highlight=='high'"
                 decoration-warning="highest_highlight=='medium'">
-                <field name="name" 
-                    width="200px"/>
+                <field name="name"
+                    width="200px" />
                 <field name="date" />
                 <field name="document_object"
                     optional="show" />
@@ -209,7 +209,8 @@
         <field name="context">
             {'search_default_group_by_document_type_id': True}
         </field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -250,7 +251,8 @@
         <field name="search_view_id"
             ref="document_hac_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE HACIENDA Y ECONOMÍA')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -291,7 +293,8 @@
         <field name="search_view_id"
             ref="document_gob_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE GOBIERNO')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -332,7 +335,8 @@
         <field name="search_view_id"
             ref="document_mod_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE MODERNIZACIÓN Y CERCANÍA')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -373,7 +377,8 @@
         <field name="search_view_id"
             ref="document_pla_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE PLANEAMIENTO')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -414,7 +419,8 @@
         <field name="search_view_id"
             ref="document_obr_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE OBRAS PÚBLICAS')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -455,7 +461,8 @@
         <field name="search_view_id"
             ref="document_amb_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE AMBIENTE Y ESPACIO PÚBLICO')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -496,7 +503,8 @@
         <field name="search_view_id"
             ref="document_sal_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE SALUD PÚBLICA')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -537,7 +545,8 @@
         <field name="search_view_id"
             ref="document_des_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE DESARROLLO SOCIAL')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -578,7 +587,8 @@
         <field name="search_view_id"
             ref="document_prod_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE PRODUCCIÓN Y DESARROLLO LOCAL')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -619,7 +629,8 @@
         <field name="search_view_id"
             ref="document_prod_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE PRODUCCIÓN, EMPLEO E INNOVACIÓN')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -660,7 +671,8 @@
         <field name="search_view_id"
             ref="document_prom_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE PROMOCIÓN SOCIAL')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -701,7 +713,8 @@
         <field name="search_view_id"
             ref="document_ser_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE SERVICIOS PÚBLICOS Y MEDIO AMBIENTE')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -743,7 +756,8 @@
         <field name="search_view_id"
             ref="document_cul_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE CULTURA Y EDUCACIÓN')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -784,7 +798,8 @@
         <field name="search_view_id"
             ref="document_gral_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA GENERAL')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -825,7 +840,8 @@
         <field name="search_view_id"
             ref="document_tur_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE TURISMO')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -866,7 +882,8 @@
         <field name="search_view_id"
             ref="document_dep_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE DEPORTE Y TURISMO')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -907,7 +924,8 @@
         <field name="search_view_id"
             ref="document_dee_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE DESARROLLO ECONÓMICO Y EMPLEO')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -948,7 +966,8 @@
         <field name="search_view_id"
             ref="document_dhh_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE DESARROLLO HUMANO Y HÁBITAT')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -989,7 +1008,8 @@
         <field name="search_view_id"
             ref="document_gen_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE GÉNERO Y DERECHOS HUMANOS')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -1030,7 +1050,8 @@
         <field name="search_view_id"
             ref="document_conv_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE CONTROL Y CONVIVENCIA')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -1071,7 +1092,8 @@
         <field name="search_view_id"
             ref="document_mov_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE TRANSPORTE Y MOVILIDAD')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -1100,7 +1122,7 @@
                 </searchpanel>
             </search>
         </field>
-    </record>    
+    </record>
     <!-- WINDOW ACTION -->
     <record id="document_action_form_mov_2"
         model="ir.actions.act_window">
@@ -1110,7 +1132,8 @@
         <field name="search_view_id"
             ref="document_mov_2_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE MOVILIDAD')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -1151,7 +1174,8 @@
         <field name="search_view_id"
             ref="document_econ_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE ECONOMÍA SOCIAL')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -1192,7 +1216,8 @@
         <field name="search_view_id"
             ref="document_ter_simple_view_search" />
         <field name="domain">[('dependence_id','=','Terminal de Omnibus Rosario')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -1233,7 +1258,8 @@
         <field name="search_view_id"
             ref="document_emr_simple_view_search" />
         <field name="domain">[('dependence_id','=','Ente de la Movilidad de Rosario')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -1274,7 +1300,8 @@
         <field name="search_view_id"
             ref="document_ilar_simple_view_search" />
         <field name="domain">[('dependence_id','=','INSTITUTO DE LUCHA ANTIPOLIOMIELÍTICA DE ROSARIO')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -1296,13 +1323,18 @@
                 <field name="document_type_id" />
                 <field name="main_topic_ids" />
                 <field name="secondary_topic_ids" />
-                <!-- <searchpanel>
+                <group>
+                    <filter name="group_by_document_type_id"
+                        string="Tipo de Documento"
+                        context="{'group_by': 'document_type_id'}" />
+                </group>
+                <searchpanel>
                     <field name="main_topic_ids"
                         select="multi"
                         enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'INSTITUTO MUNICIPAL DE PREVISIÓN SOCIAL')]" />
-                </searchpanel> -->
+                </searchpanel>
             </search>
         </field>
     </record>
@@ -1315,7 +1347,11 @@
         <field name="search_view_id"
             ref="document_imps_simple_view_search" />
         <field name="domain">[('dependence_id', '=', 'INSTITUTO MUNICIPAL DE PREVISIÓN SOCIAL')]</field>
-        <field name="help" type="html">
+        <field name="context">
+            {'search_default_group_by_document_type_id': True}
+        </field>
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -1356,7 +1392,8 @@
         <field name="search_view_id"
             ref="document_spv_simple_view_search" />
         <field name="domain">[('dependence_id','=','SERVICIO PÚBLICO DE LA VIVIENDA Y EL HÁBITAT')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -1397,7 +1434,8 @@
         <field name="search_view_id"
             ref="document_hip_simple_view_search" />
         <field name="domain">[('dependence_id','=','Hipódromo Rosario')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
@@ -1419,13 +1457,13 @@
                 <field name="document_type_id" />
                 <field name="main_topic_ids" />
                 <field name="secondary_topic_ids" />
-                <!-- <searchpanel>
+                <searchpanel>
                     <field name="main_topic_ids"
                         select="multi"
                         enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'Ente Turístico Rosario')]" />
-                </searchpanel> -->
+                </searchpanel>
             </search>
         </field>
     </record>
@@ -1438,7 +1476,8 @@
         <field name="search_view_id"
             ref="document_etur_simple_view_search" />
         <field name="domain">[('dependence_id', '=', 'Ente Turístico Rosario')]</field>
-        <field name="help" type="html">
+        <field name="help"
+            type="html">
             <p class="o_view_nocontent_smiling_face">
                 No hay documentos para mostrar.
             </p>
