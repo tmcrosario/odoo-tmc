@@ -36,6 +36,7 @@
         "views/institutional_classifier_views.xml",
         "views/institutional_classifier_menus.xml",
         "views/office_views.xml",
+        "wizard/mass_edit_document_topics_views.xml",
     ],
     "demo": [],
     "installable": True,

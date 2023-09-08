@@ -398,6 +398,57 @@ class Document(models.Model):
                     document.create_date
                 ).strftime("%Y-%m-%d")
 
+    def action_mass_edit_document_topics_show_wizard(self, remove=False):
+        active_model = self.env.context.get("active_model")
+        active_id = self.env.context.get("active_id")
+
+        dependence_id = self.env[active_model].browse(active_id).dependence_id.id
+
+        new_context = dict(
+            self.env.context,
+            default_dependence_id=dependence_id,
+            remove_document_topics=remove,
+        )
+
+        return {
+            "type": "ir.actions.act_window",
+            "name": _("Remove Document Topics") if remove else _("Add Document Topics"),
+            "res_model": "tmc.mass_edit_document_topics_wizard",
+            "target": "new",
+            "view_id": self.env.ref("tmc.view_mass_edit_document_topics_form").id,
+            "view_mode": "form",
+            "context": new_context,
+        }
+
+    def fields_view_get(
+        self, view_id=None, view_type="tree", toolbar=False, submenu=False
+    ):
+        res = super(Document, self).fields_view_get(
+            view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu
+        )
+
+        if "disable_document_topics_wizards" in self.env.context:
+            add_document_topics_button_id = (
+                self.env.ref("tmc.add_document_topics_action_server").id or False
+            )
+            remove_document_topics_button_id = (
+                self.env.ref("tmc.remove_document_topics_action_server").id or False
+            )
+            for button in res.get("toolbar", {}).get("action", []):
+                if (
+                    add_document_topics_button_id
+                    and button["id"] == add_document_topics_button_id
+                ):
+                    res["toolbar"]["action"].remove(button)
+            for button in res.get("toolbar", {}).get("action", []):
+                if (
+                    remove_document_topics_button_id
+                    and button["id"] == remove_document_topics_button_id
+                ):
+                    res["toolbar"]["action"].remove(button)
+
+        return res
+
 
 class DocumentDec(models.Model):
     _name = "tmc.document_dec"

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- FORM VIEW -->
+    <record id="view_mass_edit_document_topics_form"
+        model="ir.ui.view">
+        <field name="name">tmc.mass_edit_document_topics_wizard.form</field>
+        <field name="model">tmc.mass_edit_document_topics_wizard</field>
+        <field name="arch"
+            type="xml">
+            <form>
+                <field name="dependence_id"
+                    invisible="True" />
+                <field name="document_topic_ids"
+                    invisible="True" />
+
+                <group>
+                    <field name="main_topic_ids"
+                        widget="many2many_tags"
+                        options="{'color_field': 'color', 'no_create': True}" />
+                    <field name="secondary_topic_ids"
+                        attrs="{'invisible':[('main_topic_ids', '=', [])]}"
+                        options="{'color_field': 'color', 'no_create': True}"
+                        widget="many2many_tags" />
+                </group>
+                <footer>
+                    <button name="save_document_topics"
+                        type="object"
+                        string="Save"
+                        class="oe_highlight"
+                        confirm="This action will made changes to the selected documents. Are you sure you want to continue?"
+                        attrs="{'invisible':[('main_topic_ids', '=', [])]}" />
+                    <button string="Discard"
+                        special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>
