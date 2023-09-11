@@ -24,12 +24,12 @@ class MassEditDocumentTopics(models.TransientModel):
 
     def save_document_topics(self):
         if self.env.context.get("remove_document_topics"):
-            for document in self.env.context.get("active_ids"):
-                document_obj = self.env["tmc.document"].browse(document)
+            for document_id in self.env.context.get("active_ids"):
+                document_obj = self.env["tmc.document"].browse(document_id)
                 document_obj.main_topic_ids -= self.main_topic_ids
                 document_obj.secondary_topic_ids -= self.secondary_topic_ids
         else:
-            for document in self.env.context.get("active_ids"):
-                document_obj = self.env["tmc.document"].browse(document)
+            for document_id in self.env.context.get("active_ids"):
+                document_obj = self.env["tmc.document"].browse(document_id)
                 document_obj.main_topic_ids |= self.main_topic_ids
                 document_obj.secondary_topic_ids |= self.secondary_topic_ids
