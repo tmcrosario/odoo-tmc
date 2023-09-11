@@ -9,10 +9,7 @@ class Document(models.Model):
     @api.model
     def _get_period_selection(self):
         this_year = fields.Date.today().year
-        return [
-            (str(year), str(year))
-            for year in range(this_year - 6, this_year + 1)
-        ]
+        return [(str(year), str(year)) for year in range(this_year - 6, this_year + 1)]
 
     name = fields.Char(compute="_compute_name", store=True)
 
@@ -25,9 +22,7 @@ class Document(models.Model):
         required=True,
     )
 
-    document_type_id = fields.Many2one(
-        comodel_name="tmc.document_type", required=True
-    )
+    document_type_id = fields.Many2one(comodel_name="tmc.document_type", required=True)
 
     document_type_abbr = fields.Char(related="document_type_id.abbreviation")
 
@@ -43,9 +38,7 @@ class Document(models.Model):
 
     document_object_required = fields.Boolean()
 
-    document_topic_ids = fields.Many2many(
-        related="dependence_id.document_topic_ids"
-    )
+    document_topic_ids = fields.Many2many(related="dependence_id.document_topic_ids")
 
     main_topic_ids = fields.Many2many(
         comodel_name="tmc.document_topic",
@@ -98,9 +91,7 @@ class Document(models.Model):
         store=True,
     )
 
-    _sql_constraints = [
-        ("name_unique", "UNIQUE(name)", _("Document already exists"))
-    ]
+    _sql_constraints = [("name_unique", "UNIQUE(name)", _("Document already exists"))]
 
     @api.depends("document_type_id", "dependence_id", "number", "period")
     def _compute_period_selection(self):
@@ -136,9 +127,7 @@ class Document(models.Model):
         if not (1000 <= self.period <= fields.Date.today().year):
             raise exceptions.ValidationError(_("Invalid period"))
         if self.period < 1948:
-            raise exceptions.ValidationError(
-                _("Periods before 1948 are not allowed.")
-            )
+            raise exceptions.ValidationError(_("Periods before 1948 are not allowed."))
 
     @api.constrains("number")
     def _check_number(self):
@@ -161,9 +150,7 @@ class Document(models.Model):
             dep_abbr = document.dependence_id.abbreviation
 
             if doc_abbr == "ACT":
-                doc_number = self.env.ref(
-                    "tmc_data.seq_tmc_act"
-                ).number_next_actual
+                doc_number = self.env.ref("tmc_data.seq_tmc_act").number_next_actual
 
             if doc_abbr and doc_number and doc_period and dep_abbr:
                 document.name = "%s-%s-%s/%s" % (
@@ -189,9 +176,7 @@ class Document(models.Model):
         document_types = self.dependence_id.document_type_ids
         if len(document_types.ids) == 1:
             self.document_type_id = document_types.ids[0]
-        return {
-            "domain": {"document_type_id": [("id", "in", document_types.ids)]}
-        }
+        return {"domain": {"document_type_id": [("id", "in", document_types.ids)]}}
 
     @api.onchange("main_topic_ids")
     def _onchange_main_topic_ids(self):
@@ -201,8 +186,7 @@ class Document(models.Model):
             self.document_object_required = False
 
         new_secondary_topic_ids = self.secondary_topic_ids.filtered(
-            lambda r: r.parent_id.id
-            in self.main_topic_ids._origin.mapped("id")
+            lambda r: r.parent_id.id in self.main_topic_ids._origin.mapped("id")
         )
         self.secondary_topic_ids = new_secondary_topic_ids
 
@@ -262,9 +246,7 @@ class Document(models.Model):
                 ("id", "in", document.secondary_topic_ids.ids),
                 ("important", "=", True),
             ]
-            important_related_topics = self.env["tmc.document_topic"].search(
-                domain
-            )
+            important_related_topics = self.env["tmc.document_topic"].search(domain)
 
             if important_related_topics:
                 document.important = True
@@ -273,21 +255,14 @@ class Document(models.Model):
 
     @api.onchange("dependence_id", "document_type_id", "period", "number")
     def _onchange_document_data(self):
-        if (
-            self.dependence_id
-            and self.document_type_id
-            and self.number
-            and self.period
-        ):
+        if self.dependence_id and self.document_type_id and self.number and self.period:
             if self.env["tmc.document"].search([("name", "=", self.name)]):
                 raise exceptions.Warning(_("Document already exists"))
 
     @api.model
     def create(self, vals):
         doc_type = vals.get("document_type_id")
-        doc_type_abbr = (
-            self.env["tmc.document_type"].browse(doc_type).abbreviation
-        )
+        doc_type_abbr = self.env["tmc.document_type"].browse(doc_type).abbreviation
 
         if vals.get("date"):
             if (
@@ -298,9 +273,7 @@ class Document(models.Model):
                 raise exceptions.UserError(message)
 
         if doc_type_abbr == "ACT":
-            vals["number"] = self.env.ref(
-                "tmc_data.seq_tmc_act"
-            ).number_next_actual
+            vals["number"] = self.env.ref("tmc_data.seq_tmc_act").number_next_actual
 
             seq = self.env["ir.sequence"]
             seq.next_by_code("tmc.document")
@@ -312,9 +285,7 @@ class Document(models.Model):
             message = _("You must specify a period.")
             main_topics_set = set(vals["main_topic_ids"][0][2])
 
-            mp_topic = self.env.ref(
-                "tmc_data.tmc_document_topic_modifica_presupuesto"
-            )
+            mp_topic = self.env.ref("tmc_data.tmc_document_topic_modifica_presupuesto")
             p_topic = self.env.ref("tmc_data.tmc_document_topic_periodo")
 
             p_topic_map = p_topic.mapped("id")
@@ -342,9 +313,7 @@ class Document(models.Model):
                 raise exceptions.UserError(message)
 
         if write_inverse and vals.get("related_document_ids"):
-            new_related_documents = self.browse(
-                vals["related_document_ids"][0][2]
-            )
+            new_related_documents = self.browse(vals["related_document_ids"][0][2])
             new_related_documents.write(
                 {"related_document_ids": [(4, self.id)]}, write_inverse=False
             )
@@ -428,6 +397,57 @@ class Document(models.Model):
                 document.entry_date = fields.Date.from_string(
                     document.create_date
                 ).strftime("%Y-%m-%d")
+
+    def action_mass_edit_document_topics_show_wizard(self, remove=False):
+        active_model = self.env.context.get("active_model")
+        active_id = self.env.context.get("active_id")
+
+        dependence_id = self.env[active_model].browse(active_id).dependence_id.id
+
+        new_context = dict(
+            self.env.context,
+            default_dependence_id=dependence_id,
+            remove_document_topics=remove,
+        )
+
+        return {
+            "type": "ir.actions.act_window",
+            "name": _("Remove Document Topics") if remove else _("Add Document Topics"),
+            "res_model": "tmc.mass_edit_document_topics_wizard",
+            "target": "new",
+            "view_id": self.env.ref("tmc.view_mass_edit_document_topics_form").id,
+            "view_mode": "form",
+            "context": new_context,
+        }
+
+    def fields_view_get(
+        self, view_id=None, view_type="tree", toolbar=False, submenu=False
+    ):
+        res = super(Document, self).fields_view_get(
+            view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu
+        )
+
+        if "disable_document_topics_wizards" in self.env.context:
+            add_document_topics_button_id = (
+                self.env.ref("tmc.add_document_topics_action_server").id or False
+            )
+            remove_document_topics_button_id = (
+                self.env.ref("tmc.remove_document_topics_action_server").id or False
+            )
+            for button in res.get("toolbar", {}).get("action", []):
+                if (
+                    add_document_topics_button_id
+                    and button["id"] == add_document_topics_button_id
+                ):
+                    res["toolbar"]["action"].remove(button)
+            for button in res.get("toolbar", {}).get("action", []):
+                if (
+                    remove_document_topics_button_id
+                    and button["id"] == remove_document_topics_button_id
+                ):
+                    res["toolbar"]["action"].remove(button)
+
+        return res
 
 
 class DocumentDec(models.Model):

@@ -67,3 +67,6 @@ access_tmc_category_user,tmc.category.user,model_tmc_category,group_user,1,0,0,0
 access_tmc_category_read_only,tmc.category.read_only,model_tmc_category,group_read_only,1,0,0,0
 access_tmc_report_user,tmc.report.user,model_tmc_report,group_user,1,0,0,0
 access_tmc_report_read_only,tmc.report.read_only,model_tmc_report,group_read_only,1,0,0,0
+access_tmc_mass_edit_document_topics_wizard_manager,tmc.mass_edit_document_topics_wizard.manager,model_tmc_mass_edit_document_topics_wizard,group_manager,1,1,1,1
+access_tmc_mass_edit_document_topics_wizard_user,tmc.mass_edit_document_topics_wizard.user,model_tmc_mass_edit_document_topics_wizard,group_user,1,0,0,0
+access_tmc_mass_edit_document_topics_wizard_read_only,tmc.mass_edit_document_topics_wizard.read_only,model_tmc_mass_edit_document_topics_wizard,group_read_only,1,0,0,0
