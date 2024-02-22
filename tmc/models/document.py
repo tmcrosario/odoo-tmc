@@ -136,6 +136,8 @@ class Document(models.Model):
             max_number = 999999
         if self.dependence_id.abbreviation in ["CM", "HCM", "CONC"]:
             max_number = 999999
+        if self.dependence_id.abbreviation in ["DHH"]:
+            max_number = 9999
         if self.number == 0 and self.document_type_id.abbreviation != "ACT":
             raise Warning(_("Invalid number"))
         if self.number > max_number:
