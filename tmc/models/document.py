@@ -6,10 +6,11 @@ class Document(models.Model):
     _description = "Document"
     _order = "period desc, name desc"
 
-    @api.model
-    def _get_period_selection(self):
-        this_year = fields.Date.today().year
-        return [(str(year), str(year)) for year in range(this_year - 6, this_year + 1)]
+    # NOTE: to show specific periods in the 'searchpanel' widget
+    # @api.model
+    # def _get_period_selection(self):
+    #     this_year = fields.Date.today().year
+    #     return [(str(year), str(year)) for year in range(this_year - 6, this_year + 1)]
 
     name = fields.Char(compute="_compute_name", store=True)
 
@@ -93,11 +94,12 @@ class Document(models.Model):
         domain="[('id', '!=', id)]",
     )
 
-    period_selection = fields.Selection(
-        selection=_get_period_selection,
-        compute="_compute_period_selection",
-        store=True,
-    )
+    # NOTE: to show specific periods in the 'searchpanel' widget
+    # period_selection = fields.Selection(
+    #     selection=_get_period_selection,
+    #     compute="_compute_period_selection",
+    #     store=True,
+    # )
 
     _sql_constraints = [("name_unique", "UNIQUE(name)", _("Document already exists"))]
 
@@ -119,6 +121,20 @@ class Document(models.Model):
     #         else:
     #             document.display_name = document.name
 
+    # NOTE: to show specific periods in the 'searchpanel' widget
+    # @api.depends("document_type_id", "dependence_id", "number", "period")
+    # def _compute_period_selection(self):
+    #     this_year = fields.Date.today().year
+    #     for document in self:
+    #         if (this_year - 7) <= document.period <= this_year:
+    #             document.period_selection = str(document.period)
+    #         else:
+    #             document.period_selection = None
+
+    # NOTE: to show specific periods in the 'searchpanel' widget
+    # @api.onchange("period")
+    # def _onchange_period(self):
+    #     self._compute_period_selection()
 
     def show_or_add_content(self):
         reference_model = "tmc." + self.reference_model

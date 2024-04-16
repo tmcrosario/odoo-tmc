@@ -40,7 +40,7 @@
                 <field name="name" />
                 <field name="date" />
                 <field name="document_object"
-                    optional="hide" />
+                    optional="show" />
             </tree>
         </field>
     </record>
