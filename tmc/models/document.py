@@ -32,6 +32,9 @@ class Document(models.Model):
 
     date = fields.Date()
 
+    # NOTE: to show a mark in the name for documents related to a dictamen
+    # display_name = fields.Char(compute="_compute_display_name")
+
     entry_date = fields.Date(compute="_compute_entry_date", readonly=True)
 
     document_object = fields.Char(string="Object", size=125, index=True)
@@ -64,6 +67,11 @@ class Document(models.Model):
 
     reference_document = fields.Integer(compute="_compute_reference_document")
 
+    related_to_dictamen = fields.Boolean(
+        compute="_compute_related_to_dictamen",
+        store=True,
+    )
+
     highlight_ids = fields.One2many(
         comodel_name="tmc.highlight", inverse_name="document_id"
     )
@@ -93,18 +101,24 @@ class Document(models.Model):
 
     _sql_constraints = [("name_unique", "UNIQUE(name)", _("Document already exists"))]
 
-    @api.depends("document_type_id", "dependence_id", "number", "period")
-    def _compute_period_selection(self):
-        this_year = fields.Date.today().year
+    @api.depends("related_document_ids")
+    def _compute_related_to_dictamen(self):
         for document in self:
-            if (this_year - 7) <= document.period <= this_year:
-                document.period_selection = str(document.period)
-            else:
-                document.period_selection = None
+            has_dictamen = any(
+                doc.document_type_id.abbreviation == "DIC"
+                for doc in document.related_document_ids
+            )
+            document.update({"related_to_dictamen": has_dictamen})
 
-    @api.onchange("period")
-    def _onchange_period(self):
-        self._compute_period_selection()
+    # NOTE: to show a mark in the name for documents related to a dictamen
+    # def _compute_display_name(self):
+    #     for document in self:
+    #         if document.related_to_dictamen is True:
+    #             computed_name = f"{document.name} (D)"
+    #             document.display_name = computed_name
+    #         else:
+    #             document.display_name = document.name
+
 
     def show_or_add_content(self):
         reference_model = "tmc." + self.reference_model
