@@ -1,4 +1,5 @@
 from odoo import _, api, exceptions, fields, models
+from odoo.exceptions import UserError
 
 
 class Document(models.Model):
@@ -38,7 +39,7 @@ class Document(models.Model):
 
     entry_date = fields.Date(compute="_compute_entry_date", readonly=True)
 
-    document_object = fields.Char(string="Object", size=125, index=True)
+    document_object = fields.Char(string="Object", size=250, index=True)
 
     document_object_required = fields.Boolean()
 
@@ -102,6 +103,11 @@ class Document(models.Model):
     # )
 
     _sql_constraints = [("name_unique", "UNIQUE(name)", _("Document already exists"))]
+
+    @api.constrains("document_object")
+    def _check_document_object_length(self):
+        if len(self.document_object or "") > 125 and self.document_type_abbr != "DIC":
+            raise UserError("'Object' must not exceed 125 characters.")
 
     @api.depends("related_document_ids")
     def _compute_related_to_dictamen(self):
