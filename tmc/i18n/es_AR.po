@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0-20230901\n"
+"Project-Id-Version: Odoo Server 14.0-20231106\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-08 13:07+0000\n"
-"PO-Revision-Date: 2023-09-08 10:45-0300\n"
+"POT-Creation-Date: 2024-04-18 15:03+0000\n"
+"PO-Revision-Date: 2024-04-18 12:06-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_AR\n"
@@ -15,18 +15,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. module: tmc
 #: code:addons/tmc/models/institutional_classifier.py:0
 #, python-format
 msgid " (Current)"
 msgstr " (Actual)"
-
-#. module: tmc
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2013
-msgid "2013"
-msgstr ""
 
 #. module: tmc
 #: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2014
@@ -76,6 +71,11 @@ msgstr ""
 #. module: tmc
 #: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2023
 msgid "2023"
+msgstr ""
+
+#. module: tmc
+#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2024
+msgid "2024"
 msgstr ""
 
 #. module: tmc
@@ -189,6 +189,16 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_highlight__comment
 msgid "Comment"
 msgstr "Comentario"
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_cm
+msgid "Concejo Municipal"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_cm
+msgid "Concejo Municipal (CM)"
+msgstr ""
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_conv
@@ -322,6 +332,7 @@ msgstr "Dependencias"
 
 #. module: tmc
 #: code:addons/tmc/models/dependence.py:0
+#: model:ir.model.constraint,message:tmc.constraint_tmc_dependence_name_unique
 #, python-format
 msgid "Dependence name must be unique"
 msgstr "El nombre de la dependencia debe ser única"
@@ -495,18 +506,21 @@ msgstr "Tipos de Documento"
 
 #. module: tmc
 #: code:addons/tmc/models/document.py:0
+#: model:ir.model.constraint,message:tmc.constraint_tmc_document_name_unique
 #, python-format
 msgid "Document already exists"
 msgstr "El documento ya existe"
 
 #. module: tmc
 #: code:addons/tmc/models/document_type.py:0
+#: model:ir.model.constraint,message:tmc.constraint_tmc_document_type_abbreviation_unique
 #, python-format
 msgid "Document type abbreviation must be unique"
 msgstr "La abreviatura debe ser única"
 
 #. module: tmc
 #: code:addons/tmc/models/document_type.py:0
+#: model:ir.model.constraint,message:tmc.constraint_tmc_document_type_name_unique
 #, python-format
 msgid "Document type name must be unique"
 msgstr "El nombre debe ser único"
@@ -524,21 +538,6 @@ msgstr ""
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents
 msgid "Ejecutivo"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.constraint,message:tmc.constraint_tmc_document_name_unique
-msgid "El documento ya existe"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.constraint,message:tmc.constraint_tmc_dependence_name_unique
-msgid "El nombre de la dependencia debe ser única"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.constraint,message:tmc.constraint_tmc_document_type_name_unique
-msgid "El nombre debe ser único"
 msgstr ""
 
 #. module: tmc
@@ -633,11 +632,6 @@ msgstr ""
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_gob
 msgid "Gobierno"
-msgstr ""
-
-#. module: tmc
-#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_gen
-msgid "Género y Derechos Humanos"
 msgstr ""
 
 #. module: tmc
@@ -758,6 +752,11 @@ msgid "IMPS"
 msgstr ""
 
 #. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_gen
+msgid "Igualdad, Género y Derechos Humanos"
+msgstr ""
+
+#. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document__important
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_act__important
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_conv__important
@@ -816,11 +815,6 @@ msgstr "Número inválido"
 #, python-format
 msgid "Invalid period"
 msgstr "Período inválido"
-
-#. module: tmc
-#: model:ir.model.constraint,message:tmc.constraint_tmc_document_type_abbreviation_unique
-msgid "La abreviatura debe ser única"
-msgstr ""
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_category____last_update
@@ -1006,6 +1000,7 @@ msgstr "Nombre"
 
 #. module: tmc
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_amb
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_cm
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_conv
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_cul
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_dee
@@ -1019,6 +1014,7 @@ msgstr "Nombre"
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_gen
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_gob
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_gral
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_gral_int
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_hac
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_hip
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_ilar
@@ -1035,6 +1031,7 @@ msgstr "Nombre"
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_ser
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_spv
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_ter
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_tmc
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_tur
 msgid "No hay documentos para mostrar."
 msgstr ""
@@ -1138,20 +1135,6 @@ msgid "Period"
 msgstr "Período"
 
 #. module: tmc
-#: model:ir.model.fields,field_description:tmc.field_tmc_document__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_act__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__period_selection
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_res__period_selection
-msgid "Period Selection"
-msgstr "Período"
-
-#. module: tmc
 #: code:addons/tmc/models/document.py:0
 #, python-format
 msgid "Periods before 1948 are not allowed."
@@ -1237,6 +1220,20 @@ msgid "Related Documents"
 msgstr "Documentos Relacionados"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document__related_to_dictamen
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_act__related_to_dictamen
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv__related_to_dictamen
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec__related_to_dictamen
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic__related_to_dictamen
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp__related_to_dictamen
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext__related_to_dictamen
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg__related_to_dictamen
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__related_to_dictamen
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_res__related_to_dictamen
+msgid "Related To Dictamen"
+msgstr "Dictaminado"
+
+#. module: tmc
 #: code:addons/tmc/models/document.py:0
 #: model:ir.actions.server,name:tmc.remove_document_topics_action_server
 #, python-format
@@ -1300,6 +1297,11 @@ msgid "Secretaría General (GRAL)"
 msgstr ""
 
 #. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_gral_int
+msgid "Secretaría General de Intendencia (GRAL)"
+msgstr ""
+
+#. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_amb
 msgid "Secretaría de Ambiente y Espacios Públicos (AMB)"
 msgstr ""
@@ -1345,14 +1347,14 @@ msgid "Secretaría de Gobierno (GOB)"
 msgstr ""
 
 #. module: tmc
-#: model:ir.actions.act_window,name:tmc.document_action_form_gen
-msgid "Secretaría de Género y Derechos Humanos (GEN)"
-msgstr "Secretaría de Género y Derechos Humanos (GDH)"
-
-#. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_hac
 msgid "Secretaría de Hacienda y Economía (HAC)"
 msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_gen
+msgid "Secretaría de Igualdad, Género y Derechos Humanos (GDH)"
+msgstr "Secretaría de Género y Derechos Humanos (GDH)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_mod
@@ -1504,7 +1506,13 @@ msgstr ""
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_config_menu
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_tmc
 msgid "Tribunal de Cuentas"
+msgstr ""
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_tmc
+msgid "Tribunal de Cuentas (TMC)"
 msgstr ""
 
 #. module: tmc
