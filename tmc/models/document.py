@@ -1,4 +1,5 @@
 from odoo import _, api, exceptions, fields, models
+from odoo.exceptions import UserError
 
 
 class Document(models.Model):
@@ -6,10 +7,11 @@ class Document(models.Model):
     _description = "Document"
     _order = "period desc, name desc"
 
-    @api.model
-    def _get_period_selection(self):
-        this_year = fields.Date.today().year
-        return [(str(year), str(year)) for year in range(this_year - 6, this_year + 1)]
+    # NOTE: to show specific periods in the 'searchpanel' widget
+    # @api.model
+    # def _get_period_selection(self):
+    #     this_year = fields.Date.today().year
+    #     return [(str(year), str(year)) for year in range(this_year - 6, this_year + 1)]
 
     name = fields.Char(compute="_compute_name", store=True)
 
@@ -32,9 +34,12 @@ class Document(models.Model):
 
     date = fields.Date()
 
+    # NOTE: to show a mark in the name for documents related to a dictamen
+    # display_name = fields.Char(compute="_compute_display_name")
+
     entry_date = fields.Date(compute="_compute_entry_date", readonly=True)
 
-    document_object = fields.Char(string="Object", size=125, index=True)
+    document_object = fields.Char(string="Object", size=250, index=True)
 
     document_object_required = fields.Boolean()
 
@@ -64,6 +69,11 @@ class Document(models.Model):
 
     reference_document = fields.Integer(compute="_compute_reference_document")
 
+    related_to_dictamen = fields.Boolean(
+        compute="_compute_related_to_dictamen",
+        store=True,
+    )
+
     highlight_ids = fields.One2many(
         comodel_name="tmc.highlight", inverse_name="document_id"
     )
@@ -85,26 +95,52 @@ class Document(models.Model):
         domain="[('id', '!=', id)]",
     )
 
-    period_selection = fields.Selection(
-        selection=_get_period_selection,
-        compute="_compute_period_selection",
-        store=True,
-    )
+    # NOTE: to show specific periods in the 'searchpanel' widget
+    # period_selection = fields.Selection(
+    #     selection=_get_period_selection,
+    #     compute="_compute_period_selection",
+    #     store=True,
+    # )
 
     _sql_constraints = [("name_unique", "UNIQUE(name)", _("Document already exists"))]
 
-    @api.depends("document_type_id", "dependence_id", "number", "period")
-    def _compute_period_selection(self):
-        this_year = fields.Date.today().year
-        for document in self:
-            if (this_year - 7) <= document.period <= this_year:
-                document.period_selection = str(document.period)
-            else:
-                document.period_selection = None
+    @api.constrains("document_object")
+    def _check_document_object_length(self):
+        if len(self.document_object or "") > 125 and self.document_type_abbr != "DIC":
+            raise UserError("'Object' must not exceed 125 characters.")
 
-    @api.onchange("period")
-    def _onchange_period(self):
-        self._compute_period_selection()
+    @api.depends("related_document_ids")
+    def _compute_related_to_dictamen(self):
+        for document in self:
+            has_dictamen = any(
+                doc.document_type_id.abbreviation == "DIC"
+                for doc in document.related_document_ids
+            )
+            document.update({"related_to_dictamen": has_dictamen})
+
+    # NOTE: to show a mark in the name for documents related to a dictamen
+    # def _compute_display_name(self):
+    #     for document in self:
+    #         if document.related_to_dictamen is True:
+    #             computed_name = f"{document.name} (D)"
+    #             document.display_name = computed_name
+    #         else:
+    #             document.display_name = document.name
+
+    # NOTE: to show specific periods in the 'searchpanel' widget
+    # @api.depends("document_type_id", "dependence_id", "number", "period")
+    # def _compute_period_selection(self):
+    #     this_year = fields.Date.today().year
+    #     for document in self:
+    #         if (this_year - 7) <= document.period <= this_year:
+    #             document.period_selection = str(document.period)
+    #         else:
+    #             document.period_selection = None
+
+    # NOTE: to show specific periods in the 'searchpanel' widget
+    # @api.onchange("period")
+    # def _onchange_period(self):
+    #     self._compute_period_selection()
 
     def show_or_add_content(self):
         reference_model = "tmc." + self.reference_model
