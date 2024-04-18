@@ -54,11 +54,11 @@
         sequence="35"
         action="document_action_form_dhh" />
 
-    <menuitem id="tmc_menu_dependence_documents_gen"
-        name="Género y Derechos Humanos"
+    <!-- <menuitem id="tmc_menu_dependence_documents_gral_int"
+        name="General de Intendencia"
         parent="tmc_menu_actual_nomenclator"
         sequence="40"
-        action="document_action_form_gen" />
+        action="document_action_form_gral_int" /> -->
 
     <menuitem id="tmc_menu_dependence_documents_gob"
         name="Gobierno"
@@ -72,11 +72,11 @@
         sequence="50"
         action="document_action_form_hac" />
 
-    <menuitem id="tmc_menu_dependence_documents_mod"
-        name="Modernización y Cercanía"
+    <menuitem id="tmc_menu_dependence_documents_gen"
+        name="Igualdad, Género y Derechos Humanos"
         parent="tmc_menu_actual_nomenclator"
-        sequence="60"
-        action="document_action_form_mod" />
+        sequence="55"
+        action="document_action_form_gen" />
 
     <menuitem id="tmc_menu_dependence_documents_mov_2"
         name="Movilidad"
@@ -124,6 +124,12 @@
         parent="tmc_menu_previous_nomenclator"
         sequence="15"
         action="document_action_form_gral" />
+
+    <menuitem id="tmc_menu_dependence_documents_mod"
+        name="Modernización y Cercanía"
+        parent="tmc_menu_previous_nomenclator"
+        sequence="17"
+        action="document_action_form_mod" />
 
     <menuitem id="tmc_menu_dependence_documents_prod"
         name="Producción y Desarrollo Local"
@@ -207,5 +213,17 @@
         parent="tmc_menu_dependence_documents_entes"
         sequence="35"
         action="document_action_form_ter" />
+
+    <menuitem id="tmc_menu_dependence_documents_cm"
+        name="Concejo Municipal"
+        parent="tmc_menu"
+        sequence="15"
+        action="document_action_form_cm" />
+
+    <menuitem id="tmc_menu_dependence_documents_tmc"
+        name="Tribunal de Cuentas"
+        parent="tmc_menu"
+        sequence="20"
+        action="document_action_form_tmc" />
 
 </odoo>

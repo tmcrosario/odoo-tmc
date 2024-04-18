@@ -988,27 +988,27 @@
                 <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
-                <field name="main_topic_ids" />
+                <!-- <field name="main_topic_ids" />
                 <field name="secondary_topic_ids" />
                 <searchpanel>
                     <field name="main_topic_ids"
                         select="multi"
                         enable_counters="1"
                         icon="fa-tags"
-                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE GÉNERO Y DERECHOS HUMANOS')]" />
-                </searchpanel>
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE IGUALDAD, GÉNERO Y DERECHOS HUMANOS')]" />
+                </searchpanel> -->
             </search>
         </field>
     </record>
     <!-- WINDOW ACTION -->
     <record id="document_action_form_gen"
         model="ir.actions.act_window">
-        <field name="name">Secretaría de Género y Derechos Humanos (GEN)</field>
+        <field name="name">Secretaría de Igualdad, Género y Derechos Humanos (GDH)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id"
             ref="document_gen_simple_view_search" />
-        <field name="domain">[('dependence_id','=','SECRETARÍA DE GÉNERO Y DERECHOS HUMANOS')]</field>
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE IGUALDAD, GÉNERO Y DERECHOS HUMANOS')]</field>
         <field name="help"
             type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -1175,6 +1175,48 @@
         <field name="search_view_id"
             ref="document_econ_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE ECONOMÍA SOCIAL')]</field>
+        <field name="help"
+            type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
+    </record>
+
+    <!-- RESOLUCION GRAL INT -->
+    <!-- SEARCH VIEW -->
+    <record id="document_gral_int_simple_view_search"
+        model="ir.ui.view">
+        <field name="name">tmc.document.gral_int.simple.view.search</field>
+        <field name="model">tmc.document</field>
+        <field name="arch"
+            type="xml">
+            <search>
+                <field name="number" />
+                <field name="period" />
+                <field name="document_object" />
+                <!-- <field name="document_type_id" />
+                <field name="main_topic_ids" />
+                <field name="secondary_topic_ids" />
+                <searchpanel>
+                    <field name="main_topic_ids"
+                        select="multi"
+                        enable_counters="1"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA GENERAL DE INTENDENCIA')]" />
+                </searchpanel> -->
+            </search>
+        </field>
+    </record>
+    <!-- WINDOW ACTION -->
+    <record id="document_action_form_gral_int"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría General de Intendencia (GRAL)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+            ref="document_gral_int_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA GENERAL DE INTENDENCIA')]</field>
         <field name="help"
             type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -1477,6 +1519,104 @@
         <field name="search_view_id"
             ref="document_etur_simple_view_search" />
         <field name="domain">[('dependence_id', '=', 'Ente Turístico Rosario')]</field>
+        <field name="help"
+            type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
+    </record>
+
+    <!-- CONCEJO -->
+    <!-- SEARCH VIEW -->
+    <record id="document_cm_simple_view_search"
+        model="ir.ui.view">
+        <field name="name">tmc.document.cm.simple.view.search</field>
+        <field name="model">tmc.document</field>
+        <field name="arch"
+            type="xml">
+            <search>
+                <field name="number" />
+                <field name="period" />
+                <field name="document_object" />
+                <!-- <field name="main_topic_ids" />
+                <field name="secondary_topic_ids" />
+                <group>
+                    <filter name="group_by_document_type_id"
+                        string="Tipo de Documento"
+                        context="{'group_by': 'document_type_id'}" />
+                </group>
+                <searchpanel>
+                    <field name="main_topic_ids"
+                        select="multi"
+                        enable_counters="1"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'CONCEJO MUNICIPAL')]" />
+                </searchpanel> -->
+            </search>
+        </field>
+    </record>
+    <!-- WINDOW ACTION -->
+    <record id="document_action_form_cm"
+        model="ir.actions.act_window">
+        <field name="name">Concejo Municipal (CM)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+            ref="document_cm_simple_view_search" />
+        <field name="domain">[('dependence_id','=','CONCEJO MUNICIPAL')]</field>
+        <field name="context">
+            {'search_default_group_by_document_type_id': True}
+        </field>
+        <field name="help"
+            type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
+    </record>
+
+    <!-- DICTAMEN TMC -->
+    <!-- SEARCH VIEW -->
+    <record id="document_tmc_simple_view_search"
+        model="ir.ui.view">
+        <field name="name">tmc.document.tmc.simple.view.search</field>
+        <field name="model">tmc.document</field>
+        <field name="arch"
+            type="xml">
+            <search>
+                <field name="number" />
+                <field name="period" />
+                <field name="document_object" />
+                <!-- <field name="main_topic_ids" />
+                <field name="secondary_topic_ids" />
+                <group>
+                    <filter name="group_by_document_type_id"
+                        string="Tipo de Documento"
+                        context="{'group_by': 'document_type_id'}" />
+                </group>
+                <searchpanel>
+                    <field name="main_topic_ids"
+                        select="multi"
+                        enable_counters="1"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'TRIBUNAL MUNICIPAL DE CUENTAS')]" />
+                </searchpanel> -->
+            </search>
+        </field>
+    </record>
+    <!-- WINDOW ACTION -->
+    <record id="document_action_form_tmc"
+        model="ir.actions.act_window">
+        <field name="name">Tribunal de Cuentas (TMC)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+            ref="document_tmc_simple_view_search" />
+        <field name="domain">[('dependence_id','=','TRIBUNAL MUNICIPAL DE CUENTAS')]</field>
+        <field name="context">
+            {'search_default_group_by_document_type_id': True}
+        </field>
         <field name="help"
             type="html">
             <p class="o_view_nocontent_smiling_face">

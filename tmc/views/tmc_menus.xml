@@ -9,7 +9,7 @@
     <menuitem id="tmc_others_menu"
         name="»"
         parent="tmc_menu"
-        sequence="15" />
+        sequence="90" />
 
     <menuitem id="tmc_config_menu"
         name="Tribunal de Cuentas"
