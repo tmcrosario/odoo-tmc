@@ -78,6 +78,12 @@
         sequence="55"
         action="document_action_form_gen" />
 
+    <menuitem id="tmc_menu_dependence_documents_gab"
+        name="Jefatura de Gabinete"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="58"
+        action="document_action_form_gab" />
+
     <menuitem id="tmc_menu_dependence_documents_mov_2"
         name="Movilidad"
         parent="tmc_menu_actual_nomenclator"
