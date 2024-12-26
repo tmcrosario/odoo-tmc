@@ -1030,7 +1030,7 @@
                 <field name="period" />
                 <field name="document_object" />
                 <field name="document_type_id" />
-                <!-- <field name="main_topic_ids" />
+                <field name="main_topic_ids" />
                 <field name="secondary_topic_ids" />
                 <searchpanel>
                     <field name="main_topic_ids"
@@ -1038,7 +1038,7 @@
                         enable_counters="1"
                         icon="fa-tags"
                         domain="[('dependence_ids', 'ilike', 'JEFATURA DE GABINETE')]" />
-                </searchpanel> -->
+                </searchpanel>
             </search>
         </field>
     </record>
