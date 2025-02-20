@@ -493,7 +493,7 @@ msgstr "Temas de Documento"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__document_type_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res__document_type_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_type__name
-#: model_terms:ir.ui.view,arch_db:tmc.document_type_view_tree
+#: model_terms:ir.ui.view,arch_db:tmc.document_type_view_list
 msgid "Document Type"
 msgstr "Tipo de Documento"
 
@@ -1449,7 +1449,7 @@ msgid "TMC"
 msgstr ""
 
 #. module: tmc
-#: model_terms:ir.ui.view,arch_db:tmc.document_topic_view_tree
+#: model_terms:ir.ui.view,arch_db:tmc.document_topic_view_list
 msgid "Tema Principal"
 msgstr ""
 

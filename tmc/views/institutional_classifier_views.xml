@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- WINDOW ACTION -->
     <record id="institutional_classifier_action_form"
         model="ir.actions.act_window">
         <field name="name">Nomenclators</field>
         <field name="res_model">tmc.institutional_classifier</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 
-    <!-- TREE VIEW -->
-    <record id="institutional_classifier_view_tree"
+    <record id="institutional_classifier_view_list"
         model="ir.ui.view">
-        <field name="name">tmc.institutional_classifier.view.tree</field>
+        <field name="name">tmc.institutional_classifier.view.list</field>
         <field name="model">tmc.institutional_classifier</field>
         <field name="arch"
             type="xml">
-            <tree>
+            <list>
                 <field name="display_name" />
                 <field name="due_date" />
-            </tree>
+            </list>
         </field>
     </record>
 
-    <!-- FORM VIEW -->
     <record id="institutional_classifier_view_form"
         model="ir.ui.view">
         <field name="name">tmc.institutional_classifier.view.form</field>
@@ -57,7 +54,7 @@
         </field>
     </record>
 
-    <!-- SEARCH VIEW -->
+
     <record model="ir.ui.view"
         id="institutional_classifier_view_search">
         <field name="name">institutional_classifier.view.search</field>
@@ -67,6 +64,19 @@
             <search>
                 <field name="period" />
             </search>
+        </field>
+    </record>
+
+    <record id="tmc.institutional_classifier_view_list"
+        model="ir.ui.view">
+        <field name="name">tmc.institutional_classifier.view.list</field>
+        <field name="model">tmc.institutional_classifier</field>
+        <field name="arch"
+            type="xml">
+            <list string="Nomenclators">
+                <field name="display_name" />
+                <field name="due_date" />
+            </list>
         </field>
     </record>
 

@@ -4,8 +4,9 @@ from odoo import _, api, fields, models
 class Dependence(models.Model):
     _name = "tmc.dependence"
     _description = "Dependence"
+    _translate = True
 
-    name = fields.Char()
+    name = fields.Char(translate=True)
 
     abbreviation = fields.Char()
 
@@ -14,7 +15,9 @@ class Dependence(models.Model):
     document_topic_ids = fields.Many2many(comodel_name="tmc.document_topic")
 
     document_topic_names = fields.Char(
-        string="Document Topics", compute="_compute_document_topic_names"
+        string="Document Topics",
+        compute="_compute_document_topic_names",
+        translate=True,
     )
 
     system_ids = fields.Many2many(comodel_name="tmc.system")
@@ -34,9 +37,7 @@ class Dependence(models.Model):
             args = []
         if self._context.get("search_default_filter_actual_nomenclator"):
             args.extend([("in_actual_nomenclator", "=", True)])
-        return super(Dependence, self).name_search(
-            name=name, args=args, operator=operator, limit=limit
-        )
+        return super().name_search(name=name, args=args, operator=operator, limit=limit)
 
     _sql_constraints = [
         ("name_unique", "UNIQUE(name)", _("Dependence name must be unique"))

@@ -3,6 +3,7 @@ from odoo import fields, models
 
 class MassEditDocumentTopics(models.TransientModel):
     _name = "tmc.mass_edit_document_topics_wizard"
+    _description = "Mass Edit Document Topics"
 
     dependence_id = fields.Many2one(comodel_name="tmc.dependence", readonly=True)
 

@@ -7,6 +7,7 @@ class DocumentTopic(models.Model):
     _inherit = "tmc.category"
     _description = "Document Topic"
     _order = "name"
+    _translate = True
 
     first_parent_id = fields.Many2one(
         comodel_name="tmc.document_topic",
@@ -21,9 +22,7 @@ class DocumentTopic(models.Model):
         column2="tmc_document_id",
     )
 
-    parent_id = fields.Many2one(
-        comodel_name="tmc.document_topic", string="Main Topic"
-    )
+    parent_id = fields.Many2one(comodel_name="tmc.document_topic", string="Main Topic")
 
     child_ids = fields.One2many(
         comodel_name="tmc.document_topic", inverse_name="parent_id"
@@ -34,17 +33,23 @@ class DocumentTopic(models.Model):
     )
 
     dependences_display_name = fields.Char(
-        compute="_compute_dependences_display_name", string="Dependences"
+        compute="_compute_dependences_display_name",
+        string="Dependences",
+        translate=True,
+        recursive=True,
     )
 
     secondary_topics_display_name = fields.Char(
         compute="_compute_secondary_topics_display_name",
         string="Secondary Topics",
+        translate=True,
     )
 
     important = fields.Boolean()
 
     color = fields.Integer()
+
+    name = fields.Char(translate=True)
 
     @api.depends("parent_id", "parent_id.parent_id")
     def _compute_first_parent(self):

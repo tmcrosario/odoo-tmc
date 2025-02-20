@@ -1,4 +1,4 @@
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class Category(models.Model):
@@ -8,7 +8,9 @@ class Category(models.Model):
 
     name = fields.Char()
 
-    display_name = fields.Char(compute="_compute_display_name")
+    display_name = fields.Char(
+        compute="_compute_display_name", store=True, recursive=True
+    )
 
     def _compute_display_name(self):
         for category in self:

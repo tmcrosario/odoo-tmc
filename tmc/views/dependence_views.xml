@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
-    <!-- TREE VIEW -->
-    <record id="dependence_view_tree"
+    <record id="tmc.dependence_view_list"
         model="ir.ui.view">
-        <field name="name">tmc.dependence.view.tree</field>
+        <field name="name">tmc.dependence.view.list</field>
         <field name="model">tmc.dependence</field>
         <field name="arch"
             type="xml">
-            <tree>
+            <list string="Dependences">
                 <field name="name" />
                 <field name="abbreviation" />
                 <field name="in_actual_nomenclator" />
-            </tree>
+            </list>
         </field>
     </record>
 
-    <record id="dependence_document_topic_view_tree"
+    <record id="dependence_document_topic_view_list"
         model="ir.ui.view">
-        <field name="name">tmc.dependence.document.topic.view.tree</field>
+        <field name="name">tmc.dependence.document.topic.view.list</field>
         <field name="model">tmc.dependence</field>
         <field name="arch"
             type="xml">
-            <tree>
+            <list>
                 <field name="name" />
-                <field name="document_topic_names"/>
-            </tree>
+                <field name="document_topic_names" />
+            </list>
         </field>
     </record>
 
-    <!-- FORM VIEW -->
     <record id="dependence_view_form"
         model="ir.ui.view">
         <field name="name">tmc.dependence.view.form</field>
@@ -40,7 +37,7 @@
                 <sheet>
                     <h2>
                         <field name="display_name"
-                            attrs="{'invisible':[('name','=',False)]}" />
+                            invisible="name == False" />
                     </h2>
                     <group>
                         <group>
@@ -69,7 +66,6 @@
         </field>
     </record>
 
-    <!-- SEARCH VIEW -->
     <record model="ir.ui.view"
         id="dependence_view_search">
         <field name="name">tmc.dependence.view.search</field>
@@ -89,23 +85,21 @@
         </field>
     </record>
 
-    <!-- WINDOW ACTION -->
     <record id="dependence_action_form"
         model="ir.actions.act_window">
         <field name="name">Dependences</field>
         <field name="res_model">tmc.dependence</field>
-        <field name="view_mode">tree</field>
+        <field name="view_mode">list</field>
         <field name="context">
             {'search_default_filter_dependences_with_topics': True}
         </field>
     </record>
 
-    <!-- WINDOW ACTION -->
     <record id="dependence_action_form_2"
         model="ir.actions.act_window">
         <field name="name">Dependences</field>
         <field name="res_model">tmc.dependence</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 
 </odoo>

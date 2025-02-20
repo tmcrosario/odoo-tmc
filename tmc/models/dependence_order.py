@@ -11,17 +11,13 @@ class DependenceOrder(models.Model):
 
     code = fields.Char(required=True)
 
-    dependence_id = fields.Many2one(
-        comodel_name="tmc.dependence", required=True
-    )
+    dependence_id = fields.Many2one(comodel_name="tmc.dependence", required=True)
 
     in_actual_nomenclator = fields.Boolean(
         related="dependence_id.in_actual_nomenclator"
     )
 
-    abbreviation = fields.Char(
-        related="dependence_id.abbreviation", readonly=True
-    )
+    abbreviation = fields.Char(related="dependence_id.abbreviation", readonly=True)
 
     parent_id = fields.Many2one(comodel_name="tmc.dependence")
 

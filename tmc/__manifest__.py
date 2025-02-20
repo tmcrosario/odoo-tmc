@@ -1,19 +1,13 @@
 {
     "name": "TMC Base",
     "summary": "Main TMC models and functionality",
-    "version": "14.0.1.1.1",
+    "version": "18.0.1.0.0",
     "website": "https://www.tmcrosario.gob.ar",
     "author": "Tribunal Municipal de Cuentas - Municipalidad de Rosario",
     "license": "AGPL-3",
     "sequence": 150,
     "depends": [
-        "tmc_data_py3o",
-        "web_tree_many2one_clickable",
-        "web_listview_range_select",
-        "base_technical_features",
-        "web_m2x_options",
-        "remove_odoo_enterprise",
-        "remove_odoo_bindings",
+        "base",
     ],
     "data": [
         "security/groups.xml",

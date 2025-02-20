@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from odoo import _, api, fields, models
-from odoo.exceptions import Warning
+from odoo.exceptions import UserError
 
 
 class InstitutionalClassifier(models.Model):
@@ -10,8 +10,11 @@ class InstitutionalClassifier(models.Model):
     _description = "Institutional Classifier"
     _rec_name = "period"
     _order = "period desc, due_date desc"
+    _translate = True
 
-    display_name = fields.Char(compute="_compute_display_name", string="Name")
+    display_name = fields.Char(
+        compute="_compute_display_name", string="Name", translate=True, recursive=True
+    )
 
     period = fields.Selection(
         selection=[
@@ -50,39 +53,39 @@ class InstitutionalClassifier(models.Model):
                 month = classifier.due_date.strftime("%b")
                 classifier.display_name += " (%s)" % month
 
-    @api.model
-    def create(self, values):
-        year = datetime.strptime(str(values["period"]), "%Y")
-        current_nomenclator = self.env["tmc.institutional_classifier"].search(
-            [("due_date", "=", False)]
-        )
-        if year > datetime.today():
-            raise Warning(_("Invalid period"))
-        if current_nomenclator:
-            newest = (
-                self.env["tmc.institutional_classifier"]
-                .search([])
-                .sorted(key=lambda r: r.period, reverse=True)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for values in vals_list:
+            year = datetime.strptime(str(values["period"]), "%Y")
+            current_nomenclator = self.env["tmc.institutional_classifier"].search(
+                [("due_date", "=", False)]
             )
-            if "due_date" in values:
-                if not values["due_date"]:
-                    if newest and values["period"] < newest[0].period:
-                        raise Warning(
-                            _("There is already a more recent nomenclator")
-                        )
-                    if self.env["tmc.institutional_classifier"].search(
-                        [
-                            ("period", "=", values["period"]),
-                            ("due_date", "=", False),
-                        ]
-                    ):
-                        raise Warning(
-                            _(
-                                "Before adding a nomenclator you must set due date \
-                                prior to the current"
+            if year > datetime.today():
+                raise UserError(_("Invalid period"))
+            if current_nomenclator:
+                newest = (
+                    self.env["tmc.institutional_classifier"]
+                    .search([])
+                    .sorted(key=lambda r: r.period, reverse=True)
+                )
+                if "due_date" in values:
+                    if not values["due_date"]:
+                        if newest and values["period"] < newest[0].period:
+                            raise UserError(
+                                _("There is already a more recent nomenclator")
                             )
-                        )
-        return super(InstitutionalClassifier, self).create(values)
+                        if self.env["tmc.institutional_classifier"].search(
+                            [
+                                ("period", "=", values["period"]),
+                                ("due_date", "=", False),
+                            ]
+                        ):
+                            raise UserError(
+                                _(
+                                    "Before adding a nomenclator you must set due date prior to the current"
+                                )
+                            )
+        return super().create(vals_list)
 
     def write(self, vals):
         if not self.due_date and vals.get("dependence_order_ids"):

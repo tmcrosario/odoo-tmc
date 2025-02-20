@@ -1,128 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
-    <!-- TREE VIEW -->
-    <record id="document_view_tree"
+    <record id="tmc.document_view_list"
         model="ir.ui.view">
-        <field name="name">tmc.document.view.tree</field>
+        <field name="name">tmc.document.view.list</field>
         <field name="model">tmc.document</field>
         <field name="priority">5</field>
         <field name="arch"
             type="xml">
-            <tree default_order="period desc, name desc, dependence_id, document_type_id"
+            <list string="Documents"
                 decoration-danger="highest_highlight=='high'"
                 decoration-warning="highest_highlight=='medium'">
-                <field name="name"
-                    width="200px" />
+                <field name="name" />
                 <field name="date" />
                 <field name="document_object"
                     optional="show" />
                 <field name="topics_display_name"
                     optional="show" />
-                <field name="entry_date"
-                    width="150px"
-                    optional="show" />
+                <!-- <field name="entry_date"
+                    optional="show" /> -->
                 <field name="highest_highlight"
-                    invisible="True" />
-            </tree>
+                    invisible="1" />
+            </list>
         </field>
     </record>
 
-    <!-- TREE VIEW (SIMPLE) -->
-    <record id="document_simple_view_tree"
+    <record id="tmc.document_simple_view_list"
         model="ir.ui.view">
-        <field name="name">tmc.document.simple.view.tree</field>
+        <field name="name">tmc.document.simple.view.list</field>
         <field name="model">tmc.document</field>
         <field name="priority">10</field>
         <field name="arch"
             type="xml">
-            <tree>
+            <list string="Documents">
                 <field name="name" />
                 <field name="date" />
                 <field name="document_object"
                     optional="show" />
-            </tree>
+            </list>
         </field>
     </record>
 
-    <!-- FORM VIEW -->
     <record id="document_view_form"
         model="ir.ui.view">
         <field name="name">tmc.document.view.form</field>
         <field name="model">tmc.document</field>
-        <field name="priority">5</field>
         <field name="arch"
             type="xml">
-            <form duplicate="0">
+            <form>
                 <sheet>
                     <div class="oe_button_box"
-                        name="button_box"
-                        groups="base.group_user">
+                        name="button_box">
                         <button class="oe_stat_button"
-                            attrs="{'invisible':[('highlights_count','=', 0)]}"
+                            invisible="highlights_count == 0"
                             icon="fa-exclamation-circle"
                             name="highlights_count_button">
-                            <field string="Highlight(s)"
-                                name="highlights_count"
-                                widget="statinfo" />
+                            <field name="highlights_count"
+                                widget="statinfo"
+                                string="Highlights" />
                         </button>
                     </div>
                     <div class="oe_title">
                         <label for="name"
-                            class="oe_edit_only"
-                            string="Nombre del Documento" />
+                            string="Document Name" />
                         <h1>
-                            <field name="name"
-                                string="Nombre del Documento" />
+                            <field name="name" />
                         </h1>
                     </div>
                     <group>
                         <field name="document_object_required"
-                            invisible="True" />
+                            invisible="1" />
                         <field name="document_object"
-                            attrs="{'required':[('document_object_required', '=', True)]}" />
+                            required="document_object_required" />
                     </group>
                     <field name="create_date"
-                        invisible="True" />
+                        invisible="1" />
                     <field name="reference_document"
-                        invisible="True" />
+                        invisible="1" />
                     <group>
                         <group>
                             <field name="dependence_id"
                                 context="{'search_default_filter_actual_nomenclator': True}"
                                 default_focus="1" />
                             <field name="document_type_id"
-                                attrs="{'invisible':[('dependence_id','=', False)]}" />
+                                invisible="not dependence_id" />
                             <field name="document_type_abbr"
-                                invisible="True" />
+                                invisible="1" />
                         </group>
                         <group>
                             <field name="number"
-                                attrs="{'required':[('document_type_abbr', '!=', 'ACT')], 'invisible':[('document_type_abbr', '=', 'ACT')]}" />
+                                required="document_type_abbr != 'ACT'"
+                                invisible="document_type_abbr == 'ACT'" />
                             <field name="period" />
                         </group>
                     </group>
                     <group>
                         <group string="Reference"
-                            attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
+                            invisible="name in ['Unnamed Document', 'Documento Sin Nombre']">
                             <field name="date" />
-                            <field name="entry_date" />
+                            <!-- <field name="entry_date" /> -->
                         </group>
                         <field name="document_topic_ids"
-                            invisible="True" />
+                            invisible="1" />
                         <group string="Topics"
-                            attrs="{'invisible':['|', ('document_topic_ids', '=', []), ('create_date','=', False)]}">
+                            invisible="document_topic_ids == [] or not create_date">
                             <field name="main_topic_ids"
                                 widget="many2many_tags"
                                 options="{'color_field': 'color', 'no_create': True}"
-                                attrs="{'required':[('document_object', '!=', False), ('document_type_abbr', 'in', ['DEC', 'RES'])]}" />
+                                required="document_object and document_type_abbr in ['DEC', 'RES']" />
                             <field name="secondary_topic_ids"
-                                attrs="{'invisible':[('main_topic_ids', '=', [])]}"
+                                invisible="not main_topic_ids"
                                 widget="many2many_tags"
                                 options="{'color_field': 'color', 'no_create': True}" />
                         </group>
                     </group>
-                    <notebook attrs="{'invisible':[('name', 'in', [u'Unnamed Document', u'Documento Sin Nombre'])]}">
+                    <notebook invisible="name in ['Unnamed Document', 'Documento Sin Nombre']">
                         <page name="related_documents"
                             string="Related Documents">
                             <field name="related_document_ids"
@@ -139,7 +130,6 @@
         </field>
     </record>
 
-    <!-- SEARCH VIEW -->
     <record id="document_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.view.search</field>
@@ -158,19 +148,17 @@
         </field>
     </record>
 
-    <!-- WINDOW ACTION -->
     <record id="document_action_form"
         model="ir.actions.act_window">
         <field name="name">All Documents</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="context">{'disable_document_topics_wizards': True}</field>
         <field name="search_view_id"
             ref="document_view_search" />
     </record>
 
     <!-- DECRETO DEM -->
-    <!-- SEARCH VIEW -->
     <record id="document_dem_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.dem.simple.view.search</field>
@@ -198,12 +186,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_dem"
         model="ir.actions.act_window">
         <field name="name">Departamento Ejecutivo (DEM)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_dem_simple_view_search" />
         <field name="domain">[('dependence_id','=','DEPARTAMENTO EJECUTIVO')]</field>
@@ -219,7 +207,6 @@
     </record>
 
     <!-- RESOLUCION HAC -->
-    <!-- SEARCH VIEW -->
     <record id="document_hac_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.hac.simple.view.search</field>
@@ -243,12 +230,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_hac"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Hacienda y Economía (HAC)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_hac_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE HACIENDA Y ECONOMÍA')]</field>
@@ -261,7 +248,6 @@
     </record>
 
     <!-- RESOLUCION GOB -->
-    <!-- SEARCH VIEW -->
     <record id="document_gob_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.gob.simple.view.search</field>
@@ -285,12 +271,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_gob"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Gobierno (GOB)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_gob_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE GOBIERNO')]</field>
@@ -303,7 +289,6 @@
     </record>
 
     <!-- RESOLUCION MOD -->
-    <!-- SEARCH VIEW -->
     <record id="document_mod_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.mod.simple.view.search</field>
@@ -327,12 +312,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_mod"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Modernización y Cercanía (MOD)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_mod_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE MODERNIZACIÓN Y CERCANÍA')]</field>
@@ -345,7 +330,6 @@
     </record>
 
     <!-- RESOLUCION PLA -->
-    <!-- SEARCH VIEW -->
     <record id="document_pla_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.pla.simple.view.search</field>
@@ -369,12 +353,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_pla"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Planeamiento (PLA)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_pla_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE PLANEAMIENTO')]</field>
@@ -387,7 +371,6 @@
     </record>
 
     <!-- RESOLUCION OBR -->
-    <!-- SEARCH VIEW -->
     <record id="document_obr_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.obr.simple.view.search</field>
@@ -411,12 +394,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_obr"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Obras Públicas (OBR)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_obr_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE OBRAS PÚBLICAS')]</field>
@@ -429,7 +412,6 @@
     </record>
 
     <!-- RESOLUCION AMB -->
-    <!-- SEARCH VIEW -->
     <record id="document_amb_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.amb.simple.view.search</field>
@@ -453,12 +435,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_amb"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Ambiente y Espacios Públicos (AMB)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_amb_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE AMBIENTE Y ESPACIO PÚBLICO')]</field>
@@ -471,7 +453,6 @@
     </record>
 
     <!-- RESOLUCION SAL -->
-    <!-- SEARCH VIEW -->
     <record id="document_sal_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.sal.simple.view.search</field>
@@ -495,12 +476,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_sal"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Salud Pública (SAL)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_sal_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE SALUD PÚBLICA')]</field>
@@ -513,7 +494,6 @@
     </record>
 
     <!-- RESOLUCION DES -->
-    <!-- SEARCH VIEW -->
     <record id="document_des_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.des.simple.view.search</field>
@@ -537,12 +517,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_des"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Desarrollo Social (DES)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_des_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE DESARROLLO SOCIAL')]</field>
@@ -555,7 +535,6 @@
     </record>
 
     <!-- RESOLUCION PROD -->
-    <!-- SEARCH VIEW -->
     <record id="document_prod_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.prod.simple.view.search</field>
@@ -579,12 +558,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_prod"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Producción y Desarrollo Local (PROD)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_prod_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE PRODUCCIÓN Y DESARROLLO LOCAL')]</field>
@@ -597,7 +576,6 @@
     </record>
 
     <!-- RESOLUCION PRODEI -->
-    <!-- SEARCH VIEW -->
     <record id="document_prodei_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.prodei.simple.view.search</field>
@@ -621,12 +599,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_prodei"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Producción, Empleo e Innovación (PROD)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_prod_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE PRODUCCIÓN, EMPLEO E INNOVACIÓN')]</field>
@@ -639,7 +617,6 @@
     </record>
 
     <!-- RESOLUCION PROM -->
-    <!-- SEARCH VIEW -->
     <record id="document_prom_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.prom.simple.view.search</field>
@@ -663,12 +640,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_prom"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Promoción Social (PROM)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_prom_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE PROMOCIÓN SOCIAL')]</field>
@@ -681,7 +658,6 @@
     </record>
 
     <!-- RESOLUCION SER -->
-    <!-- SEARCH VIEW -->
     <record id="document_ser_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.ser.simple.view.search</field>
@@ -705,12 +681,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_ser"
         model="ir.actions.act_window">
         <field name="name">Servicios Públicos y Medio Ambiente (SER)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_ser_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE SERVICIOS PÚBLICOS Y MEDIO AMBIENTE')]</field>
@@ -724,7 +700,6 @@
 
 
     <!-- RESOLUCION CUL -->
-    <!-- SEARCH VIEW -->
     <record id="document_cul_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.cul.simple.view.search</field>
@@ -748,12 +723,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_cul"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Cultura y Educación (CUL)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_cul_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE CULTURA Y EDUCACIÓN')]</field>
@@ -766,7 +741,6 @@
     </record>
 
     <!-- RESOLUCION GRAL -->
-    <!-- SEARCH VIEW -->
     <record id="document_gral_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.gral.simple.view.search</field>
@@ -790,12 +764,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_gral"
         model="ir.actions.act_window">
         <field name="name">Secretaría General (GRAL)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_gral_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA GENERAL')]</field>
@@ -808,7 +782,6 @@
     </record>
 
     <!-- RESOLUCION TUR -->
-    <!-- SEARCH VIEW -->
     <record id="document_tur_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.tur.simple.view.search</field>
@@ -832,12 +805,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_tur"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Turismo (TUR)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_tur_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE TURISMO')]</field>
@@ -850,7 +823,6 @@
     </record>
 
     <!-- RESOLUCION DEP -->
-    <!-- SEARCH VIEW -->
     <record id="document_dep_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.dep.simple.view.search</field>
@@ -874,12 +846,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_dep"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Deporte y Turismo (DEP)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_dep_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE DEPORTE Y TURISMO')]</field>
@@ -892,7 +864,6 @@
     </record>
 
     <!-- RESOLUCION DEE -->
-    <!-- SEARCH VIEW -->
     <record id="document_dee_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.dee.simple.view.search</field>
@@ -916,12 +887,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_dee"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Desarrollo Económico y Empleo (DEE)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_dee_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE DESARROLLO ECONÓMICO Y EMPLEO')]</field>
@@ -934,7 +905,6 @@
     </record>
 
     <!-- RESOLUCION DHH -->
-    <!-- SEARCH VIEW -->
     <record id="document_dhh_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.dhh.simple.view.search</field>
@@ -958,12 +928,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_dhh"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Desarrollo Humano y Hábitat (DHH)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_dhh_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE DESARROLLO HUMANO Y HÁBITAT')]</field>
@@ -976,7 +946,6 @@
     </record>
 
     <!-- RESOLUCION GEN -->
-    <!-- SEARCH VIEW -->
     <record id="document_gen_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.gen.simple.view.search</field>
@@ -1000,12 +969,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_gen"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Igualdad, Género y Derechos Humanos (GDH)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_gen_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE IGUALDAD, GÉNERO Y DERECHOS HUMANOS')]</field>
@@ -1018,7 +987,6 @@
     </record>
 
     <!-- RESOLUCION GAB -->
-    <!-- SEARCH VIEW -->
     <record id="document_gab_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.gab.simple.view.search</field>
@@ -1042,12 +1010,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_gab"
         model="ir.actions.act_window">
         <field name="name">Jefatura de Gabinete (GAB)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_gab_simple_view_search" />
         <field name="domain">[('dependence_id','=','JEFATURA DE GABINETE')]</field>
@@ -1060,7 +1028,6 @@
     </record>
 
     <!-- RESOLUCION CONV -->
-    <!-- SEARCH VIEW -->
     <record id="document_conv_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.conv.simple.view.search</field>
@@ -1084,12 +1051,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_conv"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Control y Convivencia (CONV)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_conv_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE CONTROL Y CONVIVENCIA')]</field>
@@ -1102,7 +1069,6 @@
     </record>
 
     <!-- RESOLUCION MOV -->
-    <!-- SEARCH VIEW -->
     <record id="document_mov_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.mov.simple.view.search</field>
@@ -1126,12 +1092,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_mov"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Transporte y Movilidad (MOV)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_mov_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE TRANSPORTE Y MOVILIDAD')]</field>
@@ -1142,7 +1108,7 @@
             </p>
         </field>
     </record>
-    <!-- SEARCH VIEW -->
+
     <record id="document_mov_2_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.mov.2.simple.view.search</field>
@@ -1166,12 +1132,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_mov_2"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Movilidad (MOV)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_mov_2_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE MOVILIDAD')]</field>
@@ -1184,7 +1150,6 @@
     </record>
 
     <!-- RESOLUCION ECON -->
-    <!-- SEARCH VIEW -->
     <record id="document_econ_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.econ.simple.view.search</field>
@@ -1208,12 +1173,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_econ"
         model="ir.actions.act_window">
         <field name="name">Secretaría de Economía Social (ECON)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_econ_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA DE ECONOMÍA SOCIAL')]</field>
@@ -1226,7 +1191,6 @@
     </record>
 
     <!-- RESOLUCION GRAL INT -->
-    <!-- SEARCH VIEW -->
     <record id="document_gral_int_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.gral_int.simple.view.search</field>
@@ -1250,12 +1214,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_gral_int"
         model="ir.actions.act_window">
         <field name="name">Secretaría General de Intendencia (GRAL)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_gral_int_simple_view_search" />
         <field name="domain">[('dependence_id','=','SECRETARÍA GENERAL DE INTENDENCIA')]</field>
@@ -1268,7 +1232,6 @@
     </record>
 
     <!-- RESOLUCION TER -->
-    <!-- SEARCH VIEW -->
     <record id="document_ter_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.ter.simple.view.search</field>
@@ -1292,12 +1255,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_ter"
         model="ir.actions.act_window">
         <field name="name">Terminal de Ómnibus (TER)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_ter_simple_view_search" />
         <field name="domain">[('dependence_id','=','Terminal de Omnibus Rosario')]</field>
@@ -1310,7 +1273,6 @@
     </record>
 
     <!-- RESOLUCION EMR -->
-    <!-- SEARCH VIEW -->
     <record id="document_emr_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.emr.simple.view.search</field>
@@ -1334,12 +1296,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_emr"
         model="ir.actions.act_window">
         <field name="name">Ente de la Movilidad (EMR)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_emr_simple_view_search" />
         <field name="domain">[('dependence_id','=','Ente de la Movilidad de Rosario')]</field>
@@ -1352,7 +1314,6 @@
     </record>
 
     <!-- RESOLUCION ILAR -->
-    <!-- SEARCH VIEW -->
     <record id="document_ilar_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.ilar.simple.view.search</field>
@@ -1376,12 +1337,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_ilar"
         model="ir.actions.act_window">
         <field name="name">Instituto De Lucha Antipoliomielítica (ILAR)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_ilar_simple_view_search" />
         <field name="domain">[('dependence_id','=','INSTITUTO DE LUCHA ANTIPOLIOMIELÍTICA DE ROSARIO')]</field>
@@ -1394,7 +1355,6 @@
     </record>
 
     <!-- RESOLUCION IMPS -->
-    <!-- SEARCH VIEW -->
     <record id="document_imps_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.imps.simple.view.search</field>
@@ -1423,12 +1383,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_imps"
         model="ir.actions.act_window">
         <field name="name">Instituto Municipal de Previsión Social (IMPS)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_imps_simple_view_search" />
         <field name="domain">[('dependence_id', '=', 'INSTITUTO MUNICIPAL DE PREVISIÓN SOCIAL')]</field>
@@ -1444,7 +1404,6 @@
     </record>
 
     <!-- RESOLUCION SPV -->
-    <!-- SEARCH VIEW -->
     <record id="document_spv_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.spv.simple.view.search</field>
@@ -1468,12 +1427,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_spv"
         model="ir.actions.act_window">
         <field name="name">Servicio Público de la Vivienda y el Hábitat (SPV)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_spv_simple_view_search" />
         <field name="domain">[('dependence_id','=','SERVICIO PÚBLICO DE LA VIVIENDA Y EL HÁBITAT')]</field>
@@ -1486,7 +1445,6 @@
     </record>
 
     <!-- RESOLUCION HIP -->
-    <!-- SEARCH VIEW -->
     <record id="document_hip_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.hip.simple.view.search</field>
@@ -1510,12 +1468,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_hip"
         model="ir.actions.act_window">
         <field name="name">Hipódromo Rosario (HIP)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_hip_simple_view_search" />
         <field name="domain">[('dependence_id','=','Hipódromo Rosario')]</field>
@@ -1528,7 +1486,6 @@
     </record>
 
     <!-- RESOLUCION ETUR -->
-    <!-- SEARCH VIEW -->
     <record id="document_etur_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.etur.simple.view.search</field>
@@ -1552,12 +1509,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_etur"
         model="ir.actions.act_window">
         <field name="name">Ente Turístico Rosario (ETUR)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_etur_simple_view_search" />
         <field name="domain">[('dependence_id', '=', 'Ente Turístico Rosario')]</field>
@@ -1570,7 +1527,6 @@
     </record>
 
     <!-- CONCEJO -->
-    <!-- SEARCH VIEW -->
     <record id="document_cm_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.cm.simple.view.search</field>
@@ -1598,12 +1554,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_cm"
         model="ir.actions.act_window">
         <field name="name">Concejo Municipal (CM)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_cm_simple_view_search" />
         <field name="domain">[('dependence_id','=','CONCEJO MUNICIPAL')]</field>
@@ -1619,7 +1575,6 @@
     </record>
 
     <!-- DICTAMEN TMC -->
-    <!-- SEARCH VIEW -->
     <record id="document_tmc_simple_view_search"
         model="ir.ui.view">
         <field name="name">tmc.document.tmc.simple.view.search</field>
@@ -1647,12 +1602,12 @@
             </search>
         </field>
     </record>
-    <!-- WINDOW ACTION -->
+
     <record id="document_action_form_tmc"
         model="ir.actions.act_window">
         <field name="name">Tribunal de Cuentas (TMC)</field>
         <field name="res_model">tmc.document</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id"
             ref="document_tmc_simple_view_search" />
         <field name="domain">[('dependence_id','=','TRIBUNAL MUNICIPAL DE CUENTAS')]</field>

@@ -6,6 +6,7 @@ class Document(models.Model):
     _name = "tmc.document"
     _description = "Document"
     _order = "period desc, name desc"
+    _translate = True
 
     # NOTE: to show specific periods in the 'searchpanel' widget
     # @api.model
@@ -13,7 +14,7 @@ class Document(models.Model):
     #     this_year = fields.Date.today().year
     #     return [(str(year), str(year)) for year in range(this_year - 6, this_year + 1)]
 
-    name = fields.Char(compute="_compute_name", store=True)
+    name = fields.Char(compute="_compute_name", store=True, translate=True)
 
     dependence_id = fields.Many2one(
         comodel_name="tmc.dependence",
@@ -30,16 +31,25 @@ class Document(models.Model):
 
     number = fields.Integer()
 
-    period = fields.Integer(required=True)
+    period = fields.Selection(
+        selection=lambda self: [
+            (str(num), str(num))
+            for num in range(
+                ((fields.Date.today().year) - 10),
+                ((fields.Date.today().year) + 1),
+            )
+        ],
+        required=True,
+    )
 
     date = fields.Date()
 
     # NOTE: to show a mark in the name for documents related to a dictamen
     # display_name = fields.Char(compute="_compute_display_name")
 
-    entry_date = fields.Date(compute="_compute_entry_date", readonly=True)
+    # entry_date = fields.Date(compute="_compute_entry_date", readonly=True)
 
-    document_object = fields.Char(string="Object", size=250, index=True)
+    document_object = fields.Char(string="Object", size=250, index=True, translate=True)
 
     document_object_required = fields.Boolean()
 
@@ -63,6 +73,7 @@ class Document(models.Model):
         compute="_compute_topics_display_name",
         string="Topics",
         readonly=True,
+        translate=True,
     )
 
     reference_model = fields.Char(related="document_type_id.model")
@@ -128,16 +139,6 @@ class Document(models.Model):
     #             document.display_name = document.name
 
     # NOTE: to show specific periods in the 'searchpanel' widget
-    # @api.depends("document_type_id", "dependence_id", "number", "period")
-    # def _compute_period_selection(self):
-    #     this_year = fields.Date.today().year
-    #     for document in self:
-    #         if (this_year - 7) <= document.period <= this_year:
-    #             document.period_selection = str(document.period)
-    #         else:
-    #             document.period_selection = None
-
-    # NOTE: to show specific periods in the 'searchpanel' widget
     # @api.onchange("period")
     # def _onchange_period(self):
     #     self._compute_period_selection()
@@ -160,9 +161,10 @@ class Document(models.Model):
 
     @api.constrains("period")
     def _check_period(self):
-        if not (1000 <= self.period <= fields.Date.today().year):
+        period = int(self.period)
+        if not (1000 <= period <= fields.Date.today().year):
             raise exceptions.ValidationError(_("Invalid period"))
-        if self.period < 1948:
+        if period < 1948:
             raise exceptions.ValidationError(_("Periods before 1948 are not allowed."))
 
     @api.constrains("number")
@@ -175,9 +177,9 @@ class Document(models.Model):
         if self.dependence_id.abbreviation in ["DHH"]:
             max_number = 9999
         if self.number == 0 and self.document_type_id.abbreviation != "ACT":
-            raise Warning(_("Invalid number"))
+            raise UserError(_("Invalid number"))
         if self.number > max_number:
-            raise Warning(_("Invalid number"))
+            raise UserError(_("Invalid number"))
 
     @api.depends("document_type_id", "dependence_id", "number", "period")
     def _compute_name(self):
@@ -207,14 +209,6 @@ class Document(models.Model):
                 lambda record: record.applicable is True
             )
             document.highlights_count = len(applicable_highlight_ids)
-
-    @api.onchange("dependence_id")
-    def _onchange_dependence(self):
-        self.document_type_id = False
-        document_types = self.dependence_id.document_type_ids
-        if len(document_types.ids) == 1:
-            self.document_type_id = document_types.ids[0]
-        return {"domain": {"document_type_id": [("id", "in", document_types.ids)]}}
 
     @api.onchange("main_topic_ids")
     def _onchange_main_topic_ids(self):
@@ -295,33 +289,44 @@ class Document(models.Model):
     def _onchange_document_data(self):
         if self.dependence_id and self.document_type_id and self.number and self.period:
             if self.env["tmc.document"].search([("name", "=", self.name)]):
-                raise exceptions.Warning(_("Document already exists"))
+                raise UserError(_("Document already exists"))
 
-    @api.model
-    def create(self, vals):
-        doc_type = vals.get("document_type_id")
-        doc_type_abbr = self.env["tmc.document_type"].browse(doc_type).abbreviation
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            doc_type = vals.get("document_type_id")
+            doc_type_abbr = self.env["tmc.document_type"].browse(doc_type).abbreviation
 
-        if vals.get("date"):
-            if (
-                int(vals.get("date")[:4]) != vals.get("period")
-                and doc_type_abbr != "CONV"
-            ):
-                message = _("Date does not match with period")
-                raise exceptions.UserError(message)
+            if vals.get("date"):
+                if (
+                    str(int(vals.get("date")[:4])) != str(vals.get("period"))
+                    and doc_type_abbr != "CONV"
+                ):
+                    message = _("Date does not match with period")
+                    raise exceptions.UserError(message)
 
-        if doc_type_abbr == "ACT":
-            vals["number"] = self.env.ref("tmc_data.seq_tmc_act").number_next_actual
+            if doc_type_abbr == "ACT":
+                vals["number"] = self.env.ref("tmc_data.seq_tmc_act").number_next_actual
+                seq = self.env["ir.sequence"]
+                seq.next_by_code("tmc.document")
 
-            seq = self.env["ir.sequence"]
-            seq.next_by_code("tmc.document")
-
-        return super(Document, self).create(vals)
+        return super().create(vals_list)
 
     def write(self, vals, write_inverse=True):
         if vals.get("main_topic_ids"):
             message = _("You must specify a period.")
-            main_topics_set = set(vals["main_topic_ids"][0][2])
+            # Handle different possible formats of main_topic_ids
+            main_topics = vals["main_topic_ids"]
+            if main_topics and isinstance(main_topics, list) and len(main_topics) > 0:
+                if (
+                    isinstance(main_topics[0], (list, tuple))
+                    and len(main_topics[0]) > 2
+                ):
+                    main_topics_set = set(main_topics[0][2])
+                else:
+                    main_topics_set = set()
+            else:
+                main_topics_set = set()
 
             mp_topic = self.env.ref("tmc_data.tmc_document_topic_modifica_presupuesto")
             p_topic = self.env.ref("tmc_data.tmc_document_topic_periodo")
@@ -459,7 +464,7 @@ class Document(models.Model):
         }
 
     def fields_view_get(
-        self, view_id=None, view_type="tree", toolbar=False, submenu=False
+        self, view_id=None, view_type="list", toolbar=False, submenu=False
     ):
         res = super(Document, self).fields_view_get(
             view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu

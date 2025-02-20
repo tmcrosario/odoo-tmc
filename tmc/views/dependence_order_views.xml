@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
-    <!-- WINDOW ACTION -->
     <record id="dependence_order_action_form"
         model="ir.actions.act_window">
         <field name="name">Dependences in Actual Nomenclator</field>
         <field name="res_model">tmc.dependence_order</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="context">
             { 'search_default_filter_actual_nomenclator': True, 'search_default_group_by_parent_id': True }
         </field>
@@ -14,14 +12,13 @@
         </field>
     </record>
 
-    <!-- TREE VIEW -->
-    <record id="dependence_order_view_tree"
+    <record id="dependence_order_view_list"
         model="ir.ui.view">
-        <field name="name">tmc.dependence_order.view.tree</field>
+        <field name="name">tmc.dependence_order.view.list</field>
         <field name="model">tmc.dependence_order</field>
         <field name="arch"
             type="xml">
-            <tree
+            <list
                 decoration-bf="parent_name in [u'ADMINISTRACI\xd3N CENTRAL', u'ORGANISMOS DESCENTRALIZADOS', u'INSTITUCIONES DE SEGURIDAD SOCIAL', u'EMPRESAS, SOCIEDADES Y OTROS ENTES DEL ESTADO', False]">
                 <field name="code" />
                 <field name="name" />
@@ -30,11 +27,10 @@
                     widget="many2many_tags" />
                 <field name="parent_name"
                     invisible="True" />
-            </tree>
+            </list>
         </field>
     </record>
 
-    <!-- FORM VIEW -->
     <record id="dependence_order_view_form"
         model="ir.ui.view">
         <field name="name">tmc.dependence_order.view.form</field>
@@ -64,7 +60,6 @@
         </field>
     </record>
 
-    <!-- SEARCH VIEW -->
     <record model="ir.ui.view"
         id="dependence_order_view_search">
         <field name="name">tmc.dependence_order.view.search</field>
@@ -88,5 +83,23 @@
         </field>
     </record>
 
+    <record id="tmc.dependence_order_view_list"
+        model="ir.ui.view">
+        <field name="name">tmc.dependence_order.view.list</field>
+        <field name="model">tmc.dependence_order</field>
+        <field name="arch"
+            type="xml">
+            <list string="Dependence Orders"
+                decoration-bf="parent_name in [u'ADMINISTRACIÓN CENTRAL', u'ORGANISMOS DESCENTRALIZADOS', u'INSTITUCIONES DE SEGURIDAD SOCIAL', u'EMPRESAS, SOCIEDADES Y OTROS ENTES DEL ESTADO', False]">
+                <field name="code" />
+                <field name="name" />
+                <field name="abbreviation" />
+                <field name="institutional_classifier_ids"
+                    widget="many2many_tags" />
+                <field name="parent_name"
+                    invisible="1" />
+            </list>
+        </field>
+    </record>
 
 </odoo>
