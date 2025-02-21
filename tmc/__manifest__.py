@@ -7,7 +7,8 @@
     "license": "AGPL-3",
     "sequence": 150,
     "depends": [
-        "base",
+        "web_tree_many2one_clickable",
+        "remove_odoo_enterprise",
     ],
     "data": [
         "security/groups.xml",
