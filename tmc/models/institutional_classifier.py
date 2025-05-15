@@ -56,7 +56,7 @@ class InstitutionalClassifier(models.Model):
         current_nomenclator = self.env["tmc.institutional_classifier"].search(
             [("due_date", "=", False)]
         )
-        if year > datetime.today():
+        if year > datetime.today().year + 1:
             raise Warning(_("Invalid period"))
         if current_nomenclator:
             newest = (
@@ -67,9 +67,7 @@ class InstitutionalClassifier(models.Model):
             if "due_date" in values:
                 if not values["due_date"]:
                     if newest and values["period"] < newest[0].period:
-                        raise Warning(
-                            _("There is already a more recent nomenclator")
-                        )
+                        raise Warning(_("There is already a more recent nomenclator"))
                     if self.env["tmc.institutional_classifier"].search(
                         [
                             ("period", "=", values["period"]),
