@@ -84,7 +84,6 @@ class InstitutionalClassifier(models.Model):
 
     def write(self, vals):
         if not self.due_date and vals.get("dependence_order_ids"):
-
             dependence_orders = vals["dependence_order_ids"][0][2]
             dependences = (
                 self.env["tmc.dependence_order"]
@@ -97,5 +96,8 @@ class InstitutionalClassifier(models.Model):
             )
             for dependence in dependences:
                 dependence.in_actual_nomenclator = True
+
+        # Recompute in_actual_nomenclator for all dependence_orders
+        self.env["tmc.dependence_order"]._recompute_in_actual_nomenclator()
 
         return super(InstitutionalClassifier, self).write(vals)

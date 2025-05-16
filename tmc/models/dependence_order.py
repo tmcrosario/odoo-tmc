@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class DependenceOrder(models.Model):
@@ -11,17 +11,29 @@ class DependenceOrder(models.Model):
 
     code = fields.Char(required=True)
 
-    dependence_id = fields.Many2one(
-        comodel_name="tmc.dependence", required=True
-    )
+    dependence_id = fields.Many2one(comodel_name="tmc.dependence", required=True)
+
+    def _compute_in_actual_nomenclator(self):
+        for record in self:
+            current_nomenclator = self.env["tmc.institutional_classifier"].search(
+                [("due_date", "=", False)], limit=1
+            )
+            record.in_actual_nomenclator = (
+                current_nomenclator
+                and record.id in current_nomenclator.dependence_order_ids.ids
+            )
+
+    @api.model
+    def _recompute_in_actual_nomenclator(self):
+        self.search([])._compute_in_actual_nomenclator()
 
     in_actual_nomenclator = fields.Boolean(
-        related="dependence_id.in_actual_nomenclator"
+        compute="_compute_in_actual_nomenclator",
+        store=True,
+        depends=["institutional_classifier_ids"],
     )
 
-    abbreviation = fields.Char(
-        related="dependence_id.abbreviation", readonly=True
-    )
+    abbreviation = fields.Char(related="dependence_id.abbreviation", readonly=True)
 
     parent_id = fields.Many2one(comodel_name="tmc.dependence")
 
