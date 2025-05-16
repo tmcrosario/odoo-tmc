@@ -1059,6 +1059,48 @@
         </field>
     </record>
 
+    <!-- RESOLUCION CER -->
+    <!-- SEARCH VIEW -->
+    <record id="document_cer_simple_view_search"
+        model="ir.ui.view">
+        <field name="name">tmc.document.cer.simple.view.search</field>
+        <field name="model">tmc.document</field>
+        <field name="arch"
+            type="xml">
+            <search>
+                <field name="number" />
+                <field name="period" />
+                <field name="document_object" />
+                <field name="document_type_id" />
+                <field name="main_topic_ids" />
+                <field name="secondary_topic_ids" />
+                <searchpanel>
+                    <field name="main_topic_ids"
+                        select="multi"
+                        enable_counters="1"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'SECRETARÍA DE CERCANÍA Y GESTIÓN CIUDADANA')]" />
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+    <!-- WINDOW ACTION -->
+    <record id="document_action_form_cer"
+        model="ir.actions.act_window">
+        <field name="name">Secretaría de Cercanía y Gestión Ciudadana (CER)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+            ref="document_cer_simple_view_search" />
+        <field name="domain">[('dependence_id','=','SECRETARÍA DE CERCANÍA Y GESTIÓN CIUDADANA')]</field>
+        <field name="help"
+            type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
+    </record>
+
     <!-- RESOLUCION CONV -->
     <!-- SEARCH VIEW -->
     <record id="document_conv_simple_view_search"

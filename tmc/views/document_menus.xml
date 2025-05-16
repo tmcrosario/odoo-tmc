@@ -18,6 +18,12 @@
         sequence="5"
         action="document_action_form_amb" />
 
+    <menuitem id="tmc_menu_dependence_documents_cer"
+        name="Cercanía y Gestión Ciudadana"
+        parent="tmc_menu_actual_nomenclator"
+        sequence="7"
+        action="document_action_form_cer" />
+
     <menuitem id="tmc_menu_dependence_documents_conv"
         name="Control y Convivencia"
         parent="tmc_menu_actual_nomenclator"
