@@ -1,4 +1,5 @@
 from odoo import api, fields, models
+from odoo.exceptions import UserError
 
 
 class DocumentTopic(models.Model):
@@ -77,3 +78,11 @@ class DocumentTopic(models.Model):
                 document_topic.secondary_topics_display_name = ", ".join(
                     document_topic.child_ids.mapped("name")
                 )
+
+    def unlink(self):
+        for topic in self:
+            if topic.document_ids:
+                raise UserError(
+                    "You cannot delete this topic because it is linked to one or more documents. Please remove or unlink the documents before proceeding."
+                )
+        return super(DocumentTopic, self).unlink()
