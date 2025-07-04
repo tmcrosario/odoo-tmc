@@ -1,0 +1,9 @@
+[tool.ruff]
+line-length = 79
+# F401: unused import
+# F841: local variable is assigned to but never used
+# ERA001: unused variable
+unfixable = ["ERA001", "F841", "F401"]
+
+[tool.black]
+line-length = 79
