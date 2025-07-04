@@ -326,21 +326,47 @@ class Document(models.Model):
             mp_topic = self.env.ref("tmc_data.tmc_document_topic_modifica_presupuesto")
             p_topic = self.env.ref("tmc_data.tmc_document_topic_periodo")
 
-            p_topic_map = p_topic.mapped("id")
-            if main_topics_set.intersection(p_topic_map):
+            mp_topic_map = mp_topic.mapped("id")
+            p_topic_id = p_topic.id
+
+            if main_topics_set.intersection(mp_topic_map):
+                # Build the set of secondary topics as it will be after the write operation.
+                # Odoo Many2many fields use a command pattern for updates:
+                #   [6, 0, [ids]]: replace all with the given list of ids
+                #   [4, id]: add the given id
+                #   [3, id]: remove the given id
+                # This logic simulates the final set of secondary topics after applying all commands,
+                # so the validation is accurate whether the period is already set, being added, or being removed.
+                secondary_topic_ids = set(self.secondary_topic_ids.ids)
                 if vals.get("secondary_topic_ids"):
-                    domain = [
-                        ("id", "in", vals["secondary_topic_ids"][0][2]),
-                        ("parent_id", "=", p_topic.id),
-                    ]
-                    if not self.env["tmc.document_topic"].search(domain):
-                        raise exceptions.UserError(message)
-                else:
+                    for command in vals["secondary_topic_ids"]:
+                        if command[0] == 6:  # Replace all secondary topics
+                            secondary_topic_ids = set(command[2])
+                        elif command[0] == 4:  # Add a secondary topic
+                            secondary_topic_ids.add(command[1])
+                        elif command[0] == 3:  # Remove a secondary topic
+                            secondary_topic_ids.discard(command[1])
+                # Now check if any of the final secondary topics has 'Período' as parent
+                has_period = any(
+                    self.env["tmc.document_topic"].browse(sec_id).parent_id.id
+                    == p_topic_id
+                    for sec_id in secondary_topic_ids
+                )
+                if not has_period:
                     raise exceptions.UserError(message)
             else:
-                mp_topic_map = mp_topic.mapped("id")
-                if main_topics_set.intersection(mp_topic_map):
-                    raise exceptions.UserError(message)
+                # Original logic for 'Período' as main topic
+                p_topic_map = p_topic.mapped("id")
+                if main_topics_set.intersection(p_topic_map):
+                    if vals.get("secondary_topic_ids"):
+                        domain = [
+                            ("id", "in", vals["secondary_topic_ids"][0][2]),
+                            ("parent_id", "=", p_topic.id),
+                        ]
+                        if not self.env["tmc.document_topic"].search(domain):
+                            raise exceptions.UserError(message)
+                    else:
+                        raise exceptions.UserError(message)
 
         if vals.get("date"):
             if (
