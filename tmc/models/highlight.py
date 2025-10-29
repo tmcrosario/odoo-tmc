@@ -11,12 +11,16 @@ class Highlight(models.Model):
 
     document_id = fields.Many2one(comodel_name="tmc.document")
 
-    level = fields.Selection(
-        selection=[
+    @api.model
+    def _get_level_selection(self):
+        return [
             ("high", _("High")),
             ("medium", _("Medium")),
             ("low", _("Low")),
-        ],
+        ]
+
+    level = fields.Selection(
+        selection='_get_level_selection',
         required=True,
     )
 

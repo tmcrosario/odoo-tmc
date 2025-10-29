@@ -4,7 +4,7 @@
     <menuitem id="tmc_menu"
         name="Gestión Documental"
         sequence="5"
-        groups="tmc.group_manager,tmc.group_user,tmc.group_read_only" />
+        groups="tmc.group_user,tmc.group_manager,base.group_system" />
 
     <menuitem id="tmc_others_menu"
         name="»"
@@ -14,7 +14,8 @@
     <menuitem id="tmc_config_menu"
         name="Tribunal de Cuentas"
         parent="base.menu_administration"
-        sequence="90" />
+        sequence="90"
+        groups="base.group_system" />
 
     <menuitem id="act_adm_config_menu"
         name="Gestión Documental"
