@@ -71,11 +71,9 @@
                 <field name="name" />
                 <field name="abbreviation" />
                 <field name="institutional_classifier_ids" />
-                <group>
-                    <filter name="group_by_parent_id"
-                        string="Unidad Institucional"
-                        context="{'group_by': 'parent_id'}" />
-                </group>
+                <filter name="group_by_parent_id"
+                    string="Unidad Institucional"
+                    context="{'group_by': 'parent_id'}" />
                 <filter string="Nomenclador Actual"
                     name="filter_actual_nomenclator"
                     domain="[('in_actual_nomenclator', '=', True)]" />

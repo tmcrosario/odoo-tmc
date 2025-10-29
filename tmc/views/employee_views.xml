@@ -77,11 +77,9 @@
             type="xml">
             <search>
                 <field name="name" />
-                <group expand="True">
-                    <filter name="group_by_office_id"
-                        string="Oficina"
-                        context="{'group_by':'office_id'}" />
-                </group>
+                <filter name="group_by_office_id"
+                    string="Oficina"
+                    context="{'group_by':'office_id'}" />
             </search>
         </field>
     </record>

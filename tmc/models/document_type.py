@@ -1,4 +1,4 @@
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 
 
 class DocumentType(models.Model):
@@ -20,15 +20,12 @@ class DocumentType(models.Model):
                 vals['abbreviation'] = vals['abbreviation'].upper()
         return super().create(vals_list)
 
-    _sql_constraints = [
-        (
-            "name_unique",
-            "UNIQUE(name)",
-            _("Document type name must be unique"),
-        ),
-        (
-            "abbreviation_unique",
-            "UNIQUE(abbreviation)",
-            _("Document type abbreviation must be unique"),
-        ),
-    ]
+    _name_unique = models.Constraint(
+        "UNIQUE(name)",
+        "Document type name must be unique"
+    )
+
+    _abbreviation_unique = models.Constraint(
+        "UNIQUE(abbreviation)",
+        "Document type abbreviation must be unique"
+    )

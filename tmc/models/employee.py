@@ -29,10 +29,7 @@ class Employee(models.Model):
 
     office_id = fields.Many2one(comodel_name="tmc.hr.office")
 
-    _sql_constraints = [
-        (
-            "number_uniq",
-            "unique(docket_number, bank_account_number)",
-            "Number must be unique!",
-        )
-    ]
+    _number_uniq = models.Constraint(
+        "unique(docket_number, bank_account_number)",
+        "Number must be unique!"
+    )

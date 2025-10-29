@@ -113,7 +113,7 @@ class Document(models.Model):
     #     store=True,
     # )
 
-    _sql_constraints = [("name_unique", "UNIQUE(name)", _("Document already exists"))]
+    _name_unique = models.Constraint("UNIQUE(name)", "Document already exists")
 
     @api.constrains("document_object")
     def _check_document_object_length(self):
@@ -152,7 +152,7 @@ class Document(models.Model):
             "res_model": reference_model,
             "view_type": "form",
             "view_mode": "form",
-            "context": self._context,
+            "context": self.env.context,
             "view_id": self.env["ir.model.data"].xmlid_to_res_id(view_xmlid),
             "res_id": self.reference_document,
             "target": "current",
@@ -496,6 +496,7 @@ class Document(models.Model):
 class DocumentDec(models.Model):
     _name = "tmc.document_dec"
     _description = "Decreto"
+    _inherits = {'tmc.document': 'document_id'}
 
     document_id = fields.Many2one(
         comodel_name="tmc.document",
@@ -503,13 +504,13 @@ class DocumentDec(models.Model):
         string="Document Name",
         required=True,
         ondelete="cascade",
-        delegate=True,
     )
 
 
 class DocumentDic(models.Model):
     _name = "tmc.document_dic"
     _description = "Dictamen"
+    _inherits = {'tmc.document': 'document_id'}
 
     document_id = fields.Many2one(
         comodel_name="tmc.document",
@@ -517,13 +518,13 @@ class DocumentDic(models.Model):
         string="Document Name",
         required=True,
         ondelete="cascade",
-        delegate=True,
     )
 
 
 class DocumentExp(models.Model):
     _name = "tmc.document_exp"
     _description = "Expediente"
+    _inherits = {'tmc.document': 'document_id'}
 
     document_id = fields.Many2one(
         comodel_name="tmc.document",
@@ -531,13 +532,13 @@ class DocumentExp(models.Model):
         string="Document Name",
         required=True,
         ondelete="cascade",
-        delegate=True,
     )
 
 
 class DocumentExt(models.Model):
     _name = "tmc.document_ext"
     _description = "Resolucion Extraordinaria"
+    _inherits = {'tmc.document': 'document_id'}
 
     document_id = fields.Many2one(
         comodel_name="tmc.document",
@@ -545,13 +546,13 @@ class DocumentExt(models.Model):
         string="Document Name",
         required=True,
         ondelete="cascade",
-        delegate=True,
     )
 
 
 class DocumentLeg(models.Model):
     _name = "tmc.document_leg"
     _description = "Legajo"
+    _inherits = {'tmc.document': 'document_id'}
 
     document_id = fields.Many2one(
         comodel_name="tmc.document",
@@ -559,13 +560,13 @@ class DocumentLeg(models.Model):
         string="Document Name",
         required=True,
         ondelete="cascade",
-        delegate=True,
     )
 
 
 class DocumentOrd(models.Model):
     _name = "tmc.document_ord"
     _description = "Ordenanza"
+    _inherits = {'tmc.document': 'document_id'}
 
     document_id = fields.Many2one(
         comodel_name="tmc.document",
@@ -573,13 +574,13 @@ class DocumentOrd(models.Model):
         string="Document Name",
         required=True,
         ondelete="cascade",
-        delegate=True,
     )
 
 
 class DocumentRes(models.Model):
     _name = "tmc.document_res"
     _description = "Resolucion"
+    _inherits = {'tmc.document': 'document_id'}
 
     document_id = fields.Many2one(
         comodel_name="tmc.document",
@@ -587,13 +588,13 @@ class DocumentRes(models.Model):
         string="Document Name",
         required=True,
         ondelete="cascade",
-        delegate=True,
     )
 
 
 class DocumentConv(models.Model):
     _name = "tmc.document_conv"
     _description = "Convenio"
+    _inherits = {'tmc.document': 'document_id'}
 
     document_id = fields.Many2one(
         comodel_name="tmc.document",
@@ -601,13 +602,13 @@ class DocumentConv(models.Model):
         string="Document Name",
         required=True,
         ondelete="cascade",
-        delegate=True,
     )
 
 
 class DocumentAct(models.Model):
     _name = "tmc.document_act"
     _description = "Acta"
+    _inherits = {'tmc.document': 'document_id'}
 
     document_id = fields.Many2one(
         comodel_name="tmc.document",
@@ -615,5 +616,4 @@ class DocumentAct(models.Model):
         string="Document Name",
         required=True,
         ondelete="cascade",
-        delegate=True,
     )

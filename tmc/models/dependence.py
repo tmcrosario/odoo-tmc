@@ -1,4 +1,4 @@
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 
 
 class Dependence(models.Model):
@@ -35,10 +35,8 @@ class Dependence(models.Model):
     def name_search(self, name, args=None, operator="ilike", limit=100):
         if not args:
             args = []
-        if self._context.get("search_default_filter_actual_nomenclator"):
+        if self.env.context.get("search_default_filter_actual_nomenclator"):
             args.extend([("in_actual_nomenclator", "=", True)])
         return super().name_search(name=name, args=args, operator=operator, limit=limit)
 
-    _sql_constraints = [
-        ("name_unique", "UNIQUE(name)", _("Dependence name must be unique"))
-    ]
+    _name_unique = models.Constraint("UNIQUE(name)", "Dependence name must be unique")
