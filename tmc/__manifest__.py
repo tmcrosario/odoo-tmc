@@ -36,5 +36,4 @@
     "demo": [],
     "installable": True,
     "application": False,
-    "qweb": [],
 }  # yapf: disable

@@ -32,11 +32,11 @@ class Dependence(models.Model):
             )
 
     @api.model
-    def name_search(self, name, args=None, operator="ilike", limit=100):
-        if not args:
-            args = []
+    def name_search(self, name, domain=None, operator="ilike", limit=100):
+        if not domain:
+            domain = []
         if self.env.context.get("search_default_filter_actual_nomenclator"):
-            args.extend([("in_actual_nomenclator", "=", True)])
-        return super().name_search(name=name, args=args, operator=operator, limit=limit)
+            domain.extend([("in_actual_nomenclator", "=", True)])
+        return super().name_search(name=name, domain=domain, operator=operator, limit=limit)
 
     _name_unique = models.Constraint("UNIQUE(name)", "Dependence name must be unique")
