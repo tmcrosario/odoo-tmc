@@ -238,7 +238,7 @@ class Document(models.Model):
     def _compute_reference_document(self):
         for document in self:
             document.reference_document = None
-            if document.reference_model:
+            if document.reference_model and document.id:
                 reference_model = "tmc." + document.reference_model
                 reference_document = document.env[reference_model].search(
                     [("document_id", "=", document.id)], limit=1
@@ -246,27 +246,16 @@ class Document(models.Model):
                 if reference_document:
                     document.reference_document = reference_document[0]
 
-    @api.depends("highlight_ids")
+    @api.depends("highlight_ids", "highlight_ids.applicable", "highlight_ids.level")
     def _compute_highest_highlight(self):
         for document in self:
             document.highest_highlight = None
-            high_highlights = self.env["tmc.highlight"].search(
-                [
-                    ("document_id", "=", document.id),
-                    ("applicable", "=", True),
-                    ("level", "=", "high"),
-                ]
+            applicable_highlights = document.highlight_ids.filtered(
+                lambda h: h.applicable
             )
-            medium_highlights = self.env["tmc.highlight"].search(
-                [
-                    ("document_id", "=", document.id),
-                    ("applicable", "=", True),
-                    ("level", "=", "medium"),
-                ]
-            )
-            if high_highlights:
+            if applicable_highlights.filtered(lambda h: h.level == "high"):
                 document.highest_highlight = "high"
-            elif medium_highlights:
+            elif applicable_highlights.filtered(lambda h: h.level == "medium"):
                 document.highest_highlight = "medium"
 
     @api.depends("main_topic_ids", "secondary_topic_ids")
@@ -431,6 +420,9 @@ class Document(models.Model):
 
     def _compute_entry_date(self):
         for document in self:
+            if not document.id:
+                document.entry_date = None
+                continue
             raa_object = self.env["raa.registry_aa"].search(
                 [("document_id", "=", document.id)]
             )
