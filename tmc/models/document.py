@@ -115,6 +115,12 @@ class Document(models.Model):
 
     _name_unique = models.Constraint("UNIQUE(name)", "Document already exists")
 
+    @api.constrains("date")
+    def _check_date_not_future(self):
+        for document in self:
+            if document.date and document.date > fields.Date.today():
+                raise exceptions.ValidationError(_("Date cannot be in the future."))
+
     @api.constrains("document_object")
     def _check_document_object_length(self):
         if len(self.document_object or "") > 125 and self.document_type_abbr != "DIC":
@@ -338,7 +344,7 @@ class Document(models.Model):
 
         if vals.get("date"):
             if (
-                int(vals.get("date")[:4]) != self.period
+                vals.get("date")[:4] != str(self.period)
                 and self.document_type_id.abbreviation != "CONV"
             ):
                 message = _("Date does not match with period")
