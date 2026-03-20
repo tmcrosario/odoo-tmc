@@ -88,19 +88,16 @@ class InstitutionalClassifier(models.Model):
         return super().create(vals_list)
 
     def write(self, vals):
-        if not self.due_date and vals.get("dependence_order_ids"):
+        result = super().write(vals)
 
-            dependence_orders = vals["dependence_order_ids"][0][2]
-            dependences = (
-                self.env["tmc.dependence_order"]
-                .search([("id", "in", dependence_orders)])
-                .mapped("dependence_id")
-            )
+        if "dependence_order_ids" in vals:
+            for record in self:
+                if not record.due_date:
+                    self.env["tmc.dependence"].search([]).write(
+                        {"in_actual_nomenclator": False}
+                    )
+                    for dep_order in record.dependence_order_ids:
+                        dep_order.dependence_id.in_actual_nomenclator = True
+                    break
 
-            self.env["tmc.dependence"].search([]).write(
-                {"in_actual_nomenclator": False}
-            )
-            for dependence in dependences:
-                dependence.in_actual_nomenclator = True
-
-        return super(InstitutionalClassifier, self).write(vals)
+        return result
