@@ -1,24 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
-    <record id="country_state_action_form"
-        model="ir.actions.act_window">
+    <record id="country_state_action_form" model="ir.actions.act_window">
         <field name="name">States</field>
         <field name="res_model">res.country.state</field>
         <field name="view_mode">list,form</field>
     </record>
 
-    <record id="tmc.country_state_view_list"
-        model="ir.ui.view">
+    <record id="tmc.country_state_view_list" model="ir.ui.view">
         <field name="name">res.country.state.view.list</field>
         <field name="model">res.country.state</field>
-        <field name="arch"
-            type="xml">
+        <field name="arch" type="xml">
             <list string="States">
                 <field name="name" />
                 <field name="country_id" />
             </list>
         </field>
     </record>
-
 </odoo>

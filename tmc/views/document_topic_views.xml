@@ -1,51 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
-    <record id="document_topic_view_search"
-        model="ir.ui.view">
+    <record id="document_topic_view_search" model="ir.ui.view">
         <field name="name">tmc.document_topic.view.search</field>
         <field name="model">tmc.document_topic</field>
-        <field name="arch"
-            type="xml">
+        <field name="arch" type="xml">
             <search>
                 <field name="name" />
                 <field name="parent_id" />
-                <filter string="Importante"
-                    name="filter_important" />
+                <filter string="Importante" name="filter_important" />
             </search>
         </field>
     </record>
 
-    <record id="document_topic_view_form"
-        model="ir.ui.view">
+    <record id="document_topic_view_form" model="ir.ui.view">
         <field name="name">tmc.document_topic.view.form</field>
         <field name="model">tmc.document_topic</field>
-        <field name="arch"
-            type="xml">
+        <field name="arch" type="xml">
             <form>
-                <header>
-                </header>
+                <header />
                 <sheet>
                     <group>
                         <field name="name" />
-                        <field name="parent_id"
-                            invisible="not parent_id" />
+                        <field name="parent_id" invisible="not parent_id" />
                     </group>
                     <group>
                         <field name="important" />
                         <field name="color" />
                     </group>
                     <notebook invisible="parent_id">
-                        <page name="secondary_topics"
-                            string="Secondary Topics">
+                        <page name="secondary_topics" string="Secondary Topics">
                             <field name="child_ids">
                                 <list>
                                     <field name="name" />
                                 </list>
                             </field>
                         </page>
-                        <page name="dependences"
-                            string="Dependences">
+                        <page name="dependences" string="Dependences">
                             <field name="dependence_ids">
                                 <list>
                                     <field name="name" />
@@ -58,30 +48,23 @@
         </field>
     </record>
 
-    <record id="tmc.document_topic_view_list"
-        model="ir.ui.view">
+    <record id="tmc.document_topic_view_list" model="ir.ui.view">
         <field name="name">tmc.document_topic.view.list</field>
         <field name="model">tmc.document_topic</field>
-        <field name="arch"
-            type="xml">
-            <list string="Document Topics"
-                decoration-muted="important == False">
-                <field name="name"
-                    string="Tema Principal" />
-                <field name="important"
-                    invisible="1" />
+        <field name="arch" type="xml">
+            <list string="Document Topics" decoration-muted="important == False">
+                <field name="name" string="Tema Principal" />
+                <field name="important" invisible="1" />
                 <field name="secondary_topics_display_name" />
                 <field name="dependences_display_name" />
             </list>
         </field>
     </record>
 
-    <record id="document_topic_action_form"
-        model="ir.actions.act_window">
+    <record id="document_topic_action_form" model="ir.actions.act_window">
         <field name="name">Main and Secondary Topics</field>
         <field name="res_model">tmc.document_topic</field>
         <field name="view_mode">list,form</field>
         <field name="context">{'search_default_filter_important': True}</field>
     </record>
-
 </odoo>

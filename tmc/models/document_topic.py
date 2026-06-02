@@ -2,7 +2,6 @@ from odoo import api, fields, models
 
 
 class DocumentTopic(models.Model):
-
     _name = "tmc.document_topic"
     _inherit = "tmc.category"
     _description = "Document Topic"

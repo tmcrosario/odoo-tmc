@@ -1,16 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
-    <menuitem id="tmc_menu_config_gestion_documental_dependence"
+    <menuitem
+        id="tmc_menu_config_gestion_documental_dependence"
         name="Document Topics"
         parent="tmc_others_menu"
         sequence="5"
-        action="dependence_action_form" />
+        action="dependence_action_form"
+    />
 
-    <menuitem id="tmc_menu_dependences"
+    <menuitem
+        id="tmc_menu_dependences"
         name="Dependences"
         parent="act_adm_config_menu"
         sequence="20"
-        action="dependence_action_form_2" />
-
+        action="dependence_action_form_2"
+    />
 </odoo>

@@ -2,7 +2,6 @@ from odoo import fields, models
 
 
 class Employee(models.Model):
-
     _name = "tmc.hr.employee"
     _description = "Employee"
     _order = "name"
@@ -30,6 +29,5 @@ class Employee(models.Model):
     office_id = fields.Many2one(comodel_name="tmc.hr.office")
 
     _number_uniq = models.Constraint(
-        "unique(docket_number, bank_account_number)",
-        "Number must be unique!"
+        "unique(docket_number, bank_account_number)", "Number must be unique!"
     )

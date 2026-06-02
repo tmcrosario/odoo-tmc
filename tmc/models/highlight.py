@@ -2,7 +2,6 @@ from odoo import _, api, fields, models
 
 
 class Highlight(models.Model):
-
     _name = "tmc.highlight"
     _description = "Highlight"
 
@@ -19,7 +18,7 @@ class Highlight(models.Model):
         ]
 
     level = fields.Selection(
-        selection='_get_level_selection',
+        selection="_get_level_selection",
         required=True,
     )
 

@@ -1,39 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
-    <record id="tmc.highlight_view_list"
-        model="ir.ui.view">
+    <record id="tmc.highlight_view_list" model="ir.ui.view">
         <field name="name">tmc.highlight.view.list</field>
         <field name="model">tmc.highlight</field>
         <field name="priority">5</field>
-        <field name="arch"
-            type="xml">
-            <list string="Highlights"
+        <field name="arch" type="xml">
+            <list
+                string="Highlights"
                 decoration-danger="level=='high'"
                 decoration-warning="level=='medium'"
-                decoration-muted="applicable==False">
+                decoration-muted="applicable==False"
+            >
                 <field name="comment" />
                 <field name="level" />
-                <field name="create_uid"
-                    readonly="1" />
-                <field name="write_uid"
-                    readonly="1"
-                    optional="hide" />
-                <field name="create_date"
-                    readonly="1"
-                    optional="hide" />
-                <field name="applicable"
-                    invisible="1" />
+                <field name="create_uid" readonly="1" />
+                <field name="write_uid" readonly="1" optional="hide" />
+                <field name="create_date" readonly="1" optional="hide" />
+                <field name="applicable" invisible="1" />
             </list>
         </field>
     </record>
 
-    <record id="highlight_view_form"
-        model="ir.ui.view">
+    <record id="highlight_view_form" model="ir.ui.view">
         <field name="name">tmc.highlight.view.form</field>
         <field name="model">tmc.highlight</field>
-        <field name="arch"
-            type="xml">
+        <field name="arch" type="xml">
             <form>
                 <sheet>
                     <group>
@@ -42,12 +33,9 @@
                             <field name="applicable" />
                         </group>
                         <group>
-                            <field name="create_date"
-                                invisible="not create_date" />
-                            <field name="create_uid"
-                                invisible="not create_date" />
-                            <field name="write_uid"
-                                invisible="not create_date" />
+                            <field name="create_date" invisible="not create_date" />
+                            <field name="create_uid" invisible="not create_date" />
+                            <field name="write_uid" invisible="not create_date" />
                         </group>
                     </group>
                     <group>
@@ -57,5 +45,4 @@
             </form>
         </field>
     </record>
-
 </odoo>

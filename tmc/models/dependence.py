@@ -36,6 +36,8 @@ class Dependence(models.Model):
             domain = []
         if self.env.context.get("search_default_filter_actual_nomenclator"):
             domain.extend([("in_actual_nomenclator", "=", True)])
-        return super().name_search(name=name, domain=domain, operator=operator, limit=limit)
+        return super().name_search(
+            name=name, domain=domain, operator=operator, limit=limit
+        )
 
     _name_unique = models.Constraint("UNIQUE(name)", "Dependence name must be unique")

@@ -2,7 +2,6 @@ from odoo import api, fields, models
 
 
 class Office(models.Model):
-
     _name = "tmc.hr.office"
     _description = "Office"
     _inherit = "tmc.category"

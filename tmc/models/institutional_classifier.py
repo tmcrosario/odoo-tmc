@@ -5,7 +5,6 @@ from odoo.exceptions import UserError
 
 
 class InstitutionalClassifier(models.Model):
-
     _name = "tmc.institutional_classifier"
     _description = "Institutional Classifier"
     _rec_name = "period"

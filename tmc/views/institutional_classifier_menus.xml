@@ -1,16 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
-    <menuitem id="tmc_menu_dependence_order"
+    <menuitem
+        id="tmc_menu_dependence_order"
         name="Actual Nomenclator"
         parent="tmc_others_menu"
         sequence="10"
-        action="dependence_order_action_form" />
+        action="dependence_order_action_form"
+    />
 
-    <menuitem id="tmc_menu_institutional_classifiers_nomenclators"
+    <menuitem
+        id="tmc_menu_institutional_classifiers_nomenclators"
         name="Nomenclators"
         parent="act_adm_config_menu"
         sequence="15"
-        action="institutional_classifier_action_form" />
-
+        action="institutional_classifier_action_form"
+    />
 </odoo>

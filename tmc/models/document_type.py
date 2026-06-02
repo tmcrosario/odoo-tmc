@@ -2,7 +2,6 @@ from odoo import api, fields, models
 
 
 class DocumentType(models.Model):
-
     _name = "tmc.document_type"
     _description = "Document Type"
 
@@ -15,16 +14,14 @@ class DocumentType(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            if vals.get('abbreviation'):
-                vals['abbreviation'] = vals['abbreviation'].upper()
+            if vals.get("abbreviation"):
+                vals["abbreviation"] = vals["abbreviation"].upper()
         return super().create(vals_list)
 
     _name_unique = models.Constraint(
-        "UNIQUE(name)",
-        "Document type name must be unique"
+        "UNIQUE(name)", "Document type name must be unique"
     )
 
     _abbreviation_unique = models.Constraint(
-        "UNIQUE(abbreviation)",
-        "Document type abbreviation must be unique"
+        "UNIQUE(abbreviation)", "Document type abbreviation must be unique"
     )

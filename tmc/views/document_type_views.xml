@@ -1,25 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
-    <record id="document_type_action_form"
-        model="ir.actions.act_window">
+    <record id="document_type_action_form" model="ir.actions.act_window">
         <field name="name">Document Types</field>
         <field name="res_model">tmc.document_type</field>
         <field name="view_mode">list</field>
     </record>
 
-    <record id="document_type_view_list"
-        model="ir.ui.view">
+    <record id="document_type_view_list" model="ir.ui.view">
         <field name="name">tmc.document_type.view.list</field>
         <field name="model">tmc.document_type</field>
-        <field name="arch"
-            type="xml">
+        <field name="arch" type="xml">
             <list>
-                <field name="name"
-                    string="Document Type" />
+                <field name="name" string="Document Type" />
                 <field name="abbreviation" />
             </list>
         </field>
     </record>
-
 </odoo>

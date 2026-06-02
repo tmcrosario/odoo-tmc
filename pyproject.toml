@@ -1,0 +1,37 @@
+[tool.ruff]
+target-version = "py312"
+fix = true
+line-length = 88
+
+[tool.ruff.lint]
+extend-select = [
+    "B",
+    "C90",
+    "E",
+    "F",
+    "I",
+    "UP",
+    "W",
+]
+extend-ignore = [
+    "E501",  # line too long (handled by ruff-format)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "I001"]
+"__manifest__.py" = ["B018"]
+
+[tool.ruff.lint.isort]
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "odoo",
+    "odoo-addons",
+    "first-party",
+    "local-folder",
+]
+
+[tool.ruff.lint.isort.sections]
+"odoo" = ["odoo"]
+"odoo-addons" = ["odoo.addons"]
