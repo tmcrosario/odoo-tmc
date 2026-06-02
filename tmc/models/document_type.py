@@ -5,7 +5,6 @@ class DocumentType(models.Model):
 
     _name = "tmc.document_type"
     _description = "Document Type"
-    _translate = True
 
     name = fields.Char(required=True, translate=True)
 

@@ -4,7 +4,6 @@ from odoo import api, fields, models
 class Dependence(models.Model):
     _name = "tmc.dependence"
     _description = "Dependence"
-    _translate = True
 
     name = fields.Char(translate=True)
 

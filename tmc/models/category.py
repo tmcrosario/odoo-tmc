@@ -20,12 +20,3 @@ class Category(models.Model):
                 computed_name = parent.name + " / " + computed_name
                 parent = parent.parent_id
             category.display_name = computed_name
-
-    def name_get(self):
-        result = []
-        for cat in self:
-            prefix = None
-            if cat.parent_id:
-                prefix = cat.parent_id.name_get()[0][1] + " / "
-            result.append((cat.id, "%s %s" % (prefix or "", cat.name)))
-        return result

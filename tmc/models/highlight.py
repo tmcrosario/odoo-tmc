@@ -5,7 +5,6 @@ class Highlight(models.Model):
 
     _name = "tmc.highlight"
     _description = "Highlight"
-    _translate = True
 
     comment = fields.Text(required=True)
 

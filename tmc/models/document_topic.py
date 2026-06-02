@@ -7,7 +7,6 @@ class DocumentTopic(models.Model):
     _inherit = "tmc.category"
     _description = "Document Topic"
     _order = "name"
-    _translate = True
 
     first_parent_id = fields.Many2one(
         comodel_name="tmc.document_topic",

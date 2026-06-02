@@ -118,7 +118,7 @@
                             string="Related Documents">
                             <field name="related_document_ids"
                                 nolabel="True"
-                                context="{'tree_view_ref': 'tmc.document_simple_view_tree'}" />
+                                context="{'list_view_ref': 'tmc.document_simple_view_list'}" />
                         </page>
                         <page name="highlights"
                             string="Highlights">

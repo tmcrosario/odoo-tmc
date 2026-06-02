@@ -6,7 +6,6 @@ class Document(models.Model):
     _name = "tmc.document"
     _description = "Document"
     _order = "period desc, name desc"
-    _translate = True
 
     # NOTE: to show specific periods in the 'searchpanel' widget
     # @api.model
@@ -156,10 +155,9 @@ class Document(models.Model):
             "type": "ir.actions.act_window",
             "name": self.name,
             "res_model": reference_model,
-            "view_type": "form",
             "view_mode": "form",
             "context": self.env.context,
-            "view_id": self.env["ir.model.data"].xmlid_to_res_id(view_xmlid),
+            "view_id": self.env.ref(view_xmlid).id,
             "res_id": self.reference_document,
             "target": "current",
             "nodestroy": True,
@@ -461,33 +459,28 @@ class Document(models.Model):
             "context": new_context,
         }
 
-    def fields_view_get(
-        self, view_id=None, view_type="list", toolbar=False, submenu=False
-    ):
-        res = super(Document, self).fields_view_get(
-            view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu
-        )
-
+    @api.model
+    def get_views(self, views, options=None):
+        # MIG(19.0): fields_view_get() was removed in 16.0. The toolbar (server
+        # action buttons) is now assembled by get_views() under
+        # res["views"][view_type]["toolbar"]. This override removes the
+        # add/remove-document-topics server actions when the context flag is set.
+        # TODO(19.0 migration): verify the toolbar dict structure once running.
+        res = super().get_views(views, options=options)
         if "disable_document_topics_wizards" in self.env.context:
-            add_document_topics_button_id = (
-                self.env.ref("tmc.add_document_topics_action_server").id or False
-            )
-            remove_document_topics_button_id = (
-                self.env.ref("tmc.remove_document_topics_action_server").id or False
-            )
-            for button in res.get("toolbar", {}).get("action", []):
-                if (
-                    add_document_topics_button_id
-                    and button["id"] == add_document_topics_button_id
-                ):
-                    res["toolbar"]["action"].remove(button)
-            for button in res.get("toolbar", {}).get("action", []):
-                if (
-                    remove_document_topics_button_id
-                    and button["id"] == remove_document_topics_button_id
-                ):
-                    res["toolbar"]["action"].remove(button)
-
+            hidden_button_ids = {
+                self.env.ref("tmc.add_document_topics_action_server").id or False,
+                self.env.ref("tmc.remove_document_topics_action_server").id or False,
+            }
+            for view in res.get("views", {}).values():
+                toolbar = view.get("toolbar")
+                if not toolbar:
+                    continue
+                toolbar["action"] = [
+                    button
+                    for button in toolbar.get("action", [])
+                    if button["id"] not in hidden_button_ids
+                ]
         return res
 
 

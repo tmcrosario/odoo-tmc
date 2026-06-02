@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class Office(models.Model):
@@ -6,7 +6,6 @@ class Office(models.Model):
     _name = "tmc.hr.office"
     _description = "Office"
     _inherit = "tmc.category"
-    _translate = True
 
     parent_id = fields.Many2one(comodel_name="tmc.hr.office", string="Superior")
 
@@ -26,8 +25,9 @@ class Office(models.Model):
 
     name = fields.Char(required=True, translate=True)
 
-    def name_get(self):
-        result = []
+    @api.depends("name", "abbreviation")
+    def _compute_display_name(self):
+        # MIG(19.0): name_get was removed in 17.0. Office overrides the inherited
+        # tmc.category hierarchical display with its own "<name> - <abbreviation>".
         for office in self:
-            result.append((office.id, office.name + " - %s" % office.abbreviation))
-        return result
+            office.display_name = "%s - %s" % (office.name, office.abbreviation)

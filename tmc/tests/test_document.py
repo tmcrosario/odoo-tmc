@@ -1,8 +1,7 @@
-from odoo.tests import common
+from odoo.tests import common, tagged
 
 
-@common.at_install(False)
-@common.post_install(True)
+@tagged("post_install", "-at_install")
 class TestDocument(common.TransactionCase):
     def test_create(self):
         Documents = self.env["tmc.document"]
