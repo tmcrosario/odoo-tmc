@@ -6,30 +6,59 @@
         <field name="sequence">1</field>
     </record>
 
+    <!-- EPIC-015/TASK-005: privilegio para los 3 grupos de ROL de GD. Sin esto los
+         grupos caian en "Extra Rights" (checkboxes sueltos, sin nombre de modulo) en
+         vez de un dropdown de rol como me/junco/raa.
+         Solo van los 3 roles: group_personal y group_hidden_elements son MODIFICADORES
+         (personal implica group_user) y el privilegio es un select excluyente, asi que
+         meterlos los volveria incompatibles con User/Manager. -->
+    <record id="res_groups_privilege_tmc"
+        model="res.groups.privilege">
+        <field name="name">GD</field>
+        <field name="category_id" ref="module_category_tmc" />
+    </record>
+
+    <!-- EPIC-015/TASK-005: los records van en el ORDEN DE LA ESCALERA
+         (Read Only -> User -> Manager) y cada escalon implica al anterior.
+         1. Tecnico: ref('group_read_only') no resuelve si el record todavia no
+            existe -> con el orden viejo (user primero) el modulo no carga.
+         2. El orden del dropdown lo decide (rank, sequence, id) en res_groups.py,
+            rank = len(all_implied_ids & grupos del privilegio). Con la cadena real
+            el rank es 1/2/3 y el orden es ESTRUCTURAL; sin ella User y Read Only
+            empatan y desempata el id (accidente numerico) -> el widget
+            (res_user_group_ids_field.js) borra opciones del dropdown. -->
+
+    <record id="group_read_only"
+        model="res.groups">
+        <field name="name">Read Only</field>
+        <field name="privilege_id" ref="res_groups_privilege_tmc" />
+    </record>
+
     <record id="group_user"
         model="res.groups">
         <field name="name">User</field>
+        <field name="privilege_id" ref="res_groups_privilege_tmc" />
+        <!-- implica group_read_only para que la escalera sea cadena real (rank 2).
+             base.group_user explicito: group_read_only no lo encadena. -->
         <field name="implied_ids"
-            eval="[(4, ref('base.group_user'))]" />
+            eval="[(4, ref('base.group_user')), (4, ref('group_read_only'))]" />
     </record>
 
     <record id="group_manager"
         model="res.groups">
         <field name="name">Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_tmc" />
         <field name="implied_ids"
-            eval="[(4,ref('group_user'))]" />
+            eval="[(4, ref('group_user'))]" />
     </record>
 
+    <!-- Modificadores: NO llevan privilege_id (no son roles). Quedan como checkboxes
+         en "Extra Rights", que es lo que son. -->
     <record id="group_personal"
         model="res.groups">
         <field name="name">Personal</field>
         <field name="implied_ids"
             eval="[(4,ref('group_user'))]" />
-    </record>
-
-    <record id="group_read_only"
-        model="res.groups">
-        <field name="name">Read Only</field>
     </record>
 
     <record id="group_hidden_elements"

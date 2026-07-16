@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
+    <!-- EPIC-015/TASK-005: se suma tmc.group_read_only para que los lectores de GD
+         (los operativos de ME/JUNCO lo son por herencia, BR-016) vean la app.
+         Con la cadena de groups.xml alcanzaria read_only solo; se dejan los 4
+         explicitos por claridad. -->
     <menuitem id="tmc_menu"
         name="Gestión Documental"
         sequence="5"
-        groups="tmc.group_user,tmc.group_manager,base.group_system" />
+        groups="tmc.group_read_only,tmc.group_user,tmc.group_manager,base.group_system" />
 
     <menuitem id="tmc_others_menu"
         name="»"
