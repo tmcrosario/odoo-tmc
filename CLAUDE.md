@@ -122,7 +122,8 @@ my_module/
 ### 1. Modeling and Validation
 
 - Use Odoo ORM for all model definitions
-- Define constraints using `_sql_constraints` for database-level constraints
+- Define constraints using `models.Constraint` for database-level constraints — the
+  legacy `_sql_constraints` list is ignored on 19.0 and silently creates nothing
 - Use Python constraints (`@api.constrains`) for complex business logic validation
 - Always validate user input before processing
 - Use appropriate field types and avoid generic fields when specific ones exist
@@ -134,9 +135,9 @@ class Dependence(models.Model):
     _name = 'tmc.dependence'
     _description = 'Dependence'
 
-    _sql_constraints = [
-        ('name_unique', 'UNIQUE(name)', _('Dependence name must be unique'))
-    ]
+    _name_unique = models.Constraint(
+        'UNIQUE(name)', 'Dependence name must be unique'
+    )
 
     @api.constrains('date_start', 'date_end')
     def _check_dates(self):
@@ -498,7 +499,6 @@ Define server actions in XML for button actions:
   <field name="code">model._cron_my_task()</field>
   <field name="interval_number">1</field>
   <field name="interval_type">days</field>
-  <field name="numbercall">-1</field>
 </record>
 ```
 
