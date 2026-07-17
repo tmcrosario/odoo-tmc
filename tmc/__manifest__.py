@@ -8,12 +8,12 @@
     "sequence": 150,
     "depends": [
         "base",
+        "web_tree_many2one_clickable",
+        "remove_odoo_enterprise",
         # NOTE: tmc references tmc_data records at runtime via env.ref
         # (seq_tmc_act, document topics). This is an intentional RUNTIME coupling,
         # not a manifest dependency: tmc_data depends on tmc, so declaring tmc_data
         # here would create a circular dependency. See MIGRATION_NOTES.md.
-        # TODO(19.0 migration): restore "web_tree_many2one_clickable" when available.
-        # TODO(19.0 migration): restore "remove_odoo_enterprise" when available.
     ],
     "data": [
         "security/groups.xml",
