@@ -459,30 +459,6 @@ class Document(models.Model):
             "context": new_context,
         }
 
-    @api.model
-    def get_views(self, views, options=None):
-        # MIG(19.0): fields_view_get() was removed in 16.0. The toolbar (server
-        # action buttons) is now assembled by get_views() under
-        # res["views"][view_type]["toolbar"]. This override removes the
-        # add/remove-document-topics server actions when the context flag is set.
-        # TODO(19.0 migration): verify the toolbar dict structure once running.
-        res = super().get_views(views, options=options)
-        if "disable_document_topics_wizards" in self.env.context:
-            hidden_button_ids = {
-                self.env.ref("tmc.add_document_topics_action_server").id or False,
-                self.env.ref("tmc.remove_document_topics_action_server").id or False,
-            }
-            for view in res.get("views", {}).values():
-                toolbar = view.get("toolbar")
-                if not toolbar:
-                    continue
-                toolbar["action"] = [
-                    button
-                    for button in toolbar.get("action", [])
-                    if button["id"] not in hidden_button_ids
-                ]
-        return res
-
 
 class DocumentDec(models.Model):
     _name = "tmc.document_dec"
