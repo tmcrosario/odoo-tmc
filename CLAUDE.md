@@ -5,6 +5,41 @@
 This is the TMC (Tribunal Municipal de Cuentas de Rosario) module for Odoo 19.0,
 providing a Document Management System (Sistema de Gestión Documental).
 
+## Agent Working Conventions
+
+Conventions for anyone (including AI assistants) working in this repo. They live
+here, checked into git, so they travel across machines instead of depending on a
+local assistant memory.
+
+### Interaction language
+
+- Reply to the user in **Spanish** in chat/prose.
+- Keep code, inline comments, and commit messages in **English**.
+
+### Code comments
+
+- Inline comments (XML, Python, JS) must be **a single line**, in English, and
+  explain _why_, not _what_.
+- Keep them **short — under ~79 characters**.
+- If a rationale genuinely needs paragraphs (e.g. a subtle test invariant), put it
+  in the commit message or PR description, not in an inline block.
+
+### Formatting
+
+- Format touched files with the repo's own tooling, not an editor/global config:
+  `pre-commit run prettier --files <paths>` for XML/JS/JSON/MD/YAML,
+  `pre-commit run ruff-format --files <paths>` for Python.
+- XML follows the OCA Prettier config (`prettier.config.cjs`, `printWidth: 88`,
+  `@prettier/plugin-xml`); that pre-commit output is the source of truth.
+
+### Commit authorship
+
+- **Never** add AI attribution: no `Co-Authored-By: Claude`, no "Generated with
+  Claude Code", no 🤖 footer. Commits are authored solely by the human.
+- When porting someone else's commit (cherry-pick / re-apply), preserve **their**
+  authorship with `git commit --author="Name <email>"` and keep a
+  `(cherry picked from commit <sha>)` line.
+
 ## Commit Message Style
 
 Follow this repository's commit message conventions and the official Odoo Git
