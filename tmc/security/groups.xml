@@ -38,4 +38,10 @@
     <record id="group_hidden_elements" model="res.groups">
         <field name="name">Hidden Elements</field>
     </record>
+
+    <!-- Baseline: every internal user gets read-only on GD -->
+    <function model="res.groups" name="write">
+        <value model="res.groups" eval="[ref('base.group_user')]" />
+        <value eval="{'implied_ids': [(4, ref('group_read_only'))]}" />
+    </function>
 </odoo>
