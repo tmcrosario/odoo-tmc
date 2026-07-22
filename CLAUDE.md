@@ -7,9 +7,9 @@ providing a Document Management System (Sistema de Gestión Documental).
 
 ## Agent Working Conventions
 
-Conventions for anyone (including AI assistants) working in this repo. They live
-here, checked into git, so they travel across machines instead of depending on a
-local assistant memory.
+Conventions for anyone (including AI assistants) working in this repo. They live here,
+checked into git, so they travel across machines instead of depending on a local
+assistant memory.
 
 ### Interaction language
 
@@ -18,11 +18,11 @@ local assistant memory.
 
 ### Code comments
 
-- Inline comments (XML, Python, JS) must be **a single line**, in English, and
-  explain _why_, not _what_.
+- Inline comments (XML, Python, JS) must be **a single line**, in English, and explain
+  _why_, not _what_.
 - Keep them **short — under ~79 characters**.
-- If a rationale genuinely needs paragraphs (e.g. a subtle test invariant), put it
-  in the commit message or PR description, not in an inline block.
+- If a rationale genuinely needs paragraphs (e.g. a subtle test invariant), put it in
+  the commit message or PR description, not in an inline block.
 
 ### Formatting
 
@@ -34,11 +34,13 @@ local assistant memory.
 
 ### Commit authorship
 
-- **Never** add AI attribution: no `Co-Authored-By: Claude`, no "Generated with
-  Claude Code", no 🤖 footer. Commits are authored solely by the human.
+- **Never** add AI attribution: no `Co-Authored-By: Claude`, no "Generated with Claude
+  Code", no 🤖 footer. Commits are authored solely by the human.
 - When porting someone else's commit (cherry-pick / re-apply), preserve **their**
   authorship with `git commit --author="Name <email>"` and keep a
   `(cherry picked from commit <sha>)` line.
+- Ask the user for confirmation — files to commit plus the proposed message — before
+  creating any commit; amends and cherry-picks included.
 
 ## Commit Message Style
 
