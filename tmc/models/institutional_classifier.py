@@ -13,17 +13,11 @@ class InstitutionalClassifier(models.Model):
 
     display_name = fields.Char(compute="_compute_display_name", string="Name")
 
+    # Fixed lower bound: a rolling window invalidates seeded records over time
     period = fields.Selection(
         selection=[
             (str(num), str(num))
-            for num in reversed(
-                list(
-                    range(
-                        ((datetime.now().year) - 10),
-                        ((datetime.now().year) + 1),
-                    )
-                )
-            )
+            for num in reversed(range(2015, datetime.now().year + 1))
         ],
         required=True,
     )
