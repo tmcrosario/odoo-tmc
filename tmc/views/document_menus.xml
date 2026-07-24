@@ -284,6 +284,14 @@
     />
 
     <menuitem
+        id="tmc_menu_dependence_documents_entes_sumar"
+        name="SUMAR"
+        parent="tmc_menu_dependence_documents_entes"
+        sequence="32"
+        action="document_action_form_sumar"
+    />
+
+    <menuitem
         id="tmc_menu_dependence_documents_entes_ter"
         name="Terminal de Ómnibus"
         parent="tmc_menu_dependence_documents_entes"

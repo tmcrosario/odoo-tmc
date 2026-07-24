@@ -1396,6 +1396,49 @@
         </field>
     </record>
 
+    <!-- RESOLUCION SUMAR -->
+    <record id="document_sumar_simple_view_search" model="ir.ui.view">
+        <field name="name">tmc.document.sumar.simple.view.search</field>
+        <field name="model">tmc.document</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="number" />
+                <field name="period" />
+                <field name="document_object" />
+                <field name="document_type_id" />
+                <field name="main_topic_ids" />
+                <field name="secondary_topic_ids" />
+                <searchpanel>
+                    <field
+                        name="main_topic_ids"
+                        select="multi"
+                        enable_counters="1"
+                        icon="fa-tags"
+                        domain="[('dependence_ids', 'ilike', 'Servicio Urbano de Mantenimiento Ambiental Rosario')]"
+                    />
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <!-- Renamed with a "(SUMAR)" suffix in prod; ilike keeps the match -->
+    <record id="document_action_form_sumar" model="ir.actions.act_window">
+        <field
+            name="name"
+        >Servicio Urbano de Mantenimiento Ambiental Rosario (SUMAR)</field>
+        <field name="res_model">tmc.document</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="document_sumar_simple_view_search" />
+        <field
+            name="domain"
+        >[('dependence_id', 'ilike', 'Servicio Urbano de Mantenimiento Ambiental Rosario')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay documentos para mostrar.
+            </p>
+        </field>
+    </record>
+
     <!-- RESOLUCION HIP -->
     <record id="document_hip_simple_view_search" model="ir.ui.view">
         <field name="name">tmc.document.hip.simple.view.search</field>
