@@ -31,12 +31,11 @@ class Document(models.Model):
     number = fields.Integer()
 
     period = fields.Selection(
+        # Fixed lower bound (see _check_period); a rolling window would drop
+        # historical periods and break migrated records
         selection=lambda self: [
             (str(num), str(num))
-            for num in range(
-                ((fields.Date.today().year) - 10),
-                ((fields.Date.today().year) + 1),
-            )
+            for num in reversed(range(1948, fields.Date.today().year + 1))
         ],
         required=True,
     )
@@ -189,12 +188,11 @@ class Document(models.Model):
     def _compute_name(self):
         for document in self:
             doc_abbr = document.document_type_id.abbreviation
+            # Use the stored number, set once at create; reading the live
+            # ACT sequence here rewrites historical names on any recompute
             doc_number = document.number
             doc_period = document.period
             dep_abbr = document.dependence_id.abbreviation
-
-            if doc_abbr == "ACT":
-                doc_number = self.env.ref("tmc_data.seq_tmc_act").number_next_actual
 
             if doc_abbr and doc_number and doc_period and dep_abbr:
                 document.name = "%s-%s-%s/%s" % (
