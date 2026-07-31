@@ -110,6 +110,14 @@ class Document(models.Model):
 
     _name_unique = models.Constraint("UNIQUE(name)", "Document already exists")
 
+    def init(self):
+        # Composite btree serves "ORDER BY period DESC, name DESC" as a
+        # backward index scan, avoiding a full sort of the whole table
+        self.env.cr.execute(
+            "CREATE INDEX IF NOT EXISTS tmc_document_period_name_idx "
+            "ON tmc_document (period, name)"
+        )
+
     @api.constrains("date")
     def _check_date_not_future(self):
         for document in self:

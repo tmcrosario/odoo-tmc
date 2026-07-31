@@ -1,7 +1,7 @@
 {
     "name": "TMC Base",
     "summary": "Main TMC models and functionality",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "website": "https://www.tmcrosario.gob.ar",
     "author": "Tribunal Municipal de Cuentas - Municipalidad de Rosario",
     "license": "AGPL-3",
