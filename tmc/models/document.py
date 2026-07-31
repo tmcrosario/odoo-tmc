@@ -268,21 +268,11 @@ class Document(models.Model):
             elif applicable_highlights.filtered(lambda h: h.level == "medium"):
                 document.highest_highlight = "medium"
 
-    @api.depends("main_topic_ids", "secondary_topic_ids")
+    @api.depends("main_topic_ids.important", "secondary_topic_ids.important")
     def _compute_important_topic(self):
         for document in self:
-            domain = [
-                "|",
-                ("id", "in", document.main_topic_ids.ids),
-                ("id", "in", document.secondary_topic_ids.ids),
-                ("important", "=", True),
-            ]
-            important_related_topics = self.env["tmc.document_topic"].search(domain)
-
-            if important_related_topics:
-                document.important = True
-            else:
-                document.important = False
+            topics = document.main_topic_ids | document.secondary_topic_ids
+            document.important = any(topics.mapped("important"))
 
     @api.onchange("dependence_id", "document_type_id", "period", "number")
     def _onchange_document_data(self):

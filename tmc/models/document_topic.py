@@ -59,6 +59,7 @@ class DocumentTopic(models.Model):
                 parent = parent.parent_id
             document_topic.first_parent_id = first_parent_id
 
+    @api.depends("name")
     def _compute_display_name(self):
         for topic in self:
             topic.display_name = topic.name
