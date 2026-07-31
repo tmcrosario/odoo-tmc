@@ -1609,6 +1609,7 @@
         <field name="code">
             action = model.action_mass_edit_document_topics_show_wizard()
         </field>
+        <field name="group_ids" eval="[(4, ref('tmc.group_manager'))]" />
     </record>
 
     <!-- SERVER ACTION -->
