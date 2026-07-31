@@ -89,6 +89,7 @@ class Document(models.Model):
     highest_highlight = fields.Selection(
         selection=[("high", "High"), ("medium", "Medium")],
         compute="_compute_highest_highlight",
+        store=True,
     )
 
     important = fields.Boolean(compute="_compute_important_topic", store=True)
