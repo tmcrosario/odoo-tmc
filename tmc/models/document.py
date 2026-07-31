@@ -13,7 +13,7 @@ class Document(models.Model):
     #     this_year = fields.Date.today().year
     #     return [(str(year), str(year)) for year in range(this_year - 6, this_year + 1)]
 
-    name = fields.Char(compute="_compute_name", store=True, translate=True)
+    name = fields.Char(compute="_compute_name", store=True)
 
     dependence_id = fields.Many2one(
         comodel_name="tmc.dependence",
@@ -45,8 +45,6 @@ class Document(models.Model):
     # NOTE: to show a mark in the name for documents related to a dictamen
     # display_name = fields.Char(compute="_compute_display_name")
 
-    # entry_date = fields.Date(compute="_compute_entry_date", readonly=True)
-
     document_object = fields.Char(string="Object", size=250, index=True, translate=True)
 
     document_object_required = fields.Boolean()
@@ -71,7 +69,6 @@ class Document(models.Model):
         compute="_compute_topics_display_name",
         string="Topics",
         readonly=True,
-        translate=True,
     )
 
     reference_model = fields.Char(related="document_type_id.model")
@@ -128,7 +125,9 @@ class Document(models.Model):
             ):
                 raise UserError("'Object' must not exceed 125 characters.")
 
-    @api.depends("related_document_ids")
+    @api.depends(
+        "related_document_ids", "related_document_ids.document_type_id.abbreviation"
+    )
     def _compute_related_to_dictamen(self):
         for document in self:
             has_dictamen = any(
@@ -150,21 +149,6 @@ class Document(models.Model):
     # @api.onchange("period")
     # def _onchange_period(self):
     #     self._compute_period_selection()
-
-    def show_or_add_content(self):
-        reference_model = "tmc." + self.reference_model
-        view_xmlid = "tmc.view_" + self.reference_model + "_form"
-        return {
-            "type": "ir.actions.act_window",
-            "name": self.name,
-            "res_model": reference_model,
-            "view_mode": "form",
-            "context": self.env.context,
-            "view_id": self.env.ref(view_xmlid).id,
-            "res_id": self.reference_document,
-            "target": "current",
-            "nodestroy": True,
-        }
 
     @api.constrains("period")
     def _check_period(self):
@@ -242,7 +226,7 @@ class Document(models.Model):
                     [("document_id", "=", document.id)], limit=1
                 )
                 if reference_document:
-                    document.reference_document = reference_document[0]
+                    document.reference_document = reference_document.id
 
     @api.depends("highlight_ids", "highlight_ids.applicable", "highlight_ids.level")
     def _compute_highest_highlight(self):
@@ -406,21 +390,6 @@ class Document(models.Model):
     def _onchange_document_object(self):
         if self.document_object:
             self.document_object = self.document_object.title()
-
-    def _compute_entry_date(self):
-        for document in self:
-            if not document.id:
-                document.entry_date = None
-                continue
-            raa_object = self.env["raa.registry_aa"].search(
-                [("document_id", "=", document.id)]
-            )
-            if raa_object:
-                document.entry_date = raa_object.entry_date
-            else:
-                document.entry_date = fields.Date.from_string(
-                    document.create_date
-                ).strftime("%Y-%m-%d")
 
     def action_mass_edit_document_topics_show_wizard(self, remove=False):
         active_model = self.env.context.get("active_model")

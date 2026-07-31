@@ -14,8 +14,6 @@
                 <field name="date" />
                 <field name="document_object" optional="show" />
                 <field name="topics_display_name" optional="show" />
-                <!-- <field name="entry_date"
-                    optional="show" /> -->
                 <field name="highest_highlight" invisible="1" />
             </list>
         </field>
@@ -97,7 +95,6 @@
                             invisible="name in ['Unnamed Document', 'Documento Sin Nombre']"
                         >
                             <field name="date" />
-                            <!-- <field name="entry_date" /> -->
                         </group>
                         <field name="document_topic_ids" invisible="1" />
                         <group
@@ -589,10 +586,12 @@
     </record>
 
     <record id="document_action_form_prodei" model="ir.actions.act_window">
-        <field name="name">Secretaría de Producción, Empleo e Innovación (PROD)</field>
+        <field
+            name="name"
+        >Secretaría de Producción, Empleo e Innovación (PRODEI)</field>
         <field name="res_model">tmc.document</field>
         <field name="view_mode">list,form</field>
-        <field name="search_view_id" ref="document_prod_simple_view_search" />
+        <field name="search_view_id" ref="document_prodei_simple_view_search" />
         <field
             name="domain"
         >[('dependence_id','=','SECRETARÍA DE PRODUCCIÓN, EMPLEO E INNOVACIÓN')]</field>
