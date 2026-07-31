@@ -232,18 +232,6 @@ class Document(models.Model):
         )
         self.secondary_topic_ids = new_secondary_topic_ids
 
-        return {
-            "domain": {
-                "secondary_topic_ids": [
-                    (
-                        "first_parent_id",
-                        "in",
-                        self.main_topic_ids._origin.mapped("id"),
-                    )
-                ]
-            }
-        }
-
     @api.depends("reference_model")
     def _compute_reference_document(self):
         for document in self:
