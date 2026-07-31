@@ -19,6 +19,7 @@
                         </h1>
                     </div>
                     <group>
+                        <field name="abbreviation" />
                         <field name="manager_id" />
                         <field name="parent_id" />
                     </group>
