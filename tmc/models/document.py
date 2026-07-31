@@ -121,8 +121,12 @@ class Document(models.Model):
 
     @api.constrains("document_object")
     def _check_document_object_length(self):
-        if len(self.document_object or "") > 125 and self.document_type_abbr != "DIC":
-            raise UserError("'Object' must not exceed 125 characters.")
+        for document in self:
+            if (
+                len(document.document_object or "") > 125
+                and document.document_type_abbr != "DIC"
+            ):
+                raise UserError("'Object' must not exceed 125 characters.")
 
     @api.depends("related_document_ids")
     def _compute_related_to_dictamen(self):
@@ -164,25 +168,29 @@ class Document(models.Model):
 
     @api.constrains("period")
     def _check_period(self):
-        period = int(self.period)
-        if not (1000 <= period <= fields.Date.today().year):
-            raise exceptions.ValidationError(_("Invalid period"))
-        if period < 1948:
-            raise exceptions.ValidationError(_("Periods before 1948 are not allowed."))
+        for document in self:
+            period = int(document.period)
+            if not (1000 <= period <= fields.Date.today().year):
+                raise exceptions.ValidationError(_("Invalid period"))
+            if period < 1948:
+                raise exceptions.ValidationError(
+                    _("Periods before 1948 are not allowed.")
+                )
 
     @api.constrains("number")
     def _check_number(self):
-        max_number = 6000
-        if self.document_type_id.abbreviation in ["EXP", "ACT", "CONV"]:
-            max_number = 999999
-        if self.dependence_id.abbreviation in ["CM", "HCM", "CONC"]:
-            max_number = 999999
-        if self.dependence_id.abbreviation in ["DHH"]:
-            max_number = 9999
-        if self.number == 0 and self.document_type_id.abbreviation != "ACT":
-            raise UserError(_("Invalid number"))
-        if self.number > max_number:
-            raise UserError(_("Invalid number"))
+        for document in self:
+            max_number = 6000
+            if document.document_type_id.abbreviation in ["EXP", "ACT", "CONV"]:
+                max_number = 999999
+            if document.dependence_id.abbreviation in ["CM", "HCM", "CONC"]:
+                max_number = 999999
+            if document.dependence_id.abbreviation in ["DHH"]:
+                max_number = 9999
+            if document.number == 0 and document.document_type_id.abbreviation != "ACT":
+                raise UserError(_("Invalid number"))
+            if document.number > max_number:
+                raise UserError(_("Invalid number"))
 
     @api.depends("document_type_id", "dependence_id", "number", "period")
     def _compute_name(self):
@@ -339,12 +347,13 @@ class Document(models.Model):
                     raise exceptions.UserError(message)
 
         if vals.get("date"):
-            if (
-                vals.get("date")[:4] != str(self.period)
-                and self.document_type_id.abbreviation != "CONV"
-            ):
-                message = _("Date does not match with period")
-                raise exceptions.UserError(message)
+            for document in self:
+                if (
+                    vals["date"][:4] != str(document.period)
+                    and document.document_type_id.abbreviation != "CONV"
+                ):
+                    message = _("Date does not match with period")
+                    raise exceptions.UserError(message)
 
         if write_inverse and vals.get("related_document_ids"):
             new_related_documents = self.browse(vals["related_document_ids"][0][2])
