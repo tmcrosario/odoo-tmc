@@ -11,6 +11,14 @@ Conventions for anyone (including AI assistants) working in this repo. They live
 checked into git, so they travel across machines instead of depending on a local
 assistant memory.
 
+### Working environment — never touch production
+
+- **Never connect to the production database or a production instance.** Work only
+  against local instances: a prod dump restored into a local container is a local copy,
+  not production. Run smoke tests in throwaway ephemeral containers.
+- If a step seems to require touching production (a prod host/IP, real credentials),
+  **stop and ask** instead of attempting it.
+
 ### Interaction language
 
 - Reply to the user in **Spanish** in chat/prose.
