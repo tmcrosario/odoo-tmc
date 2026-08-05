@@ -4,79 +4,22 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0-20231106\n"
+"Project-Id-Version: Odoo Server 19.0-20260630\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-18 15:03+0000\n"
-"PO-Revision-Date: 2024-04-18 12:06-0300\n"
+"POT-Creation-Date: 2026-08-05 16:03+0000\n"
+"PO-Revision-Date: 2026-08-05 16:03+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
 #. module: tmc
+#. odoo-python
 #: code:addons/tmc/models/institutional_classifier.py:0
-#, python-format
 msgid " (Current)"
-msgstr " (Actual)"
-
-#. module: tmc
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2014
-msgid "2014"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2015
-msgid "2015"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2016
-msgid "2016"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2017
-msgid "2017"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2018
-msgid "2018"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2019
-msgid "2019"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2020
-msgid "2020"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2021
-msgid "2021"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2022
-msgid "2022"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2023
-msgid "2023"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_institutional_classifier__period__2024
-msgid "2024"
-msgstr ""
+msgstr " (Current)"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence__abbreviation
@@ -99,7 +42,7 @@ msgstr "Abreviatura"
 #. module: tmc
 #: model:ir.model,name:tmc.model_tmc_document_act
 msgid "Acta"
-msgstr ""
+msgstr "Acta"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee__active
@@ -113,16 +56,16 @@ msgid "Actual Nomenclator"
 msgstr "Nomenclador Actual"
 
 #. module: tmc
+#. odoo-python
 #: code:addons/tmc/models/document.py:0
 #: model:ir.actions.server,name:tmc.add_document_topics_action_server
-#, python-format
 msgid "Add Document Topics"
 msgstr "Agregar Temas de Documento"
 
 #. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.hr_employee_view_form
 msgid "Administración"
-msgstr ""
+msgstr "Administración"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee__admission_date
@@ -137,7 +80,7 @@ msgstr "Documentos"
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_amb
 msgid "Ambiente y Espacio Público"
-msgstr ""
+msgstr "Ambiente y Espacio Público"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_highlight__applicable
@@ -155,14 +98,10 @@ msgid "Bank Branch"
 msgstr "Sucursal Bancaria"
 
 #. module: tmc
+#. odoo-python
 #: code:addons/tmc/models/institutional_classifier.py:0
-#, python-format
-msgid ""
-"Before adding a nomenclator you must set due "
-"date                                 prior to the current"
-msgstr ""
-"Antes de agregar un nomenclador debe establecerse una fecha de vencimiento "
-"al nomenclador anterior"
+msgid "Before adding a nomenclator you must set due date prior to the current"
+msgstr "Antes de agregar un nomenclador debe fijar una fecha de vencimiento anterior al actual"
 
 #. module: tmc
 #: model:ir.model,name:tmc.model_tmc_category
@@ -173,7 +112,7 @@ msgstr "Categoría"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic__child_ids
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_office__child_ids
 msgid "Child"
-msgstr ""
+msgstr "Hijo"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order__code
@@ -183,7 +122,7 @@ msgstr "Código"
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic__color
 msgid "Color"
-msgstr ""
+msgstr "Color"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_highlight__comment
@@ -193,22 +132,22 @@ msgstr "Comentario"
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_cm
 msgid "Concejo Municipal"
-msgstr ""
+msgstr "Concejo Municipal"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_cm
 msgid "Concejo Municipal (CM)"
-msgstr ""
+msgstr "Concejo Municipal (CM)"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_conv
 msgid "Control y Convivencia"
-msgstr ""
+msgstr "Control y Convivencia"
 
 #. module: tmc
 #: model:ir.model,name:tmc.model_tmc_document_conv
 msgid "Convenio"
-msgstr ""
+msgstr "Convenio"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_category__create_uid
@@ -233,7 +172,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_office__create_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier__create_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_mass_edit_document_topics_wizard__create_uid
-#: model:ir.model.fields,field_description:tmc.field_tmc_report__create_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_system__create_uid
 msgid "Created by"
 msgstr "Creado por"
@@ -261,7 +199,6 @@ msgstr "Creado por"
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_office__create_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier__create_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_mass_edit_document_topics_wizard__create_date
-#: model:ir.model.fields,field_description:tmc.field_tmc_report__create_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_system__create_date
 msgid "Created on"
 msgstr "Creado en"
@@ -269,7 +206,7 @@ msgstr "Creado en"
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_cul
 msgid "Cultura y Educación"
-msgstr ""
+msgstr "Cultura y Educación"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document__date
@@ -286,25 +223,31 @@ msgid "Date"
 msgstr "Fecha"
 
 #. module: tmc
+#. odoo-python
 #: code:addons/tmc/models/document.py:0
-#, python-format
+msgid "Date cannot be in the future."
+msgstr "La fecha no puede ser futura."
+
+#. module: tmc
+#. odoo-python
+#: code:addons/tmc/models/document.py:0
 msgid "Date does not match with period"
-msgstr "La fecha del documento no coincide con el período del mismo"
+msgstr "La fecha no coincide con el período"
 
 #. module: tmc
 #: model:ir.model,name:tmc.model_tmc_document_dec
 msgid "Decreto"
-msgstr ""
+msgstr "Decreto"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_dem
 msgid "Departamento Ejecutivo"
-msgstr ""
+msgstr "Departamento Ejecutivo"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_dem
 msgid "Departamento Ejecutivo (DEM)"
-msgstr ""
+msgstr "Departamento Ejecutivo (DEM)"
 
 #. module: tmc
 #: model:ir.model,name:tmc.model_tmc_dependence
@@ -331,9 +274,12 @@ msgid "Dependence Order"
 msgstr "Dependencias"
 
 #. module: tmc
-#: code:addons/tmc/models/dependence.py:0
+#: model_terms:ir.ui.view,arch_db:tmc.dependence_order_view_list
+msgid "Dependence Orders"
+msgstr "Órdenes de dependencia"
+
+#. module: tmc
 #: model:ir.model.constraint,message:tmc.constraint_tmc_dependence_name_unique
-#, python-format
 msgid "Dependence name must be unique"
 msgstr "El nombre de la dependencia debe ser única"
 
@@ -342,6 +288,7 @@ msgstr "El nombre de la dependencia debe ser única"
 #: model:ir.actions.act_window,name:tmc.dependence_action_form_2
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic__dependences_display_name
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependences
+#: model_terms:ir.ui.view,arch_db:tmc.dependence_view_list
 #: model_terms:ir.ui.view,arch_db:tmc.document_topic_view_form
 #: model_terms:ir.ui.view,arch_db:tmc.institutional_classifier_view_form
 msgid "Dependences"
@@ -355,32 +302,32 @@ msgstr "Dependencias"
 #. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.dependence_view_search
 msgid "Dependencias con Temas"
-msgstr ""
+msgstr "Dependencias con Temas"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_dep
 msgid "Deporte y Turismo"
-msgstr ""
+msgstr "Deporte y Turismo"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_dee
 msgid "Desarrollo Económico y Empleo"
-msgstr ""
+msgstr "Desarrollo Económico y Empleo"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_dhh
 msgid "Desarrollo Humano y Hábitat"
-msgstr ""
+msgstr "Desarrollo Humano y Hábitat"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_des
 msgid "Desarrollo Social"
-msgstr ""
+msgstr "Desarrollo Social"
 
 #. module: tmc
 #: model:ir.model,name:tmc.model_tmc_document_dic
 msgid "Dictamen"
-msgstr ""
+msgstr "Dictamen"
 
 #. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.view_mass_edit_document_topics_form
@@ -409,7 +356,6 @@ msgstr "Cancelar"
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_title__display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_office__display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_mass_edit_document_topics_wizard__display_name
-#: model:ir.model.fields,field_description:tmc.field_tmc_report__display_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_system__display_name
 msgid "Display Name"
 msgstr "Mostrar Nombre"
@@ -437,6 +383,7 @@ msgstr "Documento"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_leg__document_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__document_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res__document_id
+#: model_terms:ir.ui.view,arch_db:tmc.document_view_form
 msgid "Document Name"
 msgstr "Documento"
 
@@ -476,6 +423,7 @@ msgstr "Tema Principal o Secundario"
 #: model:ir.ui.menu,name:tmc.tmc_menu_config_gestion_documental_dependence
 #: model:ir.ui.menu,name:tmc.tmc_menu_documents_document_topics
 #: model_terms:ir.ui.view,arch_db:tmc.dependence_view_form
+#: model_terms:ir.ui.view,arch_db:tmc.document_topic_view_list
 msgid "Document Topics"
 msgstr "Temas de Documento"
 
@@ -492,7 +440,6 @@ msgstr "Temas de Documento"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_leg__document_type_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__document_type_id
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res__document_type_id
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_type__name
 #: model_terms:ir.ui.view,arch_db:tmc.document_type_view_list
 msgid "Document Type"
 msgstr "Tipo de Documento"
@@ -505,25 +452,27 @@ msgid "Document Types"
 msgstr "Tipos de Documento"
 
 #. module: tmc
+#. odoo-python
 #: code:addons/tmc/models/document.py:0
 #: model:ir.model.constraint,message:tmc.constraint_tmc_document_name_unique
-#, python-format
 msgid "Document already exists"
 msgstr "El documento ya existe"
 
 #. module: tmc
-#: code:addons/tmc/models/document_type.py:0
 #: model:ir.model.constraint,message:tmc.constraint_tmc_document_type_abbreviation_unique
-#, python-format
 msgid "Document type abbreviation must be unique"
 msgstr "La abreviatura debe ser única"
 
 #. module: tmc
-#: code:addons/tmc/models/document_type.py:0
 #: model:ir.model.constraint,message:tmc.constraint_tmc_document_type_name_unique
-#, python-format
 msgid "Document type name must be unique"
 msgstr "El nombre debe ser único"
+
+#. module: tmc
+#: model_terms:ir.ui.view,arch_db:tmc.document_simple_view_list
+#: model_terms:ir.ui.view,arch_db:tmc.document_view_list
+msgid "Documents"
+msgstr "Documentos"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier__due_date
@@ -533,12 +482,12 @@ msgstr "Fecha Hasta"
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_econ
 msgid "Economía Social"
-msgstr ""
+msgstr "Economía Social"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents
 msgid "Ejecutivo"
-msgstr ""
+msgstr "Ejecutivo"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee__email
@@ -572,46 +521,32 @@ msgstr "Empleados"
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes_etur
 msgid "Ente Turístico Rosario"
-msgstr ""
+msgstr "Ente Turístico Rosario"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_etur
 msgid "Ente Turístico Rosario (ETUR)"
-msgstr ""
+msgstr "Ente Turístico Rosario (ETUR)"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes_emr
 msgid "Ente de la Movilidad"
-msgstr ""
+msgstr "Ente de la Movilidad"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_emr
 msgid "Ente de la Movilidad (EMR)"
-msgstr ""
+msgstr "Ente de la Movilidad (EMR)"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes
 msgid "Entes Descentralizados"
-msgstr ""
-
-#. module: tmc
-#: model:ir.model.fields,field_description:tmc.field_tmc_document__entry_date
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_act__entry_date
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv__entry_date
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec__entry_date
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic__entry_date
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp__entry_date
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext__entry_date
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg__entry_date
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__entry_date
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_res__entry_date
-msgid "Entry Date"
-msgstr "Fecha de Entrada"
+msgstr "Entes Descentralizados"
 
 #. module: tmc
 #: model:ir.model,name:tmc.model_tmc_document_exp
 msgid "Expediente"
-msgstr ""
+msgstr "Expediente"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic__first_parent_id
@@ -619,25 +554,30 @@ msgid "First Parent"
 msgstr "Primer Padre"
 
 #. module: tmc
+#: model:res.groups.privilege,name:tmc.res_groups_privilege_tmc
+msgid "GD"
+msgstr "GD"
+
+#. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_gral
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.act_adm_config_menu
 #: model:ir.ui.menu,name:tmc.tmc_menu
 msgid "Gestión Documental"
-msgstr ""
+msgstr "Gestión Documental"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_gob
 msgid "Gobierno"
-msgstr ""
+msgstr "Gobierno"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_hac
 msgid "Hacienda y Economía"
-msgstr ""
+msgstr "Hacienda y Economía"
 
 #. module: tmc
 #: model:res.groups,name:tmc.group_hidden_elements
@@ -645,8 +585,9 @@ msgid "Hidden Elements"
 msgstr "Elementos Ocultos"
 
 #. module: tmc
+#. odoo-python
+#: code:addons/tmc/models/highlight.py:0
 #: model:ir.model.fields.selection,name:tmc.selection__tmc_document__highest_highlight__high
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_highlight__level__high
 msgid "High"
 msgstr "Alto"
 
@@ -662,7 +603,7 @@ msgstr "Alto"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__highest_highlight
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res__highest_highlight
 msgid "Highest Highlight"
-msgstr ""
+msgstr "Destacado máximo"
 
 #. module: tmc
 #: model:ir.model,name:tmc.model_tmc_highlight
@@ -681,11 +622,7 @@ msgstr "Resaltado"
 
 #. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.document_view_form
-msgid "Highlight(s)"
-msgstr "Resaltado(s)"
-
-#. module: tmc
-#: model_terms:ir.ui.view,arch_db:tmc.document_view_form
+#: model_terms:ir.ui.view,arch_db:tmc.highlight_view_list
 msgid "Highlights"
 msgstr "Resaltados"
 
@@ -701,17 +638,17 @@ msgstr "Resaltados"
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__highlights_count
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res__highlights_count
 msgid "Highlights Count"
-msgstr ""
+msgstr "Cantidad de destacados"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes_hip
 msgid "Hipódromo"
-msgstr ""
+msgstr "Hipódromo"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_hip
 msgid "Hipódromo Rosario (HIP)"
-msgstr ""
+msgstr "Hipódromo Rosario (HIP)"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_category__id
@@ -736,25 +673,24 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_office__id
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier__id
 #: model:ir.model.fields,field_description:tmc.field_tmc_mass_edit_document_topics_wizard__id
-#: model:ir.model.fields,field_description:tmc.field_tmc_report__id
 #: model:ir.model.fields,field_description:tmc.field_tmc_system__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes_ilar
 msgid "ILAR"
-msgstr ""
+msgstr "ILAR"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes_imps
 msgid "IMPS"
-msgstr ""
+msgstr "IMPS"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_gen
 msgid "Igualdad, Género y Derechos Humanos"
-msgstr ""
+msgstr "Igualdad, Género y Derechos Humanos"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document__important
@@ -774,7 +710,7 @@ msgstr "Importante"
 #. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.document_topic_view_search
 msgid "Importante"
-msgstr ""
+msgstr "Importante"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence__in_actual_nomenclator
@@ -791,12 +727,12 @@ msgstr "Clasificador Institucional"
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_ilar
 msgid "Instituto De Lucha Antipoliomielítica (ILAR)"
-msgstr ""
+msgstr "Instituto De Lucha Antipoliomielítica (ILAR)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_imps
 msgid "Instituto Municipal de Previsión Social (IMPS)"
-msgstr ""
+msgstr "Instituto Municipal de Previsión Social (IMPS)"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee__internal_number
@@ -804,45 +740,27 @@ msgid "Internal Number"
 msgstr "Nº de Interno"
 
 #. module: tmc
+#. odoo-python
 #: code:addons/tmc/models/document.py:0
-#, python-format
 msgid "Invalid number"
 msgstr "Número inválido"
 
 #. module: tmc
+#. odoo-python
 #: code:addons/tmc/models/document.py:0
 #: code:addons/tmc/models/institutional_classifier.py:0
-#, python-format
 msgid "Invalid period"
 msgstr "Período inválido"
 
 #. module: tmc
-#: model:ir.model.fields,field_description:tmc.field_tmc_category____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_dependence____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_document____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_act____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_conv____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_dec____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_dic____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_exp____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_ext____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_leg____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_ord____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_res____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_topic____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_document_type____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_highlight____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_job____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_title____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_hr_office____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_mass_edit_document_topics_wizard____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_report____last_update
-#: model:ir.model.fields,field_description:tmc.field_tmc_system____last_update
-msgid "Last Modified on"
-msgstr "Última modificación en"
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_gab
+msgid "Jefatura de Gabinete"
+msgstr "Jefatura de Gabinete"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_gab
+msgid "Jefatura de Gabinete (GAB)"
+msgstr "Jefatura de Gabinete (GAB)"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_category__write_uid
@@ -867,7 +785,6 @@ msgstr "Última modificación en"
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_office__write_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier__write_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_mass_edit_document_topics_wizard__write_uid
-#: model:ir.model.fields,field_description:tmc.field_tmc_report__write_uid
 #: model:ir.model.fields,field_description:tmc.field_tmc_system__write_uid
 msgid "Last Updated by"
 msgstr "Última actualización realizada por"
@@ -895,7 +812,6 @@ msgstr "Última actualización realizada por"
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_office__write_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_institutional_classifier__write_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_mass_edit_document_topics_wizard__write_date
-#: model:ir.model.fields,field_description:tmc.field_tmc_report__write_date
 #: model:ir.model.fields,field_description:tmc.field_tmc_system__write_date
 msgid "Last Updated on"
 msgstr "Última actualización el"
@@ -903,12 +819,18 @@ msgstr "Última actualización el"
 #. module: tmc
 #: model:ir.model,name:tmc.model_tmc_document_leg
 msgid "Legajo"
-msgstr ""
+msgstr "Legajo"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_highlight__level
 msgid "Level"
 msgstr "Nivel"
+
+#. module: tmc
+#. odoo-python
+#: code:addons/tmc/models/highlight.py:0
+msgid "Low"
+msgstr "Bajo"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document__main_topic_ids
@@ -938,8 +860,14 @@ msgid "Manager"
 msgstr "Responsable"
 
 #. module: tmc
+#: model:ir.model,name:tmc.model_tmc_mass_edit_document_topics_wizard
+msgid "Mass Edit Document Topics"
+msgstr "Edición masiva de temas de documentos"
+
+#. module: tmc
+#. odoo-python
+#: code:addons/tmc/models/highlight.py:0
 #: model:ir.model.fields.selection,name:tmc.selection__tmc_document__highest_highlight__medium
-#: model:ir.model.fields.selection,name:tmc.selection__tmc_highlight__level__medium
 msgid "Medium"
 msgstr "Medio"
 
@@ -966,12 +894,12 @@ msgstr "Modelo"
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_mod
 msgid "Modernización y Cercanía"
-msgstr ""
+msgstr "Modernización y Cercanía"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_mov_2
 msgid "Movilidad"
-msgstr ""
+msgstr "Movilidad"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_category__name
@@ -989,6 +917,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_ord__name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_res__name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic__name
+#: model:ir.model.fields,field_description:tmc.field_tmc_document_type__name
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee__name
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_job__name
 #: model:ir.model.fields,field_description:tmc.field_tmc_hr_employee_title__name
@@ -1011,6 +940,7 @@ msgstr "Nombre"
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_econ
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_emr
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_etur
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_gab
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_gen
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_gob
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_gral
@@ -1030,26 +960,23 @@ msgstr "Nombre"
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_sal
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_ser
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_spv
+#: model_terms:ir.actions.act_window,help:tmc.document_action_form_sumar
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_ter
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_tmc
 #: model_terms:ir.actions.act_window,help:tmc.document_action_form_tur
 msgid "No hay documentos para mostrar."
-msgstr ""
-
-#. module: tmc
-#: model_terms:ir.ui.view,arch_db:tmc.document_view_form
-msgid "Nombre del Documento"
-msgstr ""
+msgstr "No hay documentos para mostrar."
 
 #. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.dependence_order_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.dependence_view_search
 msgid "Nomenclador Actual"
-msgstr ""
+msgstr "Nomenclador Actual"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.institutional_classifier_action_form
 #: model:ir.ui.menu,name:tmc.tmc_menu_institutional_classifiers_nomenclators
+#: model_terms:ir.ui.view,arch_db:tmc.institutional_classifier_view_list
 msgid "Nomenclators"
 msgstr "Nomencladores"
 
@@ -1089,7 +1016,7 @@ msgstr "Objeto"
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_obr
 msgid "Obras Públicas"
-msgstr ""
+msgstr "Obras Públicas"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.hr_office_action_form
@@ -1102,12 +1029,12 @@ msgstr "Oficina"
 #. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.hr_employee_view_search
 msgid "Oficina"
-msgstr ""
+msgstr "Oficina"
 
 #. module: tmc
 #: model:ir.model,name:tmc.model_tmc_document_ord
 msgid "Ordenanza"
-msgstr ""
+msgstr "Ordenanza"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order__parent_id
@@ -1135,26 +1062,26 @@ msgid "Period"
 msgstr "Período"
 
 #. module: tmc
+#. odoo-python
 #: code:addons/tmc/models/document.py:0
-#, python-format
 msgid "Periods before 1948 are not allowed."
-msgstr "No se admiten periodos anteriores a 1948."
+msgstr "No se permiten períodos anteriores a 1948."
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.menu_main_personal
 #: model:res.groups,name:tmc.group_personal
 msgid "Personal"
-msgstr ""
+msgstr "Personal"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_pla
 msgid "Planeamiento"
-msgstr ""
+msgstr "Planeamiento"
 
 #. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.hr_employee_view_form
 msgid "Posición"
-msgstr ""
+msgstr "Posición"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_previous_nomenclator
@@ -1164,17 +1091,17 @@ msgstr "Nomencladores Anteriores"
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_prod
 msgid "Producción y Desarrollo Local"
-msgstr ""
+msgstr "Producción y Desarrollo Local"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_prodei
 msgid "Producción, Empleo e Innovación"
-msgstr ""
+msgstr "Producción, Empleo e Innovación"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_prom
 msgid "Promoción Social"
-msgstr ""
+msgstr "Promoción Social"
 
 #. module: tmc
 #: model:res.groups,name:tmc.group_read_only
@@ -1234,16 +1161,11 @@ msgid "Related To Dictamen"
 msgstr "Dictaminado"
 
 #. module: tmc
+#. odoo-python
 #: code:addons/tmc/models/document.py:0
 #: model:ir.actions.server,name:tmc.remove_document_topics_action_server
-#, python-format
 msgid "Remove Document Topics"
 msgstr "Quitar Temas de Documento"
-
-#. module: tmc
-#: model:ir.model,name:tmc.model_tmc_report
-msgid "Report Template"
-msgstr "Plantilla de Reporte"
 
 #. module: tmc
 #: model:ir.model,name:tmc.model_tmc_document_res
@@ -1258,12 +1180,17 @@ msgstr "Resolución Extraordinaria"
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes_spv
 msgid "SPVyH"
-msgstr ""
+msgstr "SPVyH"
+
+#. module: tmc
+#: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes_sumar
+msgid "SUMAR"
+msgstr "SUMAR"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_sal
 msgid "Salud Pública"
-msgstr ""
+msgstr "Salud Pública"
 
 #. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.view_mass_edit_document_topics_form
@@ -1294,27 +1221,27 @@ msgstr "Temas Secundarios"
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_gral
 msgid "Secretaría General (GRAL)"
-msgstr ""
+msgstr "Secretaría General (GRAL)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_gral_int
 msgid "Secretaría General de Intendencia (GRAL)"
-msgstr ""
+msgstr "Secretaría General de Intendencia (GRAL)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_amb
 msgid "Secretaría de Ambiente y Espacios Públicos (AMB)"
-msgstr ""
+msgstr "Secretaría de Ambiente y Espacios Públicos (AMB)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_conv
 msgid "Secretaría de Control y Convivencia (CONV)"
-msgstr ""
+msgstr "Secretaría de Control y Convivencia (CONV)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_cul
 msgid "Secretaría de Cultura y Educación (CUL)"
-msgstr ""
+msgstr "Secretaría de Cultura y Educación (CUL)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_dep
@@ -1324,32 +1251,32 @@ msgstr "Secretaría de Deporte y Turismo (DYT)"
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_dee
 msgid "Secretaría de Desarrollo Económico y Empleo (DEE)"
-msgstr ""
+msgstr "Secretaría de Desarrollo Económico y Empleo (DEE)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_dhh
 msgid "Secretaría de Desarrollo Humano y Hábitat (DHH)"
-msgstr ""
+msgstr "Secretaría de Desarrollo Humano y Hábitat (DHH)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_des
 msgid "Secretaría de Desarrollo Social (DES)"
-msgstr ""
+msgstr "Secretaría de Desarrollo Social (DES)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_econ
 msgid "Secretaría de Economía Social (ECON)"
-msgstr ""
+msgstr "Secretaría de Economía Social (ECON)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_gob
 msgid "Secretaría de Gobierno (GOB)"
-msgstr ""
+msgstr "Secretaría de Gobierno (GOB)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_hac
 msgid "Secretaría de Hacienda y Economía (HAC)"
-msgstr ""
+msgstr "Secretaría de Hacienda y Economía (HAC)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_gen
@@ -1359,71 +1286,77 @@ msgstr "Secretaría de Género y Derechos Humanos (GDH)"
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_mod
 msgid "Secretaría de Modernización y Cercanía (MOD)"
-msgstr ""
+msgstr "Secretaría de Modernización y Cercanía (MOD)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_mov_2
 msgid "Secretaría de Movilidad (MOV)"
-msgstr ""
+msgstr "Secretaría de Movilidad (MOV)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_obr
 msgid "Secretaría de Obras Públicas (OBR)"
-msgstr ""
+msgstr "Secretaría de Obras Públicas (OBR)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_pla
 msgid "Secretaría de Planeamiento (PLA)"
-msgstr ""
+msgstr "Secretaría de Planeamiento (PLA)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_prod
 msgid "Secretaría de Producción y Desarrollo Local (PROD)"
-msgstr ""
+msgstr "Secretaría de Producción y Desarrollo Local (PROD)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_prodei
 msgid "Secretaría de Producción, Empleo e Innovación (PROD)"
-msgstr ""
+msgstr "Secretaría de Producción, Empleo e Innovación (PROD)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_prom
 msgid "Secretaría de Promoción Social (PROM)"
-msgstr ""
+msgstr "Secretaría de Promoción Social (PROM)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_sal
 msgid "Secretaría de Salud Pública (SAL)"
-msgstr ""
+msgstr "Secretaría de Salud Pública (SAL)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_mov
 msgid "Secretaría de Transporte y Movilidad (MOV)"
-msgstr ""
+msgstr "Secretaría de Transporte y Movilidad (MOV)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_tur
 msgid "Secretaría de Turismo (TUR)"
-msgstr ""
+msgstr "Secretaría de Turismo (TUR)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_spv
 msgid "Servicio Público de la Vivienda y el Hábitat (SPV)"
-msgstr ""
+msgstr "Servicio Público de la Vivienda y el Hábitat (SPV)"
+
+#. module: tmc
+#: model:ir.actions.act_window,name:tmc.document_action_form_sumar
+msgid "Servicio Urbano de Mantenimiento Ambiental Rosario (SUMAR)"
+msgstr "Servicio Urbano de Mantenimiento Ambiental Rosario (SUMAR)"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_ser
 msgid "Servicios Públicos y Medio Ambiente"
-msgstr ""
+msgstr "Servicios Públicos y Medio Ambiente"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_ser
 msgid "Servicios Públicos y Medio Ambiente (SER)"
-msgstr ""
+msgstr "Servicios Públicos y Medio Ambiente (SER)"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.country_state_action_form
 #: model:ir.ui.menu,name:tmc.tmc_menu_config_gestion_documental_country_state
+#: model_terms:ir.ui.view,arch_db:tmc.country_state_view_list
 msgid "States"
 msgstr "Provincias"
 
@@ -1446,28 +1379,28 @@ msgstr "Sistemas"
 #. module: tmc
 #: model:ir.module.category,name:tmc.module_category_tmc
 msgid "TMC"
-msgstr ""
+msgstr "TMC"
 
 #. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.document_topic_view_list
 msgid "Tema Principal"
-msgstr ""
+msgstr "Tema Principal"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_entes_ter
 msgid "Terminal de Ómnibus"
-msgstr ""
+msgstr "Terminal de Ómnibus"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_ter
 msgid "Terminal de Ómnibus (TER)"
-msgstr ""
+msgstr "Terminal de Ómnibus (TER)"
 
 #. module: tmc
+#. odoo-python
 #: code:addons/tmc/models/institutional_classifier.py:0
-#, python-format
 msgid "There is already a more recent nomenclator"
-msgstr "Ya existe un nomenclador más actual"
+msgstr "Ya existe un nomenclador más reciente"
 
 #. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.view_mass_edit_document_topics_form
@@ -1482,7 +1415,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tmc.document_dem_simple_view_search
 #: model_terms:ir.ui.view,arch_db:tmc.document_imps_simple_view_search
 msgid "Tipo de Documento"
-msgstr ""
+msgstr "Tipo de Documento"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document__topics_display_name
@@ -1502,34 +1435,34 @@ msgstr "Temas"
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_mov
 msgid "Transporte y Movilidad"
-msgstr ""
+msgstr "Transporte y Movilidad"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_config_menu
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_tmc
 msgid "Tribunal de Cuentas"
-msgstr ""
+msgstr "Tribunal de Cuentas"
 
 #. module: tmc
 #: model:ir.actions.act_window,name:tmc.document_action_form_tmc
 msgid "Tribunal de Cuentas (TMC)"
-msgstr ""
+msgstr "Tribunal de Cuentas (TMC)"
 
 #. module: tmc
 #: model:ir.ui.menu,name:tmc.tmc_menu_dependence_documents_tur
 msgid "Turismo"
-msgstr ""
+msgstr "Turismo"
 
 #. module: tmc
 #: model_terms:ir.ui.view,arch_db:tmc.dependence_order_view_search
 msgid "Unidad Institucional"
-msgstr ""
+msgstr "Unidad Institucional"
 
 #. module: tmc
+#. odoo-python
 #: code:addons/tmc/models/document.py:0
-#, python-format
 msgid "Unnamed Document"
-msgstr "Documento Sin Nombre"
+msgstr "Documento sin nombre"
 
 #. module: tmc
 #: model:res.groups,name:tmc.group_user
@@ -1537,12 +1470,19 @@ msgid "User"
 msgstr "Usuario"
 
 #. module: tmc
+#. odoo-python
 #: code:addons/tmc/models/document.py:0
-#, python-format
 msgid "You must specify a period."
 msgstr "Debe especificar un período."
 
 #. module: tmc
-#: model:ir.model,name:tmc.model_tmc_mass_edit_document_topics_wizard
-msgid "tmc.mass_edit_document_topics_wizard"
-msgstr ""
+#. odoo-python
+#: code:addons/tmc/models/highlight.py:0
+msgid "low"
+msgstr "bajo"
+
+#. module: tmc
+#. odoo-python
+#: code:addons/tmc/models/highlight.py:0
+msgid "medium"
+msgstr "medio"
