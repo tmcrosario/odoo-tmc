@@ -40,6 +40,13 @@ assistant memory.
 - XML follows the OCA Prettier config (`prettier.config.cjs`, `printWidth: 88`,
   `@prettier/plugin-xml`); that pre-commit output is the source of truth.
 
+### Translations
+
+- When a change adds or edits a user-facing string (field label, help text, selection
+  label, button, `_()` message, view text), check whether the module's `i18n/es_AR.po`
+  needs updating and add or adjust the Spanish translation in the same change. The UI
+  language is es_AR, so an untranslated new string shows in English.
+
 ### Commit authorship
 
 - **Never** add AI attribution: no `Co-Authored-By: Claude`, no "Generated with Claude
