@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Self-contained styles: wkhtmltopdf can't fetch the asset bundle here -->
+    <template id="report_tmc_styles">
+        <style>
+            .tmc-report { font-family: Helvetica, Arial, sans-serif; color: #000;
+            font-size: 12px; }
+            .tmc-box { border: 1px solid #666; padding: 8px 10px; text-align: center;
+            font-weight: bold; font-size: 13px; margin: 0 0 22px 0; }
+            .tmc-data { width: 100%; border-collapse: collapse; margin: 0 0 20px 0; }
+            .tmc-data th, .tmc-data td { border: 1px solid #999; padding: 4px 6px;
+            vertical-align: top; }
+            .tmc-data th { background: #eee; font-weight: bold; text-align: center; }
+            .tmc-data tr { page-break-inside: avoid; }
+            .tmc-muted { color: #444; font-style: italic; }
+            .tmc-center { text-align: center; }
+        </style>
+    </template>
+
+    <!-- Header/footer are rendered as standalone documents by wkhtmltopdf,
+         so they cannot reuse the body styles above -->
+    <template id="report_tmc_chrome_styles">
+        <style>
+            .tmc-chrome { font-family: Helvetica, Arial, sans-serif; color: #000;
+            font-size: 10px; }
+            .tmc-chrome table { width: 100%; border-collapse: collapse; }
+            .tmc-chrome td { vertical-align: top; }
+            .tmc-chrome img.logo { width: 78mm; }
+            .tmc-chrome .meta { text-align: right; line-height: 1.6; }
+            .tmc-chrome .meta .rtitle { font-weight: bold; }
+            /* Odoo never passes --footer-spacing, and a margin would collapse */
+            div.footer { padding-top: 9mm; }
+            .tmc-chrome .foot { border-top: 1px solid #999; padding-top: 5px;
+            text-align: center; color: #333; font-size: 9px; line-height: 1.4; }
+        </style>
+    </template>
+
+    <template id="report_tmc_header">
+        <div class="header tmc-chrome">
+            <t t-call="tmc.report_tmc_chrome_styles" />
+            <table>
+                <tr>
+                    <td>
+                        <img
+                            class="logo"
+                            t-att-src="env['tmc.report_logo'].data_uri()"
+                            alt=""
+                        />
+                    </td>
+                    <td class="meta">
+                        <div class="rtitle" t-out="report_title or 'Reporte'" />
+                        <div>
+                            <b>Fecha:</b>
+                            <t
+                                t-out="datetime.date.today()"
+                                t-options='{"widget": "date"}'
+                            />
+                        </div>
+                        <div>
+                            <b>Página:</b>
+                            <span class="page" />
+                            de
+                            <span class="topage" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </template>
+
+    <template id="report_tmc_footer">
+        <div class="footer tmc-chrome">
+            <t t-call="tmc.report_tmc_chrome_styles" />
+            <div class="foot">
+                <div t-out="footer_line" />
+                <div>Tribunal Municipal de Cuentas – Municipalidad de Rosario</div>
+            </div>
+        </div>
+    </template>
+
+    <template id="dependence_document_topics_report">
+        <t t-call="web.html_container">
+            <t t-set="report_title">Temas por Dependencia</t>
+            <t t-set="footer_line">Sistema de Gestión Documental</t>
+            <t t-foreach="docs" t-as="o">
+                <!-- Header/footer inside the loop: the report engine binds them
+                     per article, else overflow pages render without chrome -->
+                <t t-call="tmc.report_tmc_header" />
+                <div
+                    class="article tmc-report"
+                    t-att-data-oe-model="o._name"
+                    t-att-data-oe-id="o.id"
+                >
+                    <t t-call="tmc.report_tmc_styles" />
+
+                    <div class="tmc-box">
+                        <t t-out="o.name" />
+                    </div>
+
+                    <t t-if="o.document_topic_ids">
+                        <table class="tmc-data">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40%;">Tema Principal</th>
+                                    <th>Tema(s) Secundario(s)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.document_topic_ids" t-as="topic">
+                                    <td>
+                                        <t t-out="topic.name" />
+                                    </td>
+                                    <td>
+                                        <t
+                                            t-out="topic.secondary_topics_display_name"
+                                        />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+                    <t t-else="">
+                        <p class="tmc-muted tmc-center">
+                            Esta dependencia no tiene temas asignados.
+                        </p>
+                    </t>
+                </div>
+                <t t-call="tmc.report_tmc_footer" />
+            </t>
+        </t>
+    </template>
+</odoo>
