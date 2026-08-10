@@ -544,6 +544,11 @@ msgid "Entes Descentralizados"
 msgstr "Entes Descentralizados"
 
 #. module: tmc
+#: model:ir.model.fields,field_description:tmc.field_tmc_document__entry_date
+msgid "Entry Date"
+msgstr "Fecha de Entrada"
+
+#. module: tmc
 #: model:ir.model,name:tmc.model_tmc_document_exp
 msgid "Expediente"
 msgstr "Expediente"
@@ -905,7 +910,6 @@ msgstr "Movilidad"
 #: model:ir.model.fields,field_description:tmc.field_tmc_category__name
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence__name
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order__name
-#: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order__parent_name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document__name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_act__name
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_conv__name

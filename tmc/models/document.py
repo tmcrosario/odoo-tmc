@@ -45,7 +45,12 @@ class Document(models.Model):
     # NOTE: to show a mark in the name for documents related to a dictamen
     # display_name = fields.Char(compute="_compute_display_name")
 
-    document_object = fields.Char(string="Object", size=250, index=True, translate=True)
+    entry_date = fields.Date(compute="_compute_entry_date", readonly=True)
+
+    # trigram: 19.0 ignores a plain index on translated fields
+    document_object = fields.Char(
+        string="Object", size=250, index="trigram", translate=True
+    )
 
     document_object_required = fields.Boolean()
 
@@ -205,7 +210,7 @@ class Document(models.Model):
             else:
                 document.name = _("Unnamed Document")
 
-    @api.depends("highlight_ids")
+    @api.depends("highlight_ids", "highlight_ids.applicable")
     def _compute_highlights_count(self):
         for document in self:
             applicable_highlight_ids = document.highlight_ids.filtered(
@@ -276,13 +281,14 @@ class Document(models.Model):
                     raise exceptions.UserError(message)
 
             if doc_type_abbr == "ACT":
-                vals["number"] = self.env.ref("tmc_data.seq_tmc_act").number_next_actual
-                seq = self.env["ir.sequence"]
-                seq.next_by_code("tmc.document")
+                # Atomic: next_by_code both consumes and returns the number
+                vals["number"] = int(
+                    self.env["ir.sequence"].next_by_code("tmc.document")
+                )
 
         return super().create(vals_list)
 
-    def write(self, vals, write_inverse=True):
+    def write(self, vals):
         if vals.get("main_topic_ids"):
             message = _("You must specify a period.")
             # Handle different possible formats of main_topic_ids
@@ -326,22 +332,25 @@ class Document(models.Model):
                     message = _("Date does not match with period")
                     raise exceptions.UserError(message)
 
-        if write_inverse and vals.get("related_document_ids"):
+        # Keep related_document_ids symmetric; context flag stops the recursion
+        if not self.env.context.get("skip_inverse_sync") and vals.get(
+            "related_document_ids"
+        ):
             new_related_documents = self.browse(vals["related_document_ids"][0][2])
-            new_related_documents.write(
-                {"related_document_ids": [(4, self.id)]}, write_inverse=False
-            )
-            current_rd_map = self.related_document_ids.mapped("id")
-            new_rd_map = new_related_documents.mapped("id")
-            new_rd_set = set(new_rd_map)
-            rd_diff = [x for x in current_rd_map if x not in new_rd_set]
-            if rd_diff:
-                self.browse(rd_diff).write(
-                    {"related_document_ids": [(3, self.id)]},
-                    write_inverse=False,
+            new_rd_set = set(new_related_documents.ids)
+            for record in self:
+                new_related_documents.with_context(skip_inverse_sync=True).write(
+                    {"related_document_ids": [(4, record.id)]}
                 )
+                removed = record.related_document_ids.filtered(
+                    lambda d: d.id not in new_rd_set
+                )
+                if removed:
+                    removed.with_context(skip_inverse_sync=True).write(
+                        {"related_document_ids": [(3, record.id)]}
+                    )
 
-        return super(Document, self).write(vals)
+        return super().write(vals)
 
     def lookahead(self, iterable):
         """Pass through all values from the given iterable, augmented by the
@@ -399,6 +408,19 @@ class Document(models.Model):
     def _onchange_document_object(self):
         if self.document_object:
             self.document_object = self.document_object.title()
+
+    def _compute_entry_date(self):
+        # RAA registry is optional (downstream module); fall back to create_date
+        entry_by_doc = {}
+        if "raa.registry_aa" in self.env:
+            registries = self.env["raa.registry_aa"].search(
+                [("document_id", "in", self.ids)]
+            )
+            entry_by_doc = {r.document_id.id: r.entry_date for r in registries}
+        for document in self:
+            document.entry_date = entry_by_doc.get(document.id) or fields.Date.to_date(
+                document.create_date
+            )
 
     def action_mass_edit_document_topics_show_wizard(self, remove=False):
         active_model = self.env.context.get("active_model")
