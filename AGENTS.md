@@ -1,4 +1,4 @@
-# Claude Instructions for TMC Odoo Module
+# Agent conventions for TMC Odoo Module
 
 ## Project Overview
 
