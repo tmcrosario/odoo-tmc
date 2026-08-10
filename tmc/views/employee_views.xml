@@ -54,10 +54,16 @@
                             string="Administración"
                             groups="tmc.group_personal,tmc.group_manager"
                         >
-                            <field name="docket_number" />
-                            <field name="admission_date" />
+                            <field
+                                name="docket_number"
+                                options="{'enable_formatting': False}"
+                            />
+                            <field name="admission_date" options="{'numeric': True}" />
                             <field name="bank_account_number" />
-                            <field name="bank_branch" />
+                            <field
+                                name="bank_branch"
+                                options="{'enable_formatting': False}"
+                            />
                         </group>
                     </group>
                 </sheet>
