@@ -22,6 +22,12 @@ msgid " (Current)"
 msgstr " (Current)"
 
 #. module: tmc
+#. odoo-python
+#: code:addons/tmc/models/document.py:0
+msgid "'Object' must not exceed 125 characters."
+msgstr "El 'Objeto' no puede superar los 125 caracteres."
+
+#. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence__abbreviation
 #: model:ir.model.fields,field_description:tmc.field_tmc_dependence_order__abbreviation
 #: model:ir.model.fields,field_description:tmc.field_tmc_document__document_type_abbr

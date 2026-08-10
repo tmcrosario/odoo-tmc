@@ -137,7 +137,9 @@ class Document(models.Model):
                 len(document.document_object or "") > 125
                 and document.document_type_abbr != "DIC"
             ):
-                raise UserError("'Object' must not exceed 125 characters.")
+                raise exceptions.ValidationError(
+                    _("'Object' must not exceed 125 characters.")
+                )
 
     @api.depends(
         "related_document_ids", "related_document_ids.document_type_id.abbreviation"
