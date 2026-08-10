@@ -20,7 +20,9 @@ class DependenceOrder(models.Model):
 
     parent_id = fields.Many2one(comodel_name="tmc.dependence")
 
-    parent_name = fields.Char(related="parent_id.name", readonly=True)
+    parent_name = fields.Char(
+        string="Parent Name", related="parent_id.name", readonly=True
+    )
 
     institutional_classifier_ids = fields.Many2many(
         comodel_name="tmc.institutional_classifier",

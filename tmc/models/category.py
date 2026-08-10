@@ -7,9 +7,9 @@ class Category(models.Model):
 
     name = fields.Char()
 
-    display_name = fields.Char(
-        compute="_compute_display_name", store=True, recursive=True
-    )
+    # Non-stored (14.0 behavior): base has no parent_id to depend on; the
+    # concrete children (document_topic, hr.office) provide it
+    display_name = fields.Char(compute="_compute_display_name")
 
     def _compute_display_name(self):
         for category in self:
