@@ -33,14 +33,11 @@ class DocumentTopic(models.Model):
     dependences_display_name = fields.Char(
         compute="_compute_dependences_display_name",
         string="Dependences",
-        translate=True,
-        recursive=True,
     )
 
     secondary_topics_display_name = fields.Char(
         compute="_compute_secondary_topics_display_name",
         string="Secondary Topics",
-        translate=True,
     )
 
     important = fields.Boolean()

@@ -10,9 +10,7 @@ class InstitutionalClassifier(models.Model):
     _rec_name = "period"
     _order = "period desc, due_date desc"
 
-    display_name = fields.Char(
-        compute="_compute_display_name", string="Name", translate=True, recursive=True
-    )
+    display_name = fields.Char(compute="_compute_display_name", string="Name")
 
     # Fixed lower bound: a rolling window invalidates seeded records over time
     period = fields.Selection(
@@ -36,6 +34,7 @@ class InstitutionalClassifier(models.Model):
 
     document_id = fields.Many2one(comodel_name="tmc.document")
 
+    @api.depends("period", "due_date")
     def _compute_display_name(self):
         for classifier in self:
             classifier.display_name = str(classifier.period)
