@@ -1,4 +1,4 @@
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 
 
 class Highlight(models.Model):
@@ -12,9 +12,9 @@ class Highlight(models.Model):
     @api.model
     def _get_level_selection(self):
         return [
-            ("high", _("High")),
-            ("medium", _("Medium")),
-            ("low", _("Low")),
+            ("high", self.env._("High")),
+            ("medium", self.env._("Medium")),
+            ("low", self.env._("Low")),
         ]
 
     level = fields.Selection(

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record id="tmc.document_view_list" model="ir.ui.view">
+    <record id="document_view_list" model="ir.ui.view">
         <field name="name">tmc.document.view.list</field>
         <field name="model">tmc.document</field>
         <field name="priority">5</field>
@@ -25,7 +25,7 @@
         </field>
     </record>
 
-    <record id="tmc.document_simple_view_list" model="ir.ui.view">
+    <record id="document_simple_view_list" model="ir.ui.view">
         <field name="name">tmc.document.simple.view.list</field>
         <field name="model">tmc.document</field>
         <field name="priority">10</field>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record id="tmc.dependence_view_list" model="ir.ui.view">
+    <record id="dependence_view_list" model="ir.ui.view">
         <field name="name">tmc.dependence.view.list</field>
         <field name="model">tmc.dependence</field>
         <field name="arch" type="xml">

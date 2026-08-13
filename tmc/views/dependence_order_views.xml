@@ -64,7 +64,7 @@
         </field>
     </record>
 
-    <record id="tmc.dependence_order_view_list" model="ir.ui.view">
+    <record id="dependence_order_view_list" model="ir.ui.view">
         <field name="name">tmc.dependence_order.view.list</field>
         <field name="model">tmc.dependence_order</field>
         <field name="arch" type="xml">

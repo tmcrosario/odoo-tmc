@@ -52,7 +52,7 @@
         </field>
     </record>
 
-    <record id="tmc.document_topic_view_list" model="ir.ui.view">
+    <record id="document_topic_view_list" model="ir.ui.view">
         <field name="name">tmc.document_topic.view.list</field>
         <field name="model">tmc.document_topic</field>
         <field name="arch" type="xml">

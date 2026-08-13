@@ -29,4 +29,4 @@ class Office(models.Model):
         # MIG(19.0): name_get was removed in 17.0. Office overrides the inherited
         # tmc.category hierarchical display with its own "<name> - <abbreviation>".
         for office in self:
-            office.display_name = "%s - %s" % (office.name, office.abbreviation)
+            office.display_name = f"{office.name} - {office.abbreviation}"

@@ -1,4 +1,4 @@
-from odoo import _, api, exceptions, fields, models
+from odoo import api, exceptions, fields, models
 from odoo.exceptions import UserError
 
 
@@ -128,7 +128,9 @@ class Document(models.Model):
     def _check_date_not_future(self):
         for document in self:
             if document.date and document.date > fields.Date.today():
-                raise exceptions.ValidationError(_("Date cannot be in the future."))
+                raise exceptions.ValidationError(
+                    self.env._("Date cannot be in the future.")
+                )
 
     @api.constrains("document_object")
     def _check_document_object_length(self):
@@ -138,7 +140,7 @@ class Document(models.Model):
                 and document.document_type_abbr != "DIC"
             ):
                 raise exceptions.ValidationError(
-                    _("'Object' must not exceed 125 characters.")
+                    self.env._("'Object' must not exceed 125 characters.")
                 )
 
     @api.depends(
@@ -171,10 +173,10 @@ class Document(models.Model):
         for document in self:
             period = int(document.period)
             if not (1000 <= period <= fields.Date.today().year):
-                raise exceptions.ValidationError(_("Invalid period"))
+                raise exceptions.ValidationError(self.env._("Invalid period"))
             if period < 1948:
                 raise exceptions.ValidationError(
-                    _("Periods before 1948 are not allowed.")
+                    self.env._("Periods before 1948 are not allowed.")
                 )
 
     @api.constrains("number")
@@ -188,9 +190,9 @@ class Document(models.Model):
             if document.dependence_id.abbreviation in ["DHH"]:
                 max_number = 9999
             if document.number == 0 and document.document_type_id.abbreviation != "ACT":
-                raise UserError(_("Invalid number"))
+                raise UserError(self.env._("Invalid number"))
             if document.number > max_number:
-                raise UserError(_("Invalid number"))
+                raise UserError(self.env._("Invalid number"))
 
     @api.depends("document_type_id", "dependence_id", "number", "period")
     def _compute_name(self):
@@ -203,14 +205,11 @@ class Document(models.Model):
             dep_abbr = document.dependence_id.abbreviation
 
             if doc_abbr and doc_number and doc_period and dep_abbr:
-                document.name = "%s-%s-%s/%s" % (
-                    doc_abbr,
-                    str(doc_number).zfill(6),
-                    dep_abbr,
-                    doc_period,
+                document.name = (
+                    f"{doc_abbr}-{str(doc_number).zfill(6)}-{dep_abbr}/{doc_period}"
                 )
             else:
-                document.name = _("Unnamed Document")
+                document.name = self.env._("Unnamed Document")
 
     @api.depends("highlight_ids", "highlight_ids.applicable")
     def _compute_highlights_count(self):
@@ -266,7 +265,7 @@ class Document(models.Model):
     def _onchange_document_data(self):
         if self.dependence_id and self.document_type_id and self.number and self.period:
             if self.env["tmc.document"].search([("name", "=", self.name)]):
-                raise UserError(_("Document already exists"))
+                raise UserError(self.env._("Document already exists"))
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -279,7 +278,7 @@ class Document(models.Model):
                     str(int(vals.get("date")[:4])) != str(vals.get("period"))
                     and doc_type_abbr != "CONV"
                 ):
-                    message = _("Date does not match with period")
+                    message = self.env._("Date does not match with period")
                     raise exceptions.UserError(message)
 
             if doc_type_abbr == "ACT":
@@ -290,9 +289,11 @@ class Document(models.Model):
 
         return super().create(vals_list)
 
-    def write(self, vals):
+    def write(self, vals):  # noqa: C901
+        # Topic/date/related-doc validation branches; refactor deferred until
+        # after the 14->19 migration is validated to avoid behavior drift
         if vals.get("main_topic_ids"):
-            message = _("You must specify a period.")
+            message = self.env._("You must specify a period.")
             # Handle different possible formats of main_topic_ids
             main_topics = vals["main_topic_ids"]
             if main_topics and isinstance(main_topics, list) and len(main_topics) > 0:
@@ -331,7 +332,7 @@ class Document(models.Model):
                     vals["date"][:4] != str(document.period)
                     and document.document_type_id.abbreviation != "CONV"
                 ):
-                    message = _("Date does not match with period")
+                    message = self.env._("Date does not match with period")
                     raise exceptions.UserError(message)
 
         # Keep related_document_ids symmetric; context flag stops the recursion
@@ -387,7 +388,8 @@ class Document(models.Model):
                     aux = ""
                     aux += main_topic.name
                     sec_topic_filtered = document.secondary_topic_ids.filtered(
-                        lambda record: record.parent_id.id == main_topic.id
+                        lambda record, main_topic=main_topic: record.parent_id.id
+                        == main_topic.id
                     )
                     is_first = True
                     for sec_topic, has_more_sec_topic in self.lookahead(
@@ -438,7 +440,9 @@ class Document(models.Model):
 
         return {
             "type": "ir.actions.act_window",
-            "name": _("Remove Document Topics") if remove else _("Add Document Topics"),
+            "name": self.env._("Remove Document Topics")
+            if remove
+            else self.env._("Add Document Topics"),
             "res_model": "tmc.mass_edit_document_topics_wizard",
             "target": "new",
             "view_id": self.env.ref("tmc.view_mass_edit_document_topics_form").id,

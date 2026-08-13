@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record id="tmc.highlight_view_list" model="ir.ui.view">
+    <record id="highlight_view_list" model="ir.ui.view">
         <field name="name">tmc.highlight.view.list</field>
         <field name="model">tmc.highlight</field>
         <field name="priority">5</field>

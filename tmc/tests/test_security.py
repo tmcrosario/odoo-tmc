@@ -47,5 +47,5 @@ class TestTmcSecurity(common.TransactionCase):
         for xmlid in ("tmc.group_personal", "tmc.group_hidden_elements"):
             self.assertFalse(
                 self.env.ref(xmlid).privilege_id,
-                "%s es un modificador, no debe tener privilege_id" % xmlid,
+                f"{xmlid} es un modificador, no debe tener privilege_id",
             )

@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -39,10 +39,10 @@ class InstitutionalClassifier(models.Model):
         for classifier in self:
             classifier.display_name = str(classifier.period)
             if not classifier.due_date:
-                classifier.display_name += _(" (Current)")
+                classifier.display_name += self.env._(" (Current)")
             else:
                 month = classifier.due_date.strftime("%b")
-                classifier.display_name += " (%s)" % month
+                classifier.display_name += f" ({month})"
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -52,8 +52,10 @@ class InstitutionalClassifier(models.Model):
                 [("due_date", "=", False)]
             )
             if year > datetime.today():
-                raise UserError(_("Invalid period"))
+                raise UserError(self.env._("Invalid period"))
             if current_nomenclator:
+                # Full scan intended: find the newest classifier by period
+                # pylint: disable=no-search-all
                 newest = (
                     self.env["tmc.institutional_classifier"]
                     .search([])
@@ -63,7 +65,7 @@ class InstitutionalClassifier(models.Model):
                     if not values["due_date"]:
                         if newest and values["period"] < newest[0].period:
                             raise UserError(
-                                _("There is already a more recent nomenclator")
+                                self.env._("There is already a more recent nomenclator")
                             )
                         if self.env["tmc.institutional_classifier"].search(
                             [
@@ -72,7 +74,7 @@ class InstitutionalClassifier(models.Model):
                             ]
                         ):
                             raise UserError(
-                                _(
+                                self.env._(
                                     "Before adding a nomenclator you must set due date prior to the current"
                                 )
                             )
@@ -84,6 +86,8 @@ class InstitutionalClassifier(models.Model):
         if "dependence_order_ids" in vals:
             for record in self:
                 if not record.due_date:
+                    # Full scan intended: reset the flag on every dependence
+                    # pylint: disable=no-search-all
                     self.env["tmc.dependence"].search([]).write(
                         {"in_actual_nomenclator": False}
                     )
