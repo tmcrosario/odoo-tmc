@@ -40,6 +40,13 @@ assistant memory.
 - XML follows the OCA Prettier config (`prettier.config.cjs`, `printWidth: 88`,
   `@prettier/plugin-xml`); that pre-commit output is the source of truth.
 
+### Date display in views
+
+- Odoo 19 renders `Date`/`Datetime` fields with a short locale format (e.g. `17 ago`).
+  For Argentine `DD/MM/YYYY`, add `options="{'numeric': True}"` to **every** `Date` /
+  `Datetime` `<field>` shown in list and form views (and editable date pickers). The
+  `res.lang` `date_format` alone does not change this.
+
 ### Translations
 
 - When a change adds or edits a user-facing string (field label, help text, selection
