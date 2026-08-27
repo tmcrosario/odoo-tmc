@@ -127,6 +127,7 @@ msgstr "Código"
 
 #. module: tmc
 #: model:ir.model.fields,field_description:tmc.field_tmc_document_topic__color
+#: model:ir.model.fields,field_description:tmc.field_tmc_system__color
 msgid "Color"
 msgstr "Color"
 
@@ -1490,6 +1491,11 @@ msgstr "Debe especificar un período."
 #: code:addons/tmc/models/highlight.py:0
 msgid "low"
 msgstr "bajo"
+
+#. module: tmc
+#: model:ir.model.constraint,message:tmc.constraint_tmc_system_name_unique
+msgid "System name must be unique"
+msgstr "El nombre del sistema debe ser único"
 
 #. module: tmc
 #. odoo-python
