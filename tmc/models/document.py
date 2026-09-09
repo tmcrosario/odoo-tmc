@@ -237,6 +237,11 @@ class Document(models.Model):
             document.reference_document = None
             if document.reference_model and document.id:
                 reference_model = "tmc." + document.reference_model
+                # Some document types declare a `model` with no registered class
+                # (e.g. JUN -> tmc.document_jun): guard against KeyError so the
+                # document stays readable (reference_document just stays empty).
+                if reference_model not in document.env:
+                    continue
                 reference_document = document.env[reference_model].search(
                     [("document_id", "=", document.id)], limit=1
                 )
