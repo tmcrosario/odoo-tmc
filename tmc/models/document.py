@@ -340,23 +340,30 @@ class Document(models.Model):
                     message = self.env._("Date does not match with period")
                     raise exceptions.UserError(message)
 
-        # Keep related_document_ids symmetric; context flag stops the recursion
+        # Keep related_document_ids symmetric; context flag stops the recursion.
+        # Diff the ACTUAL relation set before/after applying the write, so any x2many
+        # command format works (6/4/3/1/... as the web client sends on save), not only
+        # the (6,0,[ids]) "replace" form that a hardcoded [0][2] assumed.
         if not self.env.context.get("skip_inverse_sync") and vals.get(
             "related_document_ids"
         ):
-            new_related_documents = self.browse(vals["related_document_ids"][0][2])
-            new_rd_set = set(new_related_documents.ids)
+            before = {record.id: set(record.related_document_ids.ids) for record in self}
+            res = super().write(vals)
             for record in self:
-                new_related_documents.with_context(skip_inverse_sync=True).write(
-                    {"related_document_ids": [(4, record.id)]}
-                )
-                removed = record.related_document_ids.filtered(
-                    lambda d: d.id not in new_rd_set
-                )
-                if removed:
-                    removed.with_context(skip_inverse_sync=True).write(
-                        {"related_document_ids": [(3, record.id)]}
-                    )
+                after = set(record.related_document_ids.ids)
+                added = self.browse(sorted(after - before[record.id]))
+                removed = self.browse(sorted(before[record.id] - after))
+                for other in added:
+                    if record.id not in other.related_document_ids.ids:
+                        other.with_context(skip_inverse_sync=True).write(
+                            {"related_document_ids": [(4, record.id)]}
+                        )
+                for other in removed:
+                    if record.id in other.related_document_ids.ids:
+                        other.with_context(skip_inverse_sync=True).write(
+                            {"related_document_ids": [(3, record.id)]}
+                        )
+            return res
 
         return super().write(vals)
 

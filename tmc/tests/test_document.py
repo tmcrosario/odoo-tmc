@@ -99,3 +99,33 @@ class TestDocument(common.TransactionCase):
         )
         # Accessing the computed field must not raise (KeyError before the guard).
         self.assertFalse(doc.reference_document)
+
+    def test_related_documents_symmetric_incremental(self):
+        """related_document_ids sync must handle incremental x2many commands (4/3), not only
+        the (6,0,[ids]) replace form — the web client sends (4,id)/(3,id) on save (regression:
+        IndexError on a hardcoded [0][2])."""
+        dependence = self.env["tmc.dependence"].search(
+            [("abbreviation", "=", "DEM")], limit=1
+        )
+        dtype = self.env["tmc.document_type"].search(
+            [("abbreviation", "=", "DEC")], limit=1
+        )
+        a = self.env["tmc.document"].create(
+            {"dependence_id": dependence.id, "document_type_id": dtype.id,
+             "number": 111, "period": "2020"}
+        )
+        b = self.env["tmc.document"].create(
+            {"dependence_id": dependence.id, "document_type_id": dtype.id,
+             "number": 222, "period": "2020"}
+        )
+        # add via (4, id) — the command that used to crash on [0][2]
+        a.write({"related_document_ids": [(4, b.id)]})
+        self.assertIn(b, a.related_document_ids)
+        self.assertIn(a, b.related_document_ids, "symmetric add")
+        # remove via (3, id)
+        a.write({"related_document_ids": [(3, b.id)]})
+        self.assertNotIn(b, a.related_document_ids)
+        self.assertNotIn(a, b.related_document_ids, "symmetric remove")
+        # (6,0,[ids]) replace form still works
+        a.write({"related_document_ids": [(6, 0, [b.id])]})
+        self.assertIn(a, b.related_document_ids, "still symmetric with (6,0,[ids])")
