@@ -183,7 +183,13 @@ class Document(models.Model):
     def _check_number(self):
         for document in self:
             max_number = 6000
-            if document.document_type_id.abbreviation in ["EXP", "ACT", "CONV"]:
+            if document.document_type_id.abbreviation in [
+                "EXP",
+                "ACT",
+                "CONV",
+                "NTA",
+                "NJC",
+            ]:
                 max_number = 999999
             if document.dependence_id.abbreviation in ["CM", "HCM", "CONC"]:
                 max_number = 999999
