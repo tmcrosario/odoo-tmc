@@ -40,6 +40,59 @@ class TestDocument(common.TransactionCase):
         )
         self.assertEqual(document.period, "1950")
 
+    def test_entry_date_without_raa_access(self):
+        # A GD reader without RAA groups (e.g. a JUNCO user) must get the entry
+        # date instead of an AccessError on every document list
+        if "raa.registry_aa" not in self.env:
+            self.skipTest("raa is not installed")
+        dependence = self.env["tmc.dependence"].search(
+            [("abbreviation", "=", "DEM")], limit=1
+        )
+        document_type = self.env["tmc.document_type"].search(
+            [("abbreviation", "=", "DEC")], limit=1
+        )
+        registered, plain = self.env["tmc.document"].create(
+            [
+                {
+                    "dependence_id": dependence.id,
+                    "document_type_id": document_type.id,
+                    "number": 333,
+                    "period": "2020",
+                },
+                {
+                    "dependence_id": dependence.id,
+                    "document_type_id": document_type.id,
+                    "number": 334,
+                    "period": "2020",
+                },
+            ]
+        )
+        self.env["raa.registry_aa"].create(
+            {"document_id": registered.id, "entry_date": "2020-03-15"}
+        )
+        user = self.env["res.users"].create(
+            {
+                "name": "GD reader",
+                "login": "gd_reader_entry_date",
+                "group_ids": [
+                    (
+                        6,
+                        0,
+                        [
+                            self.env.ref("base.group_user").id,
+                            self.env.ref("tmc.group_read_only").id,
+                        ],
+                    )
+                ],
+            }
+        )
+        self.assertFalse(self.env["raa.registry_aa"].with_user(user).has_access("read"))
+        docs = (registered | plain).with_user(user)
+        docs.invalidate_recordset(["entry_date"])
+        values = {d["id"]: d["entry_date"] for d in docs.read(["entry_date"])}
+        self.assertEqual(str(values[registered.id]), "2020-03-15")
+        self.assertEqual(values[plain.id], plain.create_date.date())
+
     def test_act_name_is_stable_on_recompute(self):
         # An ACT name must use the stored number, not the live sequence, or
         # a later recompute rewrites historical names with today's counter
