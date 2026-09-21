@@ -49,3 +49,15 @@ class TestTmcSecurity(common.TransactionCase):
                 self.env.ref(xmlid).privilege_id,
                 f"{xmlid} es un modificador, no debe tener privilege_id",
             )
+
+    # Wizards call report_action() as the user, which reads the report record
+    def test_internal_user_can_launch_report_action(self):
+        user = common.new_test_user(
+            self.env, login="tmc_report_user", groups="base.group_user"
+        )
+        self.assertTrue(
+            self.env["ir.actions.report"].with_user(user).has_access("read")
+        )
+        report = self.env.ref("tmc.action_dependence_document_topics_report")
+        action = report.with_user(user).report_action(self.env["tmc.dependence"])
+        self.assertEqual(action["report_name"], report.report_name)
