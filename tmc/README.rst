@@ -2,38 +2,38 @@
 TMC Base
 ========
 
-Document Management System for Tribunal Municipal de Cuentas de Rosario.
+Sistema de gestión documental del Tribunal Municipal de Cuentas de Rosario.
 
-Main module providing core functionality for document administration, tracking, and organization.
+Módulo principal: administración, seguimiento y organización de documentos.
 
-Features
+Funcionalidades
+===============
+
+* Seguimiento de documentos por período
+* Clasificación jerárquica por temas (principal y secundario)
+* Gestión de dependencias municipales
+* Clasificador institucional (nomenclador)
+* Resaltados y priorización de documentos
+* Asistente de edición masiva de temas
+
+Modelos principales
+===================
+
+* ``tmc.document``: documento, con período, tipo, temas y resaltados
+* ``tmc.dependence``: unidades organizativas y tipos de documento permitidos
+* ``tmc.document_topic``: clasificación jerárquica por temas
+* ``tmc.institutional_classifier``: nomenclador institucional por período
+* ``tmc.document_type``: tipos de documento
+* ``tmc.employee``: empleados
+* ``tmc.office``: oficinas
+* ``tmc.highlight``: prioridades de los documentos
+
+Créditos
 ========
-
-* Period-based document tracking
-* Hierarchical topic classification (main and secondary)
-* Municipal dependencies management
-* Institutional classifier (nomenclator)
-* Document highlights and prioritization
-* Mass topic editing wizard
-
-Main Models
-===========
-
-* ``tmc.document`` - Main document model with period, type, topics, and highlights
-* ``tmc.dependence`` - Organizational units with allowed document types
-* ``tmc.document_topic`` - Hierarchical topic categorization
-* ``tmc.institutional_classifier`` - Period-based institutional nomenclator
-* ``tmc.document_type`` - Document type definitions
-* ``tmc.employee`` - Employee management
-* ``tmc.office`` - Office management
-* ``tmc.highlight`` - Document priorities
-
-Credits
-=======
 
 * Tribunal Municipal de Cuentas - Municipalidad de Rosario
 
-License
-=======
+Licencia
+========
 
 AGPL-3
