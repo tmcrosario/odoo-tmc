@@ -1,36 +1,30 @@
 # Odoo TMC
 
-Document Management System for Tribunal Municipal de Cuentas de Rosario.
+![Odoo 19.0](https://img.shields.io/badge/Odoo-19.0-714B67)
+[![Licencia: AGPL-3](https://img.shields.io/badge/licencia-AGPL--3-blue.svg)](LICENSE)
 
-## Features
+Sistema de gestión documental del Tribunal Municipal de Cuentas de Rosario.
 
-- Period-based document tracking
-- Hierarchical topic classification
-- Municipal dependencies management
-- Institutional nomenclator
-- Document highlights and prioritization
+## Módulos
 
-## Installation
+| Módulo        | Versión    | Descripción                          |
+| ------------- | ---------- | ------------------------------------ |
+| [`tmc`](tmc/) | 19.0.1.1.0 | Modelos y funcionalidad base del TMC |
 
-1. Add to Odoo addons path
-2. Update app list
-3. Install "TMC Base" module
+## Funcionalidades
 
-## Credits
+- Seguimiento de documentos por período.
+- Clasificación jerárquica por temas.
+- Gestión de dependencias municipales.
+- Clasificador institucional (nomenclador).
+- Resaltados y priorización de documentos.
 
-**Author**: Tribunal Municipal de Cuentas - Municipalidad de Rosario
-**Website**: https://www.tmcrosario.gob.ar
+## Instalación
 
-## License
+Dependencias OCA: [`web`](https://github.com/OCA/web) (`web_tree_many2one_clickable`), [`server-brand`](https://github.com/OCA/server-brand) (`remove_odoo_enterprise`).
 
-AGPL-3
+Agregar a la ruta de addons, actualizar aplicaciones e instalar «TMC Base».
 
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+## Licencia
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License along with this program. If not, see http://www.gnu.org/licenses/.
-
----
-
-<img align="left" src="https://iili.io/2ARo1R.png"/>
+[AGPL-3](LICENSE). Autor: Tribunal Municipal de Cuentas - Municipalidad de Rosario (<https://www.tmcrosario.gob.ar>).
