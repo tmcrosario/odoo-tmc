@@ -1,3 +1,4 @@
+from odoo.exceptions import UserError
 from odoo.tests import common, tagged
 
 
@@ -129,3 +130,43 @@ class TestDocument(common.TransactionCase):
         # (6,0,[ids]) replace form still works
         a.write({"related_document_ids": [(6, 0, [b.id])]})
         self.assertIn(a, b.related_document_ids, "still symmetric with (6,0,[ids])")
+
+    def _document_type(self, abbreviation, name):
+        # NTA and NJC come from tmc_data; create them when only tmc is installed
+        DocumentType = self.env["tmc.document_type"]
+        return DocumentType.search(
+            [("abbreviation", "=", abbreviation)], limit=1
+        ) or DocumentType.create({"abbreviation": abbreviation, "name": name})
+
+    def test_nta_and_njc_numbers_go_beyond_6000(self):
+        dependence = self.env["tmc.dependence"].search(
+            [("abbreviation", "=", "DEM")], limit=1
+        )
+        for abbreviation, name in (("NTA", "Nota"), ("NJC", "Nota de Junta de Compras")):
+            document = self.env["tmc.document"].create(
+                {
+                    "dependence_id": dependence.id,
+                    "document_type_id": self._document_type(abbreviation, name).id,
+                    "number": 123456,
+                    "period": "2026",
+                }
+            )
+            self.assertEqual(document.number, 123456, abbreviation)
+
+    def test_other_types_keep_the_6000_limit(self):
+        dependence = self.env["tmc.dependence"].search(
+            [("abbreviation", "=", "DEM")], limit=1
+        )
+        document_type = self.env["tmc.document_type"].search(
+            [("abbreviation", "=", "DEC")], limit=1
+        )
+        with self.assertRaises(UserError):
+            self.env["tmc.document"].create(
+                {
+                    "dependence_id": dependence.id,
+                    "document_type_id": document_type.id,
+                    "number": 6001,
+                    "period": "2026",
+                }
+            )
+
