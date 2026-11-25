@@ -417,8 +417,11 @@ class Document(models.Model):
         # RAA registry is optional (downstream module); fall back to create_date
         entry_by_doc = {}
         if "raa.registry_aa" in self.env:
-            registries = self.env["raa.registry_aa"].search(
-                [("document_id", "in", self.ids)]
+            # sudo: users without RAA access (e.g. JUNCO) also read documents
+            registries = (
+                self.env["raa.registry_aa"]
+                .sudo()
+                .search([("document_id", "in", self.ids)])
             )
             entry_by_doc = {r.document_id.id: r.entry_date for r in registries}
         for document in self:
