@@ -12,9 +12,9 @@ class Employee(models.Model):
 
     docket_number = fields.Integer()
 
-    bank_account_number = fields.Char()
+    bank_account_number = fields.Char(groups="tmc.group_personal,tmc.group_manager")
 
-    bank_branch = fields.Integer()
+    bank_branch = fields.Integer(groups="tmc.group_personal,tmc.group_manager")
 
     admission_date = fields.Date()
 

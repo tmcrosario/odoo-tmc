@@ -1,3 +1,4 @@
+from odoo.exceptions import AccessError
 from odoo.tests import common, tagged
 
 
@@ -49,6 +50,22 @@ class TestTmcSecurity(common.TransactionCase):
                 self.env.ref(xmlid).privilege_id,
                 f"{xmlid} es un modificador, no debe tener privilege_id",
             )
+
+    def test_bank_fields_restricted_to_personal_and_manager(self):
+        employee = self.env["tmc.hr.employee"].create(
+            {"name": "Test", "bank_account_number": "1-23", "bank_branch": 20}
+        )
+        reader = common.new_test_user(
+            self.env, login="tmc_bank_reader", groups="tmc.group_read_only"
+        )
+        personal = common.new_test_user(
+            self.env, login="tmc_bank_personal", groups="tmc.group_personal"
+        )
+        for field in ("bank_account_number", "bank_branch"):
+            with self.assertRaises(AccessError):
+                employee.with_user(reader).read([field])
+        self.assertEqual(employee.with_user(personal).bank_account_number, "1-23")
+        self.assertEqual(employee.with_user(personal).bank_branch, 20)
 
     # Wizards call report_action() as the user, which reads the report record
     def test_internal_user_can_launch_report_action(self):
